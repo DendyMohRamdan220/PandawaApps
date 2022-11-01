@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\EmployeeController;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,13 @@ Route::get('/tampildatatiket/{id}', [TicketController::class, 'tampildatatiket']
 Route::post('/updatedatatiket/{id}', [TicketController::class, 'updatedatatiket'])->name('updatedatatiket');
 Route::get('/delete/{id}', [TicketController::class, 'delete'])->name('delete');
 Route::get('/exportpdf', [TicketController::class, 'exportpdf'])->name('exportpdf');
+
+
+Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
+Route::get('/tambahemployee', [EmployeeController::class, 'tambahemployee'])->name('tambahemployee');
+Route::post('/insertemployee', [EmployeeController::class, 'insertemployee'])->name('insertemployee');
+
+Route::get('/tampilemployee/{id}', [EmployeeController::class, 'tampilemployee'])->name('tampilemployee');
+Route::post('/updateemployee/{id}', [EmployeeController::class, 'updateemployee'])->name('updateemployee');
+
+Route::get('/hapusemployee/{id}', [EmployeeController::class, 'hapusemployee'])->name('hapusemployee');
