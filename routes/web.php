@@ -3,6 +3,7 @@
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TicketEmployeeController;
+use App\Http\Controllers\AttendanceController;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,7 @@ Route::get('/delete/{id}', [TicketController::class, 'delete'])->name('delete');
 Route::get('/exportpdf', [TicketController::class, 'exportpdf'])->name('exportpdf');
 
 //Portal Employee
+//Employee
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
 Route::get('/tambahemployee', [EmployeeController::class, 'tambahemployee'])->name('tambahemployee');
 Route::post('/insertemployee', [EmployeeController::class, 'insertemployee'])->name('insertemployee');
@@ -46,7 +48,11 @@ Route::post('/updateemployee/{id}', [EmployeeController::class, 'updateemployee'
 
 Route::get('/hapusemployee/{id}', [EmployeeController::class, 'hapusemployee'])->name('hapusemployee');
 
+//Attendance
+Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
+Route::get('/tambahattendance', [AttendanceController::class, 'tambahattendance'])->name('tambahdataattendance');
+Route::post('/insertattendance', [AttendanceController::class, 'insertattendance'])->name('insertattendance');
+
+//Ticket
 Route::get('/tiketemployee', [TicketEmployeeController::class, 'index'])->name('tiket');
 Route::get('/updatetiketemployee/{id}', [TicketEmployeeController::class, 'tampildatatiket'])->name('tampildatatiket');
-
-
