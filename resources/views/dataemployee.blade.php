@@ -16,12 +16,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Data Karyawan</h1>
+          <h1 class="m-0">Data Employee</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Data Karyawan</li>
+            <li class="breadcrumb-item active">Data Employee</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -30,7 +30,7 @@
   <!-- /.content-header -->
 
   <div class="container">
-    <a href="/tambahemployee" class="btn btn-success">+ Tambah Data</a>
+    <a href="/tambahemployee" class="btn btn-success"><i class="nav-icon fas fa-plus"></i> Add Employee</a>
     <div class="row">
         <table class="table">
             <thead>

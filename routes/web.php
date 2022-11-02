@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\TicketEmployeeController;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,7 @@ Route::post('/updatedatatiket/{id}', [TicketController::class, 'updatedatatiket'
 Route::get('/delete/{id}', [TicketController::class, 'delete'])->name('delete');
 Route::get('/exportpdf', [TicketController::class, 'exportpdf'])->name('exportpdf');
 
-
+//Portal Employee
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
 Route::get('/tambahemployee', [EmployeeController::class, 'tambahemployee'])->name('tambahemployee');
 Route::post('/insertemployee', [EmployeeController::class, 'insertemployee'])->name('insertemployee');
@@ -44,3 +45,8 @@ Route::get('/tampilemployee/{id}', [EmployeeController::class, 'tampilemployee']
 Route::post('/updateemployee/{id}', [EmployeeController::class, 'updateemployee'])->name('updateemployee');
 
 Route::get('/hapusemployee/{id}', [EmployeeController::class, 'hapusemployee'])->name('hapusemployee');
+
+Route::get('/tiketemployee', [TicketEmployeeController::class, 'index'])->name('tiket');
+Route::get('/updatetiketemployee/{id}', [TicketEmployeeController::class, 'tampildatatiket'])->name('tampildatatiket');
+
+

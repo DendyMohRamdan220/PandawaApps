@@ -298,6 +298,13 @@
                         </li>
 
                         <li class="nav-item">
+                          <a href="/tiketemployee" class="nav-link">
+                              <i class="nav-icon fas fa-ticket-alt"></i>
+                              <p>Ticket</p>
+                          </a>
+                      </li>
+
+                        <li class="nav-item">
                           <a href="/employee" class="nav-link">
                               <i class="nav-icon fas fa-user-alt"></i>
                               <p>

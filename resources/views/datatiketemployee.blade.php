@@ -30,17 +30,9 @@
     <div class="container">
         <div class="row g-3 align-items-center mt-2">
             <div class="col-auto">
-                <a href="/tambahtiket" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Ticket</a>
-
-            </div>
-            <div class="col-auto">
-                <form action="/tiket" method="GET">
+                <form action="/tiketemployee" method="GET">
                     <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                 </form>
-            </div>
-            <div class="col-auto">
-                <a href="/exportpdf" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export PDF</a>
-
             </div>
         </div>
         <div class="row mt-2">
@@ -71,10 +63,7 @@
                     <td>{{ $row->description }}</td>
                     <td>{{ $row->others }}</td>
                     <td>{{ $row->created_at->format('D M Y') }}</td>
-                    <td>
-                        <a href="/updatetiketemployee/{{ $row->id }}" class="btn btn-info">Update</a>
-                        <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-subject="{{ $row->ticket_subject }}">Delete</a>
-                    </td>
+                    <td><a href="/tampildatatiket/{{ $row->id }}" class="btn btn-info">Update</a></td>
                 </tr>
                 @endforeach
             </tbody>
@@ -99,35 +88,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
-<script>
-    $('.delete').click(function() {
-        var tiketid = $(this).attr('data-id');
-        var namatiket = $(this).attr('data-subject');
-        swal({
-                title: "Are you sure?"
-                , text: "Once deleted, you will not be able to recover data from the Ticket Subject " + namatiket + " "
-                , icon: "warning"
-                , buttons: true
-                , dangerMode: true
-            , })
-            .then((willDelete) => {
-                if (willDelete) {
-                    window.location = "/delete/" + tiketid + ""
-                    swal("Your data from Ticket Subject " + namatiket + " has been deleted!", {
-                        icon: "success"
-                    , });
-                } else {
-                    swal("Deletion of data from Ticket Subject " + namatiket + " has been cancelled!");
-                }
-            });
-    });
 
-</script>
-<script>
-    @if(Session::has('success'))
-    toastr.success("{{ Session::get('success') }}");
-    @endif
-
-</script>
 @endpush
 
