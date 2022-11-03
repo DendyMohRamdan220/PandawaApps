@@ -60,8 +60,8 @@
                     <td>{{ $row->task }}</td>
                     <td>{{ $row->clockout }}</td>
                     <td>
-                      <a href="/tampilattendance/{{$item->id}}" class="btn btn-info">Edit</a>
-                      <a href="/hapusattendance/{{$item->id}}" class="btn btn-danger">Delete</a>
+                      <a href="/tampilattendance/{{$row->id}}" class="btn btn-info">Edit</a>
+                      <a href="/hapusattendance/{{$row->id}}" class="btn btn-danger">Delete</a>
                   </td>
                 </tr>
                 @endforeach

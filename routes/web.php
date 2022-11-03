@@ -4,6 +4,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TicketEmployeeController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\TaskController;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Route;
 
@@ -56,3 +57,11 @@ Route::post('/insertattendance', [AttendanceController::class, 'insertattendance
 //Ticket
 Route::get('/tiketemployee', [TicketEmployeeController::class, 'index'])->name('tiket');
 Route::get('/updatetiketemployee/{id}', [TicketEmployeeController::class, 'tampildatatiket'])->name('tampildatatiket');
+
+//Task
+Route::get('/task', [TaskController::class, 'index'])->name('task');
+Route::get('/tambahtask', [TaskController::class, 'tambahtask'])->name('tambahtask');
+Route::post('/insertdatatask', [TaskController::class, 'insertdatatask'])->name('insertdatatask');
+Route::get('/tampildatatask/{id}', [TaskController::class, 'tampildatatask'])->name('tampildatatask');
+Route::post('/updatedatatask/{id}', [TaskController::class, 'updatedatatask'])->name('updatedatatask');
+Route::get('/delete/{id}', [TaskController::class, 'delete'])->name('delete');

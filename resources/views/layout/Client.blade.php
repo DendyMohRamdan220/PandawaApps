@@ -313,25 +313,23 @@
 
                       <li class="nav-item">
                         <a href="/attendance" class="nav-link">
-                            <i class="nav-icon fas fa-user-alt"></i>
+                            <i class="nav-icon fas fa-calendar-check"></i>
                             <p>Attendance</p>
                         </a>
                     </li>
 
-                      <li class="nav-item">
-                          <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-user-alt"></i>
-                              <p>
-                                  Project<span class="right badge badge-danger">ERROR 404</span>
-                              </p>
-                          </a>
-                      </li>
+                    <li class="nav-item">
+                      <a href="/task" class="nav-link">
+                          <i class="nav-icon fas fa-tasks"></i>
+                          <p>Task</p>
+                      </a>
+                  </li>
 
                       <li class="nav-item">
                           <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-user-alt"></i>
+                              <i class="nav-icon fas  fa-folder"></i>
                               <p>
-                                  Task<span class="right badge badge-danger">ERROR 404</span>
+                                  Project<span class="right badge badge-danger">ERROR 404</span>
                               </p>
                           </a>
                       </li>
