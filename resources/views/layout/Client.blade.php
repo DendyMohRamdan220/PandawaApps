@@ -247,6 +247,15 @@
                         </li>
 
                         <li class="nav-item">
+                          <a href="/proyek" class="nav-link">
+                              <i class="nav-icon fas fa-file-alt"></i>
+                              <p>
+                                  Leads<span class="right badge badge-danger">ERROR 404</span>
+                              </p>
+                          </a>
+                      </li>
+
+                        <li class="nav-item">
                             <a href="/proyek" class="nav-link">
                                 <i class="nav-icon fas fa-file-alt"></i>
                                 <p>
@@ -264,11 +273,17 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                    <p>Proposal</p>
+                                </a>
+                            </li>
+
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         {{-- <i class="far fa-circle nav-icon"></i> --}}
                                         <p>Estimates</p>
-
                                     </a>
                                 </li>
                                 <li class="nav-item">
