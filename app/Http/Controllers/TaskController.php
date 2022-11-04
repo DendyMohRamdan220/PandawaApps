@@ -41,7 +41,7 @@ class TaskController extends Controller
         return redirect()->route('task')->with('success', 'task edited successfully .');
     }
 
-    public function delete($id)
+    public function deletetask($id)
     {
         $data = Task::find($id);
         $data->delete();
