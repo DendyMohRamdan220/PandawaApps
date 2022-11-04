@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TicketSeeder extends Seeder
 {
@@ -14,6 +14,11 @@ class TicketSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('Tickets')->insert([
+            'ticket_subject' => 'Angine A1',
+            'description' => 'damage to the engine',
+            'others' => 'Medium',
+        ]);
+
     }
 }

@@ -97,7 +97,7 @@
 </body>
 
 <script>
-    $('.delete').click(function() {
+    $('.deletetask').click(function() {
         var idtask = $(this).attr('data-id');
         var nametask = $(this).attr('data-task');
         swal({
