@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+
+use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\EmployeeController;
+
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TicketController;
 use App\Models\Ticket;
@@ -63,4 +66,9 @@ Route::get('/tambahtask', [TaskController::class, 'tambahtask'])->name('tambahta
 Route::post('/insertdatatask', [TaskController::class, 'insertdatatask'])->name('insertdatatask');
 Route::get('/tampildatatask/{id}', [TaskController::class, 'tampildatatask'])->name('tampildatatask');
 Route::post('/updatedatatask/{id}', [TaskController::class, 'updatedatatask'])->name('updatedatatask');
+Route::get('/delete/{id}', [TaskController::class, 'delete'])->name('delete');
+
+
+//LEADS
+Route::get('/leads', [LeadsController::class, 'index'])->name('leads');
 Route::get('/deletetask/{id}', [TaskController::class, 'deletetask'])->name('deletetask');
