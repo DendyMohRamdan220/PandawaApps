@@ -30,7 +30,7 @@
     <div class="container">
         <div class="row g-3 align-items-center mt-2">
             <div class="col-auto">
-                <form action="/tiketemployee" method="GET">
+                <form action="/tiket" method="GET">
                     <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                 </form>
             </div>

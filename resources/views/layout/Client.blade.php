@@ -248,20 +248,70 @@
 
                         <li class="nav-item">
                           <a href="/proyek" class="nav-link">
-                              <i class="nav-icon fas fa-file-alt"></i>
+                              <i class="nav-icon fas fa-user-alt"></i>
                               <p>
-                                  Leads<span class="right badge badge-danger">ERROR 404</span>
+                                  Leads<span class="right badge badge-danger"></span>
                               </p>
                           </a>
                       </li>
 
                         <li class="nav-item">
-                            <a href="/proyek" class="nav-link">
-                                <i class="nav-icon fas fa-file-alt"></i>
+                          <a href="#" class="nav-link">
+                              <i class="nav-icon fas fa-users"></i>
+                              <p>
+                                Clients
+                              </p>
+                          </a>
+                      </li>
+
+                      <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Project<span class="right badge badge-danger">ERROR 404</span>
+                                    HR
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                    <p>Employee</p>
+                                </a>
+                            </li>
+
+                                <li class="nav-item">
+                                    <a href="/attendance" class="nav-link">
+                                        {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                        <p>Attendance</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-briefcase"></i>
+                                <p>
+                                    Work
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                    <p>Projects</p>
+                                </a>
+                            </li>
+
+                                <li class="nav-item">
+                                    <a href="/task" class="nav-link">
+                                        {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                        <p>Tasks</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="nav-item">
@@ -304,50 +354,22 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/tiket" class="nav-link">
-                                <i class="nav-icon fas fa-ticket-alt"></i>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-shopping-cart"></i>
                                 <p>
-                                    Ticket<span class="right badge badge-danger">ERROR 404</span>
+                                    Products<span class="right badge badge-danger"></span>
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                          <a href="/tiketemployee" class="nav-link">
-                              <i class="nav-icon fas fa-ticket-alt"></i>
-                              <p>Ticket</p>
-                          </a>
-                      </li>
-
-                        <li class="nav-item">
-                          <a href="/employee" class="nav-link">
-                              <i class="nav-icon fas fa-user-alt"></i>
-                              <p>Employee</p>
-                          </a>
-                      </li>
-
-                      <li class="nav-item">
-                        <a href="/attendance" class="nav-link">
-                            <i class="nav-icon fas fa-calendar-check"></i>
-                            <p>Attendance</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a href="/task" class="nav-link">
-                          <i class="nav-icon fas fa-tasks"></i>
-                          <p>Task</p>
-                      </a>
-                  </li>
-
-                      <li class="nav-item">
-                          <a href="#" class="nav-link">
-                              <i class="nav-icon fas  fa-folder"></i>
-                              <p>
-                                  Project<span class="right badge badge-danger">ERROR 404</span>
-                              </p>
-                          </a>
-                      </li>
+                            <a href="/tiket" class="nav-link">
+                                <i class="nav-icon fas fa-ticket-alt"></i>
+                                <p>
+                                    Ticket<span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
 
                         {{--
           <li class="nav-item">
