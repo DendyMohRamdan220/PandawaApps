@@ -247,7 +247,7 @@
                         </li>
 
                         <li class="nav-item">
-                          <a href="/proyek" class="nav-link">
+                          <a href="/leads" class="nav-link">
                               <i class="nav-icon fas fa-user-alt"></i>
                               <p>
                                   Leads<span class="right badge badge-danger"></span>

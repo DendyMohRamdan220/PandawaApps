@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Leads;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PDF;
 
 class LeadsController extends Controller
 {
