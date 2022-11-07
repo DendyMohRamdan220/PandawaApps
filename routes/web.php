@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
-
-use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\LeadsController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +30,19 @@ Route::get('/', function () {
     return view('welcome', compact('totaltiket', 'totallowtiket', 'totalmediumtiket', 'totalhightiket', 'totalurgenttiket'));
 });
 
+//Login
+Route::get('/formlogin', [LoginController::class, 'formlogin'])->name('formlogin');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logut');
+
+Route::get('/viewuser', [UserController::class, 'index'])->name('viewuser');
+Route::get('/tampiluser', [UserController::class, 'inputuser'])->name('tampiluser');
+Route::post('/insertdatauser', [UserController::class, 'insertdatauser'])->name('insertdatauser');
+Route::get('/tampilupdateuser/{id}', [UserController::class, 'edituser'])->name('tampilupdateuser');
+Route::post('/updateuser/{id}', [UserController::class, 'updateuser'])->name('updateuser');
+Route::get('/deleteuser/{id}', [UserController::class, 'deleteuser'])->name('deleteuser');
+
+//PortalCLient
 Route::get('/proyek', [ProjectController::class, 'index'])->name('proyek');
 
 Route::get('/tiket', [TicketController::class, 'index'])->name('tiket');
@@ -37,7 +50,7 @@ Route::get('/tambahtiket', [TicketController::class, 'tambahtiket'])->name('tamb
 Route::post('/insertdatatiket', [TicketController::class, 'insertdatatiket'])->name('insertdatatiket');
 Route::get('/tampildatatiket/{id}', [TicketController::class, 'tampildatatiket'])->name('tampildatatiket');
 Route::post('/updatedatatiket/{id}', [TicketController::class, 'updatedatatiket'])->name('updatedatatiket');
-Route::get('/delete/{id}', [TicketController::class, 'delete'])->name('delete');
+Route::get('/deletetiket/{id}', [TicketController::class, 'deletetiket'])->name('deletetiket');
 Route::get('/exportpdf', [TicketController::class, 'exportpdf'])->name('exportpdf');
 
 //Portal Employee
@@ -66,8 +79,7 @@ Route::get('/tambahtask', [TaskController::class, 'tambahtask'])->name('tambahta
 Route::post('/insertdatatask', [TaskController::class, 'insertdatatask'])->name('insertdatatask');
 Route::get('/tampildatatask/{id}', [TaskController::class, 'tampildatatask'])->name('tampildatatask');
 Route::post('/updatedatatask/{id}', [TaskController::class, 'updatedatatask'])->name('updatedatatask');
-Route::get('/delete/{id}', [TaskController::class, 'delete'])->name('delete');
-
+// Route::get('/delete/{id}', [TaskController::class, 'delete'])->name('delete');
 
 //LEADS
 Route::get('/leads', [LeadsController::class, 'index'])->name('leads');

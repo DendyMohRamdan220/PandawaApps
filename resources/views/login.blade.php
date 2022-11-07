@@ -9,5 +9,5 @@
 <body>
   @yield('content')
 </body>
-@include('sweetalert::alert')
+
 </html>
