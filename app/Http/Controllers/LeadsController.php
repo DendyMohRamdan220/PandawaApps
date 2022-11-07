@@ -12,7 +12,7 @@ class LeadsController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $data = Leads::where('leadsname', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $data = Leads::where('leads_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
             $data = Leads::paginate(5);
         }
@@ -48,5 +48,13 @@ class LeadsController extends Controller
         $data = Leads::find($id);
         $data->delete();
         return redirect()->route('leads')->with('success', 'leads deleted successfully .');
+    }
+
+    public function exportpdf()
+    {
+        $data = Leads::all();
+        view()->share('data', $data);
+        $pdf = PDF::loadview('dataleads-pdf');
+        return $pdf->download('data.pdf');
     }
 }
