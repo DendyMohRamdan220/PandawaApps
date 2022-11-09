@@ -100,7 +100,7 @@
                 , })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/delete/" + karyawanid + ""
+                        window.location = "/hapusemployee/" + karyawanid + ""
                         swal("Your data from Name " + name + " has been deleted!", {
                             icon: "success"
                         , });

@@ -36,13 +36,13 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date</th>
-                <th scope="col">Clockin</th>
+                <th scope="col">Department</th>
                 <th scope="col">Location</th>
+                <th scope="col">Date</th>
                 <th scope="col">Project</th>
                 <th scope="col">Task</th>
+                <th scope="col">Description</th>
+                <th scope="col">Clockin</th>
                 <th scope="col">Clockout</th>
                 <th scope="col">Action</th>
               </tr>
@@ -51,13 +51,13 @@
                 @foreach ($data as $index=> $row)
                 <tr>
                     <th scope="row">{{ $index + $data ->firstItem() }}</th>
-                    <td>{{ $row->name }}</td>
-                    <td>{{ $row->description }}</td>
-                    <td>{{ $row->created_at->isoFormat('D MMM Y'); }}</td>
-                    <td>{{ $row->clockin }}</td>
+                    <td>{{ $row->department }}</td>
                     <td>{{ $row->location }}</td>
+                    <td>{{ $row->created_at->isoFormat('D MMM Y'); }}</td>
                     <td>{{ $row->project }}</td>
                     <td>{{ $row->task }}</td>
+                    <td>{{ $row->description }}</td>
+                    <td>{{ $row->clockin }}</td>
                     <td>{{ $row->clockout }}</td>
                     <td>
                       <a href="/tampilattendance/{{$row->id}}" class="btn btn-info">Edit</a>

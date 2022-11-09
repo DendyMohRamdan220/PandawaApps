@@ -34,18 +34,48 @@
             <form action="/insertattendance" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Department</label>
+                <input type="department" name="department" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+
+              <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Location</label>
                 <input type="location" name="location" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               </div>
 
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Kehadiran</label><br>
+                <label for="exampleInputEmail1" class="form-label">Date</label>
+                <input type="date" name="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Project</label>
+                <input type="project" name="project" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Task</label>
+                <input type="task" name="task" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Description</label><br>
                 <select class="form-select" name="description" aria-label="Default select example">
                   <option selected></option>
                   <option value="Hadir">Hadir</option>
                   <option value="Izin">Izin</option>
                   <option value="Sakit">Sakit</option>
                 </select>                    
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Clockin</label>
+                <input type="time" name="clockin" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Clockout</label>
+                <input type="time" name="clockout" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>
