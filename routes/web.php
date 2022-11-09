@@ -83,4 +83,7 @@ Route::post('/updatedatatask/{id}', [TaskController::class, 'updatedatatask'])->
 
 //LEADS
 Route::get('/leads', [LeadsController::class, 'index'])->name('leads');
-Route::get('/deletetask/{id}', [TaskController::class, 'deletetask'])->name('deletetask');
+Route::get('/tambahleads', [LeadsController::class, 'tambahleads'])->name('tambahleads');
+Route::post('/insertdataleads', [LeadsController::class, 'insertdataleads'])->name('insertdataleads');
+Route::get('/tampildataleads/{id}', [LeadsController::class, 'tampildataleads'])->name('tampildataleads');
+Route::get('/deleteleads/{id}', [LeadsController::class, 'deleteleads'])->name('deleteleads');
