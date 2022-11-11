@@ -91,7 +91,7 @@ Route::get('/deleteleads/{id}', [LeadsController::class, 'deleteleads'])->name('
 
 //PRODUCTS
 Route::get('/produk', [ProductsController::class, 'index'])->name('leads');
-Route::get('/tambahleads', [ProductsController::class, 'tambahleads'])->name('tambahleads');
-Route::post('/insertdataleads', [ProductsController::class, 'insertdataleads'])->name('insertdataleads');
-Route::get('/tampildataleads/{id}', [ProductsController::class, 'tampildataleads'])->name('tampildataleads');
-Route::get('/deleteleads/{id}', [ProductsController::class, 'deleteleads'])->name('deleteleads');
+Route::get('/tambahproduk', [ProductsController::class, 'tambahproduk'])->name('tambahproduk');
+Route::post('/insertdataproduk', [ProductsController::class, 'insertdataproduk'])->name('insertdataproduk');
+Route::get('/tampildataproduk/{id}', [ProductsController::class, 'tampildataproduk'])->name('tampildataproduk');
+Route::get('/deleteproduk/{id}', [ProductsController::class, 'deleteproduk'])->name('deleteproduk');
