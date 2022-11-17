@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -172,17 +173,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:3']], function () {
 
 });
 
-/*
-|--------------------------------------------------------------------------
-| Portal Sales
-|--------------------------------------------------------------------------
-|
-| Below there are functions for logging in,
-| registering, forgetting password,
-| and logging out!
-|
- */
-Route::group(['middleware' => ['auth', 'ceklevel:4']], function () {
-    //CRUD Kontak
+//Attendance
+Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
+Route::get('/tambahattendance', [AttendanceController::class, 'tambahattendance'])->name('tambahdataattendance');
+Route::post('/insertattendance', [AttendanceController::class, 'insertattendance'])->name('insertattendance');
 
-});
+//PRODUCTS
+Route::get('/produk', [ProductsController::class, 'index'])->name('leads');
+Route::get('/tambahproduk', [ProductsController::class, 'tambahproduk'])->name('tambahproduk');
+Route::post('/insertdataproduk', [ProductsController::class, 'insertdataproduk'])->name('insertdataproduk');
+Route::get('/tampildataproduk/{id}', [ProductsController::class, 'tampildataproduk'])->name('tampildataproduk');
+Route::get('/deleteproduk/{id}', [ProductsController::class, 'deleteproduk'])->name('deleteproduk');

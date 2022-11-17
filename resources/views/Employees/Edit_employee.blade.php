@@ -9,65 +9,64 @@
 @endpush
 
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Add Employee</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Employee</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Add Employee</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Employee</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
   <!-- /.content-header -->
-
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12">
+      <div class="col-8">
         <div class="card">
           <div class="card-body">
-            <form action="/insertemployee" method="POST" enctype="multipart/form-data">
+            <form action="/updateemployee/{{$data->id}}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Name</label>
-                <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $data->name}}">
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $data->email}}">
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $data->password}}">
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Department</label>
-                <input type="text" name="department" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" name="department" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $data->department}}">
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Country</label>
-                <input type="text" name="country" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" name="country" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $data->country}}">
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Mobile</label>
-                <input type="number" name="mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="number" name="mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $data->mobile}}">
               </div>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Gender</label><br>
                 <select class="form-select" name="gender" aria-label="Default select example">
-                  <option selected>Pilih gender</option>
+                  <option selected>{{ $data->gender}}</option>
                   <option value="Laki-laki">Laki-laki</option>
                   <option value="Perempuan">Perempuan</option>
                 </select>
@@ -82,11 +81,3 @@
   </div>
 </div>
 @endsection
-
-
-
-
-
-
-
-
