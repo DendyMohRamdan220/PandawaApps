@@ -10,11 +10,11 @@ class EmployeeController extends Controller
     public function index(){
         $data = Employee::all();
         $data = Employee::paginate(10);
-        return view('Employee.dataemployee', compact('data'));
+        return view('Employee.employee', compact('data'));
     }
 
     public function tambahemployee(){
-        return view('Employee.tambahdataemployee');
+        return view('Employee.tambah_employee');
     }
 
     public function insertemployee(Request $request){
@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     public function tampilemployee($id){
         $data = Employee::find($id);
         //dd($data);
-        return view('Employee.tampildataemployee', compact('data'));
+        return view('Employee.edit_employee', compact('data'));
     }
 
     public function updateemployee(Request $request, $id){

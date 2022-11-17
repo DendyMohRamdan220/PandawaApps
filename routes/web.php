@@ -67,7 +67,7 @@ Route::get('/hapusemployee/{id}', [EmployeeController::class, 'hapusemployee'])-
 
 //Attendance
 Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
-Route::get('/tambahattendance', [AttendanceController::class, 'tambahattendance'])->name('tambahdataattendance');
+Route::get('/tambahattendance', [AttendanceController::class, 'tambahattendance'])->name('tambah_attendance');
 Route::post('/insertattendance', [AttendanceController::class, 'insertattendance'])->name('insertattendance');
 
 //Ticket

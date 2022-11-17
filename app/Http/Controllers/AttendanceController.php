@@ -12,11 +12,11 @@ class AttendanceController extends Controller
         // $data = Attendance::select('employees.*', 'attendances.*')
         // ->join('employees','employees.id', '=', 'attendances.attendance_id')->get();
         $data = Attendance::paginate(10);
-        return view('Employee.dataattendance', compact('data'));
+        return view('Employee.attendance', compact('data'));
     }
 
     public function tambahattendance(){
-        return view('Employee.tambahdataattendance');
+        return view('Employee.tambah_attendance');
     }
 
     public function insertattendance(Request $request){
