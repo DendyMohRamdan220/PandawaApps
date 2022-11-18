@@ -10,81 +10,125 @@
 
 @endpush
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
+<div class="page-body">
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Leads</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Leads</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <div class="container">
-        <div class="row g-3 align-items-center mt-2">
-            <div class="col-auto">
-                <a href="/tambahleads" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Leads</a>
-
+                  <h3>Leads</h3>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Pages   </li>
+                    <li class="breadcrumb-item active">Leads</li>
+                  </ol>
+                </div>
+                {{-- <div class="col-sm-6">
+                  <!-- Bookmark Start-->
+                  <div class="bookmark">
+                    <ul>
+                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+                      <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                        <form class="form-inline search-form">
+                          <div class="form-group form-control-search">
+                            <input type="text" placeholder="Search..">
+                          </div>
+                        </form>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- Bookmark Ends-->
+                </div> --}}
+              </div>
             </div>
-            <div class="col-auto">
-                <form action="/leads" method="GET">
-                    <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
-                </form>
-            </div>
-            <div class="col-auto">
-                <a href="/exportpdf" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export PDF</a>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid support-ticket">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-header pb-0">
+                    <h5>Add Leads Detail</h5>
+                  </div>
+                  <div class="card-body">
 
+                    <div class="col-sm-12">
+                        <div class="row g-3 align-items-center mt-2">
+                        <div class="col-auto">
+                            <a href="/tambahdataleads_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add Leads</a>
+                        </div>
+                        <div class="col-auto">
+                            <form action="/dataleads" method="GET">
+                                <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
+                            </form>
+                            </div>
+                            <div class="col-auto">
+                                <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export PDF</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-success">
+                                    <thead class="tbl-strip-thad-bdr">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Company Name</th>
+                                            <th scope="col">Mobile Phone</th>
+                                            <th scope="col">Created at</th>
+                                            <th scope="col">Next Follow Up</th>
+                                            <th scope="col">Lead Agent</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        @foreach ($data as $view_tiket => $row)
+                                            <tr>
+                                                <th scope="row">{{ $view_tiket + $data->firstItem() }}</th>
+                                                <td>{{ $row->ticket_subject }}</td>
+                                                <td>{{ $row->description }}</td>
+                                                <td>{{ $row->others }}</td>
+                                                {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
+                                                <td>
+                                                    <div class="dropleft">
+                                                        <a class="btn btn-success task_view_more" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false" >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" color="white" class="bi bi-three-dots-vertical" viewBox="1 1 16 16">
+                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                        </svg>
+                                                        </a>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="/tampildataleads_admin/{{ $row->id }}"> <i class="nav-icon icon-pencil-alt"></i> Update</a>
+                                                            <a class="dropdown-item delete" href="#" data-id="{{ $row->id }}" data-subject="{{ $row->ticket_subject }}"> <i class="nav-icon icon-trash"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="card-body">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination pagination-primary">{{ $data->links() }}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+              </div>
             </div>
         </div>
-        <div class="row mt-2">
-            {{-- @if($message = Session::get('success'))
-                <div class="alert alert-success" role="alert">
-                    {{$message}}
-        </div>
-        @endif --}}
-        <table class="table table-striped table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Company Name</th>
-                    <th scope="col">Mobile Phone</th>
-                    <th scope="col">Created at</th>
-                    <th scope="col">Next Follow Up</th>
-                    <th scope="col">Lead Agent</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                $no = 1;
-                @endphp
-                @foreach ($data as $index => $row)
-                <tr>
-                    <th scope="row">{{ $index + $data->firstItem() }}</th>
-                    <td>{{ $row->Name }}</td>
-                    <td>{{ $row->description }}</td>
-                    <td>{{ $row->others }}</td>
-                    <td>{{ $row->created_at->format('D M Y') }}</td>
-                    <td>
-                        <a href="/updatedataleads/{{ $row->id }}" class="btn btn-info">Update</a>
-                        <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-subject="{{ $row->Name }}">Delete</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        {{ $data->links() }}
+        <!-- Container-fluid Ends-->
     </div>
-</div>
 </div>
 
 @endsection
@@ -133,4 +177,3 @@
 
 </script>
 @endpush
-
