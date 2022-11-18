@@ -38,10 +38,10 @@ class TaskController extends Controller
     {
         $data = Task::find($id);
         $data->update($request->all());
-        return redirect()->route('task')->with('success', 'task edited successfully .');
+        return redirect()->route('task')->with('success', 'task update successfully .');
     }
 
-    public function deletetask($id)
+    public function deletedatatask($id)
     {
         $data = Task::find($id);
         $data->delete();

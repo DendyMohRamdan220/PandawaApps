@@ -1,4 +1,4 @@
-@extends('Layouts.layout')
+@extends('layout.Client')
 
 @section('content')
 
@@ -16,12 +16,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Task</h1>
+                    <h1 class="m-0">Leads</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Task</li>
+                        <li class="breadcrumb-item active">Leads</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,12 +30,17 @@
     <div class="container">
         <div class="row g-3 align-items-center mt-2">
             <div class="col-auto">
-                <a href="/tambahtask" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Task</a>
+                <a href="/tambahproduk" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Leads</a>
+
             </div>
             <div class="col-auto">
-                <form action="/task" method="GET">
+                <form action="/products" method="GET">
                     <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                 </form>
+            </div>
+            <div class="col-auto">
+                <a href="/exportpdf" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export PDF</a>
+
             </div>
         </div>
         <div class="row mt-2">
@@ -48,11 +53,9 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Task Name</th>
-                    <th scope="col">Project</th>
-                    <th scope="col">Startdate</th>
-                    <th scope="col">Duedate</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Product Image</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -63,13 +66,13 @@
                 @foreach ($data as $index => $row)
                 <tr>
                     <th scope="row">{{ $index + $data->firstItem() }}</th>
-                    <td>{{ $row->taskname }}</td>
-                    <td>{{ $row->project }}</td>
-                    <td>{{ $row->startdate }}</td>
-                    <td>{{ $row->duedate }}</td>
-                    <td>{{ $row->status }}</td>
-                    <td><a href="/tampildatatask/{{ $row->id }}" class="btn btn-info">Update</a>
-                        <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-task="{{ $row->taskname }}">Delete</a>
+                    <td>{{ $row->Name }}</td>
+                    <td>{{ $row->description }}</td>
+                    <td>{{ $row->others }}</td>
+                    <td>{{ $row->created_at->format('D M Y') }}</td>
+                    <td>
+                        <a href="/updatedataleads/{{ $row->id }}" class="btn btn-info">Update</a>
+                        <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-subject="{{ $row->Name }}">Delete</a>
                     </td>
                 </tr>
                 @endforeach
@@ -95,26 +98,25 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
-
 <script>
     $('.delete').click(function() {
-        var idtask = $(this).attr('data-id');
-        var nametask = $(this).attr('data-task');
+        var tiketid = $(this).attr('data-id');
+        var namatiket = $(this).attr('data-subject');
         swal({
                 title: "Are you sure?"
-                , text: "Once deleted, you will not be able to recover data from the Task Name " + nametask + " "
+                , text: "Once deleted, you will not be able to recover data from the Ticket Subject " + namatiket + " "
                 , icon: "warning"
                 , buttons: true
                 , dangerMode: true
             , })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/deletetask/" + idtask + ""
-                    swal("Your data from Task Name " + nametask + " has been deleted!", {
+                    window.location = "/deletetiket/" + tiketid + ""
+                    swal("Your data from Ticket Subject " + namatiket + " has been deleted!", {
                         icon: "success"
                     , });
                 } else {
-                    swal("Deletion of data from Task Name " + nametask + " has been cancelled!");
+                    swal("Deletion of data from Ticket Subject " + namatiket + " has been cancelled!");
                 }
             });
     });
