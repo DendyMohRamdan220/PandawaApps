@@ -47,11 +47,11 @@
     <div class="container">
         <div class="row g-3 align-items-center mt-2">
             <div class="col-auto">
-                <a href="/tampiluser" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add User</a>
+                <a href="/tampiluser_admin" class="btn btn-success"> <i class="nav-icon fas icon-plus"></i> Add User</a>
 
             </div>
             <div class="col-auto">
-                <form action="/tiket" method="GET">
+                <form action="/viewuser_admin" method="GET">
                     <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                 </form>
             </div>
@@ -94,14 +94,29 @@
                         @endempty
                     </td>
                     <td>
-                        <a href="/tampilupdateuser/{{ $row->id }}" class="btn btn-info">Update</a>
-                        <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-subject="{{ $row->ticket_subject }}">Delete</a>
+                        <div class="dropleft">
+                            <a type="link" class="btn btn-success task_view_more" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" color="white" class="bi bi-three-dots-vertical" viewBox="1 1 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/tampilupdateuser_admin/{{ $row->id }}"> <i class="nav-icon icon-pencil-alt"></i> Update</a>
+                                <a class="dropdown-item" href="#" data-id="{{ $row->id }}" data-name="{{ $row->name }}"> <i class="nav-icon icon-trash"></i> Delete</a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        {{-- {{ $data->links() }} --}}
+        <div class="card-body">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-primary">{{ $data->links() }}
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
 </div>
@@ -120,7 +135,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</body>
+
 <script>
     $('.delete').click(function() {
         var userid = $(this).attr('data-id');
@@ -134,7 +149,7 @@
             , })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/deleteuser/" + userid + ""
+                    window.location = "/deleteuser_admin/" + userid + ""
                     swal("Your data from Ticket Subject " + namauser + " has been deleted!", {
                         icon: "success"
                     , });
