@@ -69,7 +69,7 @@ class UserController extends Controller
             ]);
         }
         Alert::success('Berasil Menambah User');
-        return redirect('/viewuser')->with('toast_success', 'Data berhasil tambah!');
+        return redirect('/viewuser_admin')->with('toast_success', 'Data berhasil tambah!');
     }
 
     //edit data user
@@ -119,7 +119,7 @@ class UserController extends Controller
             'file' => $path,
         ]);
         Alert::success('Berasil Mengubah User');
-        return redirect('/viewuser')->with('toast_success', 'Data berhasil di update!');
+        return redirect('/viewuser_admin')->with('toast_success', 'Data berhasil di update!');
     }
 
     //hapus
@@ -130,10 +130,10 @@ class UserController extends Controller
             File::delete($data->file);
             User::where('id', $id)->delete();
             Alert::success('Berasil Menghapus User');
-            return redirect('viewuser')->with('toast_success', 'Data berhasil di hapus!');
+            return redirect('/viewuser_admin')->with('toast_success', 'Data berhasil di hapus!');
         } catch (\Illuminate\Database\QueryException$e) {
             Alert::warning('Warning Terjadi error');
-            return redirect('viewuser')->with('toast_error', 'Data tidak bisa di hapus!');
+            return redirect('/viewuser_admin')->with('toast_error', 'Data tidak bisa di hapus!');
         }
     }
 }
