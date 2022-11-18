@@ -37,33 +37,33 @@ class TicketController extends Controller
 
     public function insertdatatiket(Request $request)
     {
-        ticket::create($request->all());
+        Ticket::create($request->all());
         return redirect('/ticket_admin')->with('success', 'tickets added successfully .');
     }
 
-    public function tampildatatiket($id)
+    public function tampildatatiket_admin($id)
     {
-        $data = ticket::find($id);
+        $data = Ticket::find($id);
         return view('Tickets.tampildatatiket', compact('data'));
     }
 
-    public function updatedatatiket(Request $request, $id)
+    public function updatedataticket_admin(Request $request, $id)
     {
-        $data = ticket::find($id);
+        $data = Ticket::find($id);
         $data->update($request->all());
         return redirect('/ticket_admin')->with('success', 'tickets edited successfully .');
     }
 
-    public function deletetiket($id)
+    public function deleteticket($id)
     {
-        $data = ticket::find($id);
+        $data = Ticket::find($id);
         $data->delete();
         return redirect('/ticket_admin')->with('success', 'tickets deleted successfully .');
     }
 
     public function exportpdf()
     {
-        $data = ticket::all();
+        $data = Ticket::all();
         view()->share('data', $data);
         $pdf = PDF::loadview('Tickets.datatiket-pdf');
         return $pdf->download('data.pdf');
