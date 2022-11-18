@@ -3,9 +3,7 @@
 @section('content')
 <body>
     <h1 class="text-center mb-4">Add Data User</h1>
-
-    <div class="container">
-
+    <div class="page-body">
         <div class="row justify-content-center">
             <div class="col-9">
                 <div class="card">
