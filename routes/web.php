@@ -92,7 +92,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
     /*<< HR >>*/
     //Employees
-    Route::get('employee', [EmployeeController::class, 'index']);
+    Route::get('employee_admin', [EmployeeController::class, 'index']);
     Route::get('tambahemployee', [EmployeeController::class, 'tambahemployee']);
     Route::post('insertemployee', [EmployeeController::class, 'insertemployee']);
     Route::get('tampilemployee/{id}', [EmployeeController::class, 'tampilemployee']);
@@ -100,7 +100,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('hapusemployee/{id}', [EmployeeController::class, 'hapusemployee']);
 
     //Attendances>>
-    Route::get('attendance', [AttendanceController::class, 'index']);
+    Route::get('attendance_admin', [AttendanceController::class, 'index']);
     Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
     Route::post('insertattendance', [AttendanceController::class, 'insertattendance']);
     /*<< HR >>*/
