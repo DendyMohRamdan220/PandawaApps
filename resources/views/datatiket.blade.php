@@ -112,7 +112,7 @@
             , })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/delete/" + tiketid + ""
+                    window.location = "/deletetiket/" + tiketid + ""
                     swal("Your data from Ticket Subject " + namatiket + " has been deleted!", {
                         icon: "success"
                     , });

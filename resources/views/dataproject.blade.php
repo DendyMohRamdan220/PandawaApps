@@ -16,12 +16,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Task</h1>
+                    <h1 class="m-0">Data Project</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Task</li>
+                        <li class="breadcrumb-item active">Project</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,10 +30,10 @@
     <div class="container">
         <div class="row g-3 align-items-center mt-2">
             <div class="col-auto">
-                <a href="/tambahtask" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Task</a>
+                <a href="/tambahproject" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Project</a>
             </div>
             <div class="col-auto">
-                <form action="/task" method="GET">
+                <form action="/project" method="GET">
                     <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                 </form>
             </div>
@@ -48,12 +48,12 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Task Name</th>
-                    <th scope="col">Project</th>
-                    <th scope="col">Startdate</th>
-                    <th scope="col">Duedate</th>
+                    <th scope="col">Project Name</th>
+                    <th scope="col">Employee</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Progress</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,13 +63,14 @@
                 @foreach ($data as $index => $row)
                 <tr>
                     <th scope="row">{{ $index + $data->firstItem() }}</th>
-                    <td>{{ $row->taskname }}</td>
-                    <td>{{ $row->project }}</td>
-                    <td>{{ $row->startdate }}</td>
-                    <td>{{ $row->duedate }}</td>
+                    <td>{{ $row->projectname }}</td>
+                    <td>{{ $row->employee }}</td>
+                    <td>{{ $row->deadline }}</td>
+                    <td>{{ $row->client }}</td>
+                    <td>{{ $row->Progress }}</td>
                     <td>{{ $row->status }}</td>
-                    <td><a href="/tampildatatask/{{ $row->id }}" class="btn btn-info">Update</a>
-                        <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-task="{{ $row->taskname }}">Delete</a>
+                    <td><a href="/tampildataproject/{{ $row->id }}" class="btn btn-info">Update</a>
+                        <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-project="{{ $row->projectname }}">Delete</a>
                     </td>
                 </tr>
                 @endforeach
@@ -98,23 +99,23 @@
 
 <script>
     $('.delete').click(function() {
-        var idtask = $(this).attr('data-id');
-        var nametask = $(this).attr('data-task');
+        var idproject = $(this).attr('data-id');
+        var nameproject = $(this).attr('data-project');
         swal({
                 title: "Are you sure?"
-                , text: "Once deleted, you will not be able to recover data from the Task Name " + nametask + " "
+                , text: "Once deleted, you will not be able to recover data from the Project Name " + nameproject + " "
                 , icon: "warning"
                 , buttons: true
                 , dangerMode: true
             , })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/deletetask/" + idtask + ""
-                    swal("Your data from Task Name " + nametask + " has been deleted!", {
+                    window.location = "/deleteproject/" + idproject + ""
+                    swal("Your data from Project Name " + nameproject + " has been deleted!", {
                         icon: "success"
                     , });
                 } else {
-                    swal("Deletion of data from Task Name " + nametask + " has been cancelled!");
+                    swal("Deletion of data from Project Name " + nameproject + " has been cancelled!");
                 }
             });
     });
