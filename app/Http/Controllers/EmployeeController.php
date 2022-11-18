@@ -11,12 +11,12 @@ class EmployeeController extends Controller
     {
         $data = Employee::all();
         $data = Employee::paginate(10);
-        return view('Employees.dataemployee', compact('data'));
+        return view('Employees.employee', compact('data'));
     }
 
     public function tambahemployee()
     {
-        return view('Employees.tambahdataemployee');
+        return view('Employees.tambahemployee');
     }
 
     public function insertemployee(Request $request)

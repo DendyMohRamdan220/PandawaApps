@@ -237,10 +237,10 @@
                     </a>
                     <ul class="nav-submenu menu-content">
                         <li>
-                            <a href="#">Employees</a>
+                            <a href="/employee_admin">Employees</a>
                         </li>
                         <li>
-                            <a href="#">Attendance</a>
+                            <a href="/attendance_admin">Attendance</a>
                         </li>
                     </ul>
                   </li>
