@@ -190,7 +190,7 @@
                         <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
                     </div>
                   </li>
-                  {{-- @if (auth()->user()->level == '1') --}}
+                  @if (auth()->user()->level == '1')
                   <li class="dropdown">
                     <a class="nav-link menu-title" href="javascript:void(0)">
                         <i data-feather="home"></i>
@@ -201,7 +201,23 @@
                       <li><a href="/viewuser_admin">Ecommerce</a></li>
                     </ul>
                   </li>
-                  {{-- @endif --}}
+                  @endif
+                  @if (auth()->user()->level == '2')
+                  <li class="dropdown">
+                    <a class="nav-link menu-title link-nav" href="/dashboardv1">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                  </li>
+                  @endif
+                  @if (auth()->user()->level == '3')
+                  <li class="dropdown">
+                    <a class="nav-link menu-title link-nav" href="/dashboardv2">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                  </li>
+                  @endif
                   <li class="dropdown">
                     <a class="nav-link menu-title link-nav" href="/dataleads">
                         <i data-feather="user"></i>
