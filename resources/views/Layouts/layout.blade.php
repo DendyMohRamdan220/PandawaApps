@@ -198,12 +198,12 @@
                     </a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="/dashboard">Default</a></li>
-                      <li><a href="/viewuser">Ecommerce</a></li>
+                      <li><a href="/viewuser_admin">Ecommerce</a></li>
                     </ul>
                   </li>
                   {{-- @endif --}}
                   <li class="dropdown">
-                    <a class="nav-link menu-title link-nav" href="#">
+                    <a class="nav-link menu-title link-nav" href="/dataleads">
                         <i data-feather="user"></i>
                         <span>Leads</span>
                     </a>
