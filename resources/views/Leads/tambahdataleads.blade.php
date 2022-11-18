@@ -365,7 +365,7 @@
                                                             <ul class="dropdown-menu inner show" role="presentation"></ul>
                                                         </div>
                                                     </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -389,11 +389,8 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD:resources/views/Leads/tambahdataleads.blade.php
   </div>
 </div>
 @endsection
-=======
     </div>
 @endsection
->>>>>>> c23cf266d4ee35b35f24f6ac0da1230c75c3c03d:resources/views/tambahdataleads.blade.php
