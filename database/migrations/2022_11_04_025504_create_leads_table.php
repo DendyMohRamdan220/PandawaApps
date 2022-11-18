@@ -15,19 +15,19 @@ return new class extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
-	        $table->varchar('leads_name');
-            $table->varchar('leads_email');
-            $table->varchar('office_phone');
-	        $table->varchar('choose_agent');
+	        $table->string('leads_name');
+            $table->string('leads_email');
+            $table->string('office_phone');
+	        $table->string('choose_agent');
        	    $table->enum('status', ['Inprogress', 'Done', 'Pending']);
 	        $table->enum('next_follow_up', ['yes', 'no']);
-	        $table->varchar('company_name');
-            $table->varchar('website');
-            $table->varchar('mobile_phone');
-            $table->varchar('city');
-            $table->varchar('state');
-            $table->varchar('country');
-            $table->varchar('postal_code');
+	        $table->string('company_name');
+            $table->string('website');
+            $table->string('mobile_phone');
+            $table->string('city');
+            $table->string('state');
+            $table->string('country');
+            $table->string('postal_code');
             $table->text('address');
 
             $table->timestamps();
