@@ -44,6 +44,6 @@ class EmployeeController extends Controller
     {
         $data = Employee::find($id);
         $data->delete();
-        return redirect('employee_admin')->with('success', 'Data Berhasil di Hapus');
+        return redirect('/employee_admin')->with('success', 'Data Berhasil di Hapus');
     }
 }
