@@ -247,7 +247,7 @@
                         </li>
 
                         <li class="nav-item">
-                          <a href="/proyek" class="nav-link">
+                          <a href="/leads" class="nav-link">
                               <i class="nav-icon fas fa-user-alt"></i>
                               <p>
                                   Leads<span class="right badge badge-danger"></span>
@@ -274,7 +274,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/employee" class="nav-link">
                                     {{-- <i class="far fa-circle nav-icon"></i> --}}
                                     <p>Employee</p>
                                 </a>
@@ -354,7 +354,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/produk" class="nav-link">
                                 <i class="nav-icon fas fa-shopping-cart"></i>
                                 <p>
                                     Products<span class="right badge badge-danger"></span>

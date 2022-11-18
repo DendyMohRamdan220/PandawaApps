@@ -2,50 +2,93 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
-    public function formlogin()
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (session('success')) {
+                Alert::success(session('success'));
+            }
+
+            if (session('error')) {
+                Alert::error(session('error'));
+            }
+
+            return $next($request);
+        });
+    }
+
+    //Login
+    public function view_login()
     {
         return view('login_register.login');
     }
 
-    //Proses login
-    public function login(Request $a)
+    public function login(Request $request)
     {
-        //Validasi
-        $messages = [
-            'email.required' => 'Email tidak boleh kosong!',
-            'password.required' => 'Password tidak boleh kosong!',
-        ];
-        $cekValidasi = $a->validate([
-            //'email' => 'required|email:dns|unique:users',
-            'email' => 'required',
-            'password' => 'required|max:50',
-        ], $messages);
 
-        if (Auth::attempt($cekValidasi)) {
-            $a->session()->regenerate();
-            return redirect('viewuser')->with('toast_success', 'Selamat Datang!');
+        $cek = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($cek)) {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
+
         }
-        Alert::toast('Maaf Password atau email anda salah');
-        return back()->with('toast_error', 'Anda tidak bisa login!');
-        /*
-    if (Auth::attempt($cek)) {
-    $a->session()->regenerate();
-    return redirect()->intended('/surat');
-    }*/
+        return back()->with('error', 'Maaf! email atau password anda salah');
     }
 
-    //logout
+    //Register
+    public function view_register()
+    {
+        return view('login_register.register');
+    }
+
+    public function register(Request $a)
+    {
+        $messages = [
+            'required' => 'Data harus diisi!',
+            'email' => 'Alamat username tidak valid',
+            'password' => 'required',
+        ];
+
+        $cekvalidasi = $a->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => [
+                'required',
+                'string',
+                'confirmed',
+                Password::min(8)->letters()->numbers()->mixedCase(),
+            ],
+            'level' => 'required',
+        ], $messages);
+
+        User::create([
+            'name' => $a->name,
+            'email' => $a->username,
+            'password' => Hash::make($a->password),
+            'level' => $a->level,
+        ], $cekvalidasi);
+        return redirect('login')->with('success', 'Akun berhasil dibuat!');
+    }
+
+    //Logout
     public function logout(Request $a)
     {
         Auth::logout();
         $a->session()->invalidate();
         $a->session()->regenerateToken();
-        return redirect('formlogin');
+        return redirect('login');
     }
 }

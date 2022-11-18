@@ -8,52 +8,64 @@ use PDF;
 
 class TicketController extends Controller
 {
-    public function index(Request $request)
+    public function view_tiket(Request $request)
     {
+        $totaltiket = Ticket::count();
+        $totallowtiket = Ticket::where('others', 'Low')->count();
+        $totalmediumtiket = Ticket::where('others', 'Medium')->count();
+        $totalhightiket = Ticket::where('others', 'High')->count();
+        $totalurgenttiket = Ticket::where('others', 'Urgent')->count();
+
         if ($request->has('search')) {
             $data = Ticket::where('ticket_subject', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
             $data = Ticket::paginate(5);
         }
-        return view('datatiket', compact('data'));
+        return view('Tickets.datatiket', compact('data'), [
+            'totaltiket' => $totaltiket,
+            'totallowtiket' => $totallowtiket,
+            'totalmediumtiket' => $totalmediumtiket,
+            'totalhightiket' => $totalhightiket,
+            'totalurgenttiket' => $totalurgenttiket,
+        ]);
     }
 
     public function tambahtiket()
     {
-        return view('tambahdatatiket');
+        return view('Tickets.tambahdatatiket');
     }
 
     public function insertdatatiket(Request $request)
     {
         ticket::create($request->all());
-        return redirect()->route('tiket')->with('success', 'tickets added successfully .');
+        return redirect('/ticket_admin')->with('success', 'tickets added successfully .');
     }
 
     public function tampildatatiket($id)
     {
         $data = ticket::find($id);
-        return view('tampildatatiket', compact('data'));
+        return view('Tickets.tampildatatiket', compact('data'));
     }
 
     public function updatedatatiket(Request $request, $id)
     {
         $data = ticket::find($id);
         $data->update($request->all());
-        return redirect()->route('tiket')->with('success', 'tickets edited successfully .');
+        return redirect('/ticket_admin')->with('success', 'tickets edited successfully .');
     }
 
-    public function delete($id)
+    public function deletetiket($id)
     {
         $data = ticket::find($id);
         $data->delete();
-        return redirect()->route('tiket')->with('success', 'tickets deleted successfully .');
+        return redirect('/ticket_admin')->with('success', 'tickets deleted successfully .');
     }
 
     public function exportpdf()
     {
         $data = ticket::all();
         view()->share('data', $data);
-        $pdf = PDF::loadview('datatiket-pdf');
+        $pdf = PDF::loadview('Tickets.datatiket-pdf');
         return $pdf->download('data.pdf');
     }
 }

@@ -12,14 +12,14 @@ class UserController extends Controller
 {
     public function index()
     {
-        $data = User::latest()->paginate(4);
-        return view('user.user', ['data' => $data]);
+        $data = User::latest()->paginate(5);
+        return view('Users.user', ['data' => $data]);
 
     }
 
     public function inputuser()
     {
-        return view('user.userinsert');
+        return view('Users.userinsert');
     }
 
     public function insertdatauser(Request $x)
@@ -76,7 +76,7 @@ class UserController extends Controller
     public function edituser($idUser)
     {
         $dataUser = User::find($idUser);
-        return view("user.userupdate", ['data' => $dataUser]);
+        return view("Users.userupdate", ['data' => $dataUser]);
     }
 
     //Update data user
@@ -130,10 +130,10 @@ class UserController extends Controller
             File::delete($data->file);
             User::where('id', $id)->delete();
             Alert::success('Berasil Menghapus User');
-            return redirect('/viewuser')->with('toast_success', 'Data berhasil di hapus!');
+            return redirect('viewuser')->with('toast_success', 'Data berhasil di hapus!');
         } catch (\Illuminate\Database\QueryException$e) {
             Alert::warning('Warning Terjadi error');
-            return redirect('/viewuser')->with('toast_error', 'Data tidak bisa di hapus!');
+            return redirect('viewuser')->with('toast_error', 'Data tidak bisa di hapus!');
         }
     }
 }

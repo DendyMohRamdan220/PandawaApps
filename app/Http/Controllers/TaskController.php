@@ -14,12 +14,12 @@ class TaskController extends Controller
         } else {
             $data = Task::paginate(5);
         }
-        return view('datatask', compact('data'));
+        return view('Tasks.datatask', compact('data'));
     }
 
     public function tambahtask()
     {
-        return view('tambahdatatask');
+        return view('Tasks.tambahdatatask');
     }
 
     public function insertdatatask(Request $request)
@@ -31,7 +31,7 @@ class TaskController extends Controller
     public function tampildatatask($id)
     {
         $data = Task::find($id);
-        return view('tampildatatask', compact('data'));
+        return view('Tasks.tampildatatask', compact('data'));
     }
 
     public function updatedatatask(Request $request, $id)

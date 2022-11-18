@@ -1,107 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in (v2)</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{ asset('template/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
-</head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="{{ asset('template/index2.html') }}" class="h1"><b>Admin</b>LTE</a>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="viho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="{{ asset('template') }}/assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('template') }}/assets/images/favicon.png" type="image/x-icon">
+    <title>Login - Pandawa Mandiri</title>
+    <!-- Google font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <!-- Font Awesome-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/fontawesome.css') }}">
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/icofont.css') }}">
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/themify.css') }}">
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/flag-icon.css') }}">
+    <!-- Feather icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/feather-icon.css') }}">
+    <!-- Plugins css start-->
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/bootstrap.css') }}">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/style.css') }}">
+    <link id="color" rel="stylesheet" href="{{ asset('template/assets/css/color-1.css') }}" media="screen">
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/responsive.css') }}">
+  </head>
+  <body>
+    <!-- Loader starts-->
+    <div class="loader-wrapper">
+      <div class="theme-loader">
+        <div class="loader-p"></div>
+      </div>
     </div>
-    <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-
-      <form method="POST" action="/login" class="pt-3">
-                                @csrf
-        <div class="input-group mb-3">
-          <input class="form-control" name="email" placeholder="Email" type="email @error('email') is-invalid @enderror"
-                                        id="exampleInputEmail1" placeholder="Email" value="{{ old('email') }}">
-                                    @error('email')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input class="form-control" name="password" placeholder="Password @error('password') is-invalid @enderror"
-                                        id="exampleInputPassword1" placeholder="Password">
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
+    <!-- Loader ends-->
+    <!-- page-wrapper Start-->
+    <section>
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
+          <div class="col-xl-7"><img class="bg-img-cover bg-center" src="{{ asset('template/assets/images/login/sans.jpg') }}" alt="looginpage"></div>
+          <div class="col-xl-5 p-0">
+            <div class="login-card">
+                <form class="theme-form login-form" method="POST" action="login_redirect">
+                  @csrf
+                  @if (session()->has('loginError'))
+                    {{ session('loginError') }}
+                  @endif
+                  <h4>Login</h4>
+                  <h6>Welcome back! Log in to your account.</h6>
+                  <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+                      <input class="form-control" type="email" required="" name="email" placeholder="Email Address"
+                      id="exampleInputEmail1" value="{{ old('email') }}">
+                      @error('email')
+                        <strong>Warning!</strong>
+                        <span> {{ $message }} </span>
+                      @enderror
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
+                      <input class="form-control" type="password" name="password" required="" placeholder="*********"
+                      id="exampleInputPassword1">
+                      <div class="show-hide"><span class="show">                         </span></div>
+                      @error('password')
+                        <strong>Warning!</strong>
+                        <span> {{ $message }} </span>
+                      @enderror
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <input id="checkbox1" type="checkbox">
+                      <label class="text-muted" for="checkbox1">Remember password</label>
+                    </div><a class="link" href="forget-password.html">Forgot password?</a>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                  </div>
+              </form>
             </div>
           </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
         </div>
-      </form>
-
-      {{-- <div class="social-auth-links text-center mt-2 mb-3">
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div> --}}
-      <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
-    </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
-</div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
-<script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('template/dist/js/adminlte.min.js') }}"></script>
-</body>
-@include('sweetalert::alert')
+      </div>
+    </section>
+    <!-- page-wrapper end-->
+    <!-- latest jquery-->
+    <script src="{{ asset('template/assets/js/jquery-3.5.1.min.js') }}"></script>
+    <!-- feather icon js-->
+    <script src="{{ asset('template/assets/js/icons/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+    <!-- Sidebar jquery-->
+    <script src="{{ asset('template/assets/js/sidebar-menu.js') }}"></script>
+    <script src="{{ asset('template/assets/js/config.js') }}"></script>
+    <!-- Bootstrap js-->
+    <script src="{{ asset('template/assets/js/bootstrap/popper.min.js') }}"></script>
+    <script src="{{ asset('template/assets/js/bootstrap/bootstrap.min.js') }}"></script>
+    <!-- Plugins JS start-->
+    <!-- Plugins JS Ends-->
+    <!-- Theme js-->
+    <script src="{{ asset('template/assets/js/script.js') }}"></script>
+    <!-- login js-->
+    <!-- Plugin used-->
+  </body>
 </html>
