@@ -8,7 +8,7 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/insertdatauser" method="post" enctype="multipart/form-data">
+                        <form action="/insertdatauser_admin" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputCity1">Nama Lengkap</label>

@@ -16,34 +16,34 @@ class EmployeeController extends Controller
 
     public function tambahemployee()
     {
-        return view('Employees.tambahemployee');
+        return view('Employees.tambah_employee');
     }
 
     public function insertemployee(Request $request)
     {
         //dd($request->all());
         Employee::create($request->all());
-        return redirect()->route('employee')->with('success', 'Data Berhasil di Tambahkan');
+        return redirect('/employee_admin')->with('success', 'Data Berhasil di Tambahkan');
     }
 
     public function tampilemployee($id)
     {
         $data = Employee::find($id);
         //dd($data);
-        return view('Employees.tampildataemployee', compact('data'));
+        return view('Employees.edit_employee', compact('data'));
     }
 
     public function updateemployee(Request $request, $id)
     {
         $data = Employee::find($id);
         $data->update($request->all());
-        return redirect()->route('employee')->with('success', 'Data Berhasil di Update');
+        return redirect('/employee_admin')->with('success', 'Data Berhasil di Update');
     }
 
     public function hapusemployee(Request $request, $id)
     {
         $data = Employee::find($id);
         $data->delete();
-        return redirect()->route('employee')->with('success', 'Data Berhasil di Hapus');
+        return redirect('employee_admin')->with('success', 'Data Berhasil di Hapus');
     }
 }
