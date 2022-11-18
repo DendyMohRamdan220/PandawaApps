@@ -3,14 +3,12 @@
 @section('content')
 <body>
     <h1 class="text-center mb-4">Update Data Ticket</h1>
-
-    <div class="container">
-
+    <div class="page-body">
         <div class="row justify-content-center">
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/updatedatatiket/{{$data->id}}" method="post" enctype="multipart/form-data">
+                        <form action="/updatedataticket_admin/{{$data->id}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Ticket Subject</label>
