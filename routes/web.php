@@ -52,8 +52,8 @@ Route::get('logout', [LoginController::class, 'logout']);
 |
  */
 Route::get('dashboard', [DashboardController::class, 'dashboard']);
-// Route::get('dashboardv1', [DashboardController::class, 'dashboardv1']);
-// Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
+Route::get('dashboardv1', [DashboardController::class, 'dashboardv1']);
+Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +81,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::post('insertdataleads', [LeadsController::class, 'insertdataleads']);
     Route::get('tampildataleads/{id}', [LeadsController::class, 'tampildataleads']);
     Route::get('deleteleads/{id}', [LeadsController::class, 'deleteleads']);
+
     //Clients>>
+    Route::get('client', [LeadsController::class, 'index']);
+    Route::get('dataleads', [LeadsController::class, 'tampilclient']);
+    Route::get('dataleads', [LeadsController::class, 'insertdataclient']);
+    Route::get('dataleads', [LeadsController::class, 'tampildataclient']);
+    Route::get('dataleads', [LeadsController::class, 'updatedataclient']);
+    Route::get('client', [LeadsController::class, 'deleteclient']);
 
     /*<< HR >>*/
     //Employees
