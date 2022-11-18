@@ -2,40 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Employee;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $data = Employee::all();
         $data = Employee::paginate(10);
-        return view('Employee.employee', compact('data'));
+        return view('Employees.dataemployee', compact('data'));
     }
 
-    public function tambahemployee(){
-        return view('Employee.tambah_employee');
+    public function tambahemployee()
+    {
+        return view('Employees.tambahdataemployee');
     }
 
-    public function insertemployee(Request $request){
+    public function insertemployee(Request $request)
+    {
         //dd($request->all());
         Employee::create($request->all());
         return redirect()->route('employee')->with('success', 'Data Berhasil di Tambahkan');
     }
 
-    public function tampilemployee($id){
+    public function tampilemployee($id)
+    {
         $data = Employee::find($id);
         //dd($data);
-        return view('Employee.edit_employee', compact('data'));
+        return view('Employees.tampildataemployee', compact('data'));
     }
 
-    public function updateemployee(Request $request, $id){
+    public function updateemployee(Request $request, $id)
+    {
         $data = Employee::find($id);
         $data->update($request->all());
         return redirect()->route('employee')->with('success', 'Data Berhasil di Update');
     }
 
-    public function hapusemployee($id){
+    public function hapusemployee(Request $request, $id)
+    {
         $data = Employee::find($id);
         $data->delete();
         return redirect()->route('employee')->with('success', 'Data Berhasil di Hapus');
