@@ -196,15 +196,15 @@
                                                 {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
                                                 <td>
                                                     <div class="dropleft">
-                                                        <a type="link" class="btn btn-success task_view_more" data-toggle="dropdown"
+                                                        <a class="btn btn-success task_view_more" data-toggle="dropdown"
                                                         aria-haspopup="true" aria-expanded="false" >
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" color="white" class="bi bi-three-dots-vertical" viewBox="1 1 16 16">
                                                             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                         </svg>
                                                         </a>
                                                         <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="/updatedatatiket_admin/{{ $row->id }}"> <i class="nav-icon icon-pencil-alt"></i> Update</a>
-                                                            <a class="dropdown-item" href="#" data-id="{{ $row->id }}" data-subject="{{ $row->ticket_subject }}"> <i class="nav-icon icon-trash"></i> Delete</a>
+                                                            <a class="dropdown-item" href="/tampildatatiket_admin/{{ $row->id }}"> <i class="nav-icon icon-pencil-alt"></i> Update</a>
+                                                            <a class="dropdown-item delete" href="#" data-id="{{ $row->id }}" data-subject="{{ $row->ticket_subject }}"> <i class="nav-icon icon-trash"></i> Delete</a>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -244,7 +244,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</body>
+
 <script>
     $('.delete').click(function() {
         var tiketid = $(this).attr('data-id');
@@ -258,7 +258,7 @@
             , })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/deletetiket_admin/" + tiketid + ""
+                    window.location = "/deleteticket_admin/" + tiketid + ""
                     swal("Your data from Ticket Subject " + namatiket + " has been deleted!", {
                         icon: "success"
                     , });
