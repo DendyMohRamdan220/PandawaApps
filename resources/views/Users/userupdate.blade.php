@@ -8,7 +8,7 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="/updateuser/{{ $data->id }}" enctype="multipart/form-data">
+                        <form method="POST" action="/updateuser_admin/{{ $data->id }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group">
