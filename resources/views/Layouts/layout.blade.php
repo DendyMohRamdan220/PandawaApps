@@ -262,7 +262,7 @@
                     </ul>
                   </li>
                   <li class="dropdown">
-                    <a class="nav-link menu-title link-nav" href="#">
+                    <a class="nav-link menu-title link-nav" href="/dataproduk_admin">
                         <i data-feather="shopping-bag"></i>
                         <span>Products</span>
                     </a>

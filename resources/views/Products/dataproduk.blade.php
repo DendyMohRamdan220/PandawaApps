@@ -57,10 +57,10 @@
                     <div class="col-sm-12">
                         <div class="row g-3 align-items-center mt-2">
                         <div class="col-auto">
-                            <a href="/tambahdataleads" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add Leads</a>
+                            <a href="/tambahdataproduk" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add Leads</a>
                         </div>
                         <div class="col-auto">
-                            <form action="/dataleads" method="GET">
+                            <form action="/dataproduk" method="GET">
                                 <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                             </form>
                             </div>
@@ -73,14 +73,10 @@
                                 <table class="table table-striped table-success">
                                     <thead class="tbl-strip-thad-bdr">
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Company Name</th>
-                                            <th scope="col">Mobile Phone</th>
-                                            <th scope="col">Created at</th>
-                                            <th scope="col">Next Follow Up</th>
-                                            <th scope="col">Lead Agent</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Product Image</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Price</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
