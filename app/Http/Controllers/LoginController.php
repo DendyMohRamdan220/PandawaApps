@@ -29,6 +29,7 @@ class LoginController extends Controller
     //Login
     public function view_login()
     {
+
         return view('login_register.login');
     }
 
@@ -42,8 +43,15 @@ class LoginController extends Controller
 
         if (Auth::attempt($cek)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
-
+            if (Auth()->user()->level == '1') {
+                return redirect()->intended('dashboard');
+            } elseif (Auth()->user()->level == '2') {
+                return redirect()->intended('dashboardv1');
+            } elseif (Auth()->user()->level == '3') {
+                return redirect()->intended('dashboardv2');
+            } elseif (Auth()->user()->level == '4') {
+                return redirect()->intended('dashboard');
+            }
         }
         return back()->with('error', 'Maaf! email atau password anda salah');
     }
