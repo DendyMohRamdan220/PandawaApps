@@ -8,7 +8,7 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/insertdatauser" method="post" enctype="multipart/form-data">
+                        <form action="/insertdatauser_admin" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputCity1">Nama Lengkap</label>
@@ -43,7 +43,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Level</label>
                                 <br>
-                                <select class="form-select" name="level" value="Employee" aria-label="Default select example">
+                                <select class="form-select" name="level" aria-label="Default select example">
                                     <option selected>Choose:</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>

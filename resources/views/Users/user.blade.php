@@ -103,7 +103,7 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="/tampilupdateuser_admin/{{ $row->id }}"> <i class="nav-icon icon-pencil-alt"></i> Update</a>
-                                <a class="dropdown-item" href="#" data-id="{{ $row->id }}" data-name="{{ $row->name }}"> <i class="nav-icon icon-trash"></i> Delete</a>
+                                <a class="dropdown-item delete" href="#" data-id="{{ $row->id }}" data-name="{{ $row->name }}"> <i class="nav-icon icon-trash"></i> Delete</a>
                             </div>
                         </div>
                     </td>

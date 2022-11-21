@@ -8,7 +8,7 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="/updateuser/{{ $data->id }}" enctype="multipart/form-data">
+                        <form method="POST" action="/updateuser_admin/{{ $data->id }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" value="{{ $data->id }}">
                         <div class="form-group">
@@ -43,7 +43,15 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="hidden" class="form-control form-control-lg" name="level" value="1" readonly>
+                                <label for="exampleInputEmail1">Level</label>
+                                <br>
+                                <select class="form-select" name="level" aria-label="Default select example">
+                                    <option selected>Choose:</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
