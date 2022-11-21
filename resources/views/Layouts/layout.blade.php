@@ -201,23 +201,6 @@
                       <li><a href="/viewuser_admin">Ecommerce</a></li>
                     </ul>
                   </li>
-                  @endif
-                  @if (auth()->user()->level == '2')
-                  <li class="dropdown">
-                    <a class="nav-link menu-title link-nav" href="/dashboardv1">
-                        <i data-feather="home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                  </li>
-                  @endif
-                  @if (auth()->user()->level == '3')
-                  <li class="dropdown">
-                    <a class="nav-link menu-title link-nav" href="/dashboardv2">
-                        <i data-feather="home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                  </li>
-                  @endif
                   <li class="dropdown">
                     <a class="nav-link menu-title link-nav" href="/dataleads">
                         <i data-feather="user"></i>
@@ -284,11 +267,26 @@
                         <span>Products</span>
                     </a>
                   </li>
-                  @if (auth()->user()->level == '1')
                   <li>
                     <a class="nav-link menu-title link-nav" href="/ticket_admin">
                         <i data-feather="headphones"></i>
                         <span>Support Ticket</span>
+                    </a>
+                  </li>
+                  @endif
+                  @if (auth()->user()->level == '2')
+                  <li class="dropdown">
+                    <a class="nav-link menu-title link-nav" href="/dashboardv1">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                  </li>
+                  @endif
+                  @if (auth()->user()->level == '3')
+                  <li class="dropdown">
+                    <a class="nav-link menu-title link-nav" href="/dashboardv2">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
                     </a>
                   </li>
                   @endif
