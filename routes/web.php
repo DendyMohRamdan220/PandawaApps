@@ -110,10 +110,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'hapusemployee']);
 
     //Attendances>>
-    Route::get('presensi_masuk',[AbsensiController::class,'index']);
-    Route::post('simpan_masuk',[AbsensiController::class,'store'])->name('simpan_masuk');
-    Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
-    Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
+
     
     // Route::get('attendance_admin', [AttendanceController::class, 'index']);
     // Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
@@ -165,7 +162,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     Route::get('hapusemployee/{id}', [EmployeeController::class, 'hapusemployee']);
 
     //Attendances>>
-    // Route::get('attendance', [AttendanceController::class, 'index']);
+    Route::get('presensi_masuk',[AbsensiController::class,'index']);
+    Route::post('simpan_masuk',[AbsensiController::class,'store'])->name('simpan_masuk');
+    Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
+    Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
     
     // 
 

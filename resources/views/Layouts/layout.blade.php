@@ -65,42 +65,18 @@
         <div class="page-main-header">
             <div class="main-header-right row m-0">
                 <div class="main-header-left">
-<<<<<<< HEAD
                     <div class="logo-wrapper"><a href="index.html"><img class="img-fluid"
                                 src="{{ asset('template/assets/images/logopm.jpg') }}" alt=""></a></div>
                     <div class="dark-logo-wrapper"><a href="index.html"><img class="img-fluid"
                                 src="{{ asset('template/assets/images/logopm.jpg') }}" alt=""></a></div>
                     <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center"
                             id="sidebar-toggle"></i></div>
-=======
-                    <div class="logo-wrapper">
-                        <a href="index.html">
-                            <img class="img-fluid" src="{{ asset('template/assets/images/logopm.jpg') }}"
-                                alt="">
-                        </a>
-                    </div>
-                    <div class="dark-logo-wrapper">
-                        <a href="index.html">
-                            <img class="img-fluid" src="{{ asset('template/assets/images/logopm.jpg') }}"
-                                alt="">
-                        </a>
-                    </div>
-                    <div class="toggle-sidebar">
-                        <i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle">
-                        </i>
-                    </div>
->>>>>>> ce5d8919c6790ea9cfbdb9ade883ade84c27f4f5
                 </div>
                 <div class="left-menu-header col">
                     <ul>
                         <li>
                             <form class="form-inline search-form">
-<<<<<<< HEAD
                                 <div class="search-bg"><i class="fa fa-search"></i>
-=======
-                                <div class="search-bg">
-                                    <i class="fa fa-search"></i>
->>>>>>> ce5d8919c6790ea9cfbdb9ade883ade84c27f4f5
                                     <input class="form-control-plaintext" placeholder="Search here.....">
                                 </div>
                             </form><span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
@@ -109,38 +85,20 @@
                 </div>
                 <div class="nav-right col pull-right right-menu p-0">
                     <ul class="nav-menus">
-<<<<<<< HEAD
                         <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                                     data-feather="maximize"></i></a></li>
-=======
-                        <li>
-                            <a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()">
-                                <i data-feather="maximize"></i>
-                            </a>
-                        </li>
->>>>>>> ce5d8919c6790ea9cfbdb9ade883ade84c27f4f5
                         <li class="onhover-dropdown">
                             <div class="bookmark-box"><i data-feather="star"></i></div>
                             <div class="bookmark-dropdown onhover-show-div">
                                 <div class="form-group mb-0">
                                     <div class="input-group">
-<<<<<<< HEAD
                                         <div class="input-group-prepend"><span class="input-group-text"><i
                                                     class="fa fa-search"></i></span></div>
-=======
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-search">
-                                                </i>
-                                            </span>
-                                        </div>
->>>>>>> ce5d8919c6790ea9cfbdb9ade883ade84c27f4f5
                                         <input class="form-control" type="text"
                                             placeholder="Search for bookmark...">
                                     </div>
                                 </div>
                                 <ul class="m-t-5">
-<<<<<<< HEAD
                                     <li class="add-to-bookmark"><i class="bookmark-icon"
                                             data-feather="inbox"></i>Email<span class="pull-right"><i
                                                 data-feather="star"></i></span></li>
@@ -153,52 +111,16 @@
                                     <li class="add-to-bookmark"><i class="bookmark-icon"
                                             data-feather="airplay"></i>Widgets<span class="pull-right"><i
                                                 data-feather="star"> </i></span></li>
-=======
-                                    <li class="add-to-bookmark">
-                                        <i class="bookmark-icon" data-feather="inbox">
-                                        </i>Email<span class="pull-right">
-                                            <i data-feather="star"></i>
-                                        </span>
-                                    </li>
-                                    <li class="add-to-bookmark">
-                                        <i class="bookmark-icon" data-feather="message-square">
-                                        </i>Chat<span class="pull-right">
-                                            <i data-feather="star"></i>
-                                        </span>
-                                    </li>
-                                    <li class="add-to-bookmark">
-                                        <i class="bookmark-icon" data-feather="command">
-                                        </i>Feather Icon<span class="pull-right">
-                                            <i data-feather="star"></i>
-                                        </span>
-                                    </li>
-                                    <li class="add-to-bookmark"><i class="bookmark-icon" data-feather="airplay">
-                                        </i>Widgets<span class="pull-right">
-                                            <i data-feather="star"> </i>
-                                        </span>
-                                    </li>
->>>>>>> ce5d8919c6790ea9cfbdb9ade883ade84c27f4f5
                                 </ul>
                             </div>
                         </li>
                         <li class="onhover-dropdown">
-<<<<<<< HEAD
                             <div class="notification-box"><i data-feather="bell"></i><span
                                     class="dot-animated"></span></div>
                             <ul class="notification-dropdown onhover-show-div">
                                 <li>
                                     <p class="f-w-700 mb-0">You have 3 Notifications<span
                                             class="pull-right badge badge-primary badge-pill">4</span></p>
-=======
-                            <div class="notification-box"><i data-feather="bell"></i>
-                                <span class="dot-animated"></span>
-                            </div>
-                            <ul class="notification-dropdown onhover-show-div">
-                                <li>
-                                    <p class="f-w-700 mb-0">You have 3 Notifications
-                                        <span class="pull-right badge badge-primary badge-pill">4</span>
-                                    </p>
->>>>>>> ce5d8919c6790ea9cfbdb9ade883ade84c27f4f5
                                 </li>
                                 <li class="noti-primary">
                                     <div class="media"><span class="notification-bg bg-light-primary"><i
@@ -340,15 +262,6 @@
                                             <li>
                                                 <a href="/attendance_admin">Attendance</a>
                                             </li>
-<<<<<<< HEAD
-                                            <li>
-                                                <a href="/presensi_masuk">Absensi Masuk</a>
-                                            </li>
-                                            <li>
-                                                <a href="/presensi_keluar">Absensi Keluar</a>
-                                            </li>
-=======
->>>>>>> ce5d8919c6790ea9cfbdb9ade883ade84c27f4f5
                                         </ul>
                                     </li>
                                     <li class="dropdown">
@@ -397,12 +310,44 @@
                                             <span>Support Ticket</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="nav-link menu-title link-nav" href="#">
+                                            <i data-feather="file-text"></i>
+                                            <span>Knowledgebase</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link menu-title link-nav" href="#">
+                                            <i data-feather="settings"></i>
+                                            <span>Settings</span>
+                                        </a>
+                                    </li>
                                 @endif
                                 @if (auth()->user()->level == '2')
                                     <li class="dropdown">
                                         <a class="nav-link menu-title link-nav" href="/dashboardv1">
                                             <i data-feather="home"></i>
                                             <span>Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="nav-link menu-title" href="javascript:void(0)">
+                                            <i data-feather="users"></i>
+                                            <span>Attendance</span>
+                                        </a>
+                                        <ul class="nav-submenu menu-content">
+                                            <li>
+                                                <a href="/presensi_masuk">Attendance Masuk </a>
+                                            </li>
+                                            <li>
+                                                <a href="/presensi_keluar">Attendance Keluar</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link menu-title link-nav" href="#">
+                                            <i data-feather="headphones"></i>
+                                            <span>Ticket</span>
                                         </a>
                                     </li>
                                 @endif
@@ -422,18 +367,7 @@
                                         </a>
                                     </li>
                                 @endif
-                                <li>
-                                    <a class="nav-link menu-title link-nav" href="#">
-                                        <i data-feather="file-text"></i>
-                                        <span>Knowledgebase</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link menu-title link-nav" href="#">
-                                        <i data-feather="settings"></i>
-                                        <span>Settings</span>
-                                    </a>
-                                </li>
+
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
