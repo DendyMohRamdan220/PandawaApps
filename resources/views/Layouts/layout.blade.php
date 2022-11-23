@@ -344,6 +344,20 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    <li class="dropdown">
+                                        <a class="nav-link menu-title" href="javascript:void(0)">
+                                            <i data-feather="briefcase"></i>
+                                            <span>Work</span>
+                                        </a>
+                                        <ul class="nav-submenu menu-content">
+                                            <li>
+                                                <a href="#">Projects</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Tasks</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                     <li>
                                         <a class="nav-link menu-title link-nav" href="#">
                                             <i data-feather="headphones"></i>

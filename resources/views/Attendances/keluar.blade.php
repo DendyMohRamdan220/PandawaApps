@@ -65,11 +65,3 @@
         </div>
     @endsection
 
-    @push('scripts')
-        <!-- Plugins JS start-->
-        <script src="{{ asset('template/assets/js/owlcarousel/owl.carousel.js') }}"></script>
-        <script src="{{ asset('template/assets/js/general-widget.js') }}"></script>
-        <script src="{{ asset('template/assets/js/height-equal.js') }}"></script>
-        <script src="{{ asset('template/assets/js/tooltip-init.js') }}"></script>
-        <!-- Plugins JS Ends-->
-    @endpush

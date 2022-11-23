@@ -45,7 +45,7 @@
                                 <div class="form-group">
                                     <center>
                                         <label id="clock"
-                                            style="font-size: 100px; color: #0A77DE; -webkit-text-stroke: 3px #00ACFE;
+                                            style="font-size: 50px; color: #0A77DE; -webkit-text-stroke: 3px #00ACFE;
                                                     text-shadow: 4px 4px 10px #36D6FE,
                                                     4px 4px 20px #36D6FE,
                                                     4px 4px 30px#36D6FE,
@@ -55,7 +55,7 @@
                                 </div>
                                 <center>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Klik Untuk Presensi Masuk</button>
+                                        <button type="submit" class="btn btn-primary">Clock In</button>
                                     </div>
                                 </center>
                             </form>
@@ -67,11 +67,3 @@
         </div>
     @endsection
 
-    @push('scripts')
-        <!-- Plugins JS start-->
-        <script src="{{ asset('template/assets/js/owlcarousel/owl.carousel.js') }}"></script>
-        <script src="{{ asset('template/assets/js/general-widget.js') }}"></script>
-        <script src="{{ asset('template/assets/js/height-equal.js') }}"></script>
-        <script src="{{ asset('template/assets/js/tooltip-init.js') }}"></script>
-        <!-- Plugins JS Ends-->
-    @endpush
