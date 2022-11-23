@@ -15,14 +15,11 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->string('department');
-            $table->string('location');
-            $table->date('date');
-            $table->string('project');
-            $table->string('task');
-            $table->enum('description',['Hadir','Absen','Izin','Sakit']);
-            $table->time('clockin');
-            $table->time('clockout');
+            $table->bigInteger('user_id');
+            $table->date("date");
+            $table->time('clockin')->nullable();
+            $table->time('clockout')->nullable();
+            $table->time('officehours')->nullable();
             $table->timestamps();
         });
     }

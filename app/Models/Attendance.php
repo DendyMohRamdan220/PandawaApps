@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     use HasFactory;
-    protected $guarded = [];
-    protected $dates = ['created_at'];
+    protected $table = "attendances";
+    protected $primaryKey = "id";
+    protected $fillable = [
+    'id','user_id','date','clockin','clockout','officehours'];
+
+    public function user()
+    {
+    return $this->belongsTo(User::class);
+    }
 }
