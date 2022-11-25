@@ -1,6 +1,7 @@
 @extends('Layouts.layout')
 
 @section('content')
+
     @push('css')
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/owlcarousel.css') }}">
