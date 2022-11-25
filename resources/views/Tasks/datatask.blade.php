@@ -10,7 +10,7 @@
 
 @endpush
 
-<div class="content-wrapper">
+<div class="page-body">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">

@@ -15,7 +15,7 @@ class ProjectController extends Controller
         } else {
             $data = project::paginate(5);
         }
-        return view('dataproject', compact('data'));
+        return view('/dataproject', compact('data'));
     }
 
     public function tambahproject()
