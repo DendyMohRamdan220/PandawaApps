@@ -44,7 +44,7 @@ class LoginController extends Controller
         if (Auth::attempt($cek)) {
             $request->session()->regenerate();
             if (Auth()->user()->level == '1') {
-                return redirect()->intended('dashboard');
+                return redirect()->intended('dashboard_admin');
             } elseif (Auth()->user()->level == '2') {
                 return redirect()->intended('dashboardv1');
             } elseif (Auth()->user()->level == '3') {
