@@ -15,11 +15,11 @@
             <div class="page-header">
               <div class="row">
                 <div class="col-sm-6">
-                  <h3>Leads</h3>
+                  <h3>Proposal</h3>
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item">Pages   </li>
-                    <li class="breadcrumb-item active">Leads</li>
+                    <li class="breadcrumb-item active">Proposal</li>
                   </ol>
                 </div>
                 {{-- <div class="col-sm-6">
@@ -50,17 +50,17 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Add Leads Detail</h5>
+                    <h5>Add Proposal Detail</h5>
                   </div>
                   <div class="card-body">
 
                     <div class="col-sm-12">
                         <div class="row g-3 align-items-center mt-2">
                         <div class="col-auto">
-                            <a href="/tambahdataleads" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add Leads</a>
+                            <a href="/tambahdataproposal" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add Proposal</a>
                         </div>
                         <div class="col-auto">
-                            <form action="/dataleads" method="GET">
+                            <form action="/dataproduk" method="GET">
                                 <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                             </form>
                             </div>
@@ -73,14 +73,11 @@
                                 <table class="table table-striped table-success">
                                     <thead class="tbl-strip-thad-bdr">
                                         <tr>
-                                            <th scope="col">ID</th>
+                                            <th scope="col">#</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Company Name</th>
-                                            <th scope="col">Mobile Phone</th>
+                                            <th scope="col">Total</th>
                                             <th scope="col">Created at</th>
-                                            <th scope="col">Next Follow Up</th>
-                                            <th scope="col">Lead Agent</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Valid till</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>

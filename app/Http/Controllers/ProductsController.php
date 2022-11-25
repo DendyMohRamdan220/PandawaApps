@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Products;
+use Illuminate\Http\Request;
+use PDF;
 
 class ProductsController extends Controller
 {
@@ -11,16 +12,16 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $data = Products::where('name', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $data = Products::where('product', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
             $data = Products::paginate(5);
         }
-        return view('dataproduk', compact('data'));
+        return view('Products.dataproduk', compact('data'));
     }
 
     public function tambahproduk()
     {
-        return view('tambahdataproduk');
+        return view('Products.tambahdataproduk');
     }
 
     public function insertdataproduk(Request $request)
@@ -32,7 +33,7 @@ class ProductsController extends Controller
     public function tampildataproduk($id)
     {
         $data = Products::find($id);
-        return view('tampildataproduk', compact('data'));
+        return view('Products.tampildataproduk', compact('data'));
     }
 
     public function updatedataproduk(Request $request, $id)
@@ -53,7 +54,7 @@ class ProductsController extends Controller
     {
         $data = Products::all();
         view()->share('data', $data);
-        $pdf = PDF::loadview('dataproduk-pdf');
-        return $pdf->download('data.pdf');
+        $pdf = PDF::loadview('Products.dataproduk-pdf');
+        return $pdf->download('data_products.pdf');
     }
 }

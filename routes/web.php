@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -51,7 +53,7 @@ Route::get('logout', [LoginController::class, 'logout']);
 | and logging out!
 |
  */
-Route::get('dashboard', [DashboardController::class, 'dashboard']);
+
 Route::get('dashboardv1', [DashboardController::class, 'dashboardv1']);
 Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
 
@@ -67,6 +69,8 @@ Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
  */
 Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
+    Route::get('dashboard', [DashboardController::class, 'dashboard']);
+
     //Users>>
     Route::get('viewuser_admin', [UserController::class, 'index']);
     Route::get('tampiluser_admin', [UserController::class, 'inputuser']);
@@ -77,18 +81,32 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
     //Leads>>
     Route::get('dataleads', [LeadsController::class, 'index']);
-    Route::get('tambahdataleads', [LeadsController::class, 'tambahdataleads']);
+    Route::get('tambahdataleads', [LeadsController::class, 'tambahleads']);
     Route::post('insertdataleads', [LeadsController::class, 'insertdataleads']);
     Route::get('tampildataleads/{id}', [LeadsController::class, 'tampildataleads']);
     Route::get('deleteleads/{id}', [LeadsController::class, 'deleteleads']);
 
+    //PRODUCTS
+    Route::get('/dataproduk_admin', [ProductsController::class, 'index']);
+    Route::get('/tambahdataproduk', [ProductsController::class, 'tambahproduk']);
+    Route::post('/insertdataproduk', [ProductsController::class, 'insertdataproduk']);
+    Route::get('/tampildataproduk/{id}', [ProductsController::class, 'tampildataproduk']);
+    Route::get('/deleteproduk/{id}', [ProductsController::class, 'deleteproduk']);
+
+    //PROPOSAL
+    Route::get('/dataproposal_admin', [ProposalsController::class, 'index']);
+    Route::get('/tambahdataproposal', [ProposalsController::class, 'tambahproposal']);
+    Route::post('/insertdataproposal', [ProposalsController::class, 'insertdataproposal']);
+    Route::get('/tampildataproposal/{id}', [ProposalsController::class, 'tampildataproposal']);
+    Route::get('/deleteproposal/{id}', [ProposalsController::class, 'deleteproposal']);
+
     //Clients>>
-    Route::get('client', [LeadsController::class, 'index']);
-    Route::get('dataleads', [LeadsController::class, 'tampilclient']);
-    Route::get('dataleads', [LeadsController::class, 'insertdataclient']);
-    Route::get('dataleads', [LeadsController::class, 'tampildataclient']);
-    Route::get('dataleads', [LeadsController::class, 'updatedataclient']);
-    Route::get('client', [LeadsController::class, 'deleteclient']);
+    // Route::get('client', [LeadsController::class, 'index']);
+    // Route::get('dataleads', [LeadsController::class, 'tampilclient']);
+    // Route::get('dataleads', [LeadsController::class, 'insertdataclient']);
+    // Route::get('dataleads', [LeadsController::class, 'tampildataclient']);
+    // Route::get('dataleads', [LeadsController::class, 'updatedataclient']);
+    // Route::get('client', [LeadsController::class, 'deleteclient']);
 
     /*<< HR >>*/
     //Employees
@@ -100,9 +118,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'hapusemployee']);
 
     //Attendances>>
-    Route::get('attendance_admin', [AttendanceController::class, 'index']);
-    Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
-    Route::post('insertattendance', [AttendanceController::class, 'insertattendance']);
+
+    
+    // Route::get('attendance_admin', [AttendanceController::class, 'index']);
+    // Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
+    // Route::post('insertattendance', [AttendanceController::class, 'insertattendance']);
     /*<< HR >>*/
 
     /*<<Work>>*/
@@ -150,9 +170,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     Route::get('hapusemployee/{id}', [EmployeeController::class, 'hapusemployee']);
 
     //Attendances>>
-    Route::get('attendance', [AttendanceController::class, 'index']);
-    Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
-    Route::post('insertattendance', [AttendanceController::class, 'insertattendance']);
+    Route::get('presensi_masuk',[AbsensiController::class,'index']);
+    Route::post('simpan_masuk',[AbsensiController::class,'store'])->name('simpan_masuk');
+    Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
+    Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
+    
+    // 
 
 });
 
@@ -183,21 +206,3 @@ Route::group(['middleware' => ['auth', 'ceklevel:3']], function () {
 // Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
 // Route::get('/tambahattendance', [AttendanceController::class, 'tambahattendance'])->name('tambahdataattendance');
 // Route::post('/insertattendance', [AttendanceController::class, 'insertattendance'])->name('insertattendance');
-
-/*
-|--------------------------------------------------------------------------
-| Portal Sales
-|--------------------------------------------------------------------------
-|
-| Below there are functions for logging in,
-| registering, forgetting password,
-| and logging out!
-|
- */
-
-// //PRODUCTS
-Route::get('/dataproduk', [ProductsController::class, 'index'])->name('dataproduk');
-Route::get('/tambahdataproduk', [ProductsController::class, 'tambahdataproduk'])->name('tambahdataproduk');
-Route::post('/insertdataproduk', [ProductsController::class, 'insertdataproduk'])->name('insertdataproduk');
-Route::get('/tampildataproduk/{id}', [ProductsController::class, 'tampildataproduk'])->name('tampildataproduk');
-Route::get('/deleteproduk/{id}', [ProductsController::class, 'deleteproduk'])->name('deleteproduk');
