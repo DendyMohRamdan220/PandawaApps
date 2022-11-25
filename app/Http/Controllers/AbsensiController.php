@@ -64,6 +64,17 @@ class AbsensiController extends Controller
         return redirect('presensi_masuk');
     }
 
+    public function halamanrekap()
+    {
+    return view('Attendances.halamanrekapkaryawan');
+    }
+
+    public function tampildatakeseluruhan($tglawal, $tglakhir)
+    {
+    $presensi = Attendance::with('user')->whereBetween('date',[$tglawal, $tglakhir])->orderBy('date','asc')->get();
+    return view('Attendances.rekapkaryawan',compact('presensi'));
+    }
+
     public function presensipulang(){
         $timezone = 'Asia/Jakarta';
         $date = new DateTime('now', new DateTimeZone($timezone));

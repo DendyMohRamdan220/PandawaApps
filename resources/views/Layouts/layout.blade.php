@@ -12,7 +12,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{ asset('template/assets/images/logop.jpg') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('template/assets/images/logop.png') }}" type="image/x-icon">
-    <title>Pandawa Mandiri</title>
+    <title> Pandawa Mandiri </title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -66,7 +66,7 @@
             <div class="main-header-right row m-0">
                 <div class="main-header-left">
                     <div class="logo-wrapper">
-                        <a href="index.html">
+                        <a href="/dashboarad_admin">
                             <img class="img-fluid" src="{{ asset('template/assets/images/logopm.jpg') }}"
                                 alt="">
                         </a>
@@ -93,7 +93,7 @@
                         </li>
                         <li class="onhover-dropdown p-0">
                             <button class="btn btn-primary-light" type="button">
-                                <a href="/logout"><i data-feather="log-out"></i>Log out</a>
+                                <a href="/logout"><i data-feather="log-out"></i> Log out </a>
                             </button>
                         </li>
                     </ul>
@@ -110,11 +110,22 @@
                     <a class="setting-primary" href="javascript:void(0)">
                         <i data-feather="settings"></i>
                     </a><img class="img-90 rounded-circle" src="{{ auth()->user()->file }}" alt="">
-                    <div class="badge-bottom"><span class="badge badge-primary">New</span></div>
-                    <a href="user-profile.html">
+                    <div class="badge-bottom"></div>
+                    <a href="#">
                         <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6>
                     </a>
-                    <p class="mb-0 font-roboto">Human Resources Department</p>
+                    @if (auth()->user()->level == '1')
+                        <p class="mb-0 font-roboto">Admin</p>
+                    @endif
+                    @if (auth()->user()->level == '2')
+                        <p class="mb-0 font-roboto">Employee</p>
+                    @endif
+                    @if (auth()->user()->level == '3')
+                        <p class="mb-0 font-roboto">Client</p>
+                    @endif
+                    @if (auth()->user()->level == '4')
+                        <p class="mb-0 font-roboto">Admin</p>
+                    @endif
                 </div>
                 <nav>
                     <div class="main-navbar">
@@ -134,8 +145,8 @@
                                             <span>Dashboard</span>
                                         </a>
                                         <ul class="nav-submenu menu-content">
-                                            <li><a href="/dashboard">Default</a></li>
-                                            <li><a href="/viewuser_admin">Ecommerce</a></li>
+                                            <li><a href="/dashboard_admin">Default</a></li>
+                                            <li><a href="/datauser_admin">Ecommerce</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
@@ -336,7 +347,6 @@
             </header>
             <!-- Page Sidebar Ends-->
             @yield('content')
-
             <!-- footer start-->
             <footer class="footer">
                 <div class="container-fluid">
@@ -386,7 +396,7 @@
     <script src="{{ asset('template/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js') }}"></script>
     <script src="{{ asset('template/assets/js/vector-map/map/jquery-jvectormap-in-mill.js') }}"></script>
     <script src="{{ asset('template/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js') }}"></script>
-    <script src="{{ asset('template') }}/assets/js/dashboard/default.js"></script>
+    <script src="{{ asset('template/assets/js/dashboard/default.js') }}"></script>
     <script src="{{ asset('template/assets/js/notify/index.js') }}"></script>
     <script src="{{ asset('template/assets/js/datepicker/date-picker/datepicker.js') }}"></script>
     <script src="{{ asset('template/assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
