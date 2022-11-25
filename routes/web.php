@@ -7,6 +7,7 @@ use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -92,8 +93,15 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('/tampildataproduk/{id}', [ProductsController::class, 'tampildataproduk']);
     Route::get('/deleteproduk/{id}', [ProductsController::class, 'deleteproduk']);
 
+    //PROPOSAL
+    Route::get('/dataproposal_admin', [ProposalsController::class, 'index']);
+    Route::get('/tambahdataproposal', [ProposalsController::class, 'tambahproposal']);
+    Route::post('/insertdataproposal', [ProposalsController::class, 'insertdataproposal']);
+    Route::get('/tampildataproposal/{id}', [ProposalsController::class, 'tampildataproposal']);
+    Route::get('/deleteproposal/{id}', [ProposalsController::class, 'deleteproposal']);
+
     //Clients>>
-    // // Route::get('client', [LeadsController::class, 'index']);
+    // Route::get('client', [LeadsController::class, 'index']);
     // Route::get('dataleads', [LeadsController::class, 'tampilclient']);
     // Route::get('dataleads', [LeadsController::class, 'insertdataclient']);
     // Route::get('dataleads', [LeadsController::class, 'tampildataclient']);

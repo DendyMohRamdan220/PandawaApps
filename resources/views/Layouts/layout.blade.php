@@ -285,7 +285,7 @@
                                         </a>
                                         <ul class="nav-submenu menu-content">
                                             <li>
-                                                <a href="#">Proposal</a>
+                                                <a href="/dataproposal_admin">Proposal</a>
                                             </li>
                                             <li>
                                                 <a href="#">Estimates</a>

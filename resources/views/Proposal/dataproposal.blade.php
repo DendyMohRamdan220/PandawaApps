@@ -15,11 +15,11 @@
             <div class="page-header">
               <div class="row">
                 <div class="col-sm-6">
-                  <h3>Product</h3>
+                  <h3>Proposal</h3>
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item">Pages   </li>
-                    <li class="breadcrumb-item active">Product</li>
+                    <li class="breadcrumb-item active">Proposal</li>
                   </ol>
                 </div>
                 {{-- <div class="col-sm-6">
@@ -50,14 +50,14 @@
               <div class="col-sm-12">
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h5>Add Product Detail</h5>
+                    <h5>Add Proposal Detail</h5>
                   </div>
                   <div class="card-body">
 
                     <div class="col-sm-12">
                         <div class="row g-3 align-items-center mt-2">
                         <div class="col-auto">
-                            <a href="/tambahdataproduk" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add Product</a>
+                            <a href="/tambahdataproposal" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add Proposal</a>
                         </div>
                         <div class="col-auto">
                             <form action="/dataproduk" method="GET">
@@ -74,9 +74,10 @@
                                     <thead class="tbl-strip-thad-bdr">
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Product Image</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Price</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Total</th>
+                                            <th scope="col">Created at</th>
+                                            <th scope="col">Valid till</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
