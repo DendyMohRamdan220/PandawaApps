@@ -1,16 +1,18 @@
 <?php
 
-use App\Http\Controllers\AbsensiController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EmployeeController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ProposalsController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TicketController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProposalsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,15 +71,15 @@ Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
  */
 Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
-    Route::get('dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('dashboard_admin', [DashboardController::class, 'dashboard']);
 
     //Users>>
-    Route::get('viewuser_admin', [UserController::class, 'index']);
-    Route::get('tampiluser_admin', [UserController::class, 'inputuser']);
+    Route::get('datauser_admin', [UserController::class, 'datauser']);
+    Route::get('tambahdatauser_admin', [UserController::class, 'tambahdatauser']);
     Route::post('insertdatauser_admin', [UserController::class, 'insertdatauser']);
-    Route::get('tampilupdateuser_admin/{id}', [UserController::class, 'edituser']);
-    Route::post('updateuser_admin/{id}', [UserController::class, 'updateuser']);
-    Route::get('deleteuser_admin/{id}', [UserController::class, 'deleteuser']);
+    Route::get('editdatauser_admin/{id}', [UserController::class, 'editdatauser']);
+    Route::post('updatedatauser_admin/{id}', [UserController::class, 'updatedatauser']);
+    Route::get('deletedatauser_admin/{id}', [UserController::class, 'deletedatauser']);
 
     //Leads>>
     Route::get('dataleads', [LeadsController::class, 'index']);
@@ -101,12 +103,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('/deleteproposal/{id}', [ProposalsController::class, 'deleteproposal']);
 
     //Clients>>
-    // Route::get('client', [LeadsController::class, 'index']);
-    // Route::get('dataleads', [LeadsController::class, 'tampilclient']);
-    // Route::get('dataleads', [LeadsController::class, 'insertdataclient']);
-    // Route::get('dataleads', [LeadsController::class, 'tampildataclient']);
-    // Route::get('dataleads', [LeadsController::class, 'updatedataclient']);
-    // Route::get('client', [LeadsController::class, 'deleteclient']);
+    Route::get('dataclient_admin', [ClientController::class, 'dataclient']);
+    Route::get('tambahdataclient_admin', [ClientController::class, 'tambahdataclient']);
+    Route::get('insertdataclient_admin', [ClientController::class, 'insertdataclient']);
+    Route::get('editdataclient_admin', [ClientController::class, 'editdataclient']);
+    Route::get('updatedataclient_admin', [ClientController::class, 'updatedataclient']);
+    Route::get('deletedataclient_admin', [ClientController::class, 'deletedataclient']);
 
     /*<< HR >>*/
     //Employees
@@ -118,8 +120,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'hapusemployee']);
 
     //Attendances>>
-
-    
     // Route::get('attendance_admin', [AttendanceController::class, 'index']);
     // Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
     // Route::post('insertattendance', [AttendanceController::class, 'insertattendance']);
@@ -127,15 +127,21 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
     /*<<Work>>*/
     //Projects>>
-    Route::get('proyek', [ProjectController::class, 'index']);
+    Route::get('dataproject_admin', [ProjectController::class, 'dataproject']);
+    Route::get('tambahdataproject_admin', [ProjectController::class, 'tambahdataproject']);
+    Route::post('insertdataproject_admin', [ProjectController::class, 'insertdataproject']);
+    Route::get('editdataproject_admin', [ProjectController::class, 'editdataproject']);
+    Route::post('updatedataproject_admin', [ProjectController::class, 'updatedataproject']);
+    Route::get('deletedataproject_admin', [ProjectController::class, 'deletedataproject']);
+
 
     //Tasks>>
-    Route::get('task', [TaskController::class, 'index']);
-    Route::get('tambahtask', [TaskController::class, 'tambahtask']);
-    Route::post('insertdatatask', [TaskController::class, 'insertdatatask']);
-    Route::get('tampildatatask/{id}', [TaskController::class, 'tampildatatask']);
-    Route::post('updatedatatask/{id}', [TaskController::class, 'updatedatatask']);
-    Route::get('deletetask/{id}', [TaskController::class, 'deletetask']);
+    Route::get('datatask_admin', [TaskController::class, 'datatask_admin']);
+    Route::get('tambahdatatask_admin', [TaskController::class, 'tambahdatatask_admin']);
+    Route::post('insertdatatask_admin', [TaskController::class, 'insertdatatask_admin']);
+    Route::get('editdatatask_admin/{id}', [TaskController::class, 'editdatatask_admin']);
+    Route::post('updatedatatask_admin/{id}', [TaskController::class, 'updatedatatask_admin']);
+    Route::get('deletedatatask_admin/{id}', [TaskController::class, 'deletedatatask_admin']);
     /*<<Work>>*/
 
     //Tickets>>
@@ -174,8 +180,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     Route::post('simpan_masuk',[AbsensiController::class,'store'])->name('simpan_masuk');
     Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
     Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
-    
-    // 
+
+    //
 
 });
 
@@ -201,8 +207,3 @@ Route::group(['middleware' => ['auth', 'ceklevel:3']], function () {
     Route::get('exportpdf', [TicketController::class, 'exportpdf']);
 
 });
-
-// //Attendance
-// Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
-// Route::get('/tambahattendance', [AttendanceController::class, 'tambahattendance'])->name('tambahdataattendance');
-// Route::post('/insertattendance', [AttendanceController::class, 'insertattendance'])->name('insertattendance');

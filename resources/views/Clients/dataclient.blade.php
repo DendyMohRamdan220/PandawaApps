@@ -1,4 +1,4 @@
-@extends('layout.Client')
+@extends('Layouts.layout')
 
 @section('content')
 
@@ -10,40 +10,32 @@
 
 @endpush
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header"> 
+<div class="page-body">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Data Client</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Client</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Clients</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item active"> Clients </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="container">
         <div class="row g-3 align-items-center mt-2">
             <div class="col-auto">
-                <a href="/tambahclient" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Client</a>
+                <a href="/tambahdataclient_admin" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Client</a>
             </div>
             <div class="col-auto">
-                <form action="/client" method="GET">
+                <form action="/dataclient_admin" method="GET">
                     <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                 </form>
             </div>
         </div>
         <div class="row mt-2">
-            {{-- @if($message = Session::get('success'))
-                <div class="alert alert-success" role="alert">
-                    {{$message}}
-        </div>
-        @endif --}}
         <table class="table table-striped table-dark">
             <thead>
                 <tr>

@@ -10,14 +10,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function index()
+    public function datauser()
     {
         $data = User::latest()->paginate(5);
         return view('Users.user', ['data' => $data]);
 
     }
 
-    public function inputuser()
+    public function tambahdatauser()
     {
         return view('Users.userinsert');
     }
@@ -69,18 +69,18 @@ class UserController extends Controller
             ]);
         }
         Alert::success('Berasil Menambah User');
-        return redirect('/viewuser_admin')->with('toast_success', 'Data berhasil tambah!');
+        return redirect('/datauser_admin')->with('toast_success', 'Data berhasil tambah!');
     }
 
     //edit data user
-    public function edituser($idUser)
+    public function editdatauser($idUser)
     {
         $dataUser = User::find($idUser);
         return view("Users.userupdate", ['data' => $dataUser]);
     }
 
     //Update data user
-    public function updateuser($idUser, Request $x)
+    public function updatedatauser($idUser, Request $x)
     {
         //Validasi
         $messages = [
@@ -119,21 +119,21 @@ class UserController extends Controller
             'file' => $path,
         ]);
         Alert::success('Berasil Mengubah User');
-        return redirect('/viewuser_admin')->with('toast_success', 'Data berhasil di update!');
+        return redirect('/datauser_admin')->with('toast_success', 'Data berhasil di update!');
     }
 
     //hapus
-    public function deleteuser($id)
+    public function deletedatauser($id)
     {
         try {
             $data = User::where('id', $id)->first();
             File::delete($data->file);
             User::where('id', $id)->delete();
             Alert::success('Berasil Menghapus User');
-            return redirect('/viewuser_admin')->with('toast_success', 'Data berhasil di hapus!');
+            return redirect('/datauser_admin')->with('toast_success', 'Data berhasil di hapus!');
         } catch (\Illuminate\Database\QueryException$e) {
             Alert::warning('Warning Terjadi error');
-            return redirect('/viewuser_admin')->with('toast_error', 'Data tidak bisa di hapus!');
+            return redirect('/datauser_admin')->with('toast_error', 'Data tidak bisa di hapus!');
         }
     }
 }

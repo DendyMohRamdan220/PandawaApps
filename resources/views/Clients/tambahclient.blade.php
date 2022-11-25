@@ -1,4 +1,4 @@
-@extends('layout.Client')
+@extends('Layouts.layout')
 
 @section('content')
 
@@ -55,7 +55,7 @@
                     <option selected>Choose :</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
-                   
+
                 </select>
             </div>
 
