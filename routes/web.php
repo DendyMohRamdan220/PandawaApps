@@ -69,15 +69,15 @@ Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
  */
 Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
-    Route::get('dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('dashboard_admin', [DashboardController::class, 'dashboard']);
 
     //Users>>
-    Route::get('viewuser_admin', [UserController::class, 'index']);
-    Route::get('tampiluser_admin', [UserController::class, 'inputuser']);
+    Route::get('datauser_admin', [UserController::class, 'datauser']);
+    Route::get('tambahdatauser_admin', [UserController::class, 'tambahdatauser']);
     Route::post('insertdatauser_admin', [UserController::class, 'insertdatauser']);
-    Route::get('tampilupdateuser_admin/{id}', [UserController::class, 'edituser']);
-    Route::post('updateuser_admin/{id}', [UserController::class, 'updateuser']);
-    Route::get('deleteuser_admin/{id}', [UserController::class, 'deleteuser']);
+    Route::get('editdatauser_admin/{id}', [UserController::class, 'editdatauser']);
+    Route::post('updatedatauser_admin/{id}', [UserController::class, 'updatedatauser']);
+    Route::get('deletedatauser_admin/{id}', [UserController::class, 'deletedatauser']);
 
     //Leads>>
     Route::get('dataleads', [LeadsController::class, 'index']);
@@ -101,12 +101,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('/deleteproposal/{id}', [ProposalsController::class, 'deleteproposal']);
 
     //Clients>>
-    // Route::get('client', [LeadsController::class, 'index']);
-    // Route::get('dataleads', [LeadsController::class, 'tampilclient']);
-    // Route::get('dataleads', [LeadsController::class, 'insertdataclient']);
-    // Route::get('dataleads', [LeadsController::class, 'tampildataclient']);
-    // Route::get('dataleads', [LeadsController::class, 'updatedataclient']);
-    // Route::get('client', [LeadsController::class, 'deleteclient']);
+    Route::get('client_admin', [LeadsController::class, 'index']);
+    Route::get('tampilclient_admin', [LeadsController::class, 'tampilclient']);
+    Route::get('insertdataclient_admin', [LeadsController::class, 'insertdataclient']);
+    Route::get('tampildataclient_admin', [LeadsController::class, 'tampildataclient']);
+    Route::get('updatedataclient_admin', [LeadsController::class, 'updatedataclient']);
+    Route::get('deletedataclient_admin', [LeadsController::class, 'deleteclient']);
 
     /*<< HR >>*/
     //Employees
@@ -118,8 +118,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'hapusemployee']);
 
     //Attendances>>
-
-    
     // Route::get('attendance_admin', [AttendanceController::class, 'index']);
     // Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
     // Route::post('insertattendance', [AttendanceController::class, 'insertattendance']);
@@ -174,8 +172,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     Route::post('simpan_masuk',[AbsensiController::class,'store'])->name('simpan_masuk');
     Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
     Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
-    
-    // 
+
+    //
 
 });
 
@@ -201,8 +199,3 @@ Route::group(['middleware' => ['auth', 'ceklevel:3']], function () {
     Route::get('exportpdf', [TicketController::class, 'exportpdf']);
 
 });
-
-// //Attendance
-// Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
-// Route::get('/tambahattendance', [AttendanceController::class, 'tambahattendance'])->name('tambahdataattendance');
-// Route::post('/insertattendance', [AttendanceController::class, 'insertattendance'])->name('insertattendance');
