@@ -1,4 +1,4 @@
-@extends('layout.Client')
+@extends('Layouts.layout')
 
 @section('content')
 

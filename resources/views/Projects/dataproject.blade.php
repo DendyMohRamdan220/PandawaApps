@@ -11,22 +11,19 @@
 @endpush
 
 <div class="page-body">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Data Project</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Project</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Projects</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item active"> Projects </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="container">
         <div class="row g-3 align-items-center mt-2">
             <div class="col-auto">

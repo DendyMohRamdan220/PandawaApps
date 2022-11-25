@@ -110,7 +110,6 @@
                     <a class="setting-primary" href="javascript:void(0)">
                         <i data-feather="settings"></i>
                     </a><img class="img-90 rounded-circle" src="{{ auth()->user()->file }}" alt="">
-                    <div class="badge-bottom"></div>
                     <a href="#">
                         <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6>
                     </a>
@@ -156,7 +155,7 @@
                                         </a>
                                     </li>
                                     <li class="dropdown">
-                                        <a class="nav-link menu-title link-nav" href="#">
+                                        <a class="nav-link menu-title link-nav" href="/dataclient_admin">
                                             <i data-feather="list"></i>
                                             <span>Clients</span>
                                         </a>
@@ -182,10 +181,10 @@
                                         </a>
                                         <ul class="nav-submenu menu-content">
                                             <li>
-                                                <a href="#">Projects</a>
+                                                <a href="/dataproject_admin">Projects</a>
                                             </li>
                                             <li>
-                                                <a href="#">Tasks</a>
+                                                <a href="/datatask_admin">Tasks</a>
                                             </li>
                                         </ul>
                                     </li>

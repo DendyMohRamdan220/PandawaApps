@@ -11,29 +11,26 @@
 @endpush
 
 <div class="page-body">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Data Task</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Task</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Tasks</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item active"> Tasks </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
     <div class="container">
         <div class="row g-3 align-items-center mt-2">
             <div class="col-auto">
-                <a href="/tambahtask" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Task</a>
+                <a href="/tambahdatatask_admin" class="btn btn-success"> <i class="nav-icon fas fa-plus"></i> Add Task</a>
             </div>
             <div class="col-auto">
-                <form action="/task" method="GET">
+                <form action="/datatask_admin" method="GET">
                     <input type="search" id="inputPassword6" name="search" class="form-control" aria-describedby="passwordHelpInline">
                 </form>
             </div>
@@ -68,7 +65,7 @@
                     <td>{{ $row->startdate }}</td>
                     <td>{{ $row->duedate }}</td>
                     <td>{{ $row->status }}</td>
-                    <td><a href="/tampildatatask/{{ $row->id }}" class="btn btn-info">Update</a>
+                    <td><a href="/tampildatatask_admin/{{ $row->id }}" class="btn btn-info">Update</a>
                         <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-task="{{ $row->taskname }}">Delete</a>
                     </td>
                 </tr>
@@ -109,7 +106,7 @@
             , })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/deletetask/" + idtask + ""
+                    window.location = "/deletedatatask_admin/" + idtask + ""
                     swal("Your data from Task Name " + nametask + " has been deleted!", {
                         icon: "success"
                     , });

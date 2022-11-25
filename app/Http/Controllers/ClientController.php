@@ -8,44 +8,44 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function index(Request $request)
+    public function dataclient(Request $request)
     {
         if ($request->has('search')) {
             $data = Client::where('clientname', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
             $data = Client::paginate(5);
         }
-        return view('dataclient', compact('data'));
+        return view('Clients.dataclient', compact('data'));
     }
 
-    public function tambahclient()
+    public function tambahdataclient()
     {
-        return view('tambahclient');
+        return view('Clients.tambahclient');
     }
 
     public function insertdataclient(Request $request)
     {
         Client::create($request->all());
-        return redirect()->route('client')->with('success', 'client added successfully .');
+        return redirect()->route('dataclient_admin')->with('success', 'client added successfully .');
     }
 
-    public function tampildataclient($id)
+    public function editdataclient($id)
     {
         $data = Client::find($id);
-        return view('tampildataclient', compact('data'));
+        return view('Clients.tampildataclient', compact('data'));
     }
 
     public function updatedataclient(Request $request, $id)
     {
         $data = Client::find($id);
         $data->update($request->all());
-        return redirect()->route('client')->with('success', 'client update successfully .');
+        return redirect()->route('dataclient_admin')->with('success', 'client update successfully .');
     }
 
-    public function deleteclient($id)
+    public function deletedataclient($id)
     {
         $data = Client::find($id);
         $data->delete();
-        return redirect()->route('client')->with('success', 'client deleted successfully .');
+        return redirect()->route('dataclient_admin')->with('success', 'client deleted successfully .');
     }
 }
