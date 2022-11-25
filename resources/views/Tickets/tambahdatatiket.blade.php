@@ -29,20 +29,20 @@
                                         aria-describedby="emailHelp" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Other Detail</label>
+                                    <label for="exampleInputEmail1">Status Ticket</label>
                                     <br>
-                                    <select class="form-select" name="others"
-                                        aria-label="Default select example">
-                                        <option selected>Priority</option>
-                                        <option value="1">Low</option>
-                                        <option value="2">Medium</option>
-                                        <option value="3">High</option>
-                                        <option value="4">Urgent</option>
+                                    <select class="form-select" name="status" aria-label="Default select example">
+                                        <option selected>Status</option>
+                                        <option value="1">Order</option>
+                                        <option value="2">Progres</option>
+                                        <option value="3">Pending</option>
+                                        <option value="4">Done</option>
+                                        <option value="5">Cancel</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
