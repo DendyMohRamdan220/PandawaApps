@@ -264,10 +264,10 @@
                                         </a>
                                         <ul class="nav-submenu menu-content">
                                             <li>
-                                                <a href="#">Projects</a>
+                                                <a href="/dataproject_employee">Projects</a>
                                             </li>
                                             <li>
-                                                <a href="#">Tasks</a>
+                                                <a href="/datatask_employee">Tasks</a>
                                             </li>
                                         </ul>
                                     </li>

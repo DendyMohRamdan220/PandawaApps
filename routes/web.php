@@ -186,6 +186,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     //Tasks
     Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
 
+    //Tasks
+    Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
 });
 
 /*
