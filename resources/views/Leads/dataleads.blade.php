@@ -1,46 +1,17 @@
 @extends('Layouts.layout')
 
 @section('content')
-    @push('css')
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-            integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @endpush
-
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Leads</h3>
+                        <h3> Leads </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item">Pages </li>
-                            <li class="breadcrumb-item active">Leads</li>
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item active"> Leads </li>
                         </ol>
                     </div>
-                    {{-- <div class="col-sm-6">
-                  <!-- Bookmark Start-->
-                  <div class="bookmark">
-                    <ul>
-                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
-                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
-                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
-                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
-                      <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
-                        <form class="form-inline search-form">
-                          <div class="form-group form-control-search">
-                            <input type="text" placeholder="Search..">
-                          </div>
-                        </form>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- Bookmark Ends-->
-                </div> --}}
                 </div>
             </div>
         </div>
@@ -91,12 +62,23 @@
                                                 @php
                                                     $no = 1;
                                                 @endphp
-                                                @foreach ($data as $view_tiket => $row)
+                                                @foreach ($data as $index => $row)
                                                     <tr>
-                                                        <th scope="row">{{ $view_tiket + $data->firstItem() }}</th>
-                                                        <td>{{ $row->ticket_subject }}</td>
-                                                        <td>{{ $row->description }}</td>
-                                                        <td>{{ $row->others }}</td>
+                                                        <th scope="row">{{ $index + $data->firstItem() }}</th>
+                                                        <td>{{ $row->leads_name }}</td>
+                                                        <td>{{ $row->leads_email }}</td>
+                                                        <td>{{ $row->office_phone }}</td>
+                                                        <td>{{ $row->choose_agent }}</td>
+                                                        <td>{{ $row->status }}</td>
+                                                        <td>{{ $row->next_follow_up }}</td>
+                                                        <td>{{ $row->company_name }}</td>
+                                                        <td>{{ $row->website }}</td>
+                                                        <td>{{ $row->mobile_phone }}</td>
+                                                        <td>{{ $row->city }}</td>
+                                                        <td>{{ $row->state }}</td>
+                                                        <td>{{ $row->country }}</td>
+                                                        <td>{{ $row->postal_code }}</td>
+                                                        <td>{{ $row->address }}</td>
                                                         {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
                                                         <td>
                                                             <div class="dropleft">
@@ -117,7 +99,7 @@
                                                                         <i class="nav-icon icon-pencil-alt"></i> Update</a>
                                                                     <a class="dropdown-item delete" href="#"
                                                                         data-id="{{ $row->id }}"
-                                                                        data-subject="{{ $row->ticket_subject }}"> <i
+                                                                        data-subject="{{ $row->leads_name }}"> <i
                                                                             class="nav-icon icon-trash"></i> Delete</a>
                                                                 </div>
                                                             </div>
@@ -169,24 +151,24 @@
     </body>
     <script>
         $('.delete').click(function() {
-            var tiketid = $(this).attr('data-id');
-            var namatiket = $(this).attr('data-subject');
+            var leadid = $(this).attr('data-id');
+            var leads_name = $(this).attr('data-name');
             swal({
                     title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the Ticket Subject " +
-                        namatiket + " ",
+                    text: "Once deleted, you will not be able to recover data from the Leads Name " +
+                        leads_name + " ",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/delete/" + tiketid + ""
-                        swal("Your data from Ticket Subject " + namatiket + " has been deleted!", {
+                        window.location = "/delete/" + leadid + ""
+                        swal("Your data from Ticket Subject " + leads_name + " has been deleted!", {
                             icon: "success",
                         });
                     } else {
-                        swal("Deletion of data from Ticket Subject " + namatiket + " has been cancelled!");
+                        swal("Deletion of data from Leads Name " + leads_name + " has been cancelled!");
                     }
                 });
         });

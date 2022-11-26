@@ -12,59 +12,59 @@
                 <li class="breadcrumb-item active">Add Leads Detail</li>
             </ol>
         <div class="add-client bg-dark-grey rounded">
-            <form action="/insertdatalead_admin" method="POST" enctype="multipart/form-data">
+            <form action="/insertdataleads_admin" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row p-20">
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
-                            <label class="f-14 text-dark-grey mb-12" data-label="true" for="client_name">Lead Name<sup class="f-14 mr-1">*</sup></label>
-                            <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe" value="" name="client_name" id="client_name" autocomplete="off">
+                            <label class="f-14 text-dark-grey mb-12" data-label="true" for="leads_name">Lead Name<sup class="f-14 mr-1">*</sup></label>
+                            <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe" value="" name="leads_name" id="leads_name" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
-                            <label class="f-14 text-dark-grey mb-12" data-label="true" for="client_email">Lead Email</label>
-                            <input type="email" autocomplete="off" class="form-control height-35 f-14" placeholder="e.g. johndoe@example.com" value="" name="client_email" id="client_email">
-                            <small id="client_emailHelp" class="form-text text-muted">Email will be used to send proposals.</small>
+                            <label class="f-14 text-dark-grey mb-12" data-label="true" for="leads_email">Lead Email</label>
+                            <input type="email" autocomplete="off" class="form-control height-35 f-14" placeholder="e.g. johndoe@example.com" value="" name="leads_email" id="leads_email">
+                            <small id="leads_emailhelp" class="form-text text-muted">Email will be used to send proposals.</small>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="status">Choose Agent</label>
+                        <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_agent">Choose Agent</label>
                         <div class="form-group mb-0">
-                            <select name="status" id="status" class="form-control select-picker" data-size="8">
+                            <select name="choose_agent" id="choose_agent" class="form-control select-picker" data-size="8">
                                 <option value="">--</option>
-                                <option selected="" value="4">Ditya Ryani Sardi</option>
-                                <option value="5">Dendy Moh Ramdan</option>
-                                <option value="6">Amar Fauzi</option>
+                                <option value="1">Ditya Ryani Sardi</option>
+                                <option value="2">Dendy Moh Ramdan</option>
+                                <option value="3">Amar Fauzi</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
                             <label class="f-14 text-dark-grey mb-12" data-label="true" for="company_name">Company Name<sup class="f-14 mr-1">*</sup></label>
-                            <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe" value="" name="client_name" id="client_name" autocomplete="off">
+                            <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe" value="" name="company_name" id="company_name" autocomplete="off">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="status">Status</label>
+                        <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="status">Status Proposal</label>
                         <div class="form-group mb-0">
                             <select name="status" id="status" class="form-control select-picker" data-size="8">
                                 <option value="">--</option>
-                                <option selected="" value="4">Pending</option>
-                                <option value="5">Overview</option>
-                                <option value="6">Confirmed</option>
+                                <option value="1">Pending</option>
+                                <option value="2">Overview</option>
+                                <option value="3">Confirmed</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
-                        <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="country">Allow Follow Up</label>
+                        <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="next_follow_up">Allow Follow Up</label>
                         <div class="form-group mb-0">
-                            <select name="country" id="country" data-live-search="true" class="form-control select-picker" data-size="8">
+                            <select name="next_follow_up" id="next_follow_up" data-live-search="true" class="form-control select-picker" data-size="8">
                                 <option value="">--</option>
-                                <option selected="" value="4">Yes</option>
-                                <option value="5">No</option>
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
                             </select>
                             <div class="dropdown-menu ">
                                 <div class="bs-searchbox">
@@ -86,42 +86,42 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
-                            <label class="f-14 text-dark-grey mb-12" data-label="" for="mobile">Mobile</label>
-                            <input type="tel" class="form-control height-35 f-14" placeholder="e.g. 987654321" value="" name="mobile" id="mobile" autocomplete="off">
+                            <label class="f-14 text-dark-grey mb-12" data-label="" for="mobile_phone">Mobile</label>
+                            <input type="tel" class="form-control height-35 f-14" placeholder="e.g. 987654321" value="" name="mobile_phone" id="mobile_phone" autocomplete="off">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
-                            <label class="f-14 text-dark-grey mb-12" data-label="" for="office">Office Phone Number</label>
-                            <input type="text" class="form-control height-35 f-14" placeholder="" value="" name="office" id="office" autocomplete="off">
+                            <label class="f-14 text-dark-grey mb-12" data-label="" for="office_phone">Office Phone Number</label>
+                            <input type="text" class="form-control height-35 f-14" placeholder="" value="" name="office_phone" id="office_phone" autocomplete="off">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
-                            <label class="f-14 text-dark-grey mb-12" data-label="" for="website">State</label>
-                            <input type="text" class="form-control height-35 f-14" value="" name="website" id="website" autocomplete="off">
+                            <label class="f-14 text-dark-grey mb-12" data-label="" for="state">State</label>
+                            <input type="text" class="form-control height-35 f-14" value="" name="state" id="state" autocomplete="off">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
-                            <label class="f-14 text-dark-grey mb-12" data-label="" for="website">City</label>
-                            <input type="text" class="form-control height-35 f-14" value="" name="city" id="website" autocomplete="off">
+                            <label class="f-14 text-dark-grey mb-12" data-label="" for="city">City</label>
+                            <input type="text" class="form-control height-35 f-14" value="" name="city" id="city" autocomplete="off">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
-                            <label class="f-14 text-dark-grey mb-12" data-label="" for="website">Postal Code</label>
-                            <input type="text" class="form-control height-35 f-14" value="" name="postal" id="website" autocomplete="off">
+                            <label class="f-14 text-dark-grey mb-12" data-label="" for="postal_code">Postal Code</label>
+                            <input type="text" class="form-control height-35 f-14" value="" name="postal_code" id="postal_code" autocomplete="off">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group my-3">
-                            <label class="f-14 text-dark-grey mb-12" data-label="" for="website">Address</label>
+                            <label class="f-14 text-dark-grey mb-12" data-label="" for="address">Address</label>
                             <input type="text" class="form-control height-35 f-14" value="" name="Address" autocomplete="off">
                         </div>
                     </div>
