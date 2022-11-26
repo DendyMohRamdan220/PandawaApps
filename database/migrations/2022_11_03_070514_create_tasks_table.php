@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('project');
             $table->date('startdate');
             $table->date('duedate');
-            $table->string('status');
+            $table->enum('status', ['Progres','Pending','Done','Cancel']);
             $table->timestamps();
         });
     }

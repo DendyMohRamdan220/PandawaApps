@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function dataproject(Request $request)
+    public function dataproject_admin(Request $request)
     {
         if ($request->has('search')) {
             $data = project::where('projectname', 'LIKE', '%' . $request->search . '%')->paginate(5);
@@ -26,7 +26,7 @@ class ProjectController extends Controller
     public function insertdataproject(Request $request)
     {
         project::create($request->all());
-        return redirect()->route('dataproject_admin')->with('success', 'project added successfully .');
+        return redirect('dataproject_admin')->with('success', 'project added successfully .');
     }
 
     public function editdataproject($id)
@@ -39,13 +39,24 @@ class ProjectController extends Controller
     {
         $data = project::find($id);
         $data->update($request->all());
-        return redirect()->route('dataproject_admin')->with('success', 'project data update successfully .');
+        return redirect('dataproject_admin')->with('success', 'project data update successfully .');
     }
 
     public function deletedataproject($id)
     {
         $data = project::find($id);
         $data->delete();
-        return redirect()->route('dataproject_admin')->with('success', 'project data deleted successfully .');
+        return redirect('dataproject_admin')->with('success', 'project data deleted successfully .');
+    }
+
+    //Employee
+    public function dataproject_employee(Request $request)
+    {
+    if ($request->has('search')) {
+    $data = project::where('projectname', 'LIKE', '%' . $request->search . '%')->paginate(5);
+    } else {
+    $data = project::paginate(5);
+    }
+    return view('Projects.dataproject_employee', compact('data'));
     }
 }

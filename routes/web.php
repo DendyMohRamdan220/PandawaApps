@@ -119,6 +119,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::post('updateemployee_admin/{id}', [EmployeeController::class, 'updateemployee']);
     Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'hapusemployee']);
 
+    Route::get('filterdata_admin',[AbsensiController::class,'halamanrekap']);
+    Route::get('filterdata_admin/{tglawal}/{tglakhir}',[AbsensiController::class,'tampildatakeseluruhan']);
     //Attendances>>
     // Route::get('attendance_admin', [AttendanceController::class, 'index']);
     // Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
@@ -127,12 +129,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
     /*<<Work>>*/
     //Projects>>
-    Route::get('dataproject_admin', [ProjectController::class, 'dataproject']);
+    Route::get('dataproject_admin', [ProjectController::class, 'dataproject_admin']);
     Route::get('tambahdataproject_admin', [ProjectController::class, 'tambahdataproject']);
     Route::post('insertdataproject_admin', [ProjectController::class, 'insertdataproject']);
-    Route::get('editdataproject_admin', [ProjectController::class, 'editdataproject']);
-    Route::post('updatedataproject_admin', [ProjectController::class, 'updatedataproject']);
-    Route::get('deletedataproject_admin', [ProjectController::class, 'deletedataproject']);
+    Route::get('editdataproject_admin/{id}', [ProjectController::class, 'editdataproject']);
+    Route::post('updatedataproject_admin/{id}', [ProjectController::class, 'updatedataproject']);
+    Route::get('deletedataproject_admin/{id}', [ProjectController::class, 'deletedataproject']);
 
 
     //Tasks>>
@@ -181,8 +183,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
     Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
 
-    //
+    //Tasks
+    Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
 
+    //Tasks
+    Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
 });
 
 /*
@@ -198,12 +203,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
 Route::group(['middleware' => ['auth', 'ceklevel:3']], function () {
 
     //Tickets>>
-    Route::get('ticket_client', [TicketController::class, 'view_tiket']);
-    Route::get('tambahtiket_client', [TicketController::class, 'tambahtiket']);
-    Route::post('insertdatatiket_client', [TicketController::class, 'insertdatatiket']);
-    Route::get('tampildatatiket_client/{id}', [TicketController::class, 'tampildatatiket']);
-    Route::post('updatedatatiket_client/{id}', [TicketController::class, 'updatedatatiket']);
-    Route::get('deletetiket_client/{id}', [TicketController::class, 'deletetiket']);
-    Route::get('exportpdf', [TicketController::class, 'exportpdf']);
+    Route::get('dataticket_client', [TicketController::class, 'dataticket_client']);
+    Route::get('tambahdataticket_client', [TicketController::class, 'tambahdataticket_client']);
+    Route::post('insertdataticket_client', [TicketController::class, 'insertdataticket_client']);
+    Route::get('editdataticket_client/{id}', [TicketController::class, 'editdataticket_client']);
+    Route::post('updatedataticket_client/{id}', [TicketController::class, 'updatedataticket_client']);
+    Route::get('deletedataticket_client/{id}', [TicketController::class, 'deletedataticket_client']);
+    Route::get('exportpdf_client', [TicketController::class, 'exportpdf_client']);
 
 });

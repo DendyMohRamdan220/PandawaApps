@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('employee');
             $table->date('deadline');
             $table->string('client');
-            $table->string('progress');
-            $table->string('status');
+            $table->enum('status', ['Progres','Pending','Done','Cancel']);
             $table->timestamps();
         });
     }

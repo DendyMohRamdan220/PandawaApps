@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
         #customers {
@@ -29,9 +30,9 @@
             background-color: #04AA6D;
             color: white;
         }
-
     </style>
 </head>
+
 <body>
 
     <h1>Data Ticket</h1>
@@ -41,21 +42,21 @@
             <th>No</th>
             <th>Ticket Subject</th>
             <th>Description</th>
-            <th>Others</th>
+            <th>Status</th>
         </tr>
         @php
-        $no = 1;
+            $no = 1;
         @endphp
         @foreach ($data as $row)
-        <tr>
-            <td>{{ $no++ }}</td>
-            <td>{{ $row->ticket_subject }}</td>
-            <td>{{ $row->description }}</td>
-            <td>{{ $row->others }}</td>
-        </tr>
+            <tr>
+                <td>{{ $no++ }}</td>
+                <td>{{ $row->ticket_subject }}</td>
+                <td>{{ $row->description }}</td>
+                <td>{{ $row->status }}</td>
+            </tr>
         @endforeach
     </table>
 
 </body>
-</html>
 
+</html>
