@@ -59,8 +59,8 @@
                                         <div class="card-body support-ticket-font">
                                             <div class="row">
                                                 <div class="col-5">
-                                                    <h6>Medium Ticket</h6>
-                                                    <h4 class="total-num counter">{{ $totalmediumtiket }}</h4>
+                                                    <h6>Order Ticket</h6>
+                                                    <h4 class="total-num counter">{{ $totalordertiket }}</h4>
                                                 </div>
                                             </div>
                                             <div class="progress-showcase">
@@ -78,8 +78,8 @@
                                         <div class="card-body support-ticket-font">
                                             <div class="row">
                                                 <div class="col-5">
-                                                    <h6>High Ticket</h6>
-                                                    <h4 class="total-num counter">{{ $totalhightiket }}</h4>
+                                                    <h6>Progress</h6>
+                                                    <h4 class="total-num counter">{{ $totalprogrestiket }}</h4>
                                                 </div>
                                             </div>
                                             <div class="progress-showcase mt-4">
@@ -97,8 +97,8 @@
                                         <div class="card-body support-ticket-font">
                                             <div class="row">
                                                 <div class="col-5">
-                                                    <h6>Urgent</h6>
-                                                    <h4 class="total-num counter">{{ $totalurgenttiket }}</h4>
+                                                    <h6>Pending</h6>
+                                                    <h4 class="total-num counter">{{ $totalpendingtiket }}</h4>
                                                 </div>
                                             </div>
                                             <div class="progress-showcase mt-4">
@@ -116,7 +116,7 @@
                                             <div class="row">
                                                 <div class="col-5">
                                                     <h6>Done</h6>
-                                                    <h4 class="total-num counter">5600</h4>
+                                                    <h4 class="total-num counter">{{ $totaldonetiket }}</h4>
                                                 </div>
                                             </div>
                                             <div class="progress-showcase mt-4">
@@ -134,8 +134,8 @@
                                         <div class="card-body support-ticket-font">
                                             <div class="row">
                                                 <div class="col-5">
-                                                    <h6>Cancle</h6>
-                                                    <h4 class="total-num counter">2560</h4>
+                                                    <h6>Cancel</h6>
+                                                    <h4 class="total-num counter">{{ $totalcanceltiket }}</h4>
                                                 </div>
                                             </div>
                                             <div class="progress-showcase">
@@ -174,7 +174,7 @@
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Ticket Subject</th>
                                                     <th scope="col">Description</th>
-                                                    <th scope="col">Others</th>
+                                                    <th scope="col">Status</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -187,7 +187,7 @@
                                                         <th scope="row">{{ $view_tiket + $data->firstItem() }}</th>
                                                         <td>{{ $row->ticket_subject }}</td>
                                                         <td>{{ $row->description }}</td>
-                                                        <td>{{ $row->others }}</td>
+                                                        <td>{{ $row->status }}</td>
                                                         {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
                                                         <td>
                                                             <div class="dropleft">

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('ticket_subject');
             $table->string('description');
-            $table->enum('others', ['Low', 'Medium', 'High', 'Urgent']);
+            $table->enum('status', ['Order','Progres','Pending','Done','Cancel']);
             $table->timestamps();
 
         });

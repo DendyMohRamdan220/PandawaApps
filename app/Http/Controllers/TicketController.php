@@ -11,10 +11,11 @@ class TicketController extends Controller
     public function view_tiket(Request $request)
     {
         $totaltiket = Ticket::count();
-        $totallowtiket = Ticket::where('others', 'Low')->count();
-        $totalmediumtiket = Ticket::where('others', 'Medium')->count();
-        $totalhightiket = Ticket::where('others', 'High')->count();
-        $totalurgenttiket = Ticket::where('others', 'Urgent')->count();
+        $totalordertiket = Ticket::where('status', 'order')->count();
+        $totalprogrestiket = Ticket::where('status', 'progres')->count();
+        $totalpendingtiket = Ticket::where('status', 'pending')->count();
+        $totaldonetiket = Ticket::where('status', 'done')->count();
+        $totalcanceltiket = Ticket::where('status', 'cancel')->count();
 
         if ($request->has('search')) {
             $data = Ticket::where('ticket_subject', 'LIKE', '%' . $request->search . '%')->paginate(5);
@@ -23,10 +24,11 @@ class TicketController extends Controller
         }
         return view('Tickets.datatiket', compact('data'), [
             'totaltiket' => $totaltiket,
-            'totallowtiket' => $totallowtiket,
-            'totalmediumtiket' => $totalmediumtiket,
-            'totalhightiket' => $totalhightiket,
-            'totalurgenttiket' => $totalurgenttiket,
+            'totalordertiket' => $totalordertiket,
+            'totalprogrestiket' => $totalprogrestiket,
+            'totalpendingtiket' => $totalpendingtiket,
+            'totaldonetiket' => $totaldonetiket,
+            'totalcanceltiket' => $totalcanceltiket,
         ]);
     }
 
