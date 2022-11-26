@@ -149,7 +149,7 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a class="nav-link menu-title link-nav" href="/dataleads">
+                                        <a class="nav-link menu-title link-nav" href="/datalead_admin">
                                             <i data-feather="user"></i>
                                             <span>Leads</span>
                                         </a>

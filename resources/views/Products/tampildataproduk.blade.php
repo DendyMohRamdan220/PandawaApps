@@ -1,26 +1,26 @@
 @extends('Layouts.layout')
 
-@section('content')
+@section('conten')
     <div class="page-body">
         <div class="card">
             <div class="card-header pb-0">
-                <h5>Add Product Detail</h5>
+                <h5>Update Product</h5>
                 <div class="add-produk bg-dark-grey rounded">
-                    <form action="/insertdataproduk_admin" method="POST" enctype="multipart/form-data">
+                    <form action="/updatedataproduk_admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row p-20">
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="produk_name">Name<sup
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="name">Name<sup
                                             class="f-14 mr-1">*</sup></label>
-                                    <input type="text" class="form-control height-35 f-14" value=""
-                                        name="produk_name" id="produk_name" autocomplete="off">
+                                    <input type="text" class="form-control height-35 f-14" value="{{ $data->name }}"
+                                        name="name" id="name" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="true" for="price">Price</label>
-                                    <input type="text" class="form-control height-35 f-14" value="" name="price"
+                                    <input type="text" class="form-control height-35 f-14" value="{{ $data->price }}" name="price"
                                         id="price" autocomplete="off">
                                 </div>
                             </div>
@@ -30,6 +30,7 @@
                                 <div class="form-group mb-0">
                                     <select name="category" id="category" class="form-control select-picker"
                                         data-size="8">
+                                        <option selected>{{ $data->choose_agent }}</option>
                                         <option value="">--</option>
                                         <option value="1">Jasa</option>
                                         <option value="2">Elektronik</option>
@@ -63,7 +64,6 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-
                                 </div>
                             </div>
                         </div>
@@ -77,6 +77,3 @@
         </div>
     </div>
 @endsection
-
-
-{{-- <div class="w-100 border-top-grey d-block d-lg-flex d-md-flex justify-content-start px-4 py-3"> --}}
