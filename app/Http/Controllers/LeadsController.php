@@ -27,7 +27,7 @@ class LeadsController extends Controller
     public function insertdatalead_admin(Request $request)
     {
         Leads::create($request->all());
-        return redirect('datalead_admin')->with('success', 'leads added successfully .');
+        return redirect('/datalead_admin')->with('success', 'leads added successfully .');
     }
 
     public function editdatalead_admin($id)
@@ -40,14 +40,14 @@ class LeadsController extends Controller
     {
         $data = Leads::find($id);
         $data->update($request->all());
-        return redirect('datalead_admin')->with('success', 'Leads edited successfully .');
+        return redirect('/datalead_admin')->with('success', 'Leads edited successfully .');
     }
 
     public function deletedatalead_admin($id)
     {
         $data = Leads::find($id);
         $data->delete();
-        return redirect('datalead_admin')->with('success', 'leads deleted successfully .');
+        return redirect('/datalead_admin')->with('success', 'leads deleted successfully .');
     }
 
     public function exportpdf_admin()
