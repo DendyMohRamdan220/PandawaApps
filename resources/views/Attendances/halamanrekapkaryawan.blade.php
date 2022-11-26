@@ -24,7 +24,7 @@
                                 <input type="date" name="tglakhir" id="tglakhir" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <a href="" onclick="this.href='/filterdata/'+ document.getElementById('tglawal').value +
+                                <a href="" onclick="this.href='/filterdata_admin/'+ document.getElementById('tglawal').value +
                             '/' + document.getElementById('tglakhir').value " class="btn btn-primary col-md-12">
                                     Lihat <i class="icon-printer"></i>
                                 </a>

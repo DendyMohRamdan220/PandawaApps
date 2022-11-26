@@ -25,7 +25,7 @@
                             </div>
                             <div class="form-group">
                                 <a href=""
-                                    onclick="this.href='/filterdata/'+ document.getElementById('tglawal').value +
+                                    onclick="this.href='/filterdata_admin/'+ document.getElementById('tglawal').value +
                             '/' + document.getElementById('tglakhir').value "
                                     class="btn btn-primary col-md-12">
                                     Lihat <i class="fas fa-print"></i>

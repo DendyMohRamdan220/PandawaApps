@@ -20,17 +20,20 @@ class DashboardController extends Controller
 
         $data = User::all();
         $totaltiket = Ticket::count();
-        $totallowtiket = Ticket::where('others', 'Low')->count();
-        $totalmediumtiket = Ticket::where('others', 'Medium')->count();
-        $totalhightiket = Ticket::where('others', 'High')->count();
-        $totalurgenttiket = Ticket::where('others', 'Urgent')->count();
+        $totalordertiket = Ticket::where('status', 'order')->count();
+        $totalprogrestiket = Ticket::where('status', 'progres')->count();
+        $totalpendingtiket = Ticket::where('status', 'pending')->count();
+        $totaldonetiket = Ticket::where('status', 'done')->count();
+        $totalcanceltiket = Ticket::where('status', 'cancel')->count();
+
 
         return view('dashboardv1', compact('data'), [
             'totaltiket' => $totaltiket,
-            'totallowtiket' => $totallowtiket,
-            'totalmediumtiket' => $totalmediumtiket,
-            'totalhightiket' => $totalhightiket,
-            'totalurgenttiket' => $totalurgenttiket,
+            'totalordertiket' => $totalordertiket,
+            'totalprogrestiket' => $totalprogrestiket,
+            'totalpendingtiket' => $totalpendingtiket,
+            'totaldonetiket' => $totaldonetiket,
+            'totalcanceltiket' => $totalcanceltiket,
         ]);
 
     }

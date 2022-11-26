@@ -119,6 +119,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::post('updateemployee_admin/{id}', [EmployeeController::class, 'updateemployee']);
     Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'hapusemployee']);
 
+    Route::get('filterdata_admin',[AbsensiController::class,'halamanrekap']);
+    Route::get('filterdata_admin/{tglawal}/{tglakhir}',[AbsensiController::class,'tampildatakeseluruhan']);
     //Attendances>>
     // Route::get('attendance_admin', [AttendanceController::class, 'index']);
     // Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);

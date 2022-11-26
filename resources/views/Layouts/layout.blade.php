@@ -172,6 +172,9 @@
                                             <li>
                                                 <a href="/attendance_admin">Attendance</a>
                                             </li>
+                                            <li>
+                                                <a href="/filterdata_admin">Attendance Recap</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
