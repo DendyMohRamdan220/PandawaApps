@@ -183,8 +183,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
     Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
 
-    //
+    //Projects
+    Route::get('dataproject_employee', [ProjectController::class, 'dataproject_employee']);
 
+    //Tasks
+    Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
 });
 
 /*

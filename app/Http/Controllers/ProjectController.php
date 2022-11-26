@@ -48,4 +48,15 @@ class ProjectController extends Controller
         $data->delete();
         return redirect('dataproject_admin')->with('success', 'project data deleted successfully .');
     }
+
+    //Employee
+    public function dataproject_employee(Request $request)
+    {
+    if ($request->has('search')) {
+    $data = project::where('projectname', 'LIKE', '%' . $request->search . '%')->paginate(5);
+    } else {
+    $data = project::paginate(5);
+    }
+    return view('Projects.dataproject_employee', compact('data'));
+    }
 }
