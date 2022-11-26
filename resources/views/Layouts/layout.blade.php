@@ -272,9 +272,9 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="#">
+                                        <a class="nav-link menu-title link-nav" href="ticket_employee">
                                             <i data-feather="headphones"></i>
-                                            <span>Ticket</span>
+                                            <span>Support Ticket</span>
                                         </a>
                                     </li>
                                 @endif
