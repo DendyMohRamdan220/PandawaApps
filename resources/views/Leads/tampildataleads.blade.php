@@ -5,14 +5,9 @@
 <div class="page-body">
     <div class="card">
         <div class="card-header pb-0">
-            <h5>Add Leads Detail</h5>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item">Leads</li>
-                <li class="breadcrumb-item active">Add Leads Detail</li>
-            </ol>
+            <h5>Update Leads Detail</h5>
         <div class="add-client bg-dark-grey rounded">
-            <form action="/insertdatalead_admin" method="POST" enctype="multipart/form-data">
+            <form action="/updatetdatalead_admin{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row p-20">
                     <div class="col-lg-4 col-md-6">
@@ -408,7 +403,3 @@
 </div>
 
 @endsection
-
-
-{{-- <div class="w-100 border-top-grey d-block d-lg-flex d-md-flex justify-content-start px-4 py-3"> --}}
-

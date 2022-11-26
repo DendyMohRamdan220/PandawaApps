@@ -24,7 +24,7 @@ class LeadsController extends Controller
         return view('Leads.tambahdataleads');
     }
 
-    public function insertdataleads(Request $request)
+    public function insertdatalead(Request $request)
     {
         Leads::create($request->all());
         return redirect()->route('leads')->with('success', 'leads added successfully .');
