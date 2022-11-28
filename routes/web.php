@@ -196,11 +196,20 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
     Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
 
-    //Tasks
+    //Projects>>
+    Route::get('dataproject_employee', [ProjectController::class, 'dataproject_employee']);
+
+    //Tasks>>
     Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
 
-    //Tasks
-    Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
+    //Tickets>>
+    Route::get('ticket_employee', [TicketController::class, 'viewtiket_employee']);
+    Route::get('tambahtiket_employee', [TicketController::class, 'tambahtiket_employee']);
+    Route::post('insertdatatiket_employee', [TicketController::class, 'insertdatatiket_employee']);
+    Route::get('tampildatatiket_employee/{id}', [TicketController::class, 'tampildatatiket_employee']);
+    Route::post('updatedataticket_employee/{id}', [TicketController::class, 'updatedataticket_employee']);
+    Route::get('deleteticket_employee/{id}', [TicketController::class, 'deleteticket_employee']);
+
 });
 
 /*
