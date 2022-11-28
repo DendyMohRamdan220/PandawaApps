@@ -32,8 +32,8 @@ class ProductsController extends Controller
 
     public function editdataproduk_admin($id)
     {
-        $data = Leads::find($id);
-        return view('Leads.tampildataproduk', compact('data'));
+        $data = Products::find($id);
+        return view('Products.tampildataproduk', compact('data'));
     }
 
     public function updatedataproduk_admin(Request $request, $id)
@@ -54,7 +54,7 @@ class ProductsController extends Controller
     {
         $data = Products::all();
         view()->share('data', $data);
-        $pdf = PDF::loadview('Products.dataproduk-pdf');
+        $pdf = PDF::loadview('Products.dataproduk-pdf_admin');
         return $pdf->download('data_products.pdf');
     }
 }

@@ -91,7 +91,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
     // PRODUCTS >>
     Route::get('dataproduk_admin', [ProductsController::class, 'dataproduk_admin']);
-    Route::get('/tambahdataproduk_admin', [ProductsController::class, 'tambahdataproduk_admin']);
+    Route::get('tambahdataproduk_admin', [ProductsController::class, 'tambahdataproduk_admin']);
     Route::post('insertdataproduk_admin', [ProductsController::class, 'insertdataproduk_admin']);
     Route::get('editdataproduk_admin/{id}', [ProductsController::class, 'editdataproduk_admin']);
     Route::post('updatedataproduk_admin/{id}', [ProductsController::class, 'updatedataproduk_admin']);
@@ -143,11 +143,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 
     /* << Finance >> */
     // ProposalL >>
-    Route::get('/dataproposal_admin', [ProposalsController::class, 'index']);
-    Route::get('/tambahdataproposal', [ProposalsController::class, 'tambahproposal']);
-    Route::post('/insertdataproposal', [ProposalsController::class, 'insertdataproposal']);
-    Route::get('/tampildataproposal/{id}', [ProposalsController::class, 'tampildataproposal']);
-    Route::get('/deleteproposal/{id}', [ProposalsController::class, 'deleteproposal']);
+    Route::get('dataproposal_admin', [ProposalsController::class, 'dataproposal_admin']);
+    Route::get('tambahdataproposal_admin', [ProposalsController::class, 'tambahdataproposal_admin']);
+    Route::post('insertdataproposal_admin', [ProposalsController::class, 'insertdataproposal_admin']);
+    Route::get('editdataproposal_admin/{id}', [ProposalsController::class, 'editdatalead_admin']);
+    Route::post('updatedataproposal_admin/{id}', [ProposalsController::class, 'updatedataproposal_admin']);
+    Route::get('deletedataproposal_admin/{id}', [ProposalsController::class, 'deletedataproposal_admin']);
     // Estimates >>
     // Invoices >>
     // Payments >>

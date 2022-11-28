@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
+            $table->string('proposal_name');
             $table->string('leads_name');
             $table->date ('valid_till');
             $table->enum('currency', ['IDR', 'USD', 'EUR']);
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->string('filename');
             $table->double('subtotal');
             $table->double('total');
-            
+
             $table->timestamps();
         });
     }

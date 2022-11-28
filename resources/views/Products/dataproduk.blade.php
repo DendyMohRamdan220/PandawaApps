@@ -1,15 +1,6 @@
 @extends('Layouts.layout')
 
 @section('content')
-    @push('css')
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-            integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @endpush
-
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-header">
@@ -22,25 +13,6 @@
                             <li class="breadcrumb-item active">Product</li>
                         </ol>
                     </div>
-                    {{-- <div class="col-sm-6">
-                  <!-- Bookmark Start-->
-                  <div class="bookmark">
-                    <ul>
-                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
-                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
-                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
-                      <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
-                      <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
-                        <form class="form-inline search-form">
-                          <div class="form-group form-control-search">
-                            <input type="text" placeholder="Search..">
-                          </div>
-                        </form>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- Bookmark Ends-->
-                </div> --}}
                 </div>
             </div>
         </div>
@@ -61,7 +33,7 @@
                                                 class="nav-icon icon-plus"></i> Add Product</a>
                                     </div>
                                     <div class="col-auto">
-                                        <form action="/dataproduk" method="GET">
+                                        <form action="/dataproduk_admin" method="GET">
                                             <input type="search" id="inputPassword6" name="search" class="form-control"
                                                 aria-describedby="passwordHelpInline">
                                         </form>
@@ -77,8 +49,8 @@
                                             <thead class="tbl-strip-thad-bdr">
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Product Image</th>
-                                                    <th scope="col">Product</th>
+                                                    <th scope="col">Product Name</th>
+                                                    {{-- <th scope="col">Product Image</th> --}}
                                                     <th scope="col">Price</th>
                                                     <th scope="col">Action</th>
                                                 </tr>
@@ -87,36 +59,21 @@
                                                 @php
                                                     $no = 1;
                                                 @endphp
-                                                @foreach ($data as $view_tiket => $row)
+                                                @foreach ($data as $dataproduk_admin => $row)
                                                     <tr>
-                                                        <th scope="row">{{ $view_tiket + $data->firstItem() }}</th>
-                                                        <td>{{ $row->ticket_subject }}</td>
-                                                        <td>{{ $row->description }}</td>
-                                                        <td>{{ $row->others }}</td>
+                                                        <th scope="row">{{ $dataproduk_admin + $data->firstItem() }}</th>
+                                                        <td>{{ $row->name }}</td>
+                                                        {{-- <td>{{ $row->file_upload }}</td> --}}
+                                                        <td>{{ $row->price }}</td>
                                                         {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
                                                         <td>
-                                                            <div class="dropleft">
-                                                                <a class="btn btn-success task_view_more"
-                                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                        height="16" fill="currentColor" color="white"
-                                                                        class="bi bi-three-dots-vertical"
-                                                                        viewBox="1 1 16 16">
-                                                                        <path
-                                                                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                                                    </svg>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item"
-                                                                        href="/tampildataleads_admin/{{ $row->id }}">
-                                                                        <i class="nav-icon icon-pencil-alt"></i> Update</a>
-                                                                    <a class="dropdown-item delete" href="#"
-                                                                        data-id="{{ $row->id }}"
-                                                                        data-subject="{{ $row->ticket_subject }}"> <i
-                                                                            class="nav-icon icon-trash"></i> Delete</a>
-                                                                </div>
-                                                            </div>
+                                                            <a class="btn btn-info"
+                                                                href="/editdataproduk_admin/{{ $row->id }}">
+                                                                <i class="nav-icon icon-pencil-alt"></i></a>
+                                                            <a class="btn btn-danger delete" href="#"
+                                                                data-id="{{ $row->id }}"
+                                                                data-name="{{ $row->name }}">
+                                                                <i class="nav-icon icon-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -165,24 +122,24 @@
     </body>
     <script>
         $('.delete').click(function() {
-            var tiketid = $(this).attr('data-id');
-            var namatiket = $(this).attr('data-subject');
+            var produkid = $(this).attr('data-id');
+            var produkname = $(this).attr('data-subject');
             swal({
                     title: "Are you sure?",
                     text: "Once deleted, you will not be able to recover data from the Ticket Subject " +
-                        namatiket + " ",
+                        produkname + " ",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/delete/" + tiketid + ""
-                        swal("Your data from Ticket Subject " + namatiket + " has been deleted!", {
+                        window.location = "/deletedataproduk_admin/" + produkid + ""
+                        swal("Your data from Ticket Subject " + produkname + " has been deleted!", {
                             icon: "success",
                         });
                     } else {
-                        swal("Deletion of data from Ticket Subject " + namatiket + " has been cancelled!");
+                        swal("Deletion of data from Ticket Subject " + produkname + " has been cancelled!");
                     }
                 });
         });

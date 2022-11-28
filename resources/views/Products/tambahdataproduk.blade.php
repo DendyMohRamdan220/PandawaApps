@@ -11,10 +11,10 @@
                         <div class="row p-20">
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="produk_name">Name<sup
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="name">Name<sup
                                             class="f-14 mr-1">*</sup></label>
                                     <input type="text" class="form-control height-35 f-14" value=""
-                                        name="produk_name" id="produk_name" autocomplete="off">
+                                        name="name" id="name" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
@@ -28,7 +28,7 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="produk_kategori">Product
                                     Category</label>
                                 <div class="form-group mb-0">
-                                    <select name="category" id="category" class="form-control select-picker"
+                                    <select name="produk_kategori" id="produk_kategori" class="form-control select-picker"
                                         data-size="8">
                                         <option value="">--</option>
                                         <option value="1">Jasa</option>
@@ -56,7 +56,7 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="file_upload">File
                                     Upload</label>
                                 <div class="form-group mb-0">
-                                    <input type="file" name="file"
+                                    <input type="file" name="file_upload"
                                         class="file-upload-default  @error('file') is-invalid @enderror">
                                     @error('file')
                                         <div class="invalid-feedback">
@@ -67,12 +67,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card-footer text-end">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <input class="btn btn-light" type="reset" value="Cancel">
+                        </div>
                     </form>
                 </div>
-                <div class="card-footer text-end">
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                    <input class="btn btn-light" type="reset" value="Cancel">
-                </div>
+
             </div>
         </div>
     </div>

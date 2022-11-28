@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('price');
             $table->enum('produk_kategori', ['Jasa', 'Maintenance']);
             $table->enum('produk_sub_kategori', ['Laptop', 'Angine', 'Notebook']);
-            $table->text('description');
             $table->string('file_upload');
             $table->timestamps();
         });

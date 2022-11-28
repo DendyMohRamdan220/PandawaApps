@@ -20,17 +20,17 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="true" for="price">Price</label>
-                                    <input type="text" class="form-control height-35 f-14" value="{{ $data->price }}" name="price"
-                                        id="price" autocomplete="off">
+                                    <input type="text" class="form-control height-35 f-14" value="{{ $data->price }}"
+                                        name="price" id="price" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="produk_kategori">Product
                                     Category</label>
                                 <div class="form-group mb-0">
-                                    <select name="category" id="category" class="form-control select-picker"
+                                    <select name="produk_kategori" id="produk_kategori" class="form-control select-picker"
                                         data-size="8">
-                                        <option selected>{{ $data->choose_agent }}</option>
+                                        <option selected>{{ $data->produk_kategori }}</option>
                                         <option value="">--</option>
                                         <option value="1">Jasa</option>
                                         <option value="2">Elektronik</option>
@@ -45,6 +45,7 @@
                                 <div class="form-group mb-0">
                                     <select name="produk_sub_kategori" id="produk_sub_kategori"
                                         class="form-control select-picker" data-size="8">
+                                        <option selected>{{ $data->produk_sub_kategori }}</option>
                                         <option value="">--</option>
                                         <option value="1">Laptop</option>
                                         <option value="2">Angine</option>
@@ -53,11 +54,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-6">
+                            {{-- <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="file_upload">File
                                     Upload</label>
                                 <div class="form-group mb-0">
-                                    <input type="file" name="file"
+                                    <input type="file" name="file_upload"
                                         class="file-upload-default  @error('file') is-invalid @enderror">
                                     @error('file')
                                         <div class="invalid-feedback">
@@ -65,7 +66,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </form>
                 </div>
