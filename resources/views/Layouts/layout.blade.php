@@ -149,7 +149,7 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a class="nav-link menu-title link-nav" href="/dataleads">
+                                        <a class="nav-link menu-title link-nav" href="/datalead_admin">
                                             <i data-feather="user"></i>
                                             <span>Leads</span>
                                         </a>
@@ -272,9 +272,9 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="#">
+                                        <a class="nav-link menu-title link-nav" href="ticket_employee">
                                             <i data-feather="headphones"></i>
-                                            <span>Ticket</span>
+                                            <span>Support Ticket</span>
                                         </a>
                                     </li>
                                 @endif

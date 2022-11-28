@@ -6,10 +6,10 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3> Leads </h3>
+                        <h3> Tasks </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
-                            <li class="breadcrumb-item active"> Leads </li>
+                            <li class="breadcrumb-item active"> Tasks </li>
                         </ol>
                     </div>
                 </div>
@@ -19,18 +19,10 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatalead_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add
-                            Leads</a>
-                    </div>
-                    <div class="col-auto">
-                        <form action="/datalead_admin" method="GET">
+                        <form action="/datatask_employee" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
                                 aria-describedby="passwordHelpInline">
                         </form>
-                    </div>
-                    <div class="col-auto">
-                        <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
-                            PDF</a>
                     </div>
                 </div>
             </div>
@@ -40,47 +32,30 @@
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Company Name</th>
-                                <th scope="col">Mobile Phone</th>
-                                <th scope="col">Created at</th>
-                                <th scope="col">Next Follow Up</th>
-                                <th scope="col">Lead Agent</th>
+                                <th scope="col">Task Name</th>
+                                <th scope="col">Project</th>
+                                <th scope="col">Startdate</th>
+                                <th scope="col">Duedate</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $datalead_admin => $row)
+                            @foreach ($data as $index => $row)
                                 <tr>
-                                    <th scope="row">{{ $datalead_admin + $data->firstItem() }}</th>
-                                    <td>{{ $row->leads_name }}</td>
-                                    <td>{{ $row->company_name }}</td>
-                                    <td>{{ $row->mobile_phone }}</td>
-                                    <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
-                                    <td>{{ $row->next_follow_up }}</td>
-                                    <td>{{ $row->choose_agent }}</td>
+                                    <th scope="row">{{ $index + $data->firstItem() }}</th>
+                                    <td>{{ $row->taskname }}</td>
+                                    <td>{{ $row->project }}</td>
+                                    <td>{{ $row->startdate }}</td>
+                                    <td>{{ $row->duedate }}</td>
                                     <td>{{ $row->status }}</td>
-                                    <td>
-                                        <a class="btn btn-info" href="/editdatalead_admin/{{ $row->id }}">
-                                            <i class="nav-icon icon-pencil-alt"></i></a>
-                                        <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                            data-name="{{ $row->leads_name }}">
-                                            <i class="nav-icon icon-trash"></i></a>
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="card-body">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary">{{ $data->links() }}
-                            </ul>
-                        </nav>
-                    </div>
+                    {{ $data->links() }}
                 </div>
             </div>
         </div>
@@ -109,26 +84,27 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
+
     <script>
         $('.delete').click(function() {
-            var leadid = $(this).attr('data-id');
-            var leads_name = $(this).attr('data-name');
+            var idtask = $(this).attr('data-id');
+            var nametask = $(this).attr('data-task');
             swal({
                     title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the Leads Name " +
-                        leads_name + " ",
+                    text: "Once deleted, you will not be able to recover data from the Task Name " + nametask +
+                        " ",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deletedatalead_admin/" + leadid + ""
-                        swal("Your data from Ticket Subject " + leads_name + " has been deleted!", {
+                        window.location = "/deletedatatask_admin/" + idtask + ""
+                        swal("Your data from Task Name " + nametask + " has been deleted!", {
                             icon: "success",
                         });
                     } else {
-                        swal("Deletion of data from Leads Name " + leads_name + " has been cancelled!");
+                        swal("Deletion of data from Task Name " + nametask + " has been cancelled!");
                     }
                 });
         });

@@ -9,7 +9,7 @@ use PDF;
 class LeadsController extends Controller
 {
     //
-    public function index(Request $request)
+    public function datalead_admin(Request $request)
     {
         if ($request->has('search')) {
             $data = Leads::where('leads_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
@@ -19,42 +19,42 @@ class LeadsController extends Controller
         return view('Leads.dataleads', compact('data'));
     }
 
-    public function tambahleads()
+    public function tambahdatalead_admin()
     {
         return view('Leads.tambahdataleads');
     }
 
-    public function insertdatalead(Request $request)
+    public function insertdatalead_admin(Request $request)
     {
         Leads::create($request->all());
-        return redirect()->route('leads')->with('success', 'leads added successfully .');
+        return redirect('/datalead_admin')->with('success', 'leads added successfully .');
     }
 
-    public function tampildataleads($id)
+    public function editdatalead_admin($id)
     {
         $data = Leads::find($id);
         return view('Leads.tampildataleads', compact('data'));
     }
 
-    public function updatedataleads(Request $request, $id)
+    public function updatedatalead_admin(Request $request, $id)
     {
         $data = Leads::find($id);
         $data->update($request->all());
-        return redirect()->route('leads')->with('success', 'leads edited successfully .');
+        return redirect('/datalead_admin')->with('success', 'Leads edited successfully .');
     }
 
-    public function delete($id)
+    public function deletedatalead_admin($id)
     {
         $data = Leads::find($id);
         $data->delete();
-        return redirect()->route('leads')->with('success', 'leads deleted successfully .');
+        return redirect('/datalead_admin')->with('success', 'leads deleted successfully .');
     }
 
-    public function exportpdf()
+    public function exportpdf_admin()
     {
         $data = Leads::all();
         view()->share('data', $data);
-        $pdf = PDF::loadview('Leads.dataleads-pdf');
+        $pdf = PDF::loadview('Leads.dataleads-pdf_admin');
         return $pdf->download('data.pdf');
     }
 }

@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('price');
-            $table->string('taxes');
-            $table->text('description');
-            $table->bigInteger('category_id');
-            $table->bigInteger('sub_category_id');
-            $table->string('defaul_image');
+            $table->enum('produk_kategori', ['Jasa', 'Maintenance']);
+            $table->enum('produk_sub_kategori', ['Laptop', 'Angine', 'Notebook']);
+            $table->string('file_upload');
             $table->timestamps();
         });
     }

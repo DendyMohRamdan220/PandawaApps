@@ -9,52 +9,52 @@ use PDF;
 class ProductsController extends Controller
 {
     //
-    public function index(Request $request)
+    public function dataproduk_admin(Request $request)
     {
         if ($request->has('search')) {
-            $data = Products::where('product', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $data = Products::where('name', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
             $data = Products::paginate(5);
         }
         return view('Products.dataproduk', compact('data'));
     }
 
-    public function tambahproduk()
+    public function tambahdataproduk_admin()
     {
         return view('Products.tambahdataproduk');
     }
 
-    public function insertdataproduk(Request $request)
+    public function insertdataproduk_admin(Request $request)
     {
         Products::create($request->all());
-        return redirect()->route('products')->with('success', 'Product added successfully .');
+        return redirect('/dataproduk_admin')->with('success', 'Product added successfully .');
     }
 
-    public function tampildataproduk($id)
+    public function editdataproduk_admin($id)
     {
         $data = Products::find($id);
         return view('Products.tampildataproduk', compact('data'));
     }
 
-    public function updatedataproduk(Request $request, $id)
+    public function updatedataproduk_admin(Request $request, $id)
     {
         $data = Products::find($id);
         $data->update($request->all());
-        return redirect()->route('products')->with('success', 'Products edited successfully .');
+        return redirect('/dataproduk_admin')->with('success', 'Products edited successfully .');
     }
 
-    public function delete($id)
+    public function deletedataproduk_admin($id)
     {
         $data = Products::find($id);
         $data->delete();
-        return redirect()->route('products')->with('success', 'Products deleted successfully .');
+        return redirect('/dataproduk_admin')->with('success', 'Products deleted successfully .');
     }
 
     public function exportpdf()
     {
         $data = Products::all();
         view()->share('data', $data);
-        $pdf = PDF::loadview('Products.dataproduk-pdf');
+        $pdf = PDF::loadview('Products.dataproduk-pdf_admin');
         return $pdf->download('data_products.pdf');
     }
 }
