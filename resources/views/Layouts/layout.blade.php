@@ -201,7 +201,7 @@
                                                 <a href="/dataproposal_admin">Proposal</a>
                                             </li>
                                             <li>
-                                                <a href="#">Estimates</a>
+                                                <a href="/dataestimate_admin">Estimates</a>
                                             </li>
                                             <li>
                                                 <a href="#">Invoices</a>
