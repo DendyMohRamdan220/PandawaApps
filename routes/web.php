@@ -15,6 +15,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\KnowledgebaseController;
+use App\Http\Controllers\InvoicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -160,7 +161,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::post('updatedataestimate_admin/{id}', [EstimatesController::class, 'updatedataestimate_admin']);
     Route::get('deletedataestimate_admin/{id}', [EstimatesController::class, 'deletedataestimate_admin']);
 
-    // Invoices >>
+    // invoices >>
+    Route::get('datainvoices_admin', [InvoicesController::class, 'datainvoices_admin']);
+    Route::get('tambahdatainvoices_admin', [InvoicesController::class, 'tambahdatainvoices_admin']);
+    Route::post('insertdatainvoices_admin', [InvoicesController::class, 'insertdatainvoices_admin']);
+    Route::get('editdatainvoices_admin/{id}', [InvoicesController::class, 'editdatainvoices_admin']);
+    Route::post('updatedatainvoices_admin/{id}', [InvoicesController::class, 'updatedatainvoices_admin']);
+    Route::get('deletedatainvoices_admin/{id}', [InvoicesController::class, 'deletedatainvoices_admin']);
     // Payments >>
     Route::get('/datapayment_admin', [PaymentsController::class, 'index']);
     Route::get('/tambahdatapayment', [PaymentsController::class, 'tambahpayment']);

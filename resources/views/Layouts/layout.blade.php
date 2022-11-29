@@ -204,10 +204,13 @@
                                                 <a href="/dataestimate_admin">Estimates</a>
                                             </li>
                                             <li>
-                                                <a href="#">Invoices</a>
+                                                <a href="/datainvoices_admin">Invoices</a>
                                             </li>
                                             <li>
-                                                <a href="#">Payments</a>
+                                                <a href="/datapaymnets_admin">Payments</a>
+                                            </li>
+                                            <li>
+                                                <a href="/dataexpenses_admin">Expenses</a>
                                             </li>
                                         </ul>
                                     </li>

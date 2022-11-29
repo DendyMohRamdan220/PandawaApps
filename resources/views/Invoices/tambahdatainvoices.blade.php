@@ -9,20 +9,20 @@
                         <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Estimate Details</h4>
                     </div>
                     <hr class="m-0 border-top-grey">
-                    <form action="/insertdataestimate_admin" method="POST" enctype="multipart/form-data">
+                    <form action="/insertdatainvoices_admin" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group mb-0">
-                                    <label class="f-14 text-dark-grey mb-12 mt-3 text-capitalize" for="usr">Estimate
+                                    <label class="f-14 text-dark-grey mb-12 mt-3 text-capitalize" for="usr">Invoice
                                         Number</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend  height-35 ">
                                             <span
                                                 class="input-group-text border-grey f-15 bg-additional-grey px-3 text-dark"
-                                                id="basic-addon1">EST#00</span>
+                                                id="basic-addon1">INV#00</span>
                                         </div>
-                                        <input type="text" name="estimate_number" id="estimate_number"
+                                        <input type="text" name="invoice_number" id="invoice_number"
                                             class="form-control height-35 f-15" value="" placeholder="ex.01"
                                             aria-label="ex.01" aria-describedby="basic-addon1" autocomplete="off">
                                     </div>
@@ -31,12 +31,22 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
 
-                                    <label for="label">Valid till</label>
-                                    <input type="date" value="" name="valid_till" id="valid_till"
+                                    <label for="label">Invoice Date</label>
+                                    <input type="date" value="" name="invoice_date" id="invoice_date"
                                         class="form-control" />
 
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group my-3">
+
+                                    <label for="label">Due Date</label>
+                                    <input type="date" value="" name="due_date" id="due_date"
+                                        class="form-control" />
+
+                                </div>
+                            </div>
+                            <hr class="m-0 border-top-grey">
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="currency">Currency</label>
                                 <div class="form-group mb-0">
@@ -72,16 +82,25 @@
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
-                                    Product</label>
+                                    Project</label>
                                 <div class="form-group mb-0">
-                                    <select name="select_product" id="select_product" class="form-control select-picker"
+                                    <select name="select_project" id="select_project" class="form-control select-picker"
                                         data-size="8">
                                         <option value="">--</option>
                                         <option value="1">
-                                            Jasa</option>
+                                            Project 1</option>
                                         <option value="2">
-                                            Elektronik</option>
+                                            Project 2</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group my-3">
+
+                                    <label for="label">Shipping Address</label>
+                                    <textarea class="form-control" name="shipping_address" id="shipping_address" rows="4" placeholder="e.g. 132, My Street, Kingston, New York 12401"></textarea>
+
                                 </div>
                             </div>
 

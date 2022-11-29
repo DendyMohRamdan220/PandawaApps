@@ -24,7 +24,7 @@
                                         </div>
                                         <input type="text" name="estimate_number" id="estimate_number"
                                             class="form-control height-35 f-15" value="{{ $data->estimate_number }}"
-                                            placeholder="ex.01" aria-label="ex.01" aria-describedby="basic-addon1"
+                                            placeholder="ex.001" aria-label="ex.001" aria-describedby="basic-addon1"
                                             autocomplete="off">
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                 <div class="form-group mb-0">
                                     <select name="choose_client" id="choose_client" class="form-control select-picker"
                                         data-size="8">
-                                        <option selected>{{ $data->select_client }}</option>
+                                        <option selected>{{ $data->choose_client }}</option>
                                         <option value="">--</option>
                                         <option value="1">Zachry</option>
                                         <option value="2">Fauziah</option>
@@ -93,7 +93,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Qty / Hrs</label>
-                                    <input type="number" value="{{ $data->quantity }}" name="quantity" id="quantity " class="form-control" />
+                                    <input type="number" value="{{ $data->quantity }}" name="quantity" id="quantity "
+                                        class="form-control" />
 
                                 </div>
                             </div>
@@ -102,7 +103,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Unit Price</label>
-                                    <input type="text" value="{{ $data->unit_price }}" name="unit_price" id="unit_price " class="form-control" />
+                                    <input type="text" value="{{ $data->unit_price }}" name="unit_price" id="unit_price "
+                                        class="form-control" />
 
                                 </div>
                             </div>
@@ -111,7 +113,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Amount</label>
-                                    <input type="text" value="{{ $data->amount }}" name="amount" id="amount " class="form-control" />
+                                    <input type="text" value="{{ $data->amount }}" name="amount" id="amount "
+                                        class="form-control" />
 
                                 </div>
                             </div>
@@ -123,6 +126,23 @@
                                     <input type="text" value="{{ $data->total }}" name="total" id="total "
                                         class="form-control" />
 
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group my-3">
+                                    <label for="label">Status</label>
+                                    <select name="status" id="status" class="form-control select-picker"
+                                        data-size="8">
+                                        <option selected>{{ $data->status }}</option>
+                                        <option value="">--</option>
+                                        <option value="1">
+                                            Accepted</option>
+                                        <option value="2">
+                                            Waiting</option>
+                                        <option value="3">
+                                            Decline</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="card-footer text-end">

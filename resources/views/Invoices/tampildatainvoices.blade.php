@@ -6,42 +6,54 @@
             <div class="content-wrapper">
                 <div class="bg-dark-grey rounded b-shadow-4 create-inv">
                     <div class="px-lg-4 px-md-4 px-3 py-3">
-                        <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Estimate Details</h4>
+                        <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Invoices Details</h4>
                     </div>
                     <hr class="m-0 border-top-grey">
-                    <form action="/insertdataestimate_admin" method="POST" enctype="multipart/form-data">
+                    <form action="/updatedatainvoices_admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group mb-0">
-                                    <label class="f-14 text-dark-grey mb-12 mt-3 text-capitalize" for="usr">Estimate
+                                    <label class="f-14 text-dark-grey mb-12 mt-3 text-capitalize" for="usr">Invoice
                                         Number</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend  height-35 ">
                                             <span
                                                 class="input-group-text border-grey f-15 bg-additional-grey px-3 text-dark"
-                                                id="basic-addon1">EST#00</span>
+                                                id="basic-addon1">INV#00</span>
                                         </div>
-                                        <input type="text" name="estimate_number" id="estimate_number"
-                                            class="form-control height-35 f-15" value="" placeholder="ex.01"
-                                            aria-label="ex.01" aria-describedby="basic-addon1" autocomplete="off">
+                                        <input type="text" name="invoice_number" id="invoice_number"
+                                            class="form-control height-35 f-15" value="{{ $data->invoice_number }}"
+                                            placeholder="ex.01" aria-label="ex.01" aria-describedby="basic-addon1"
+                                            autocomplete="off">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
 
-                                    <label for="label">Valid till</label>
-                                    <input type="date" value="" name="valid_till" id="valid_till"
+                                    <label for="label">Invoice Date</label>
+                                    <input type="date" value="{{ $data->invoice_date }}" name="invoice_date"
+                                        id="invoice_date" class="form-control" />
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group my-3">
+
+                                    <label for="label">Due Date</label>
+                                    <input type="date" value="{{ $data->due_date }}" name="due_date" id="due_date"
                                         class="form-control" />
 
                                 </div>
                             </div>
+                            <hr class="m-0 border-top-grey">
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="currency">Currency</label>
                                 <div class="form-group mb-0">
                                     <select name="currency" id="currency" class="form-control select-picker"
                                         data-size="8">
+                                        <option selected>{{ $data->currency }}</option>
                                         <option value="1">
                                             USD ($)
                                         </option>
@@ -63,6 +75,7 @@
                                 <div class="form-group mb-0">
                                     <select name="choose_client" id="choose_client" class="form-control select-picker"
                                         data-size="8">
+                                        <option selected>{{ $data->choose_client }}</option>
                                         <option value="">--</option>
                                         <option value="1">Zachry</option>
                                         <option value="2">Fauziah</option>
@@ -71,16 +84,17 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
-                                    Product</label>
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_project">Select
+                                    Project</label>
                                 <div class="form-group mb-0">
-                                    <select name="select_product" id="select_product" class="form-control select-picker"
+                                    <select name="select_project" id="select_project" class="form-control select-picker"
                                         data-size="8">
+                                        <option selected>{{ $data->select_project }}</option>
                                         <option value="">--</option>
                                         <option value="1">
-                                            Jasa</option>
+                                            Project 1</option>
                                         <option value="2">
-                                            Elektronik</option>
+                                            Project 2</option>
                                     </select>
                                 </div>
                             </div>
@@ -88,8 +102,19 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
 
+                                    <label for="label">Shipping Address</label>
+                                    <textarea class="form-control" value="{{ $data->shipping_address }}" name="shipping_address" id="shipping_address" rows="4"
+                                        placeholder="e.g. 132, My Street, Kingston, New York 12401"></textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group my-3">
+
                                     <label for="label">Qty / Hrs</label>
-                                    <input type="number" name="quantity" id="quantity " class="form-control" />
+                                    <input type="number" value="{{ $data->quantity }}" name="quantity" id="quantity "
+                                        class="form-control" />
 
                                 </div>
                             </div>
@@ -98,7 +123,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Unit Price</label>
-                                    <input type="text" name="unit_price" id="unit_price " class="form-control" />
+                                    <input type="text" value="{{ $data->unit_price }}" name="unit_price"
+                                        id="unit_price " class="form-control" />
 
                                 </div>
                             </div>
@@ -107,7 +133,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Amount</label>
-                                    <input type="text" name="amount" id="amount " class="form-control" />
+                                    <input type="text" value="{{ $data->amount }}" name="amount" id="amount "
+                                        class="form-control" />
 
                                 </div>
                             </div>
@@ -116,7 +143,7 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Total</label>
-                                    <input type="text" value="" name="total" id="total "
+                                    <input type="text" value="{{ $data->total }}" name="total" id="total "
                                         class="form-control" />
 
                                 </div>
