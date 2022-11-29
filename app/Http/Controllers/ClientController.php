@@ -48,4 +48,15 @@ class ClientController extends Controller
         $data->delete();
         return redirect()->route('dataclient_admin')->with('success', 'client deleted successfully .');
     }
+
+    //employee
+    public function dataclient_employee(Request $request)
+    {
+    if ($request->has('search')) {
+    $data = Client::where('clientname', 'LIKE', '%' . $request->search . '%')->paginate(5);
+    } else {
+    $data = Client::paginate(5);
+    }
+    return view('Clients.dataclient_employee', compact('data'));
+    }
 }

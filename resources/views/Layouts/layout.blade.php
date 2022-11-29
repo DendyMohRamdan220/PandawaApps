@@ -277,6 +277,12 @@
                                             <span>Support Ticket</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="nav-link menu-title link-nav" href="dataclient_employee">
+                                            <i data-feather="list"></i>
+                                            <span>Customers</span>
+                                        </a>
+                                    </li>
                                 @endif
                                 @if (auth()->user()->level == '3')
                                     <li class="dropdown">
