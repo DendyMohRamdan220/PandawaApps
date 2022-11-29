@@ -28,7 +28,7 @@
                                     onclick="this.href='/filterdata_admin/'+ document.getElementById('tglawal').value +
                             '/' + document.getElementById('tglakhir').value "
                                     class="btn btn-primary col-md-12">
-                                    Lihat <i class="fas fa-print"></i>
+                                    Lihat <i class="icon-printer"></i>
                                 </a>
                             </div>
                             <div class="form-group">
