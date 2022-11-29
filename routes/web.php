@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ProposalsController;
+use App\Http\Controllers\KnowledgebaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -233,6 +234,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
  */
 Route::group(['middleware' => ['auth', 'ceklevel:3']], function () {
 
+    // Projects >>
+    Route::get('dataproject_client', [ProjectController::class, 'dataproject_client']);
+
+    // Tasks >>
+    Route::get('datatask_client', [TaskController::class, 'datatask_client']);
+
     //Tickets>>
     Route::get('dataticket_client', [TicketController::class, 'dataticket_client']);
     Route::get('tambahdataticket_client', [TicketController::class, 'tambahdataticket_client']);
@@ -241,5 +248,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:3']], function () {
     Route::post('updatedataticket_client/{id}', [TicketController::class, 'updatedataticket_client']);
     Route::get('deletedataticket_client/{id}', [TicketController::class, 'deletedataticket_client']);
     Route::get('exportpdf_client', [TicketController::class, 'exportpdf_client']);
+
+    // Knowledgebases >>
+    Route::get('knowledgebase', [KnowledgebaseController::class, 'knowledgebase']);
 
 });

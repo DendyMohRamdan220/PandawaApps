@@ -61,6 +61,7 @@
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
                                             data-name="{{ $row->taskname }}">
+                                            <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
