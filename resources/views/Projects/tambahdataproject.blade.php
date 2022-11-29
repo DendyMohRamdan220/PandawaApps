@@ -17,7 +17,7 @@
                         <form action="/insertdataproject_admin" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">projectname</label>
+                                <label for="exampleInputEmail1" class="form-label">Project name</label>
                                 <input type="text" name="projectname" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
                             </div>
@@ -37,7 +37,7 @@
                                     aria-describedby="emailHelp">
                             </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Status Project</label>
+                                    <label for="exampleInputEmail1" class="form-label">Status Project</label>
                                     <br>
                                     <select class="form-select" name="status" aria-label="Default select example">
                                         <option selected>Status</option>
