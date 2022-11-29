@@ -233,7 +233,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="#">
+                                        <a class="nav-link menu-title link-nav" href="/dataSettings_admin">
                                             <i data-feather="settings"></i>
                                             <span>Settings</span>
                                         </a>
@@ -278,6 +278,12 @@
                                         <a class="nav-link menu-title link-nav" href="ticket_employee">
                                             <i data-feather="headphones"></i>
                                             <span>Support Ticket</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link menu-title link-nav" href="dataclient_employee">
+                                            <i data-feather="list"></i>
+                                            <span>Customers</span>
                                         </a>
                                     </li>
                                 @endif
