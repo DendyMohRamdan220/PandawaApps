@@ -28,10 +28,6 @@
                                 aria-describedby="passwordHelpInline">
                         </form>
                     </div>
-                    <div class="col-auto">
-                        <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
-                            PDF</a>
-                    </div>
                 </div>
             </div>
             <div class="row mt-2">
