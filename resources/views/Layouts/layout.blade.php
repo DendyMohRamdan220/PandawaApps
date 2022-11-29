@@ -230,7 +230,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="#">
+                                        <a class="nav-link menu-title link-nav" href="/dataSettings_admin">
                                             <i data-feather="settings"></i>
                                             <span>Settings</span>
                                         </a>

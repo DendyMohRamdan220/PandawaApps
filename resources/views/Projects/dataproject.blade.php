@@ -48,9 +48,9 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $index => $row)
+                            @foreach ($data as $dataproject_admin => $row)
                                 <tr>
-                                    <th scope="row">{{ $index + $data->firstItem() }}</th>
+                                    <th scope="row">{{ $dataproject_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->projectname }}</td>
                                     <td>{{ $row->employee }}</td>
                                     <td>{{ $row->deadline }}</td>
@@ -95,7 +95,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </body>
 
     <script>
         $('.delete').click(function() {
