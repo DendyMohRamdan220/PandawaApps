@@ -3,6 +3,14 @@
 @section('content')
 <div class="page-body">
 <div class="content-wrapper">
+  <div class="col-sm-6">
+    <h3> Add Client </h3>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+        <li class="breadcrumb-item"><a href="/dataclient_admin"> Client </a></li>
+        <li class="breadcrumb-item active"> Add Client </li>
+    </ol>
+</div>
   <!-- /.content-header -->
 
   <div class="container">
@@ -43,7 +51,7 @@
               </div>
 
               <div class="form-group">
-                <label for="exampleInputEmail1">Gender</label>
+                <label for="exampleInputEmail1" class="form-label">Gender</label>
                 <br>
                 <select class="form-select" name="Gender" aria-label="Default select example">
                     <option selected>Choose :</option>
