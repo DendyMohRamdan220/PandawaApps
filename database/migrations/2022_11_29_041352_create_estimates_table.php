@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('proposals', function (Blueprint $table) {
+        Schema::create('estimates', function (Blueprint $table) {
             $table->id();
-            $table->string('proposal_name');
-            $table->enum('leads_name', ['Annisa Zachry Fauziah', 'John Doe', 'Dendy Moh Ramdan']);
+            $table->string('estimate_number');
             $table->date ('valid_till');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
+            $table->enum('choose_client', ['Zachry', 'Fauziah', 'Annisa']);
             $table->enum('select_product', ['Jasa', 'Elektronik']);
             $table->double('quantity');
             $table->double('unit_price');
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposals');
+        Schema::dropIfExists('estimates');
     }
 };

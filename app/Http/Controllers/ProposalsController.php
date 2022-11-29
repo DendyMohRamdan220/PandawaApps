@@ -45,7 +45,7 @@ class ProposalsController extends Controller
 
     public function deletedataproposal_admin($id)
     {
-        $data = Proposal::find($id);
+        $data = Proposals::find($id);
         $data->delete();
         return redirect('/dataproposal_admin')->with('success', 'Proposal deleted successfully .');
     }
