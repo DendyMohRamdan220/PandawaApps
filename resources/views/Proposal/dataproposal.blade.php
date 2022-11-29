@@ -57,41 +57,22 @@
                                                             @php
                                                                 $no = 1;
                                                             @endphp
-                                                            @foreach ($data as $view_tiket => $row)
+                                                            @foreach ($data as $dataproposal_admin => $row)
                                                                 <tr>
                                                                     <th scope="row">
-                                                                        {{ $view_tiket + $data->firstItem() }}</th>
-                                                                    <td>{{ $row->ticket_subject }}</td>
-                                                                    <td>{{ $row->description }}</td>
-                                                                    <td>{{ $row->others }}</td>
-                                                                    {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
+                                                                        {{ $dataproposal_admin + $data->firstItem() }}</th>
+                                                                    <td>{{ $row->proposal_name }}</td>
+                                                                    <td>{{ $row->total }}</td>
+                                                                    <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
+                                                                    <td>{{ $row->valid_till }}</td>
                                                                     <td>
-                                                                        <div class="dropleft">
-                                                                            <a class="btn btn-success task_view_more"
-                                                                                data-toggle="dropdown" aria-haspopup="true"
-                                                                                aria-expanded="false">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="16" height="16"
-                                                                                    fill="currentColor" color="white"
-                                                                                    class="bi bi-three-dots-vertical"
-                                                                                    viewBox="1 1 16 16">
-                                                                                    <path
-                                                                                        d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                                                                </svg>
-                                                                            </a>
-                                                                            <div class="dropdown-menu">
-                                                                                <a class="dropdown-item"
-                                                                                    href="/tampildataleads_admin/{{ $row->id }}">
-                                                                                    <i class="nav-icon icon-pencil-alt"></i>
-                                                                                    Update</a>
-                                                                                <a class="dropdown-item delete"
-                                                                                    href="#"
-                                                                                    data-id="{{ $row->id }}"
-                                                                                    data-subject="{{ $row->ticket_subject }}">
-                                                                                    <i class="nav-icon icon-trash"></i>
-                                                                                    Delete</a>
-                                                                            </div>
-                                                                        </div>
+                                                                        <a class="btn btn-info"
+                                                                            href="/editdataproposal_admin/{{ $row->id }}">
+                                                                            <i class="nav-icon icon-pencil-alt"></i></a>
+                                                                        <a class="btn btn-danger delete" href="#"
+                                                                            data-id="{{ $row->id }}"
+                                                                            data-name="{{ $row->proposal_name }}">
+                                                                            <i class="nav-icon icon-trash"></i></a>
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -140,24 +121,24 @@
             </body>
             <script>
                 $('.delete').click(function() {
-                    var tiketid = $(this).attr('data-id');
-                    var namatiket = $(this).attr('data-subject');
+                    var proposalid = $(this).attr('data-id');
+                    var namaproposal = $(this).attr('data-subject');
                     swal({
                             title: "Are you sure?",
-                            text: "Once deleted, you will not be able to recover data from the Ticket Subject " +
-                                namatiket + " ",
+                            text: "Once deleted, you will not be able to recover data from the Proposal Subject " +
+                                namaproposal + " ",
                             icon: "warning",
                             buttons: true,
                             dangerMode: true,
                         })
                         .then((willDelete) => {
                             if (willDelete) {
-                                window.location = "/delete/" + tiketid + ""
-                                swal("Your data from Ticket Subject " + namatiket + " has been deleted!", {
+                                window.location = "/deletedataproposal_admin/" + proposalid + ""
+                                swal("Your data from Proposal Subject " + namaproposal + " has been deleted!", {
                                     icon: "success",
                                 });
                             } else {
-                                swal("Deletion of data from Ticket Subject " + namatiket + " has been cancelled!");
+                                swal("Deletion of data from Proposal Subject " + namaproposal + " has been cancelled!");
                             }
                         });
                 });
