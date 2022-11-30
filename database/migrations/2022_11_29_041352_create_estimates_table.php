@@ -24,6 +24,7 @@ return new class extends Migration
             $table->double('unit_price');
             $table->double('amount');
             $table->double('total');
+            $table->enum('status', ['Accepted', 'Waiting', 'Decline']);
 
             $table->timestamps();
         });

@@ -107,9 +107,6 @@
             <!-- Page Sidebar Start-->
             <header class="main-nav">
                 <div class="sidebar-user text-center">
-                    <a class="setting-primary" href="javascript:void(0)">
-                        <i data-feather="settings"></i>
-                    </a><img class="img-90 rounded-circle" src="{{ auth()->user()->file }}" alt="">
                     <a href="#">
                         <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6>
                     </a>
@@ -204,10 +201,13 @@
                                                 <a href="/dataestimate_admin">Estimates</a>
                                             </li>
                                             <li>
-                                                <a href="#">Invoices</a>
+                                                <a href="/datainvoices_admin">Invoices</a>
                                             </li>
                                             <li>
-                                                <a href="#">Payments</a>
+                                                <a href="/datapayments_admin">Payments</a>
+                                            </li>
+                                            <li>
+                                                <a href="/dataexpenses_admin">Expenses</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -221,12 +221,6 @@
                                         <a class="nav-link menu-title link-nav" href="/ticket_admin">
                                             <i data-feather="headphones"></i>
                                             <span>Support Ticket</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link menu-title link-nav" href="#">
-                                            <i data-feather="file-text"></i>
-                                            <span>Knowledgebase</span>
                                         </a>
                                     </li>
                                     <li>
@@ -298,10 +292,10 @@
                                         </a>
                                         <ul class="nav-submenu menu-content">
                                             <li>
-                                                <a href="#">Projects</a>
+                                                <a href="/dataproject_client">Projects</a>
                                             </li>
                                             <li>
-                                                <a href="#">Tasks</a>
+                                                <a href="/datatask_client">Tasks</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -326,19 +320,19 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="/ticket_client">
+                                        <a class="nav-link menu-title link-nav" href="/dataticket_client">
                                             <i data-feather="headphones"></i>
                                             <span>Support Ticket</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="#">
+                                        <a class="nav-link menu-title link-nav" href="/knowledgebase">
                                             <i data-feather="file-text"></i>
                                             <span>Knowledgebase</span>
                                         </a>
                                     </li>
                                 @endif
-                                @if (auth()->user()->level == '3')
+                                @if (auth()->user()->level == '4')
                                     <li>
                                         <a class="nav-link menu-title link-nav" href="#">
                                             <i data-feather="headphones"></i>
