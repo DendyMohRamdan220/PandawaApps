@@ -43,13 +43,13 @@ class LoginController extends Controller
 
         if (Auth::attempt($cek)) {
             $request->session()->regenerate();
-            if (Auth()->user()->level == '1') {
+            if (Auth()->user()->level == 'Admin') {
                 return redirect()->intended('dashboard_admin');
-            } elseif (Auth()->user()->level == '2') {
+            } elseif (Auth()->user()->level == 'Employee') {
                 return redirect()->intended('dashboardv1');
-            } elseif (Auth()->user()->level == '3') {
+            } elseif (Auth()->user()->level == 'Client') {
                 return redirect()->intended('dashboardv2');
-            } elseif (Auth()->user()->level == '4') {
+            } elseif (Auth()->user()->level == 'Seles') {
                 return redirect()->intended('dashboard');
             }
         }

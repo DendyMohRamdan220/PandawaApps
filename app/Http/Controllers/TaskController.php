@@ -64,4 +64,15 @@ class TaskController extends Controller
         }
         return view('Tasks.datatask_employee', compact('data'));
     }
+
+    // Portal Client >>
+    public function datatask_client(Request $request)
+    {
+        if ($request->has('search')) {
+            $data = Task::where('taskname', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $data = Task::paginate(5);
+        }
+        return view('Tasks.datatask_client', compact('data'));
+    }
 }

@@ -11,16 +11,19 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ClientController extends Controller
 {
-    public function datauser_client()
+    public function datauser_client(Request $c)
     {
-        $data = User::latest()->paginate(5);
-        return view('Users.user', ['data' => $data]);
-
+        if ($c->has('search')) {
+            $data = User::where('name', 'LIKE', '%' . $c->search . '%')->paginate(5);
+        } else {
+            $data = User::latest()->paginate();
+        }
+        return view('Clients.dataclient', compact('data'));
     }
 
     public function tambahdatauser_client()
     {
-        return view('Users.userinsert');
+        return view('Clients.tambahclient');
     }
 
     public function insertdatauser_client(Request $x)
@@ -70,14 +73,14 @@ class ClientController extends Controller
             ]);
         }
         Alert::success('Berasil Menambah User');
-        return redirect('/datauser_admin')->with('toast_success', 'Data berhasil tambah!');
+        return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil tambah!');
     }
 
     //edit data user
     public function editdatauser_client($idUser)
     {
         $dataUser = User::find($idUser);
-        return view("Users.userupdate", ['data' => $dataUser]);
+        return view("Clients.tampildataclient", ['data' => $dataUser]);
     }
 
     //Update data user
@@ -120,7 +123,7 @@ class ClientController extends Controller
             'file' => $path,
         ]);
         Alert::success('Berasil Mengubah User');
-        return redirect('/datauser_admin')->with('toast_success', 'Data berhasil di update!');
+        return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil di update!');
     }
 
     //hapus
@@ -131,10 +134,10 @@ class ClientController extends Controller
             File::delete($data->file);
             User::where('id', $id)->delete();
             Alert::success('Berasil Menghapus User');
-            return redirect('/datauser_admin')->with('toast_success', 'Data berhasil di hapus!');
+            return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil di hapus!');
         } catch (\Illuminate\Database\QueryException$e) {
             Alert::warning('Warning Terjadi error');
-            return redirect('/datauser_admin')->with('toast_error', 'Data tidak bisa di hapus!');
+            return redirect('/dataclient_admin')->with('toast_error', 'Data tidak bisa di hapus!');
         }
     }
 }

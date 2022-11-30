@@ -1,6 +1,7 @@
 @extends('Layouts.layout')
 
 @section('content')
+
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-header">
@@ -26,7 +27,7 @@
                     <div class="col-auto">
                         <form action="/datauser_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                                aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                 </div>
@@ -47,8 +48,9 @@
                                 $no = 1;
                             @endphp
                             @foreach ($data as $index => $row)
+                            @if($row->level == 'Admin' || $row->level == 'Employee' )
                                 <tr>
-                                    <th scope="row">{{ $index + $data->firstItem() }}</th>
+                                    <th scope="row">{{ $no++ }}</th>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->level }}</td>
@@ -67,16 +69,10 @@
                                             <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="card-body">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary">
-                                {{ $data->links() }}
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
             </div>
         </div>

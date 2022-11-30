@@ -71,10 +71,10 @@
                                 <br>
                                 <select class="form-select" name="level" aria-label="Default select example">
                                     <option selected>{{ $data->level }}</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Employee</option>
+                                    <option value="3">Client</option>
+                                    <option value="4">Seles</option>
                                 </select>
                             </div>
 

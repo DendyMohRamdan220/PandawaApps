@@ -110,16 +110,16 @@
                     <a href="#">
                         <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6>
                     </a>
-                    @if (auth()->user()->level == '1')
+                    @if (auth()->user()->level == 'Admin')
                         <p class="mb-0 font-roboto">Admin</p>
                     @endif
-                    @if (auth()->user()->level == '2')
+                    @if (auth()->user()->level == 'Employee')
                         <p class="mb-0 font-roboto">Employee</p>
                     @endif
-                    @if (auth()->user()->level == '3')
+                    @if (auth()->user()->level == 'Client')
                         <p class="mb-0 font-roboto">Client</p>
                     @endif
-                    @if (auth()->user()->level == '4')
+                    @if (auth()->user()->level == 'Seles')
                         <p class="mb-0 font-roboto">Admin</p>
                     @endif
                 </div>
@@ -134,7 +134,7 @@
                                         <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
                                     </div>
                                 </li>
-                                @if (auth()->user()->level == '1')
+                                @if (auth()->user()->level == 'Admin')
                                     <li class="dropdown">
                                         <a class="nav-link menu-title" href="javascript:void(0)">
                                             <i data-feather="home"></i>
@@ -224,13 +224,22 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="/dataSettings_admin">
+                                        <a class="nav-link menu-title" href="javascript:void(0)">
                                             <i data-feather="settings"></i>
                                             <span>Settings</span>
                                         </a>
+                                        <ul class="nav-submenu menu-content">
+                                            <li>
+                                                <a href="/dataprofilSettings_admin">Edit Profile</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Notification</a>
+                                            </li>
+
+                                        </ul>
                                     </li>
                                 @endif
-                                @if (auth()->user()->level == '2')
+                                @if (auth()->user()->level == 'Employee')
                                     <li class="dropdown">
                                         <a class="nav-link menu-title link-nav" href="/dashboardv1">
                                             <i data-feather="home"></i>
@@ -278,7 +287,7 @@
                                         </a>
                                     </li>
                                 @endif
-                                @if (auth()->user()->level == '3')
+                                @if (auth()->user()->level == 'Client')
                                     <li class="dropdown">
                                         <a class="nav-link menu-title link-nav" href="/dashboardv2">
                                             <i data-feather="home"></i>
@@ -332,7 +341,7 @@
                                         </a>
                                     </li>
                                 @endif
-                                @if (auth()->user()->level == '4')
+                                @if (auth()->user()->level == 'Seles')
                                     <li>
                                         <a class="nav-link menu-title link-nav" href="#">
                                             <i data-feather="headphones"></i>
