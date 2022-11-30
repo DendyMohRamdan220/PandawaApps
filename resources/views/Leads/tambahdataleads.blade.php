@@ -948,7 +948,6 @@
                                 <input class="btn btn-light" type="reset" value="Cancel">
                             </div>
                         </div>
-
                 </div>
                 </form>
             </div>

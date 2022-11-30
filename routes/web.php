@@ -12,8 +12,10 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\KnowledgebaseController;
+use App\Http\Controllers\InvoicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -147,11 +149,25 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('dataproposal_admin', [ProposalsController::class, 'dataproposal_admin']);
     Route::get('tambahdataproposal_admin', [ProposalsController::class, 'tambahdataproposal_admin']);
     Route::post('insertdataproposal_admin', [ProposalsController::class, 'insertdataproposal_admin']);
-    Route::get('editdataproposal_admin/{id}', [ProposalsController::class, 'editdatalead_admin']);
+    Route::get('editdataproposal_admin/{id}', [ProposalsController::class, 'editdataproposal_admin']);
     Route::post('updatedataproposal_admin/{id}', [ProposalsController::class, 'updatedataproposal_admin']);
     Route::get('deletedataproposal_admin/{id}', [ProposalsController::class, 'deletedataproposal_admin']);
+
     // Estimates >>
-    // Invoices >>
+    Route::get('dataestimate_admin', [EstimatesController::class, 'dataestimate_admin']);
+    Route::get('tambahdataestimate_admin', [EstimatesController::class, 'tambahdataestimate_admin']);
+    Route::post('insertdataestimate_admin', [EstimatesController::class, 'insertdataestimate_admin']);
+    Route::get('editdataestimate_admin/{id}', [EstimatesController::class, 'editdataestimate_admin']);
+    Route::post('updatedataestimate_admin/{id}', [EstimatesController::class, 'updatedataestimate_admin']);
+    Route::get('deletedataestimate_admin/{id}', [EstimatesController::class, 'deletedataestimate_admin']);
+
+    // invoices >>
+    Route::get('datainvoices_admin', [InvoicesController::class, 'datainvoices_admin']);
+    Route::get('tambahdatainvoices_admin', [InvoicesController::class, 'tambahdatainvoices_admin']);
+    Route::post('insertdatainvoices_admin', [InvoicesController::class, 'insertdatainvoices_admin']);
+    Route::get('editdatainvoices_admin/{id}', [InvoicesController::class, 'editdatainvoices_admin']);
+    Route::post('updatedatainvoices_admin/{id}', [InvoicesController::class, 'updatedatainvoices_admin']);
+    Route::get('deletedatainvoices_admin/{id}', [InvoicesController::class, 'deletedatainvoices_admin']);
     // Payments >>
     Route::get('/datapayment_admin', [PaymentsController::class, 'index']);
     Route::get('/tambahdatapayment', [PaymentsController::class, 'tambahpayment']);
@@ -210,6 +226,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
     Route::get('tampildatatiket_employee/{id}', [TicketController::class, 'tampildatatiket_employee']);
     Route::post('updatedataticket_employee/{id}', [TicketController::class, 'updatedataticket_employee']);
     Route::get('deleteticket_employee/{id}', [TicketController::class, 'deleteticket_employee']);
+
+    //Customers/Clients>>
+    Route::get('dataclient_employee', [ClientController::class, 'dataclient_employee']);
 
 });
 

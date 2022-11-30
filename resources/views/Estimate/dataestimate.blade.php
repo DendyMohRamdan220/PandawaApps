@@ -6,10 +6,11 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3> Client </h3>
+                        <h3> Estimate </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
-                            <li class="breadcrumb-item active"> Client </li>
+                            <li class="breadcrumb-item active"> Finance </li>
+                            <li class="breadcrumb-item active"> Estimate </li>
                         </ol>
                     </div>
                 </div>
@@ -19,58 +20,64 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdataclient_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add
-                            Client</a>
+                        <a href="/tambahdataestimate_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i>
+                            Create Estimate </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/dataclient_admin" method="GET">
+                        <form action="/dataestimate_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
                                 aria-describedby="passwordHelpInline">
                         </form>
+                    </div>
+                    <div class="col-auto">
+                        <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
+                            PDF</a>
                     </div>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="table-responsive">
                     <table class="table table-striped bg-primary">
-                        <thead>
+                        <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Ussername</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Mobile</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Estimate Number</th>
+                                <th scope="col">Client</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Valid till</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Gender</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
-                            $no = 1;
+                                $no = 1;
                             @endphp
-                            @foreach ($data as $index => $row)
-                            <tr>
-                                <th scope="row">{{ $index + $data->firstItem() }}</th>
-                                <td>{{ $row->Ussername }}</td>
-                                <td>{{ $row->Email }}</td>
-                                <td>{{ $row->Password }}</td>
-                                <td>{{ $row->Address }}</td>
-                                <td>{{ $row->Mobile }}</td>
-                                <td>{{ $row->Status }}</td>
-                                <td>{{ $row->Gender }}</td>
-                                <td>
-                                    <a class="btn btn-info" href="/editdataclient_admin/{{ $row->id }}">
-                                        <i class="nav-icon icon-pencil-alt"></i></a>
-                                    <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                        data-client="{{ $row->Ussername }}">
-                                        <i class="nav-icon icon-trash"></i></a>
-                                </td>
-                            </tr>
+                            @foreach ($data as $dataestimate_admin => $row)
+                                <tr>
+                                    <th scope="row">{{ $dataestimate_admin + $data->firstItem() }}</th>
+                                    <td>{{ $row->estimate_number }}</td>
+                                    <td>{{ $row->select_client }}</td>
+                                    <td>{{ $row->total }}</td>
+                                    <td>{{ $row->valid_till }}</td>
+                                    <td>{{ $row->status }}</td>
+                                    <td>
+                                        <a class="btn btn-info" href="/editdataestimate_admin/{{ $row->id }}">
+                                            <i class="nav-icon icon-pencil-alt"></i></a>
+                                        <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
+                                            data-name="{{ $row->estimate_number }}">
+                                            <i class="nav-icon icon-trash"></i></a>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $data->links() }}
+                    <div class="card-body">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,24 +108,24 @@
     </body>
     <script>
         $('.delete').click(function() {
-            var clientid = $(this).attr('data-id');
-            var ussername = $(this).attr('data-name');
+            var estimateid = $(this).attr('data-id');
+            var estimate_name = $(this).attr('data-name');
             swal({
                     title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the client Name " +
-                        ussername + " ",
+                    text: "Once deleted, you will not be able to recover data from the Estimate Name " +
+                        estimate_name + " ",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deletedataclient_admin/" + clientid + ""
-                        swal("Your data from Ticket Subject " + ussername + " has been deleted!", {
+                        window.location = "/deletedataestimate_admin/" + estimateid + ""
+                        swal("Your data from Estimate Subject " + estimate_name + " has been deleted!", {
                             icon: "success",
                         });
                     } else {
-                        swal("Deletion of data from Leads Name " + ussername + " has been cancelled!");
+                        swal("Deletion of data from Estimate Name " + estimate_name + " has been cancelled!");
                     }
                 });
         });

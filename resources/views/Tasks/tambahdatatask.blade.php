@@ -37,7 +37,7 @@
                                     aria-describedby="emailHelp">
                             </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1"> Status Tasks </label>
+                                    <label for="exampleInputEmail1" class="form-label"> Status Tasks </label>
                                     <br>
                                     <select class="form-select" name="status" aria-label="Default select example">
                                         <option selected> Status </option>

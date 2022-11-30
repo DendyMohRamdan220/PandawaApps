@@ -13,18 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('proposals', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->string('proposal_name');
-            $table->enum('leads_name', ['Annisa Zachry Fauziah', 'John Doe', 'Dendy Moh Ramdan']);
-            $table->date ('valid_till');
+            $table->string('invoice_number');
+            $table->date ('invoice_date');
+            $table->date ('due_date');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
-            $table->enum('select_product', ['Jasa', 'Elektronik']);
+            $table->enum('choose_client', ['Zachry', 'Fauziah', 'Annisa']);
+            $table->enum('select_project', ['Project 1', 'Project 2']);
+            $table->string('shipping_address');
             $table->double('quantity');
             $table->double('unit_price');
             $table->double('amount');
             $table->double('total');
-
             $table->timestamps();
         });
     }
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposals');
+        Schema::dropIfExists('invoices');
     }
 };
