@@ -2,17 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ticket;
+use App\Models\Task;
 use App\Models\User;
+use App\Models\Ticket;
+use App\Models\project;
+use App\Models\Invoices;
+use App\Models\Attendance;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
-
         $data = User::all();
-        return view('dashboard', compact('data'));
-
+        $totalclient = User::where('level', 'Client')->count();
+        $totalemployee = User::where('level', 'Employee')->count();
+        $totalproject = project::count();
+        $dueinvoices = Invoices::count();
+        $hourslogged = Attendance::where('officehours')->count();
+        $pendingtasks = Task::where('status', 'pending')->count();
+        $todayattendance = Attendance::count();
+        $unresolvedticket = Ticket::where('status', 'progres')->count();
+        return view('dashboard', compact('data'), [
+            'totalclient' => $totalclient,
+            'totalemployee' => $totalemployee,
+            'totalproject' => $totalproject,
+            'dueinvoices' => $dueinvoices,
+            'hourslogged' => $hourslogged,
+            'pendingtasks' => $pendingtasks,
+            'todayattendance' => $todayattendance,
+            'unresolvedticket' => $unresolvedticket,
+        ]);
     }
 
     public function dashboardv1()

@@ -10,12 +10,13 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\KnowledgebaseController;
-use App\Http\Controllers\InvoicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,7 @@ Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
 | and logging out!
 |
  */
-Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
 
     Route::get('dashboard_admin', [DashboardController::class, 'dashboard']);
 
@@ -176,7 +177,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('/deletepayment/{id}', [PaymentsController::class, 'deletepayment']);
     /* << End Finance >> */
 
-    //Tickets>>
+    // Tickets >>
     Route::get('ticket_admin', [TicketController::class, 'view_tiket']);
     Route::get('tambahtiket_admin', [TicketController::class, 'tambahtiket']);
     Route::post('insertdatatiket_admin', [TicketController::class, 'insertdatatiket']);
@@ -184,6 +185,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::post('updatedataticket_admin/{id}', [TicketController::class, 'updatedataticket_admin']);
     Route::get('deleteticket_admin/{id}', [TicketController::class, 'deleteticket']);
     Route::get('exportpdf_admin', [TicketController::class, 'exportpdf']);
+
+    // Settings >>
+    Route::get('datasetting_admin', [SettingsController::class, 'dataSettings_admin']);
+
 
 });
 
@@ -197,7 +202,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
 | and logging out!
 |
  */
-Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:Employee']], function () {
 
     //Employees
     Route::get('employee', [EmployeeController::class, 'index']);
@@ -242,7 +247,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:2']], function () {
 | and logging out!
 |
  */
-Route::group(['middleware' => ['auth', 'ceklevel:3']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:Client']], function () {
 
     // Projects >>
     Route::get('dataproject_client', [ProjectController::class, 'dataproject_client']);
