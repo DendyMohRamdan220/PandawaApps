@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Expenses extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    protected $dates = ['created_at'];
 }

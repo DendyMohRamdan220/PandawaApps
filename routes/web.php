@@ -17,6 +17,7 @@ use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\KnowledgebaseController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\ExpensesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -177,6 +178,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('editdatapayments_admin/{id}', [PaymentsController::class, 'editdatapayments_admin']);
     Route::post('updatedatapayments_admin/{id}', [PaymentsController::class, 'updatedatapayments_admin']);
     Route::get('deletedatapayments_admin/{id}', [PaymentsController::class, 'deletedatapayments_admin']);
+
+    // expenses >>
+    Route::get('dataexpenses_admin', [ExpensesController::class, 'dataexpenses_admin']);
+    Route::get('tambahdataexpenses_admin', [ExpensesController::class, 'tambahdataexpenses_admin']);
+    Route::post('insertdataexpenses_admin', [ExpensesController::class, 'insertdataexpenses_admin']);
+    Route::get('editdataexpenses_admin/{id}', [ExpensesController::class, 'editdataexpenses_admin']);
+    Route::post('updatedataexpenses_admin/{id}', [ExpensesController::class, 'updatedataexpenses_admin']);
+    Route::get('deletedataexpenses_admin/{id}', [ExpensesController::class, 'deletedataexpenses_admin']);
     /* << End Finance >> */
 
     //Tickets>>
