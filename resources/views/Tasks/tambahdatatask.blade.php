@@ -23,8 +23,14 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Project </label>
-                                <input type="text" name="project" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <select name="project_id" class="form-control">
+                                    <option value="">- Pilih -</option>
+                                    @foreach ($projects as $item)
+                                        <option value="{{ $item->id }}" {{ old('project_id') == $item->id }}>
+                                            {{ $item->projectname }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label"> Startdate </label>
