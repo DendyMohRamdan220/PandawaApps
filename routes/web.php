@@ -102,12 +102,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::get('deletedataproduk_admin/{id}', [ProductsController::class, 'deletedataproduk_admin']);
 
     // Clients >>
-    Route::get('dataclient_admin', [ClientController::class, 'dataclient_admin']);
-    Route::get('tambahdataclient_admin', [ClientController::class, 'tambahdataclient_admin']);
-    Route::post('insertdataclient_admin', [ClientController::class, 'insertdataclient_admin']);
-    Route::get('editdataclient_admin/{id}', [ClientController::class, 'editdataclient_admin']);
-    Route::post('updatedataclient_admin/{id}', [ClientController::class, 'updatedataclient_admin']);
-    Route::get('deletedataclient_admin/{id}', [ClientController::class, 'deletedataclient_admin']);
+    Route::get('dataclient_admin', [ClientController::class, 'datauser_client']);
+    Route::get('tambahdataclient_admin', [ClientController::class, 'tambahdatauser_client']);
+    Route::get('insertdataclient_admin', [ClientController::class, 'insertdatauser_client']);
+    Route::get('editdataclient_admin', [ClientController::class, 'editdatauser_client']);
+    Route::get('updatedataclient_admin', [ClientController::class, 'updatedatauser_client']);
+    Route::get('deletedataclient_admin', [ClientController::class, 'deletedatauser_client']);
 
     /*<< HR >>*/
     // Employees >>
