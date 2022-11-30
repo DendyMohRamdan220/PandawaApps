@@ -10,11 +10,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function datauser()
+    public function datauser(Request $request)
     {
-        $data = User::latest()->paginate(5);
-        return view('Users.user', ['data' => $data]);
-
+        if ($request->has('search')) {
+            $data = User::where('name', 'LIKE', '%' . $request->search . '%')->paginate();
+        } else {
+            $data = User::all();
+        }
+        return view('Users.user', compact('data'));
     }
 
     public function tambahdatauser()
