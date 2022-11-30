@@ -90,10 +90,8 @@
                                     <input class="form-control" type="password" name="password" required=""
                                         placeholder="*********" id="pass">
                                     <div class="input-group-append">
-
                                         <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
                                         <span id="mybutton" onclick="change()" class="input-group-text">
-
                                             <!-- icon mata bawaan bootstrap  -->
                                             <svg width="2em" height="2em" viewBox="0 0 16 16"
                                                 class="bi bi-eye-fill" fill="currentColor"
