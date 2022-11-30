@@ -53,7 +53,7 @@
                                     <th scope="row">{{ $index + $data->firstItem() }}</th>
                                     <td>{{ $row->taskname }}</td>
                                     <td>{{ $row->project->projectname }}</td>
-                                    <td>{{ $row->employee->name }}</td>
+                                    <td>{{ $row->employee }}</td>
                                     <td>{{ $row->duedate }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
