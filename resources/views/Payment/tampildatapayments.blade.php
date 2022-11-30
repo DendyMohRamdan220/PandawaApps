@@ -38,8 +38,9 @@
                                                 id="basic-addon1">PAY#00</span>
                                         </div>
                                         <input type="text" name="payments_number" id="payments_number"
-                                            class="form-control height-35 f-15" value="{{ $data->payments_number }}" placeholder="ex.01"
-                                            aria-label="ex.01" aria-describedby="basic-addon1" autocomplete="off">
+                                            class="form-control height-35 f-15" value="{{ $data->payments_number }}"
+                                            placeholder="ex.01" aria-label="ex.01" aria-describedby="basic-addon1"
+                                            autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +79,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Amount</label>
-                                    <input type="text" value="{{ $data->amount }}" name="amount" id="amount " class="form-control" />
+                                    <input type="text" value="{{ $data->amount }}" name="amount" id="amount "
+                                        class="form-control" />
 
                                 </div>
                             </div>
@@ -97,7 +99,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                                 <input class="btn btn-light" type="reset" value="Cancel">
