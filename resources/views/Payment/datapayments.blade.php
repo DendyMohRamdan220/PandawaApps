@@ -6,10 +6,11 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3> Tasks </h3>
+                        <h3> Payments </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
-                            <li class="breadcrumb-item active"> Tasks </li>
+                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item active"> Finance </li>
+                            <li class="breadcrumb-item active"> Payments </li>
                         </ol>
                     </div>
                 </div>
@@ -19,14 +20,17 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatatask_admin" class="btn btn-success"> <i class="nav-icon fas icon-plus"></i> Add
-                            Task</a>
+                        <a href="/tambahdatapayments_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i>Add Payment</a>
                     </div>
                     <div class="col-auto">
-                        <form action="/datatask_admin" method="GET">
+                        <form action="/datapayments_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
                                 aria-describedby="passwordHelpInline">
                         </form>
+                    </div>
+                    <div class="col-auto">
+                        <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
+                            PDF</a>
                     </div>
                 </div>
             </div>
@@ -35,12 +39,11 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Task Name</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Invoice Number</th>
                                 <th scope="col">Project</th>
-                                <th scope="col">Employee</th>
-                                <th scope="col">Duedate</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Paid On</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -48,26 +51,30 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $index => $row)
+                            @foreach ($data as $datapayments_admin => $row)
                                 <tr>
-                                    <th scope="row">{{ $index + $data->firstItem() }}</th>
-                                    <td>{{ $row->taskname }}</td>
-                                    <td>{{ $row->project->projectname }}</td>
-                                    <td>{{ $row->employee }}</td>
-                                    <td>{{ $row->duedate }}</td>
-                                    <td>{{ $row->status }}</td>
+                                    <th scope="row">{{ $datapayments_admin + $data->firstItem() }}</th>
+                                    <td>{{ $row->payments_number }}</td>
+                                    <td>{{ $row->select_project }}</td>
+                                    <td>{{ $row->amount }}</td>
+                                    <td>{{ $row->paid_on }}</td>
                                     <td>
-                                        <a class="btn btn-info" href="/editdatatask_admin/{{ $row->id }}">
+                                        <a class="btn btn-info" href="/editdatapayments_admin/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                            data-name="{{ $row->taskname }}">
+                                            data-name="{{ $row->payments_number }}">
                                             <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $data->links() }}
+                    <div class="card-body">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,27 +103,26 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
-
     <script>
         $('.delete').click(function() {
-            var idtask = $(this).attr('data-id');
-            var nametask = $(this).attr('data-task');
+            var paymentid = $(this).attr('data-id');
+            var payment_name = $(this).attr('data-name');
             swal({
                     title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the Task Name " + nametask +
-                        " ",
+                    text: "Once deleted, you will not be able to recover data from the Payments Name " +
+                        payment_name + " ",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deletedatatask_admin/" + idtask + ""
-                        swal("Your data from Task Name " + nametask + " has been deleted!", {
+                        window.location = "/deletedatapayments_admin/" + paymentid + ""
+                        swal("Your data from Payments Subject " + payment_name + " has been deleted!", {
                             icon: "success",
                         });
                     } else {
-                        swal("Deletion of data from Task Name " + nametask + " has been cancelled!");
+                        swal("Deletion of data from Payments Name " + payment_name + " has been cancelled!");
                     }
                 });
         });

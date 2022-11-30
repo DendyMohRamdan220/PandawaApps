@@ -204,7 +204,7 @@
                                                 <a href="/datainvoices_admin">Invoices</a>
                                             </li>
                                             <li>
-                                                <a href="/datapaymnets_admin">Payments</a>
+                                                <a href="/datapayments_admin">Payments</a>
                                             </li>
                                             <li>
                                                 <a href="/dataexpenses_admin">Expenses</a>
@@ -224,10 +224,19 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="/datasetting_admin">
+                                        <a class="nav-link menu-title" href="javascript:void(0)">
                                             <i data-feather="settings"></i>
                                             <span>Settings</span>
                                         </a>
+                                        <ul class="nav-submenu menu-content">
+                                            <li>
+                                                <a href="/dataprofilSettings_admin">Edit Profile</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Notification</a>
+                                            </li>
+
+                                        </ul>
                                     </li>
                                 @endif
                                 @if (auth()->user()->level == 'Employee')

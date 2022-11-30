@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
+            $table->string('item_name');
+            $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
+            $table->double('unit_price');
+            $table->date ('purchase_date');
+            $table->enum('select_employee', ['A', 'B']);
+            $table->enum('select_project', ['Project 1', 'Project 2']);
+            $table->string('purchase_from');
             $table->timestamps();
         });
     }

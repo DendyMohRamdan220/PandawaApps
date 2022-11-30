@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('settingsprofiles', function (Blueprint $table) {
             $table->id();
-            $table->string('payments_number');
-            $table->enum('select_project', ['Project 1', 'Project 2']);
-            $table->date ('paid_on');
-            $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
-            $table->double('amount');
-            $table->enum('payment_gateway', ['Offline Payment']);
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('settingsprofiles');
     }
 };

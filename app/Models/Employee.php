@@ -9,6 +9,13 @@ class Employee extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-    protected $dates = ['created_at'];
+    protected $table = "employees";
+    protected $primaryKey = "id";
+    protected $fillable = [
+    'id','name','email','password','department','country','mobile','gender'];
+
+    public function task()
+    {
+    return $this->belongsTo(Task::class);
+    }
 }

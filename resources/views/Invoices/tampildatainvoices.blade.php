@@ -103,8 +103,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Shipping Address</label>
-                                    <textarea class="form-control" value="{{ $data->shipping_address }}" name="shipping_address" id="shipping_address" rows="4"
-                                        placeholder="e.g. 132, My Street, Kingston, New York 12401"></textarea>
+                                    <textarea class="form-control" value="{{ $data->shipping_address }}" name="shipping_address" id="shipping_address"
+                                        rows="4" placeholder="e.g. 132, My Street, Kingston, New York 12401"></textarea>
 
                                 </div>
                             </div>

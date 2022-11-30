@@ -9,14 +9,14 @@
                         <h4 class="mb-0 f-21 font-weight-normal text-capitalize"> Add Expense </h4>
                     </div>
                     <hr class="m-0 border-top-grey">
-                    <form action="/insertdataexpenses_admin" method="POST" enctype="multipart/form-data">
+                    <form action="/updatedataexpenses_admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
 
                                     <label for="label">Item Name</label>
-                                    <input type="text" value="" name="item_name" id="item_name"
+                                    <input type="text" value="{{ $data->item_name }}" name="item_name" id="item_name"
                                         class="form-control" />
 
                                 </div>
@@ -27,6 +27,7 @@
                                 <div class="form-group mb-0">
                                     <select name="currency" id="currency" class="form-control select-picker"
                                         data-size="8">
+                                        <option selected>{{ $data->currency }}</option>
                                         <option value="1">
                                             USD ($)
                                         </option>
@@ -45,7 +46,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="true" for="unit_price">Price</label>
-                                    <input type="text" class="form-control height-35 f-14" value="" name="unit_price"
+                                    <input type="text" class="form-control height-35 f-14" value="{{ $data->unit_price }}" name="unit_price"
                                         id="unit_price" autocomplete="off">
                                 </div>
                             </div>
@@ -54,7 +55,7 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Purchase Date</label>
-                                    <input type="date" value="" name="purchase_date" id="purchase_date"
+                                    <input type="date" value="{{ $data->purchase_date }}" name="purchase_date" id="purchase_date"
                                         class="form-control" />
 
                                 </div>
@@ -65,6 +66,7 @@
                                 <div class="form-group mb-0">
                                     <select name="select_employee" id="select_employee" class="form-control select-picker"
                                         data-size="8">
+                                        <option selected>{{ $data->select_employee }}</option>
                                         <option value="">--</option>
                                         <option value="1">
                                             A</option>
@@ -79,6 +81,7 @@
                                 <div class="form-group mb-0">
                                     <select name="select_project" id="select_project" class="form-control select-picker"
                                         data-size="8">
+                                        <option selected>{{ $data->select_project }}</option>
                                         <option value="">--</option>
                                         <option value="1">
                                             Project 1</option>
@@ -91,7 +94,7 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Purchased From</label>
-                                    <input type="text" value="" name="purchase_from" id="purchase_from"
+                                    <input type="text" value="{{ $data->purchase_from }}" name="purchase_from" id="purchase_from"
                                         class="form-control" />
 
                                 </div>
