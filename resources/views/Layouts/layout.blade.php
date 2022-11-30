@@ -207,7 +207,7 @@
                                                 <a href="/datainvoices_admin">Invoices</a>
                                             </li>
                                             <li>
-                                                <a href="/datapaymnets_admin">Payments</a>
+                                                <a href="/datapayments_admin">Payments</a>
                                             </li>
                                             <li>
                                                 <a href="/dataexpenses_admin">Expenses</a>

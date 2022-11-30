@@ -9,52 +9,52 @@ use PDF;
 class PaymentsController extends Controller
 {
     //
-    public function index(Request $request)
+    public function datapayments_admin(Request $request)
     {
         if ($request->has('search')) {
-            $data = Payment::where('payment_id', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $data = Payments::where('payment_number', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
-            $data = Payment::paginate(5);
+            $data = Payments::paginate(5);
         }
-        return view('Payment.datapayment', compact('data'));
+        return view('Payment.datapayments', compact('data'));
     }
 
-    public function tambahpayment()
+    public function tambahdatapayments_admin()
     {
-        return view('Payment.tambahdatapayment');
+        return view('Payment.tambahdatapayments');
     }
 
-    public function insertdatapayment(Request $request)
+    public function insertdatapayments_admin(Request $request)
     {
-        Payment::create($request->all());
-        return redirect()->route('payments')->with('success', 'Payment added successfully .');
+        Payments::create($request->all());
+        return redirect('/datapayments_admin')->with('success', 'Payments added successfully .');
     }
 
-    public function tampildatapayment($id)
+    public function editdatapayments_admin($id)
     {
-        $data = Payment::find($id);
-        return view('Payment.tampildatapayment', compact('data'));
+        $data = Payments::find($id);
+        return view('Payment.tampildatapayments', compact('data'));
     }
 
-    public function updatedatapayment(Request $request, $id)
+    public function updatedatapayments_admin(Request $request, $id)
     {
-        $data = Payment::find($id);
+        $data = Payments::find($id);
         $data->update($request->all());
-        return redirect()->route('payments')->with('success', 'Payment edited successfully .');
+        return redirect('/datapayments_admin')->with('success', 'Payments edited successfully .');
     }
 
-    public function delete($id)
+    public function deletedatapayments_admin($id)
     {
-        $data = Payment::find($id);
+        $data = Payments::find($id);
         $data->delete();
-        return redirect()->route('payments')->with('success', 'Payment deleted successfully .');
+        return redirect('/datapayments_admin')->with('success', 'Payments deleted successfully .');
     }
 
-    public function exportpdf()
+    public function exportpdf_admin()
     {
-        $data = Payment::all();
+        $data = Payments::all();
         view()->share('data', $data);
-        $pdf = PDF::loadview('Payment.datapayment-pdf');
+        $pdf = PDF::loadview('Payments.datapayments-pdf_admin');
         return $pdf->download('data.pdf');
     }
 
