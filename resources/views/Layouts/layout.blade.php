@@ -224,10 +224,19 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="/dataSettings_admin">
+                                        <a class="nav-link menu-title" href="javascript:void(0)">
                                             <i data-feather="settings"></i>
                                             <span>Settings</span>
                                         </a>
+                                        <ul class="nav-submenu menu-content">
+                                            <li>
+                                                <a href="/dataprofilSettings_admin">Edit Profile</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Notification</a>
+                                            </li>
+                
+                                        </ul>
                                     </li>
                                 @endif
                                 @if (auth()->user()->level == '2')

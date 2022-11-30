@@ -10,14 +10,15 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ExpensesController;
+use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\KnowledgebaseController;
-use App\Http\Controllers\InvoicesController;
-use App\Http\Controllers\PaymentsController;
-use App\Http\Controllers\ExpensesController;
+use App\Http\Controllers\SettingsprofileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -196,6 +197,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:1']], function () {
     Route::post('updatedataticket_admin/{id}', [TicketController::class, 'updatedataticket_admin']);
     Route::get('deleteticket_admin/{id}', [TicketController::class, 'deleteticket']);
     Route::get('exportpdf_admin', [TicketController::class, 'exportpdf']);
+
+    //Settings>>
+    Route::get('dataprofilSettings_admin', [SettingsprofileController::class, 'dataprofilSettings_admin']);
+
 
 });
 
