@@ -1,5 +1,5 @@
 @extends('Layouts.layout')
-    
+
 @section('content')
 
 <div class="page-body">
@@ -13,7 +13,7 @@
             <a href="#">Link 2</a>
             <a href="#">Link 3</a>
           </div>
-        </div> 
+        </div>
       </div>
 </div>
 @endsection

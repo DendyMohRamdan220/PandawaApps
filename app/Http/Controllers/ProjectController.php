@@ -59,4 +59,15 @@ class ProjectController extends Controller
     }
     return view('Projects.dataproject_employee', compact('data'));
     }
+
+    // Portal Client >>
+    public function dataproject_client(Request $request)
+    {
+    if ($request->has('search')) {
+    $data = project::where('projectname', 'LIKE', '%' . $request->search . '%')->paginate(5);
+    } else {
+    $data = project::paginate(5);
+    }
+    return view('Projects.dataproject_client', compact('data'));
+    }
 }

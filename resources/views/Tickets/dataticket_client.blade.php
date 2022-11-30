@@ -1,6 +1,11 @@
 @extends('Layouts.layout')
 
 @section('content')
+
+    @push('css')
+        <!-- Bootstrap CSS -->
+    @endpush
+
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-header">
@@ -8,8 +13,7 @@
                     <div class="col-sm-6">
                         <h3>Support Ticket</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item">Pages </li>
+                            <li class="breadcrumb-item"><a href="/dashboardv2">Home</a></li>
                             <li class="breadcrumb-item active">Support Ticket</li>
                         </ol>
                     </div>
@@ -149,7 +153,7 @@
                                     <div class="col-auto">
                                         <form action="/dataticket_client" method="GET">
                                             <input type="search" id="inputPassword6" name="search"
-                                                class="form-control" aria-describedby="passwordHelpInline">
+                                                class="form-control" aria-describedby="passwordHelpInline" placeholder="Search...">
                                         </form>
                                     </div>
                                     <div class="col-auto">
@@ -157,47 +161,49 @@
                                                 class="nav-icon fas fa-file-pdf"></i> Export PDF</a>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped bg-primary">
-                                        <thead class="tbl-strip-thad-bdr">
-                                            <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Ticket Subject</th>
-                                                <th scope="col">Description</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $no = 1;
-                                            @endphp
-                                            @foreach ($data as $dataticket_client => $row)
+                                <div class="row mt-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped bg-primary">
+                                            <thead class="tbl-strip-thad-bdr">
                                                 <tr>
-                                                    <th scope="row">{{ $dataticket_client + $data->firstItem() }}
-                                                    </th>
-                                                    <td>{{ $row->ticket_subject }}</td>
-                                                    <td>{{ $row->description }}</td>
-                                                    <td>{{ $row->status }}</td>
-                                                    {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
-                                                    <td>
-                                                        <a class="btn btn-info"
-                                                            href="/editdataticket_client/{{ $row->id }}">
-                                                            <i class="nav-icon icon-pencil-alt"></i></a>
-                                                        <a class="btn btn-danger delete" href="#"
-                                                            data-id="{{ $row->id }}"
-                                                            data-name="{{ $row->ticket_subject }}">
-                                                            <i class="nav-icon icon-trash"></i></a>
-                                                    </td>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Ticket Subject</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="card-body">
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination pagination-primary">{{ $data->links() }}
-                                            </ul>
-                                        </nav>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
+                                                @foreach ($data as $dataticket_client => $row)
+                                                    <tr>
+                                                        <th scope="row">{{ $dataticket_client + $data->firstItem() }}
+                                                        </th>
+                                                        <td>{{ $row->ticket_subject }}</td>
+                                                        <td>{{ $row->description }}</td>
+                                                        <td>{{ $row->status }}</td>
+                                                        {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
+                                                        <td>
+                                                            <a class="btn btn-info"
+                                                                href="/editdataticket_client/{{ $row->id }}">
+                                                                <i class="nav-icon icon-pencil-alt"></i></a>
+                                                            <a class="btn btn-danger delete" href="#"
+                                                                data-id="{{ $row->id }}"
+                                                                data-name="{{ $row->ticket_subject }}">
+                                                                <i class="nav-icon icon-trash"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="card-body">
+                                            <nav aria-label="Page navigation example">
+                                                <ul class="pagination pagination-primary">{{ $data->links() }}
+                                                </ul>
+                                            </nav>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
