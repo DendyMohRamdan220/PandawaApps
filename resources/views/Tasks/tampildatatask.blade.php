@@ -1,4 +1,4 @@
-@extends('layout.Client')
+@extends('Layouts.layout')
 
 @section('content')
     <div class="page-body">
@@ -14,7 +14,8 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/updatedatatask_admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                        <form action="/updatedatatask_admin/{{ $data->id }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Task Name </label>
@@ -23,8 +24,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Project</label>
-                                <input type="text" name="project" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->project }}">
+                                <select name="project_id" class="form-control">
+                                    <option value="">- Pilih -</option>
+                                    @foreach ($projects as $item)
+                                        <option value="{{ $item->id }}" {{ old('project_id', $data->project_id) == $item->id ? 'selected' : null }}>{{ $item->projectname }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                {{-- <input type="text" name="project" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" value="{{ $data->project }}"> --}}
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Startdate</label>
@@ -36,17 +44,17 @@
                                 <input type="date" name="duedate" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" value="{{ $data->duedate }}">
                             </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1"> Status Project </label>
-                                    <br>
-                                    <select class="form-select" name="status" aria-label="Default select example">
-                                        <option selected>{{ $data->status }}</option>
-                                        <option value="1"> Progres </option>
-                                        <option value="2"> Pending </option>
-                                        <option value="3"> Done </option>
-                                        <option value="4"> Cancel </option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"> Status Project </label>
+                                <br>
+                                <select class="form-select" name="status" aria-label="Default select example">
+                                    <option selected>{{ $data->status }}</option>
+                                    <option value="1"> Progres </option>
+                                    <option value="2"> Pending </option>
+                                    <option value="3"> Done </option>
+                                    <option value="4"> Cancel </option>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary"> Submit </button>
                         </form>
                     </div>

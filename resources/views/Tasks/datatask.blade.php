@@ -38,7 +38,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Task Name</th>
                                 <th scope="col">Project</th>
-                                <th scope="col">Startdate</th>
+                                <th scope="col">Employee</th>
                                 <th scope="col">Duedate</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
@@ -52,8 +52,8 @@
                                 <tr>
                                     <th scope="row">{{ $index + $data->firstItem() }}</th>
                                     <td>{{ $row->taskname }}</td>
-                                    <td>{{ $row->project }}</td>
-                                    <td>{{ $row->startdate }}</td>
+                                    <td>{{ $row->project->projectname }}</td>
+                                    <td>{{ $row->employee->name }}</td>
                                     <td>{{ $row->duedate }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
