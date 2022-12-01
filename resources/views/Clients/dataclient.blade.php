@@ -1,6 +1,12 @@
 @extends('Layouts.layout')
 
 @section('content')
+
+    @push('css')
+    <!-- Plugins css start-->
+        <!-- Bootstrap CSS -->
+    @endpush
+
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-header">

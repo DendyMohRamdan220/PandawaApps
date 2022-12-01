@@ -1,15 +1,21 @@
 @extends('Layouts.layout')
 
 @section('content')
+
+    @push('css')
+    <!-- Plugins css start-->
+        <!-- Bootstrap CSS -->
+    @endpush
+
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3> Client </h3>
+                        <h3> Customers </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
-                            <li class="breadcrumb-item active"> Client </li>
+                            <li class="breadcrumb-item active"> Customers </li>
                         </ol>
                     </div>
                 </div>
@@ -20,7 +26,7 @@
                 <div class="card-header row">
                     <div class="col-auto">
                         <a href="/tambahdataclient_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add
-                            Client</a>
+                            Customers</a>
                     </div>
                     <div class="col-auto">
                         <form action="/dataclient_admin" method="GET">
