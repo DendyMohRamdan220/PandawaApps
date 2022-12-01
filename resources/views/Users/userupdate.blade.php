@@ -1,6 +1,12 @@
 @extends('Layouts.layout')
 
 @section('content')
+
+    @push('css')
+    <!-- Plugins css start-->
+        <!-- Bootstrap CSS -->
+    @endpush
+
     <div class="page-body">
         <div class="col-sm-6">
             <h3> Add Users </h3>
@@ -67,18 +73,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Level</label>
-                                <br>
-                                <select class="form-select" name="level" aria-label="Default select example">
-                                    <option selected>{{ $data->level }}</option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">Employee</option>
-                                    <option value="3">Client</option>
-                                    <option value="4">Seles</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
                                 <label>Foto</label>
                                 <input type="file" class="file-upload-default" name="file">
                                 <input type="hidden" name="pathFile" value="{{ $data->file }}">
@@ -100,7 +94,6 @@
             </div>
         </div>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
