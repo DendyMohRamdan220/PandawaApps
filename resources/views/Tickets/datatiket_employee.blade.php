@@ -1,13 +1,11 @@
 @extends('Layouts.layout')
 
 @section('content')
+
     @push('css')
+        <!-- Plugins css start-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/datatables.css') }}">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
-            integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
     @endpush
 
     <div class="page-body">
@@ -15,10 +13,10 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Support Ticket</h3>
+                        <h3> Support Ticket </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Support Ticket</li>
+                            <li class="breadcrumb-item"><a href="dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item active"> Support Ticket </li>
                         </ol>
                     </div>
                 </div>
@@ -46,8 +44,8 @@
                                             <div class="progress-showcase">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-primary" role="progressbar"
-                                                        style="width:100%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width:{{ $totaltiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -65,8 +63,8 @@
                                             <div class="progress-showcase">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-secondary" role="progressbar"
-                                                        style="width: 70%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalordertiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -84,8 +82,8 @@
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: 70%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalprogrestiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,8 +100,9 @@
                                             </div>
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 70%"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-info" role="progressbar"
+                                                        style="width: {{ $totalpendingtiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,8 +120,8 @@
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 70%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totaldonetiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,8 +139,8 @@
                                             <div class="progress-showcase">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: 70%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalcanceltiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,7 +156,8 @@
                                     <div class="col-auto">
                                         <form action="/ticket_employee" method="GET">
                                             <input type="search" id="inputPassword6" name="search"
-                                                class="form-control" aria-describedby="passwordHelpInline">
+                                                class="form-control" aria-describedby="passwordHelpInline"
+                                                placeholder="Search...">
                                         </form>
                                     </div>
                                 </div>
@@ -184,30 +184,14 @@
                                                         <td>{{ $row->ticket_subject }}</td>
                                                         <td>{{ $row->description }}</td>
                                                         <td>{{ $row->status }}</td>
-                                                        {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
                                                         <td>
-                                                            <div class="dropleft">
-                                                                <a class="btn btn-success task_view_more"
-                                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                        height="16" fill="currentColor" color="white"
-                                                                        class="bi bi-three-dots-vertical"
-                                                                        viewBox="1 1 16 16">
-                                                                        <path
-                                                                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                                                    </svg>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item"
-                                                                        href="/tampildatatiket_employee/{{ $row->id }}">
-                                                                        <i class="nav-icon icon-pencil-alt"></i> Update</a>
-                                                                    <a class="dropdown-item delete" href="#"
-                                                                        data-id="{{ $row->id }}"
-                                                                        data-subject="{{ $row->ticket_subject }}"> <i
-                                                                            class="nav-icon icon-trash"></i> Delete</a>
-                                                                </div>
-                                                            </div>
+                                                            <a class="btn btn-info"
+                                                                href="/tampildatatiket_employee/{{ $row->id }}">
+                                                                <i class="nav-icon icon-pencil-alt"></i></a>
+                                                            <a class="btn btn-danger delete" href="#"
+                                                                data-id="{{ $row->id }}"
+                                                                data-name="{{ $row->ticket_subject }}">
+                                                                <i class="nav-icon icon-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

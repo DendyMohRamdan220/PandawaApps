@@ -2,16 +2,21 @@
 
 @section('content')
 
+    @push('css')
+    <!-- Plugins css start-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/datatables.css') }}">
+        <!-- Bootstrap CSS -->
+    @endpush
+
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Support Ticket</h3>
+                        <h3> Support Ticket </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item">Pages </li>
-                            <li class="breadcrumb-item active">Support Ticket</li>
+                            <li class="breadcrumb-item"><a href="dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item active"> Support Ticket </li>
                         </ol>
                     </div>
                 </div>
@@ -37,10 +42,10 @@
                                                 </div>
                                             </div>
                                             <div class="progress-showcase">
-                                                <div class="progress">
+                                                <div class="progress progress-striped active">
                                                     <div class="progress-bar bg-primary" role="progressbar"
-                                                        style="width:100%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totaltiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -58,8 +63,8 @@
                                             <div class="progress-showcase">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-secondary" role="progressbar"
-                                                        style="width: 70%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalordertiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -77,8 +82,8 @@
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: 70%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalprogrestiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,8 +100,9 @@
                                             </div>
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 70%"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-info" role="progressbar"
+                                                        style="width: {{ $totalpendingtiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,8 +120,8 @@
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 70%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totaldonetiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -133,8 +139,8 @@
                                             <div class="progress-showcase">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: 70%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalcanceltiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -150,7 +156,8 @@
                                     <div class="col-auto">
                                         <form action="/ticket_admin" method="GET">
                                             <input type="search" id="inputPassword6" name="search"
-                                                class="form-control" aria-describedby="passwordHelpInline" placeholder="Search...">
+                                                class="form-control" aria-describedby="passwordHelpInline"
+                                                placeholder="Search...">
                                         </form>
                                     </div>
                                     <div class="col-auto">
@@ -180,7 +187,6 @@
                                                         <td>{{ $row->ticket_subject }}</td>
                                                         <td>{{ $row->description }}</td>
                                                         <td>{{ $row->status }}</td>
-                                                        {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
                                                         <td>
                                                             <a class="btn btn-info"
                                                                 href="/tampildatatiket_admin/{{ $row->id }}">
@@ -233,6 +239,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Plugins JS start-->
+    <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
+    <script src="../assets/js/counter/jquery.counterup.min.js"></script>
+    <script src="../assets/js/counter/counter-custom.js"></script>
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/support-ticket-custom.js"></script>
+    <!-- Plugins JS Ends-->
 
     <script>
         $('.delete').click(function() {
