@@ -25,7 +25,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Project</label>
                                 <select name="project_id" class="form-control">
-                                    <option value="">- Pilih -</option>
+                                    <option value="">--</option>
                                     @foreach ($projects as $item)
                                         <option value="{{ $item->id }}"
                                             {{ old('project_id', $data->project_id) == $item->id ? 'selected' : null }}>
@@ -33,8 +33,18 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                {{-- <input type="text" name="project" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->project }}"> --}}
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Employee</label>
+                                <select name="employee_id" class="form-control">
+                                    <option value="">--</option>
+                                    @foreach ($employee as $item)
+                                        <option value="{{ $item->id }}"
+                                            {{ old('employee_id', $data->employee_id) == $item->id ? 'selected' : null }}>
+                                            {{ $item->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Startdate</label>

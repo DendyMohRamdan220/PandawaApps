@@ -24,10 +24,21 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Project </label>
                                 <select name="project_id" class="form-control">
-                                    <option value="">- Pilih -</option>
+                                    <option value="">--</option>
                                     @foreach ($projects as $item)
                                         <option value="{{ $item->id }}" {{ old('project_id') == $item->id }}>
                                             {{ $item->projectname }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label"> Employee </label>
+                                <select name="employee_id" class="form-control">
+                                    <option value="">--</option>
+                                    @foreach ($employee as $item)
+                                        <option value="{{ $item->id }}" {{ old('employee_id') == $item->id }}>
+                                            {{ $item->name }}
                                         </option>
                                     @endforeach
                                 </select>
