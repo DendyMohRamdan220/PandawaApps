@@ -14,7 +14,7 @@ class Task extends Model
     protected $table = "tasks";
     protected $primaryKey = "id";
     protected $fillable = [
-    'id','taskname','project_id','startdate','duedate','status'];
+    'id','taskname','project_id','employee_id','startdate','duedate','status'];
 
     public function project()
     {

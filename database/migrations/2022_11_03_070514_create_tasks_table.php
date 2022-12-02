@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('taskname');
             $table->bigInteger('project_id');
+            $table->bigInteger('employee_id');
             $table->date('startdate');
             $table->date('duedate');
             $table->enum('status', ['Progres','Pending','Done','Cancel']);
