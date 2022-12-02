@@ -16,13 +16,14 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_project">Select
                                     Project</label>
                                 <div class="form-group mb-0">
-                                    <select name="select_project" id="select_project" class="form-control select-picker"
+                                    <select name="project_id" id="select_project" class="form-control select-picker"
                                         data-size="8">
                                         <option value="">--</option>
-                                        <option value="1">
-                                            Project 1</option>
-                                        <option value="2">
-                                            Project 2</option>
+                                            @foreach ( $project as $item )
+                                            <option value="{{ $item->id }}" {{ old('project_id') == $item->id}}>
+                                                {{ $item->projectname }}
+                                            </option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>

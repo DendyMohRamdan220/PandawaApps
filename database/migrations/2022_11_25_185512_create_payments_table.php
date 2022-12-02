@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('payments_number');
-            $table->enum('select_project', ['Project 1', 'Project 2']);
+            $table->bigInteger('project_id');
             $table->date ('paid_on');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
             $table->double('amount');

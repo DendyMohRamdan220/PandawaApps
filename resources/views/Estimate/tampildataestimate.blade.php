@@ -63,13 +63,15 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_client">Choose
                                     Client</label>
                                 <div class="form-group mb-0">
-                                    <select name="choose_client" id="choose_client" class="form-control select-picker"
+                                    <select name="users_id" class="form-control select-picker"
                                         data-size="8">
-                                        <option selected>{{ $data->choose_client }}</option>
                                         <option value="">--</option>
-                                        <option value="1">Zachry</option>
-                                        <option value="2">Fauziah</option>
-                                        <option value="3">Annisa</option>
+                                            @foreach ( $client as $item )
+                                            <option value="{{ $item->id }}"
+                                                {{ old('products_id', $data->users_id) == $item->id ? 'selected' : null}}>
+                                                {{ $item->name }}
+                                            </option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -77,14 +79,15 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                     Product</label>
                                 <div class="form-group mb-0">
-                                    <select name="select_product" id="select_product" class="form-control select-picker"
+                                    <select name="products_id" class="form-control select-picker"
                                         data-size="8">
-                                        <option selected>{{ $data->select_product }}</option>
                                         <option value="">--</option>
-                                        <option value="1">
-                                            Jasa</option>
-                                        <option value="2">
-                                            Elektronik</option>
+                                            @foreach ( $products as $item )
+                                            <option value="{{ $item->id }}"
+                                                {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null}}>
+                                                {{ $item->name }}
+                                            </option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>

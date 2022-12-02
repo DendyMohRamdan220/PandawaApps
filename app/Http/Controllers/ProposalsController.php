@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proposals;
+use App\Models\Products;
+use App\Models\Leads;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -21,7 +23,9 @@ class ProposalsController extends Controller
 
     public function tambahdataproposal_admin()
     {
-        return view('Proposal.tambahdataproposal');
+        $leads = Leads::all();
+        $products = Products::all();
+        return view('Proposal.tambahdataproposal', compact('leads', 'products'));
     }
 
     public function insertdataproposal_admin(Request $request)
@@ -32,8 +36,10 @@ class ProposalsController extends Controller
 
     public function editdataproposal_admin($id)
     {
+        $products = Products::all();
+        $leads = Leads::all();
         $data = Proposals::find($id);
-        return view('Proposal.tampildataproposal', compact('data'));
+        return view('Proposal.tampildataproposal', compact('data'. 'leads', 'products'));
     }
 
     public function updatedataproposal_admin(Request $request, $id)

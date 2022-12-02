@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
             $table->string('proposal_name');
-            $table->enum('leads_name', ['Annisa Zachry Fauziah', 'John Doe', 'Dendy Moh Ramdan']);
+            $table->bigInteger('leads_id');
             $table->date ('valid_till');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
-            $table->enum('select_product', ['Jasa', 'Elektronik']);
+            $table->bigInteger('products_id');
             $table->double('quantity');
             $table->double('unit_price');
             $table->double('amount');

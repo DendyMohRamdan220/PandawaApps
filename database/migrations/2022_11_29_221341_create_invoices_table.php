@@ -19,8 +19,8 @@ return new class extends Migration
             $table->date ('invoice_date');
             $table->date ('due_date');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
-            $table->enum('choose_client', ['Zachry', 'Fauziah', 'Annisa']);
-            $table->enum('select_project', ['Project 1', 'Project 2']);
+            $table->bigInteger('users_id');
+            $table->bigInteger('project_id');
             $table->string('shipping_address');
             $table->double('quantity');
             $table->double('unit_price');

@@ -43,6 +43,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Estimate Number</th>
                                 <th scope="col">Client</th>
+                                <th scope="col">Jenis Produk/Jasa</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Valid till</th>
                                 <th scope="col">Status</th>
@@ -57,7 +58,8 @@
                                 <tr>
                                     <th scope="row">{{ $dataestimate_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->estimate_number }}</td>
-                                    <td>{{ $row->select_client }}</td>
+                                    <td>{{ $row->users->name }}</td>
+                                    <td>{{ $row->products->name }}</td>
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->valid_till }}</td>
                                     <td>{{ $row->status }}</td>
@@ -72,6 +74,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $data->links() }}
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination pagination-primary">{{ $data->links() }}

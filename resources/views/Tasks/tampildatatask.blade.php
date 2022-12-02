@@ -27,7 +27,9 @@
                                 <select name="project_id" class="form-control">
                                     <option value="">- Pilih -</option>
                                     @foreach ($projects as $item)
-                                        <option value="{{ $item->id }}" {{ old('project_id', $data->project_id) == $item->id ? 'selected' : null }}>{{ $item->projectname }}
+                                        <option value="{{ $item->id }}"
+                                            {{ old('project_id', $data->project_id) == $item->id ? 'selected' : null }}>
+                                            {{ $item->projectname }}
                                         </option>
                                     @endforeach
                                 </select>

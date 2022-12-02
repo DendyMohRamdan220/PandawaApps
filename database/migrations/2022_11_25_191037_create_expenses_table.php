@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('unit_price');
             $table->date ('purchase_date');
             $table->enum('select_employee', ['A', 'B']);
-            $table->enum('select_project', ['Project 1', 'Project 2']);
+            $table->bigInteger('project_id');
             $table->string('purchase_from');
             $table->timestamps();
         });

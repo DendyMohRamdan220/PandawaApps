@@ -42,6 +42,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Lead Name</th>
+                                <th scope="col">Jenis Produk/Jasa</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Created at</th>
                                 <th scope="col">Valid till</th>
@@ -57,6 +59,8 @@
                                     <th scope="row">
                                         {{ $dataproposal_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->proposal_name }}</td>
+                                    <td>{{ $row->leads->leads_name }}</td>
+                                    <td>{{ $row->products->name }}</td>
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>{{ $row->valid_till }}</td>
@@ -71,6 +75,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $data->links() }}
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination pagination-primary">{{ $data->links() }}

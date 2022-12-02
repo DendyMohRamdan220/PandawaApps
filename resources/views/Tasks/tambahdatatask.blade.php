@@ -42,17 +42,17 @@
                                 <input type="date" name="duedate" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
                             </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1" class="form-label"> Status Tasks </label>
-                                    <br>
-                                    <select class="form-select" name="status" aria-label="Default select example">
-                                        <option selected> Status </option>
-                                        <option value="1"> Progres </option>
-                                        <option value="2"> Pending </option>
-                                        <option value="3"> Done </option>
-                                        <option value="4"> Cancel </option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="form-label"> Status Tasks </label>
+                                <br>
+                                <select class="form-select" name="status" aria-label="Default select example">
+                                    <option selected> Status </option>
+                                    <option value="1"> Progres </option>
+                                    <option value="2"> Pending </option>
+                                    <option value="3"> Done </option>
+                                    <option value="4"> Cancel </option>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary"> Submit </button>
                         </form>
                     </div>
