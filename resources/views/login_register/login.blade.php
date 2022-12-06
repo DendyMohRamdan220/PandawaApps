@@ -10,8 +10,8 @@
     <meta name="keywords"
         content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('template/assets/images/logop.jpg') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('template/assets/images/logop.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('template/assets/images/logopmn.jpg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/logopmn.png') }}" type="image/x-icon">
     <title>Login - Pandawa Mandiri</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">

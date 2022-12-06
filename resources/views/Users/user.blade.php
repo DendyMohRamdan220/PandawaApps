@@ -3,7 +3,7 @@
 @section('content')
 
     @push('css')
-    <!-- Plugins css start-->
+        <!-- Plugins css start-->
         <!-- Bootstrap CSS -->
     @endpush
 
@@ -12,7 +12,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Users</h3>
+                        <h3> Users </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
                             <li class="breadcrumb-item active"> Users </li>
@@ -53,7 +53,6 @@
                                 $no = 1;
                             @endphp
                             @foreach ($data as $index => $row)
-                            @if($row->level == 'Admin' || $row->level == 'Employee' )
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>
                                     <td>{{ $row->username }}</td>
@@ -74,10 +73,15 @@
                                             <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
-                            @endif
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="card-body">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>

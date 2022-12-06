@@ -49,8 +49,8 @@ class LoginController extends Controller
                 return redirect()->intended('dashboardv1');
             } elseif (Auth()->user()->level == 'Client') {
                 return redirect()->intended('dashboardv2');
-            } elseif (Auth()->user()->level == 'Seles') {
-                return redirect()->intended('dashboard');
+            } elseif (Auth()->user()->level == 'Sales') {
+                return redirect()->intended('dashboardv3');
             }
         }
         return back()->with('error', 'Maaf! email atau password anda salah');

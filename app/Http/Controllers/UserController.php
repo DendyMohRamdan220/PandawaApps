@@ -10,12 +10,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
+    // Portal Managemants >>
     public function datauser(Request $request)
     {
         if ($request->has('search')) {
             $data = User::where('username', 'LIKE', '%' . $request->search . '%')->paginate();
         } else {
-            $data = User::all();
+            $data = User::paginate(5);
         }
         return view('Users.user', compact('data'));
     }

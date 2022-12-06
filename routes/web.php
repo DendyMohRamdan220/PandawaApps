@@ -1,25 +1,29 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\LeadsController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AbsensiController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\KnowledgebaseController;
+use App\Http\Controllers\LeadsController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\KnowledgebaseController;
 use App\Http\Controllers\ConvertCurencyController;
 use App\Http\Controllers\SettingsprofileController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +37,7 @@ use App\Http\Controllers\SettingsprofileController;
  */
 
 // Route::get('/', function () {
-//     return view('welcome'));
+//     return view('welcome');
 // });
 
 /*
@@ -54,20 +58,6 @@ Route::get('logout', [LoginController::class, 'logout']);
 
 /*
 |--------------------------------------------------------------------------
-| Dashboard
-|--------------------------------------------------------------------------
-|
-| Below there are functions for logging in,
-| registering, forgetting password,
-| and logging out!
-|
- */
-
-Route::get('dashboardv1', [DashboardController::class, 'dashboardv1']);
-Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
-
-/*
-|--------------------------------------------------------------------------
 | PortalManagements
 |--------------------------------------------------------------------------
 |
@@ -78,6 +68,7 @@ Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
  */
 Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
 
+    // Dashboard >>
     Route::get('dashboard_admin', [DashboardController::class, 'dashboard']);
 
     // Users >>
@@ -96,14 +87,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::post('updatedatalead_admin/{id}', [LeadsController::class, 'updatedatalead_admin']);
     Route::get('deletedatalead_admin/{id}', [LeadsController::class, 'deletedatalead_admin']);
 
-    // PRODUCTS >>
-    Route::get('dataproduk_admin', [ProductsController::class, 'dataproduk_admin']);
-    Route::get('tambahdataproduk_admin', [ProductsController::class, 'tambahdataproduk_admin']);
-    Route::post('insertdataproduk_admin', [ProductsController::class, 'insertdataproduk_admin']);
-    Route::get('editdataproduk_admin/{id}', [ProductsController::class, 'editdataproduk_admin']);
-    Route::post('updatedataproduk_admin/{id}', [ProductsController::class, 'updatedataproduk_admin']);
-    Route::get('deletedataproduk_admin/{id}', [ProductsController::class, 'deletedataproduk_admin']);
-
     // Clients >>
     Route::get('dataclient_admin', [ClientController::class, 'datauser_client']);
     Route::get('tambahdataclient_admin', [ClientController::class, 'tambahdatauser_client']);
@@ -112,25 +95,20 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('updatedataclient_admin', [ClientController::class, 'updatedatauser_client']);
     Route::get('deletedataclient_admin', [ClientController::class, 'deletedatauser_client']);
 
-    /*<< HR >>*/
+    /* << HR >> */
     // Employees >>
-    Route::get('employee_admin', [EmployeeController::class, 'index']);
-    Route::get('tambahemployee_admin', [EmployeeController::class, 'tambahemployee']);
-    Route::post('insertemployee_admin', [EmployeeController::class, 'insertemployee']);
-    Route::get('tampilemployee_admin/{id}', [EmployeeController::class, 'tampilemployee']);
-    Route::post('updateemployee_admin/{id}', [EmployeeController::class, 'updateemployee']);
-    Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'hapusemployee']);
+    Route::get('employee_admin', [EmployeeController::class, 'datauser_employee']);
+    Route::get('tambahemployee_admin', [EmployeeController::class, 'tambahdatauser_employee']);
+    Route::post('insertemployee_admin', [EmployeeController::class, 'insertdatauser_employee']);
+    Route::get('tampilemployee_admin/{id}', [EmployeeController::class, 'editdatauser_employee']);
+    Route::post('updateemployee_admin/{id}', [EmployeeController::class, 'updatedatauser_employee']);
+    Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'deletedatauser_employee']);
 
-    Route::get('filterdata_admin',[AbsensiController::class,'halamanrekap']);
-    Route::get('filterdata_admin/{tglawal}/{tglakhir}',[AbsensiController::class,'tampildatakeseluruhan']);
+    Route::get('filterdata_admin', [AbsensiController::class, 'halamanrekap']);
+    Route::get('filterdata_admin/{tglawal}/{tglakhir}', [AbsensiController::class, 'tampildatakeseluruhan']);
+    /* << End HR >> */
 
-    // Attendances >>
-    // Route::get('attendance_admin', [AttendanceController::class, 'index']);
-    // Route::get('tambahattendance', [AttendanceController::class, 'tambahattendance']);
-    // Route::post('insertattendance', [AttendanceController::class, 'insertattendance']);
-    /*<< End HR >>*/
-
-    /*<< Work >>*/
+    /* << Work >> */
     // Projects >>
     Route::get('dataproject_admin', [ProjectController::class, 'dataproject_admin']);
     Route::get('tambahdataproject_admin', [ProjectController::class, 'tambahdataproject']);
@@ -146,16 +124,17 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdatatask_admin/{id}', [TaskController::class, 'editdatatask_admin']);
     Route::post('updatedatatask_admin/{id}', [TaskController::class, 'updatedatatask_admin']);
     Route::get('deletedatatask_admin/{id}', [TaskController::class, 'deletedatatask_admin']);
-    /*<< End Work >>*/
+    /* << End Work >> */
 
     /* << Finance >> */
-    // ProposalL >>
+    // Proposal >>
     Route::get('dataproposal_admin', [ProposalsController::class, 'dataproposal_admin']);
     Route::get('tambahdataproposal_admin', [ProposalsController::class, 'tambahdataproposal_admin']);
     Route::post('insertdataproposal_admin', [ProposalsController::class, 'insertdataproposal_admin']);
     Route::get('editdataproposal_admin/{id}', [ProposalsController::class, 'editdataproposal_admin']);
     Route::post('updatedataproposal_admin/{id}', [ProposalsController::class, 'updatedataproposal_admin']);
     Route::get('deletedataproposal_admin/{id}', [ProposalsController::class, 'deletedataproposal_admin']);
+    Route::get('exportpdfproposal_admin', [ProposalsController::class, 'exportpdf_admin']);
 
     // Estimates >>
     Route::get('dataestimate_admin', [EstimatesController::class, 'dataestimate_admin']);
@@ -164,6 +143,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdataestimate_admin/{id}', [EstimatesController::class, 'editdataestimate_admin']);
     Route::post('updatedataestimate_admin/{id}', [EstimatesController::class, 'updatedataestimate_admin']);
     Route::get('deletedataestimate_admin/{id}', [EstimatesController::class, 'deletedataestimate_admin']);
+    Route::get('exportpdfestimate_admin', [EstimatesController::class, 'exportpdf_admin']);
 
     // invoices >>
     Route::get('datainvoices_admin', [InvoicesController::class, 'datainvoices_admin']);
@@ -172,6 +152,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdatainvoices_admin/{id}', [InvoicesController::class, 'editdatainvoices_admin']);
     Route::post('updatedatainvoices_admin/{id}', [InvoicesController::class, 'updatedatainvoices_admin']);
     Route::get('deletedatainvoices_admin/{id}', [InvoicesController::class, 'deletedatainvoices_admin']);
+    Route::get('exportpdfinvoices_admin', [InvoicesController::class, 'exportpdf_admin']);
 
     // payments >>
     Route::get('datapayments_admin', [PaymentsController::class, 'datapayments_admin']);
@@ -180,6 +161,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdatapayments_admin/{id}', [PaymentsController::class, 'editdatapayments_admin']);
     Route::post('updatedatapayments_admin/{id}', [PaymentsController::class, 'updatedatapayments_admin']);
     Route::get('deletedatapayments_admin/{id}', [PaymentsController::class, 'deletedatapayments_admin']);
+    Route::get('exportpdfpayments_admin', [PaymentsController::class, 'exportpdf_admin']);
 
     // expenses >>
     Route::get('dataexpenses_admin', [ExpensesController::class, 'dataexpenses_admin']);
@@ -189,6 +171,15 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::post('updatedataexpenses_admin/{id}', [ExpensesController::class, 'updatedataexpenses_admin']);
     Route::get('deletedataexpenses_admin/{id}', [ExpensesController::class, 'deletedataexpenses_admin']);
     /* << End Finance >> */
+
+    // Product >>
+    Route::get('dataproduk_admin', [ProductsController::class, 'dataproduk_admin']);
+    Route::get('tambahdataproduk_admin', [ProductsController::class, 'tambahdataproduk_admin']);
+    Route::post('insertdataproduk_admin', [ProductsController::class, 'insertdataproduk_admin']);
+    Route::get('editdataproduk_admin/{id}', [ProductsController::class, 'editdataproduk_admin']);
+    Route::post('updatedataproduk_admin/{id}', [ProductsController::class, 'updatedataproduk_admin']);
+    Route::get('deletedataproduk_admin/{id}', [ProductsController::class, 'deletedataproduk_admin']);
+    Route::get('exportpdfproduk_admin', [ProductsController::class, 'exportpdf_admin']);
 
     // Tickets >>
     Route::get('ticket_admin', [TicketController::class, 'view_tiket']);
@@ -200,6 +191,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('exportpdf_admin', [TicketController::class, 'exportpdf']);
 
     //Settings>>
+    Route::get('editdatauserprofile', [SettingsprofileController::class, 'editdatauserprofile']);
+    Route::patch('updatedatauserprofile', [SettingsprofileController::class, 'updatedatauserprofile']);
     Route::get('dataprofilSettings_admin', [SettingsprofileController::class, 'dataprofilSettings_admin']);
 
      //Convert Currency>>
@@ -219,6 +212,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
  */
 Route::group(['middleware' => ['auth', 'ceklevel:Employee']], function () {
 
+    // Dashboard >>
+    Route::get('dashboardv1', [DashboardController::class, 'dashboardv1']);
+
     //Employees
     Route::get('employee', [EmployeeController::class, 'index']);
     Route::get('tambahemployee', [EmployeeController::class, 'tambahemployee']);
@@ -228,10 +224,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:Employee']], function () {
     Route::get('hapusemployee/{id}', [EmployeeController::class, 'hapusemployee']);
 
     //Attendances>>
-    Route::get('presensi_masuk',[AbsensiController::class,'index']);
-    Route::post('simpan_masuk',[AbsensiController::class,'store'])->name('simpan_masuk');
-    Route::get('presensi_keluar',[AbsensiController::class,'keluar'])->name('presensi_keluar');
-    Route::post('ubah_presensi',[AbsensiController::class,'presensipulang'])->name('ubah_presensi');
+    Route::get('presensi_masuk', [AbsensiController::class, 'index']);
+    Route::post('simpan_masuk', [AbsensiController::class, 'store'])->name('simpan_masuk');
+    Route::get('presensi_keluar', [AbsensiController::class, 'keluar'])->name('presensi_keluar');
+    Route::post('ubah_presensi', [AbsensiController::class, 'presensipulang'])->name('ubah_presensi');
 
     //Projects>>
     Route::get('dataproject_employee', [ProjectController::class, 'dataproject_employee']);
@@ -264,11 +260,41 @@ Route::group(['middleware' => ['auth', 'ceklevel:Employee']], function () {
  */
 Route::group(['middleware' => ['auth', 'ceklevel:Client']], function () {
 
+    // Dashboard >>
+    Route::get('dashboardv2', [DashboardController::class, 'dashboardv2']);
+
+    /*<< Work >>*/
     // Projects >>
     Route::get('dataproject_client', [ProjectController::class, 'dataproject_client']);
+    Route::get('exportpdfproject_client', [ProjectController::class, 'exportpdf_client']);
 
     // Tasks >>
     Route::get('datatask_client', [TaskController::class, 'datatask_client']);
+    Route::get('exportpdftask_client', [TaskController::class, 'exportpdf_client']);
+    /*<< End Work >>*/
+
+    /* << Finance >> */
+    // Proposal >>
+    Route::get('dataproposal_client', [ProposalsController::class, 'dataproposal_client']);
+    Route::get('tambahdataproposal_client', [ProposalsController::class, 'tambahdataproposal_client']);
+    Route::post('insertdataproposal_client', [ProposalsController::class, 'insertdataproposal_client']);
+    Route::get('editdataproposal_client/{id}', [ProposalsController::class, 'editdataproposal_client']);
+    Route::post('updatedataproposal_client/{id}', [ProposalsController::class, 'updatedataproposal_client']);
+    Route::get('deletedataproposal_client/{id}', [ProposalsController::class, 'deletedataproposal_client']);
+    Route::get('exportpdfproposal_client', [ProposalsController::class, 'exportpdf_client']);
+
+    // Estimates >>
+    Route::get('dataestimate_client', [EstimatesController::class, 'dataestimate_client']);
+    Route::get('exportpdfestimate_client', [EstimatesController::class, 'exportpdf_client']);
+
+    // invoices >>
+    Route::get('datainvoices_client', [InvoicesController::class, 'datainvoices_client']);
+    Route::get('exportpdfinvoices_client', [InvoicesController::class, 'exportpdf_client']);
+
+    // payments >>
+    Route::get('datapayments_client', [PaymentsController::class, 'datapayments_client']);
+    Route::get('exportpdfpayments_client', [PaymentsController::class, 'exportpdf_client']);
+    /* << End Finance >> */
 
     //Tickets>>
     Route::get('dataticket_client', [TicketController::class, 'dataticket_client']);
@@ -281,5 +307,68 @@ Route::group(['middleware' => ['auth', 'ceklevel:Client']], function () {
 
     // Knowledgebases >>
     Route::get('knowledgebase', [KnowledgebaseController::class, 'knowledgebase']);
+
+});
+/*
+|--------------------------------------------------------------------------
+| Portal Seles
+|--------------------------------------------------------------------------
+|
+| Below there are functions for logging in,
+| registering, forgetting password,
+| and logging out!
+|
+ */
+Route::group(['middleware' => ['auth', 'ceklevel:Sales']], function () {
+
+    // Dashboard >>
+    Route::get('dashboardv3', [DashboardController::class, 'dashboardv3']);
+
+    /* << Finance >> */
+    // ProposalL >>
+    Route::get('dataproposal_sales', [ProposalsController::class, 'dataproposal_sales']);
+    Route::get('tambahdataproposal_sales', [ProposalsController::class, 'tambahdataproposal_sales']);
+    Route::post('insertdataproposal_sales', [ProposalsController::class, 'insertdataproposal_sales']);
+    Route::get('editdataproposal_sales/{id}', [ProposalsController::class, 'editdataproposal_sales']);
+    Route::post('updatedataproposal_sales/{id}', [ProposalsController::class, 'updatedataproposal_sales']);
+    Route::get('deletedataproposal_sales/{id}', [ProposalsController::class, 'deletedataproposal_sales']);
+    Route::get('exportpdfproposal_sales', [ProposalsController::class, 'exportpdf_sales']);
+
+    // Estimates >>
+    Route::get('dataestimate_sales', [EstimatesController::class, 'dataestimate_sales']);
+    Route::get('tambahdataestimate_sales', [EstimatesController::class, 'tambahdataestimate_sales']);
+    Route::post('insertdataestimate_sales', [EstimatesController::class, 'insertdataestimate_sales']);
+    Route::get('editdataestimate_sales/{id}', [EstimatesController::class, 'editdataestimate_sales']);
+    Route::post('updatedataestimate_sales/{id}', [EstimatesController::class, 'updatedataestimate_sales']);
+    Route::get('deletedataestimate_sales/{id}', [EstimatesController::class, 'deletedataestimate_sales']);
+    Route::get('exportpdfestimate_sales', [EstimatesController::class, 'exportpdf_sales']);
+
+    // invoices >>
+    Route::get('datainvoices_sales', [InvoicesController::class, 'datainvoices_sales']);
+    Route::get('tambahdatainvoices_sales', [InvoicesController::class, 'tambahdatainvoices_sales']);
+    Route::post('insertdatainvoices_sales', [InvoicesController::class, 'insertdatainvoices_sales']);
+    Route::get('editdatainvoices_sales/{id}', [InvoicesController::class, 'editdatainvoices_sales']);
+    Route::post('updatedatainvoices_sales/{id}', [InvoicesController::class, 'updatedatainvoices_sales']);
+    Route::get('deletedatainvoices_sales/{id}', [InvoicesController::class, 'deletedatainvoices_sales']);
+    Route::get('exportpdfinvoices_sales', [InvoicesController::class, 'exportpdf_sales']);
+
+    // payments >>
+    Route::get('datapayments_sales', [PaymentsController::class, 'datapayments_sales']);
+    Route::get('tambahdatapayments_sales', [PaymentsController::class, 'tambahdatapayments_sales']);
+    Route::post('insertdatapayments_sales', [PaymentsController::class, 'insertdatapayments_sales']);
+    Route::get('editdatapayments_sales/{id}', [PaymentsController::class, 'editdatapayments_sales']);
+    Route::post('updatedatapayments_sales/{id}', [PaymentsController::class, 'updatedatapayments_sales']);
+    Route::get('deletedatapayments_sales/{id}', [PaymentsController::class, 'deletedatapayments_sales']);
+    Route::get('exportpdfpayments_sales', [PaymentsController::class, 'exportpdf_sales']);
+
+    // expenses >>
+    Route::get('dataexpenses_sales', [ExpensesController::class, 'dataexpenses_sales']);
+    Route::get('tambahdataexpenses_sales', [ExpensesController::class, 'tambahdataexpenses_sales']);
+    Route::post('insertdataexpenses_sales', [ExpensesController::class, 'insertdataexpenses_sales']);
+    Route::get('editdataexpenses_sales/{id}', [ExpensesController::class, 'editdataexpenses_sales']);
+    Route::post('updatedataexpenses_sales/{id}', [ExpensesController::class, 'updatedataexpenses_sales']);
+    Route::get('deletedataexpenses_sales/{id}', [ExpensesController::class, 'deletedataexpenses_sales']);
+    Route::get('exportpdfexpenses_sales', [ExpensesController::class, 'exportpdf_sales']);
+    /* << End Finance >> */
 
 });

@@ -43,8 +43,8 @@ class DatabaseSeeder extends Seeder
             'level' => 'Employee',
         ]);
         User::create([
-            'username' => 'Annisa Zachry Fauziah',
-            'email' => 'annisa001@gmail.com',
+            'username' => 'Wanti Istiqomah',
+            'email' => 'wanti001@gmail.com',
             'password' => Hash::make('Employee123451'),
             'level' => 'Employee',
         ]);
@@ -103,6 +103,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'dwiki004@gmail.com',
             'password' => Hash::make('Client123454'),
             'level' => 'Client',
+        ]);
+        User::create([
+            'username' => 'Annisa Zachry Fauziah',
+            'email' => 'annisazachry246@gmail.com',
+            'password' => Hash::make('Sales123454'),
+            'level' => 'Sales',
         ]);
     }
 }

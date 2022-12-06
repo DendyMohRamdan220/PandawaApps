@@ -9,7 +9,7 @@
                         <h3> Proposal </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
-                            <li class="breadcrumb-item active"> Finance </li>
+                            <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item active"> Proposal </li>
                         </ol>
                     </div>
@@ -26,11 +26,11 @@
                     <div class="col-auto">
                         <form action="/dataproposal_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                                aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
+                        <a href="/exportpdfproposal_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
                             PDF</a>
                     </div>
                 </div>

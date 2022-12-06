@@ -9,6 +9,7 @@
                         <h3> Projects </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboardv2"> Home </a></li>
+                            <li class="breadcrumb-item"> Work </li>
                             <li class="breadcrumb-item active"> Projects </li>
                         </ol>
                     </div>

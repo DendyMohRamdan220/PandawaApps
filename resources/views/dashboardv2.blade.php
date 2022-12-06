@@ -1,6 +1,7 @@
 @extends('Layouts.layout')
 
 @section('content')
+
     @push('css')
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/owlcarousel.css') }}">
@@ -12,11 +13,10 @@
             <div class="page-header">
               <div class="row">
                 <div class="col-sm-6">
-                  <h3>General</h3>
+                  <h3> Dashboard </h3>
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Widgets</li>
-                    <li class="breadcrumb-item active">General</li>
+                    <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
+                    <li class="breadcrumb-item active"> Dashboard </li>
                   </ol>
                 </div>
               </div>
@@ -29,81 +29,9 @@
                     <div class="card o-hidden border-0">
                         <div class="bg-primary b-r-4 card-body">
                             <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="users"></i></div>
-                                <div class="media-body"><span class="m-0">Total Clients</span>
-                                    <h4 class="mb-0 counter">6659</h4><i class="icon-bg" data-feather="users"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="user"></i></div>
-                                <div class="media-body"><span class="m-0">Total Employees</span>
-                                    <h4 class="mb-0 counter">9856</h4><i class="icon-bg" data-feather="user"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
                                 <div class="align-self-center text-center"><i data-feather="layers"></i></div>
                                 <div class="media-body"><span class="m-0">Total Projects</span>
-                                    <h4 class="mb-0 counter">893</h4><i class="icon-bg" data-feather="layers"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="file-text"></i></div>
-                                <div class="media-body"><span class="m-0">Due Invoices</span>
-                                    <h4 class="mb-0 counter">4531</h4><i class="icon-bg" data-feather="file-text"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="clock"></i></div>
-                                <div class="media-body"><span class="m-0">Hours Logged</span>
-                                    <h4 class="mb-0 counter">6659</h4><i class="icon-bg" data-feather="clock"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="list"></i></div>
-                                <div class="media-body"><span class="m-0">Pending Tasks</span>
-                                    <h4 class="mb-0 counter">9856</h4><i class="icon-bg" data-feather="list"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
-                                <div class="media-body"><span class="m-0">Today Attendance</span>
-                                    <h4 class="mb-0 counter">893</h4><i class="icon-bg" data-feather="calendar"></i>
+                                    <h4 class="mb-0 counter">{{ $totalproject }}</h4><i class="icon-bg" data-feather="layers"></i>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +43,19 @@
                             <div class="media static-top-widget">
                                 <div class="align-self-center text-center"><i data-feather="headphones"></i></div>
                                 <div class="media-body"><span class="m-0">Unresolved Tickets</span>
-                                    <h4 class="mb-0 counter">4531</h4><i class="icon-bg" data-feather="headphones"></i>
+                                    <h4 class="mb-0 counter">{{ $dueinvoices }}</h4><i class="icon-bg" data-feather="headphones"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <div class="card o-hidden border-0">
+                        <div class="bg-secondary b-r-4 card-body">
+                            <div class="media static-top-widget">
+                                <div class="align-self-center text-center"><i data-feather="file-text"></i></div>
+                                <div class="media-body"><span class="m-0">Due Invoices</span>
+                                    <h4 class="mb-0 counter">{{ $unresolvedticket }}</h4><i class="icon-bg" data-feather="file-text"></i>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +117,7 @@
                                                 <div class="date f-24 mb-2" id="date"><span
                                                         id="monthDay"></span><span id="year">, </span></div>
                                                 <div>
-                                                    <p class="m-0 f-14 text-light">kolkata, India </p>
+                                                    <p class="m-0 f-14 text-light">Jakarta, Indonesia </p>
                                                 </div>
                                             </div>
                                         </div>

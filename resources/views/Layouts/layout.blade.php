@@ -10,8 +10,8 @@
     <meta name="keywords"
         content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('template/assets/images/logop.jpg') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('template/assets/images/logop.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('template/assets/images/logopmn.jpg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/logopmn.png') }}" type="image/x-icon">
     <title> Pandawa Mandiri </title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -67,13 +67,13 @@
                 <div class="main-header-left">
                     <div class="logo-wrapper">
                         <a href="/dashboarad_admin">
-                            <img class="img-fluid" src="{{ asset('template/assets/images/logopm.jpg') }}"
+                            <img class="img-fluid" src="{{ asset('template/assets/images/logopmn.jpg') }}"
                                 alt="">
                         </a>
                     </div>
                     <div class="dark-logo-wrapper">
                         <a href="index.html">
-                            <img class="img-fluid" src="{{ asset('template/assets/images/logopm.jpg') }}"
+                            <img class="img-fluid" src="{{ asset('template/assets/images/logopmn.jpg') }}"
                                 alt="">
                         </a>
                     </div>
@@ -110,18 +110,7 @@
                     <a href="#">
                         <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->username }}</h6>
                     </a>
-                    @if (auth()->user()->level == 'Admin')
-                        <p class="mb-0 font-roboto">Admin</p>
-                    @endif
-                    @if (auth()->user()->level == 'Employee')
-                        <p class="mb-0 font-roboto">Employee</p>
-                    @endif
-                    @if (auth()->user()->level == 'Client')
-                        <p class="mb-0 font-roboto">Client</p>
-                    @endif
-                    @if (auth()->user()->level == 'Seles')
-                        <p class="mb-0 font-roboto">Admin</p>
-                    @endif
+                        <p class="mb-0 font-roboto">{{ auth()->user()->level }}</p>
                 </div>
                 <nav>
                     <div class="main-navbar">
@@ -136,14 +125,10 @@
                                 </li>
                                 @if (auth()->user()->level == 'Admin')
                                     <li class="dropdown">
-                                        <a class="nav-link menu-title" href="javascript:void(0)">
+                                        <a class="nav-link menu-title link-nav" href="/dashboard_admin">
                                             <i data-feather="home"></i>
                                             <span>Dashboard</span>
                                         </a>
-                                        <ul class="nav-submenu menu-content">
-                                            <li><a href="/dashboard_admin">Default</a></li>
-                                            <li><a href="/datauser_admin">Ecommerce</a></li>
-                                        </ul>
                                     </li>
                                     <li class="dropdown">
                                         <a class="nav-link menu-title link-nav" href="/datalead_admin">
@@ -155,6 +140,12 @@
                                         <a class="nav-link menu-title link-nav" href="/dataclient_admin">
                                             <i data-feather="list"></i>
                                             <span>Clients</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="nav-link menu-title link-nav" href="/datasales_admin">
+                                            <i data-feather="list"></i>
+                                            <span>Sales</span>
                                         </a>
                                     </li>
                                     <li class="dropdown">
@@ -229,13 +220,13 @@
                                             <span>Settings</span>
                                         </a>
                                         <ul class="nav-submenu menu-content">
+                                            <li><a href="/datauser_admin">User Control</a></li>
                                             <li>
-                                                <a href="/dataprofilSettings_admin">Edit Profile</a>
+                                                <a href="/editdatauserprofile">Edit Profile</a>
                                             </li>
                                             <li>
                                                 <a href="/currency">Convert Currency </a>
                                             </li>
-
                                         </ul>
                                     </li>
                                 @endif
@@ -315,16 +306,16 @@
                                         </a>
                                         <ul class="nav-submenu menu-content">
                                             <li>
-                                                <a href="#">Proposal</a>
+                                                <a href="/dataproposal_client">Proposal</a>
                                             </li>
                                             <li>
-                                                <a href="#">Estimates</a>
+                                                <a href="/dataestimate_client">Estimates</a>
                                             </li>
                                             <li>
-                                                <a href="#">Invoices</a>
+                                                <a href="/datainvoices_client">Invoices</a>
                                             </li>
                                             <li>
-                                                <a href="#">Payments</a>
+                                                <a href="/datapayments_client">Payments</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -341,15 +332,34 @@
                                         </a>
                                     </li>
                                 @endif
-                                @if (auth()->user()->level == 'Seles')
-                                    <li>
-                                        <a class="nav-link menu-title link-nav" href="#">
-                                            <i data-feather="headphones"></i>
-                                            <span>Support Ticket</span>
+                                @if (auth()->user()->level == 'Sales')
+                                <li class="dropdown">
+                                        <a class="nav-link menu-title link-nav" href="/dashboardv3">
+                                            <i data-feather="home"></i>
+                                            <span>Dashboard</span>
                                         </a>
                                     </li>
+                                    <li class="dropdown">
+                                        <a class="nav-link menu-title" href="javascript:void(0)">
+                                            <i data-feather="dollar-sign"></i>
+                                            <span>Finance</span>
+                                        </a>
+                                        <ul class="nav-submenu menu-content">
+                                            <li>
+                                                <a href="/dataproposal_sales">Proposal</a>
+                                            </li>
+                                            <li>
+                                                <a href="/dataestimate_sales">Estimates</a>
+                                            </li>
+                                            <li>
+                                                <a href="/datainvoices_sales">Invoices</a>
+                                            </li>
+                                            <li>
+                                                <a href="/datapayments_sales">Payments</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 @endif
-
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
@@ -415,7 +425,6 @@
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="{{ asset('template/assets/js/script.js') }}"></script>
-    <script src="{{ asset('template/assets/js/theme-customizer/customizer.js') }}"></script>
     <!-- login js-->
     <!-- Plugin used-->
     @stack('scripts')
