@@ -24,10 +24,10 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputCity1">Nama Lengkap</label>
-                                <input name="name" type="text"
-                                    class="form-control @error('name') is-invalid @enderror" id="exampleInputCity1"
-                                    placeholder="Nama Lengkap" value="{{ old('name') }}">
-                                @error('name')
+                                <input name="username" type="text"
+                                    class="form-control @error('username') is-invalid @enderror" id="exampleInputCity1"
+                                    placeholder="Nama Lengkap" value="{{ old('username') }}">
+                                @error('username')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

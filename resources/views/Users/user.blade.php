@@ -56,7 +56,7 @@
                             @if($row->level == 'Admin' || $row->level == 'Employee' )
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>
-                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->username }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->level }}</td>
                                     <td>
@@ -70,7 +70,7 @@
                                         <a class="btn btn-info" href="/editdatauser_admin/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                            data-name="{{ $row->name }}">
+                                            data-username="{{ $row->username }}">
                                             <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
@@ -109,7 +109,7 @@
     <script>
         $('.delete').click(function() {
             var userid = $(this).attr('data-id');
-            var namauser = $(this).attr('data-name');
+            var namauser = $(this).attr('data-username');
             swal({
                     title: "Are you sure?",
                     text: "Once deleted, you will not be able to recover data from the Ticket Subject " +
