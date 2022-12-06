@@ -13,7 +13,7 @@ class UserController extends Controller
     public function datauser(Request $request)
     {
         if ($request->has('search')) {
-            $data = User::where('name', 'LIKE', '%' . $request->search . '%')->paginate();
+            $data = User::where('username', 'LIKE', '%' . $request->search . '%')->paginate();
         } else {
             $data = User::all();
         }
@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         //Validasi
         $messages = [
-            'name.required' => 'Nama tidak boleh kosong!',
+            'username.required' => 'Nama tidak boleh kosong!',
             'email.required' => 'Email tidak boleh kosong!',
             'level.required' => 'level user tidak boleh kosong!',
             'password.required' => 'Password tidak boleh kosong!',
@@ -37,7 +37,7 @@ class UserController extends Controller
         ];
 
         $cekValidasi = $x->validate([
-            'name' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'level' => 'required',
             'password' => 'required|min:4|max:100',
@@ -49,7 +49,7 @@ class UserController extends Controller
         $file = $x->file('file');
         if (empty($file)) {
             User::create([
-                'name' => $x->name,
+                'username' => $x->username,
                 'email' => $x->email,
                 'password' => bcrypt($x['password']),
                 'level' => $x->level,
@@ -64,7 +64,7 @@ class UserController extends Controller
             $pathPublic = $namaFolder . "/" . $nama_file;
 
             User::create([
-                'name' => $x->name,
+                'username' => $x->username,
                 'email' => $x->email,
                 'password' => bcrypt($x['password']),
                 'level' => $x->level,
@@ -87,14 +87,14 @@ class UserController extends Controller
     {
         //Validasi
         $messages = [
-            'name.required' => 'Nama tidak boleh kosong!',
+            'username.required' => 'Nama tidak boleh kosong!',
             'email.required' => 'Email tidak boleh kosong!',
             'password.required' => 'Password tidak boleh kosong!',
             'level.required' => 'level user tidak boleh kosong!',
             'image' => 'File harus berupa tipe: jpeg,png,jpg|max:2048',
         ];
         $cekValidasi = $x->validate([
-            'name' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'password' => 'required',
             'level' => 'required',
@@ -115,7 +115,7 @@ class UserController extends Controller
         }
 
         User::where("id", "$idUser")->update([
-            'name' => $x->name,
+            'username' => $x->username,
             'email' => $x->email,
             'password' => Hash::make($x->password),
             'level' => $x->level,
