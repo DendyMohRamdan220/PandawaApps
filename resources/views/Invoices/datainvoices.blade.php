@@ -20,7 +20,8 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatainvoices_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Create Invoice </a>
+                        <a href="/tambahdatainvoices_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i>
+                            Create Invoice </a>
                     </div>
                     <div class="col-auto">
                         <form action="/datainvoices_admin" method="GET">
@@ -56,7 +57,7 @@
                                 <tr>
                                     <th scope="row">{{ $datainvoices_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->invoice_number }}</td>
-                                    <td>{{ $row->select_project }}</td>
+                                    <td>{{ $row->projects->projectname }}</td>
                                     <td>{{ $row->choose_client }}</td>
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->invoice_date }}</td>
@@ -71,6 +72,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $data->links() }}
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination pagination-primary">{{ $data->links() }}

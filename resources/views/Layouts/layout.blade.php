@@ -225,7 +225,7 @@
                                                 <a href="/editdatauserprofile">Edit Profile</a>
                                             </li>
                                             <li>
-                                                <a href="#">Notification</a>
+                                                <a href="/currency">Convert Currency </a>
                                             </li>
                                         </ul>
                                     </li>

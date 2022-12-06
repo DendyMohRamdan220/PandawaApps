@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estimates;
+use App\Models\Products;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -21,7 +23,9 @@ class EstimatesController extends Controller
 
     public function tambahdataestimate_admin()
     {
-        return view('Estimate.tambahdataestimate');
+        $client = Client::all();
+        $products = Products::all();
+        return view('Estimate.tambahdataestimate', compact('client', 'products'));
     }
 
     public function insertdataestimate_admin(Request $request)
@@ -32,8 +36,10 @@ class EstimatesController extends Controller
 
     public function editdataestimate_admin($id)
     {
+        $client = Client::all();
+        $products = Products::all();
         $data = Estimates::find($id);
-        return view('Estimate.tampildataestimate', compact('data'));
+        return view('Estimate.tampildataestimate', compact('data', 'client', 'products'));
     }
 
     public function updatedataestimate_admin(Request $request, $id)

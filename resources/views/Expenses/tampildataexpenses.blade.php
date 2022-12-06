@@ -45,9 +45,11 @@
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="unit_price">Price</label>
-                                    <input type="text" class="form-control height-35 f-14" value="{{ $data->unit_price }}" name="unit_price"
-                                        id="unit_price" autocomplete="off">
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true"
+                                        for="unit_price">Price</label>
+                                    <input type="text" class="form-control height-35 f-14"
+                                        value="{{ $data->unit_price }}" name="unit_price" id="unit_price"
+                                        autocomplete="off">
                                 </div>
                             </div>
 
@@ -55,8 +57,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Purchase Date</label>
-                                    <input type="date" value="{{ $data->purchase_date }}" name="purchase_date" id="purchase_date"
-                                        class="form-control" />
+                                    <input type="date" value="{{ $data->purchase_date }}" name="purchase_date"
+                                        id="purchase_date" class="form-control" />
 
                                 </div>
                             </div>
@@ -79,14 +81,15 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_project">Select
                                     Project</label>
                                 <div class="form-group mb-0">
-                                    <select name="select_project" id="select_project" class="form-control select-picker"
+                                    <select name="project_id" class="form-control select-picker"
                                         data-size="8">
-                                        <option selected>{{ $data->select_project }}</option>
                                         <option value="">--</option>
-                                        <option value="1">
-                                            Project 1</option>
-                                        <option value="2">
-                                            Project 2</option>
+                                            @foreach ( $project as $item )
+                                            <option value="{{ $item->id }}"
+                                                {{ old('project_id', $data->project_id) == $item->id ? 'selected' : null}}>
+                                                {{ $item->projectname }}
+                                            </option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -94,8 +97,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Purchased From</label>
-                                    <input type="text" value="{{ $data->purchase_from }}" name="purchase_from" id="purchase_from"
-                                        class="form-control" />
+                                    <input type="text" value="{{ $data->purchase_from }}" name="purchase_from"
+                                        id="purchase_from" class="form-control" />
 
                                 </div>
                             </div>

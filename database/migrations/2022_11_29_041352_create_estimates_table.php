@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('estimate_number');
             $table->date ('valid_till');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
-            $table->enum('choose_client', ['Zachry', 'Fauziah', 'Annisa']);
-            $table->enum('select_product', ['Jasa', 'Elektronik']);
+            $table->bigInteger('users_id');
+            $table->bigInteger('products_id');
             $table->double('quantity');
             $table->double('unit_price');
             $table->double('amount');

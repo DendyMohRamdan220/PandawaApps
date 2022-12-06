@@ -14,6 +14,11 @@ use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProposalsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EstimatesController;
+use App\Http\Controllers\ProposalsController;
+use App\Http\Controllers\KnowledgebaseController;
+use App\Http\Controllers\ConvertCurencyController;
 use App\Http\Controllers\SettingsprofileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TicketController;
@@ -188,6 +193,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     //Settings>>
     Route::get('editdatauserprofile', [SettingsprofileController::class, 'editdatauserprofile']);
     Route::patch('updatedatauserprofile', [SettingsprofileController::class, 'updatedatauserprofile']);
+    Route::get('dataprofilSettings_admin', [SettingsprofileController::class, 'dataprofilSettings_admin']);
+
+     //Convert Currency>>
+     Route::get('currency',[ConvertCurencyController::class,'index'])->name('currency');
 
 });
 

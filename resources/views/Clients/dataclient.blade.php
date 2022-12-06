@@ -57,7 +57,7 @@
                                 @if ($row->level == 'Client')
                                     <tr>
                                         <th scope="row">{{ $no++ }}</th>
-                                        <td>{{ $row->name }}</td>
+                                        <td>{{ $row->username }}</td>
                                         <td>{{ $row->email }}</td>
                                         <td>{{ $row->level }}</td>
                                         <td>
@@ -71,7 +71,7 @@
                                         <a class="btn btn-info" href="/editdataclient_admin/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                            data-client="{{ $row->Ussername }}">
+                                            data-client="{{ $row->Username }}">
                                             <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
@@ -110,11 +110,11 @@
 <script>
     $('.delete').click(function() {
         var clientid = $(this).attr('data-id');
-        var ussername = $(this).attr('data-name');
+        var username = $(this).attr('data-name');
         swal({
                 title: "Are you sure?",
                 text: "Once deleted, you will not be able to recover data from the client Name " +
-                    ussername + " ",
+                    username + " ",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -122,11 +122,11 @@
             .then((willDelete) => {
                 if (willDelete) {
                     window.location = "/deletedataclient_admin/" + clientid + ""
-                    swal("Your data from Ticket Subject " + ussername + " has been deleted!", {
+                    swal("Your data from Ticket Subject " + username + " has been deleted!", {
                         icon: "success",
                     });
                 } else {
-                    swal("Deletion of data from Leads Name " + ussername + " has been cancelled!");
+                    swal("Deletion of data from Leads Name " + username + " has been cancelled!");
                 }
             });
     });

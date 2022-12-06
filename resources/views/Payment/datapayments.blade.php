@@ -56,7 +56,7 @@
                                 <tr>
                                     <th scope="row">{{ $datapayments_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->payments_number }}</td>
-                                    <td>{{ $row->select_project }}</td>
+                                    <td>{{ $row->projects->projectname }}</td>
                                     <td>{{ $row->amount }}</td>
                                     <td>{{ $row->paid_on }}</td>
                                     <td>
@@ -70,6 +70,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $data->links() }}
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination pagination-primary">{{ $data->links() }}

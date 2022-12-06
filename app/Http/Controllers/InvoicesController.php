@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\project;
+use App\Models\client;
 use App\Models\Invoices;
 use PDF;
 
@@ -21,7 +23,8 @@ class InvoicesController extends Controller
 
     public function tambahdatainvoices_admin()
     {
-        return view('Invoices.tambahdatainvoices');
+        $project = Project::all();
+        return view('Invoices.tambahdatainvoices', compact('project'));
     }
 
     public function insertdatainvoices_admin(Request $request)
@@ -32,8 +35,9 @@ class InvoicesController extends Controller
 
     public function editdatainvoices_admin($id)
     {
+        $project = Project::all();
         $data = Invoices::find($id);
-        return view('Invoices.tampildatainvoices', compact('data'));
+        return view('Invoices.tampildatainvoices', compact('data', 'project'));
     }
 
     public function updatedatainvoices_admin(Request $request, $id)

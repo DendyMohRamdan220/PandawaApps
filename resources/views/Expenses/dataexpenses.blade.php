@@ -72,6 +72,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $data->links() }}
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination pagination-primary">{{ $data->links() }}

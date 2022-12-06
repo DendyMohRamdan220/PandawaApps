@@ -140,4 +140,14 @@ class ClientController extends Controller
             return redirect('/dataclient_admin')->with('toast_error', 'Data tidak bisa di hapus!');
         }
     }
+
+    public function dataclient_employee(Request $c)
+    {
+    if ($c->has('search')) {
+    $data = User::where('name', 'LIKE', '%' . $c->search . '%')->paginate(5);
+    } else {
+    $data = User::latest()->paginate();
+    }
+    return view('Clients.dataclient_employee', compact('data'));
+    }
 }

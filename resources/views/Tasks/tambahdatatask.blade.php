@@ -25,10 +25,21 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Project </label>
                                 <select name="project_id" class="form-control">
-                                    <option value="">- Pilih -</option>
+                                    <option value="">--</option>
                                     @foreach ($projects as $item)
                                         <option value="{{ $item->id }}" {{ old('project_id') == $item->id }}>
                                             {{ $item->projectname }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label"> Employee </label>
+                                <select name="employee_id" class="form-control">
+                                    <option value="">--</option>
+                                    @foreach ($employee as $item)
+                                        <option value="{{ $item->id }}" {{ old('employee_id') == $item->id }}>
+                                            {{ $item->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -43,17 +54,17 @@
                                 <input type="date" name="duedate" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
                             </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1" class="form-label"> Status Tasks </label>
-                                    <br>
-                                    <select class="form-select" name="status" aria-label="Default select example">
-                                        <option selected> Status </option>
-                                        <option value="1"> Progres </option>
-                                        <option value="2"> Pending </option>
-                                        <option value="3"> Done </option>
-                                        <option value="4"> Cancel </option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="form-label"> Status Tasks </label>
+                                <br>
+                                <select class="form-select" name="status" aria-label="Default select example">
+                                    <option selected> Status </option>
+                                    <option value="1"> Progres </option>
+                                    <option value="2"> Pending </option>
+                                    <option value="3"> Done </option>
+                                    <option value="4"> Cancel </option>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary"> Submit </button>
                         </form>
                     </div>

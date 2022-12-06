@@ -15,7 +15,8 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/updatedataproject_admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                        <form action="/updatedataproject_admin/{{ $data->id }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">projectname</label>
@@ -24,8 +25,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Employee</label>
-                                <input type="text" name="employee" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->employee }}">
+                                <select name="employee_id" class="form-control">
+                                    <option value="">--</option>
+                                    @foreach ($employee as $item)
+                                        <option value="{{ $item->id }}"
+                                            {{ old('employee_id', $data->employee_id) == $item->id ? 'selected' : null }}>
+                                            {{ $item->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Deadline</label>
@@ -37,17 +45,17 @@
                                 <input type="text" name="client" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" value="{{ $data->client }}">
                             </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Status Project</label>
-                                    <br>
-                                    <select class="form-select" name="status" aria-label="Default select example">
-                                        <option selected>{{ $data->status }}</option>
-                                        <option value="1">Progres</option>
-                                        <option value="2">Pending</option>
-                                        <option value="3">Done</option>
-                                        <option value="4">Cancel</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Status Project</label>
+                                <br>
+                                <select class="form-select" name="status" aria-label="Default select example">
+                                    <option selected>{{ $data->status }}</option>
+                                    <option value="1">Progres</option>
+                                    <option value="2">Pending</option>
+                                    <option value="3">Done</option>
+                                    <option value="4">Cancel</option>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

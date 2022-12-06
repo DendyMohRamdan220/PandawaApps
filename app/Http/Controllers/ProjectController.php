@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Project;
 use Illuminate\Http\Request;
+
 
 
 class ProjectController extends Controller
@@ -20,7 +22,8 @@ class ProjectController extends Controller
 
     public function tambahdataproject()
     {
-        return view('Projects.tambahdataproject');
+        $employee = Employee::all();
+        return view('Projects.tambahdataproject', compact('employee'));
     }
 
     public function insertdataproject(Request $request)
@@ -31,8 +34,9 @@ class ProjectController extends Controller
 
     public function editdataproject($id)
     {
+        $employee = Employee::all();
         $data = project::find($id);
-        return view('Projects.tampildataproject', compact('data'));
+        return view('Projects.tampildataproject', compact('employee'));
     }
 
     public function updatedataproject(Request $request, $id)

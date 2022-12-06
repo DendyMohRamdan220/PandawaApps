@@ -53,7 +53,7 @@
                                 <tr>
                                     <th scope="row">{{ $dataproject_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->projectname }}</td>
-                                    <td>{{ $row->employee }}</td>
+                                    <td>{{ $row->employee->name }}</td>
                                     <td>{{ $row->deadline }}</td>
                                     <td>{{ $row->client }}</td>
                                     <td>{{ $row->status }}</td>

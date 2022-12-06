@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('projectname');
-            $table->string('employee');
+            $table->string('employee_id');
             $table->date('deadline');
             $table->string('client');
             $table->enum('status', ['Progres','Pending','Done','Cancel']);

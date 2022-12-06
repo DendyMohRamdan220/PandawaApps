@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payments;
+use App\Models\project;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -21,7 +22,8 @@ class PaymentsController extends Controller
 
     public function tambahdatapayments_admin()
     {
-        return view('Payment.tambahdatapayments');
+        $project = Project::all();
+        return view('Payment.tambahdatapayments', compact('project'));
     }
 
     public function insertdatapayments_admin(Request $request)
@@ -32,8 +34,9 @@ class PaymentsController extends Controller
 
     public function editdatapayments_admin($id)
     {
+        $project = Project::all();
         $data = Payments::find($id);
-        return view('Payment.tampildatapayments', compact('data'));
+        return view('Payment.tampildatapayments', compact('data', 'project'));
     }
 
     public function updatedatapayments_admin(Request $request, $id)

@@ -12,10 +12,15 @@ class project extends Model
     protected $table = "projects";
     protected $primaryKey = "id";
     protected $fillable = [
-    'id','projectname','employee','deadline','client','status'];
+    'id','projectname','employee_id','deadline','client','status'];
 
     public function task()
     {
     return $this->belongsTo(Task::class);
+    }
+
+    public function employee()
+    {
+    return $this->belongsTo(Employee::class);
     }
 }
