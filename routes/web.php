@@ -14,11 +14,11 @@ use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\KnowledgebaseController;
+use App\Http\Controllers\ConvertCurencyController;
 use App\Http\Controllers\SettingsprofileController;
 
 /*
@@ -202,6 +202,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     //Settings>>
     Route::get('dataprofilSettings_admin', [SettingsprofileController::class, 'dataprofilSettings_admin']);
 
+     //Convert Currency>>
+     Route::get('currency',[ConvertCurencyController::class,'index'])->name('currency');
 
 });
 
