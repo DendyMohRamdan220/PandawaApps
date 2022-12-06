@@ -38,21 +38,13 @@ class DashboardController extends Controller
     {
 
         $data = User::all();
-        $totaltiket = Ticket::count();
-        $totalordertiket = Ticket::where('status', 'order')->count();
-        $totalprogrestiket = Ticket::where('status', 'progres')->count();
-        $totalpendingtiket = Ticket::where('status', 'pending')->count();
-        $totaldonetiket = Ticket::where('status', 'done')->count();
-        $totalcanceltiket = Ticket::where('status', 'cancel')->count();
-
-
+        $totalproject = project::count();
+        $pendingtasks = Task::where('status', 'pending')->count();
+        $unresolvedticket = Ticket::where('status', 'progres')->count();
         return view('dashboardv1', compact('data'), [
-            'totaltiket' => $totaltiket,
-            'totalordertiket' => $totalordertiket,
-            'totalprogrestiket' => $totalprogrestiket,
-            'totalpendingtiket' => $totalpendingtiket,
-            'totaldonetiket' => $totaldonetiket,
-            'totalcanceltiket' => $totalcanceltiket,
+            'totalproject' => $totalproject,
+            'pendingtasks' => $pendingtasks,
+            'unresolvedticket' => $unresolvedticket,
         ]);
 
     }
@@ -61,9 +53,28 @@ class DashboardController extends Controller
     {
 
         $data = User::all();
-
+        $totalproject = project::count();
+        $dueinvoices = Invoices::count();
+        $unresolvedticket = Ticket::where('status', 'progres')->count();
         return view('dashboardv2', compact('data'), [
-            //
+            'totalproject' => $totalproject,
+            'dueinvoices' => $dueinvoices,
+            'unresolvedticket' => $unresolvedticket,
+        ]);
+
+    }
+
+    public function dashboardv3()
+    {
+
+        $data = User::all();
+        $totalproject = project::count();
+        $pendingtasks = Task::where('status', 'pending')->count();
+        $unresolvedticket = Ticket::where('status', 'progres')->count();
+        return view('dashboardv3', compact('data'), [
+            'totalproject' => $totalproject,
+            'pendingtasks' => $pendingtasks,
+            'unresolvedticket' => $unresolvedticket,
         ]);
 
     }

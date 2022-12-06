@@ -2,48 +2,141 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EmployeeController extends Controller
 {
-    public function index()
+    public function datauser_employee(Request $c)
     {
-        $data = Employee::all();
-        $data = Employee::paginate(10);
-        return view('Employees.employee', compact('data'));
+        if ($c->has('search')) {
+            $data = User::where('name', 'LIKE', '%' . $c->search . '%')->paginate(5);
+        } else {
+            $data = User::all();
+        }
+        return view('Clients.dataclient', compact('data'));
     }
 
-    public function tambahemployee()
+    public function tambahdatauser_employee()
     {
-        return view('Employees.tambah_employee');
+        return view('Clients.tambahclient');
     }
 
-    public function insertemployee(Request $request)
+    public function insertdatauser_employee(Request $x)
     {
-        //dd($request->all());
-        Employee::create($request->all());
-        return redirect('/employee_admin')->with('success', 'Data Berhasil di Tambahkan');
+        //Validasi
+        $messages = [
+            'name.required' => 'Nama tidak boleh kosong!',
+            'email.required' => 'Email tidak boleh kosong!',
+            'level.required' => 'level user tidak boleh kosong!',
+            'password.required' => 'Password tidak boleh kosong!',
+            'image' => 'File harus berupa tipe: jpeg,png,jpg|max:5000',
+        ];
+
+        $cekValidasi = $x->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'level' => 'required',
+            'password' => 'required|min:4|max:100',
+            'file' => 'file|image|mimes:jpeg,png,jpg|max:5000',
+        ], $messages);
+
+        //$cekValidasi['password'] = Hash::make($cekValidasi['password']);
+
+        $file = $x->file('file');
+        if (empty($file)) {
+            User::create([
+                'name' => $x->name,
+                'email' => $x->email,
+                'password' => bcrypt($x['password']),
+                'level' => $x->level,
+            ]);
+        } else {
+            $nama_file = time() . "-" . $file->getClientOriginalName();
+            $ekstensi = $file->getClientOriginalExtension();
+            $ukuran = $file->getSize();
+            $patAsli = $file->getRealPath();
+            $namaFolder = 'file';
+            $file->move($namaFolder, $nama_file);
+            $pathPublic = $namaFolder . "/" . $nama_file;
+
+            User::create([
+                'name' => $x->name,
+                'email' => $x->email,
+                'password' => bcrypt($x['password']),
+                'level' => $x->level,
+                'file' => $pathPublic,
+            ]);
+        }
+        Alert::success('Berasil Menambah User');
+        return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil tambah!');
     }
 
-    public function tampilemployee($id)
+    //edit data user
+    public function editdatauser_employee($idUser)
     {
-        $data = Employee::find($id);
-        //dd($data);
-        return view('Employees.edit_employee', compact('data'));
+        $dataUser = User::find($idUser);
+        return view("Clients.tampildataclient", ['data' => $dataUser]);
     }
 
-    public function updateemployee(Request $request, $id)
+    //Update data user
+    public function updatedatauser_employee($idUser, Request $x)
     {
-        $data = Employee::find($id);
-        $data->update($request->all());
-        return redirect('/employee_admin')->with('success', 'Data Berhasil di Update');
+        //Validasi
+        $messages = [
+            'name.required' => 'Nama tidak boleh kosong!',
+            'email.required' => 'Email tidak boleh kosong!',
+            'password.required' => 'Password tidak boleh kosong!',
+            'level.required' => 'level user tidak boleh kosong!',
+            'image' => 'File harus berupa tipe: jpeg,png,jpg|max:2048',
+        ];
+        $cekValidasi = $x->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'level' => 'required',
+            'file' => 'file|image|mimes:jpeg,png,jpg|max:2048',
+        ], $messages);
+
+        $file = $x->file('file');
+        if (file_exists($file)) {
+            $nama_file = time() . "-" . $file->getClientOriginalName();
+            $folder = 'file';
+            $file->move($folder, $nama_file);
+            $path = $folder . "/" . $nama_file;
+            //delete
+            $data = User::where('id', $idUser)->first();
+            File::delete($data->file);
+        } else {
+            $path = $x->pathFile;
+        }
+
+        User::where("id", "$idUser")->update([
+            'name' => $x->name,
+            'email' => $x->email,
+            'password' => Hash::make($x->password),
+            'level' => $x->level,
+            'file' => $path,
+        ]);
+        Alert::success('Berasil Mengubah User');
+        return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil di update!');
     }
 
-    public function hapusemployee(Request $request, $id)
+    //hapus
+    public function deletedatauser_employee($id)
     {
-        $data = Employee::find($id);
-        $data->delete();
-        return redirect('/employee_admin')->with('success', 'Data Berhasil di Hapus');
+        try {
+            $data = User::where('id', $id)->first();
+            File::delete($data->file);
+            User::where('id', $id)->delete();
+            Alert::success('Berasil Menghapus User');
+            return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil di hapus!');
+        } catch (\Illuminate\Database\QueryException$e) {
+            Alert::warning('Warning Terjadi error');
+            return redirect('/dataclient_admin')->with('toast_error', 'Data tidak bisa di hapus!');
+        }
     }
 }
