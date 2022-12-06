@@ -108,7 +108,7 @@
             <header class="main-nav">
                 <div class="sidebar-user text-center">
                     <a href="#">
-                        <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6>
+                        <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->username }}</h6>
                     </a>
                     @if (auth()->user()->level == 'Admin')
                         <p class="mb-0 font-roboto">Admin</p>
