@@ -158,9 +158,6 @@
                                                 <a href="/dataemployee_admin">Employees</a>
                                             </li>
                                             <li>
-                                                <a href="/attendance_admin">Attendance</a>
-                                            </li>
-                                            <li>
                                                 <a href="/filterdata_admin">Attendance Recap</a>
                                             </li>
                                         </ul>
@@ -269,12 +266,6 @@
                                         <a class="nav-link menu-title link-nav" href="ticket_employee">
                                             <i data-feather="headphones"></i>
                                             <span>Support Ticket</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link menu-title link-nav" href="dataclient_employee">
-                                            <i data-feather="list"></i>
-                                            <span>Customers</span>
                                         </a>
                                     </li>
                                 @endif
