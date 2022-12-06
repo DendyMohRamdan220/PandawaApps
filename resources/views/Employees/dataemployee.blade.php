@@ -3,7 +3,6 @@
 @section('content')
 
     @push('css')
-    <!-- Plugins css start-->
         <!-- Bootstrap CSS -->
     @endpush
 
@@ -12,10 +11,11 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3> Client </h3>
+                        <h3> Employee </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
-                            <li class="breadcrumb-item active"> Client </li>
+                            <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
+                            <li class="breadcrumb-item"> HR </li>
+                            <li class="breadcrumb-item active"> Employee </li>
                         </ol>
                     </div>
                 </div>
@@ -25,11 +25,11 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdataclient_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add
-                            Client</a>
+                        <a href="/tambahdataemployee_admin" class="btn btn-success"> <i class="nav-icon icon-plus">
+                            </i> Add Employee </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/dataclient_admin" method="GET">
+                        <form action="/dataemployee_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
@@ -54,7 +54,7 @@
                                 $no = 1;
                             @endphp
                             @foreach ($data as $datauser_client => $row)
-                                @if ($row->level == 'Client')
+                                @if ($row->level == 'Employee')
                                     <tr>
                                         <th scope="row">{{ $no++ }}</th>
                                         <td>{{ $row->username }}</td>
@@ -68,7 +68,7 @@
                                         @endempty
                                     </td>
                                     <td>
-                                        <a class="btn btn-info" href="/editdataclient_admin/{{ $row->id }}">
+                                        <a class="btn btn-info" href="/editdataemployee_admin/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
                                             data-client="{{ $row->Username }}">
@@ -121,7 +121,7 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/deletedataclient_admin/" + clientid + ""
+                    window.location = "/deletedataemployee_admin/" + clientid + ""
                     swal("Your data from Ticket Subject " + username + " has been deleted!", {
                         icon: "success",
                     });

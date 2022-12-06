@@ -155,7 +155,7 @@
                                         </a>
                                         <ul class="nav-submenu menu-content">
                                             <li>
-                                                <a href="/employee_admin">Employees</a>
+                                                <a href="/dataemployee_admin">Employees</a>
                                             </li>
                                             <li>
                                                 <a href="/attendance_admin">Attendance</a>

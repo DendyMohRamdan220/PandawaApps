@@ -6,10 +6,10 @@
     <!-- Plugins css start-->
         <!-- Bootstrap CSS -->
     @endpush
-    
+
     <div class="page-body">
         <div class="col-sm-6">
-            <h3> Add Users </h3>
+            <h3> Update Users </h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
                 <li class="breadcrumb-item"><a href="/datauser_admin"> Users </a></li>
