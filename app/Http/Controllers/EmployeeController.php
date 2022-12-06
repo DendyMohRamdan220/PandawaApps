@@ -17,12 +17,12 @@ class EmployeeController extends Controller
         } else {
             $data = User::all();
         }
-        return view('Clients.dataclient', compact('data'));
+        return view('Employees.dataemployee', compact('data'));
     }
 
     public function tambahdatauser_employee()
     {
-        return view('Clients.tambahclient');
+        return view('Employees.tambahdataemployee');
     }
 
     public function insertdatauser_employee(Request $x)
@@ -72,14 +72,14 @@ class EmployeeController extends Controller
             ]);
         }
         Alert::success('Berasil Menambah User');
-        return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil tambah!');
+        return redirect('/dataemployee_admin')->with('toast_success', 'Data berhasil tambah!');
     }
 
     //edit data user
     public function editdatauser_employee($idUser)
     {
         $dataUser = User::find($idUser);
-        return view("Clients.tampildataclient", ['data' => $dataUser]);
+        return view("Employees.editdataemployee", ['data' => $dataUser]);
     }
 
     //Update data user
@@ -122,7 +122,7 @@ class EmployeeController extends Controller
             'file' => $path,
         ]);
         Alert::success('Berasil Mengubah User');
-        return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil di update!');
+        return redirect('/dataemployee_admin')->with('toast_success', 'Data berhasil di update!');
     }
 
     //hapus
@@ -133,10 +133,10 @@ class EmployeeController extends Controller
             File::delete($data->file);
             User::where('id', $id)->delete();
             Alert::success('Berasil Menghapus User');
-            return redirect('/dataclient_admin')->with('toast_success', 'Data berhasil di hapus!');
+            return redirect('/dataemployee_admin')->with('toast_success', 'Data berhasil di hapus!');
         } catch (\Illuminate\Database\QueryException$e) {
             Alert::warning('Warning Terjadi error');
-            return redirect('/dataclient_admin')->with('toast_error', 'Data tidak bisa di hapus!');
+            return redirect('/dataemployee_admin')->with('toast_error', 'Data tidak bisa di hapus!');
         }
     }
 }
