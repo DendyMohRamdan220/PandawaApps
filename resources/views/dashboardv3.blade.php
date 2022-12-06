@@ -10,57 +10,49 @@
 
     <div class="page-body">
         <div class="container-fluid">
-            <div class="page-header">
-              <div class="row">
-                <div class="col-sm-6">
-                  <h3> Dashboard </h3>
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
-                    <li class="breadcrumb-item active"> Dashboard </li>
-                  </ol>
+            <div class="user-profile">
+                <div class="row">
+                    <!-- user profile header start-->
+                    <div class="col-sm-12">
+                        <div class="card profile-header"><img class="img-fluid bg-img-cover"
+                                src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt="">
+                            <div class="profile-img-wrrap"><img class="img-fluid bg-img-cover"
+                                    src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt=""></div>
+                            <div class="userpro-box">
+                                <div class="img-wrraper">
+                                    <div class="avatar"><img class="img-fluid" alt=""
+                                            src="{{ auth()->user()->file }}"></div><a class="icon-wrapper"
+                                        href="edit-profile.html"><i class="icofont icofont-pencil-alt-5"></i></a>
+                                </div>
+                                <div class="user-designation">
+                                    <div class="title"><a target="_blank" href="">
+                                            <h4>{{ auth()->user()->name }}</h4>
+                                            <h6>{{ auth()->user()->level }}</h6>
+                                        </a></div>
+                                    <div class="follow">
+                                        <ul class="follow-list">
+                                            <li>
+                                                <div class="follow-num counter">{{ $pendingtasks }}</div><span>Tasks</span>
+                                            </li>
+                                            <li>
+                                                <div class="follow-num counter">{{ $totalproject }}</div><span>Projects</span>
+                                            </li>
+                                            <li>
+                                                <div class="follow-num counter">{{ $unresolvedticket }}</div><span>Tickets</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- user profile header end-->
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
         <!-- Container-fluid starts-->
-        <div class="container-fluid general-widget">
+        <div class="container-fluid dashboard-default-sec">
             <div class="row">
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="layers"></i></div>
-                                <div class="media-body"><span class="m-0">Total Projects</span>
-                                    <h4 class="mb-0 counter">{{ $totalproject }}</h4><i class="icon-bg" data-feather="layers"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="headphones"></i></div>
-                                <div class="media-body"><span class="m-0">Unresolved Tickets</span>
-                                    <h4 class="mb-0 counter">{{ $dueinvoices }}</h4><i class="icon-bg" data-feather="headphones"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="file-text"></i></div>
-                                <div class="media-body"><span class="m-0">Due Invoices</span>
-                                    <h4 class="mb-0 counter">{{ $unresolvedticket }}</h4><i class="icon-bg" data-feather="file-text"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-xl-6 xl-100 box-col-12">
                     <div class="card">
                         <div class="cal-date-widget card-body">
