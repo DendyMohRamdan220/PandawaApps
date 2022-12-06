@@ -8,7 +8,7 @@ use PDF;
 
 class PaymentsController extends Controller
 {
-    //
+    // Portal Management >>
     public function datapayments_admin(Request $request)
     {
         if ($request->has('search')) {
@@ -58,4 +58,22 @@ class PaymentsController extends Controller
         return $pdf->download('data.pdf');
     }
 
+    // Portal Client >>
+    public function datapayments_client(Request $request)
+    {
+        if ($request->has('search')) {
+            $data = Payments::where('payment_number', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $data = Payments::paginate(5);
+        }
+        return view('Payment.datapayments_client', compact('data'));
+    }
+
+    public function exportpdf_client()
+    {
+        $data = Payments::all();
+        view()->share('data', $data);
+        $pdf = PDF::loadview('Payments.datapayments-pdf_client');
+        return $pdf->download('data.pdf');
+    }
 }

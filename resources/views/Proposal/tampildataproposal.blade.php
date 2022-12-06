@@ -9,7 +9,9 @@
                         <h3> Proposal </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
-                            <li class="breadcrumb-item active"> Proposal </li>
+                            <li class="breadcrumb-item"> Finance </li>
+                            <li class="breadcrumb-item"><a href="/dataproposal_admin"> Proposal </a></li>
+                            <li class="breadcrumb-item active"> Update Proposal </li>
                         </ol>
                     </div>
                 </div>

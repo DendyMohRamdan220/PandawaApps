@@ -9,6 +9,7 @@
                         <h3> Tasks </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"> Work </li>
                             <li class="breadcrumb-item active"> Tasks </li>
                         </ol>
                     </div>
@@ -25,7 +26,7 @@
                     <div class="col-auto">
                         <form action="/datatask_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                                aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                 </div>

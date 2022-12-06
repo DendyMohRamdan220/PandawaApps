@@ -8,7 +8,7 @@ use PDF;
 
 class ProposalsController extends Controller
 {
-    //
+    // Portal Management >>
     public function dataproposal_admin(Request $request)
     {
         if ($request->has('search')) {
@@ -54,7 +54,107 @@ class ProposalsController extends Controller
     {
         $data = Proposals::all();
         view()->share('data', $data);
-        $pdf = PDF::loadview('Proposal.dataproposal-pdf_admin');
+        $pdf = PDF::loadview('Proposal.dataproposal-pdf');
+        return $pdf->download('data.pdf');
+    }
+
+    // Portal Client >>
+    public function dataproposal_client(Request $request)
+    {
+        if ($request->has('search')) {
+            $data = Proposals::where('proposal_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $data = Proposals::paginate(5);
+        }
+        return view('Proposal.dataproposal_client', compact('data'));
+    }
+
+    public function tambahdataproposal_client()
+    {
+        return view('Proposal.tambahdataproposal_client');
+    }
+
+    public function insertdataproposal_client(Request $request)
+    {
+        Proposals::create($request->all());
+        return redirect('/dataproposal_client')->with('success', 'Proposal added successfully .');
+    }
+
+    public function editdataproposal_client($id)
+    {
+        $data = Proposals::find($id);
+        return view('Proposal.editdataproposal_client', compact('data'));
+    }
+
+    public function updatedataproposal_client(Request $request, $id)
+    {
+        $data = Proposals::find($id);
+        $data->update($request->all());
+        return redirect('/dataproposal_client')->with('success', 'Proposal edited successfully .');
+    }
+
+    public function deletedataproposal_client($id)
+    {
+        $data = Proposals::find($id);
+        $data->delete();
+        return redirect('/dataproposal_client')->with('success', 'Proposal deleted successfully .');
+    }
+
+    public function exportpdf_client()
+    {
+        $data = Proposals::all();
+        view()->share('data', $data);
+        $pdf = PDF::loadview('Proposal.dataproposal-pdf_client');
+        return $pdf->download('data.pdf');
+    }
+
+    // Portal Sales >>
+    public function dataproposal_sales(Request $request)
+    {
+        if ($request->has('search')) {
+            $data = Proposals::where('proposal_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $data = Proposals::paginate(5);
+        }
+        return view('Proposal.dataproposal_sales', compact('data'));
+    }
+
+    public function tambahdataproposal_sales()
+    {
+        return view('Proposal.tambahdataproposal_sales');
+    }
+
+    public function insertdataproposal_sales(Request $request)
+    {
+        Proposals::create($request->all());
+        return redirect('/dataproposal_sales')->with('success', 'Proposal added successfully .');
+    }
+
+    public function editdataproposal_sales($id)
+    {
+        $data = Proposals::find($id);
+        return view('Proposal.editdataproposal_sales', compact('data'));
+    }
+
+    public function updatedataproposal_sales(Request $request, $id)
+    {
+        $data = Proposals::find($id);
+        $data->update($request->all());
+        return redirect('/dataproposal_sales')->with('success', 'Proposal edited successfully .');
+    }
+
+    public function deletedataproposal_sales($id)
+    {
+        $data = Proposals::find($id);
+        $data->delete();
+        return redirect('/dataproposal_sales')->with('success', 'Proposal deleted successfully .');
+    }
+
+    public function exportpdf_sales()
+    {
+        $data = Proposals::all();
+        view()->share('data', $data);
+        $pdf = PDF::loadview('Proposal.dataproposal-pdf_sales');
         return $pdf->download('data.pdf');
     }
 }

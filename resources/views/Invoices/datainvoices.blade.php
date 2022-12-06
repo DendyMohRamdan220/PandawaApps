@@ -9,7 +9,7 @@
                         <h3> Invoice </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
-                            <li class="breadcrumb-item active"> Finance </li>
+                            <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item active"> Invoice </li>
                         </ol>
                     </div>
@@ -25,7 +25,7 @@
                     <div class="col-auto">
                         <form action="/datainvoices_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                                aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                     <div class="col-auto">

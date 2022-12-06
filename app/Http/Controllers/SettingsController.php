@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
-    public function dataSettings_admin(Request $request)
+    public function dataSettings_admin()
     {
-        if ($request->has('search')) {
-            $data = Settings::where('setting_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Settings::paginate(5);
-        }
+        $data = User::all();
         return view('Settings.dataSettings', compact('data'));
     }
+    
 }

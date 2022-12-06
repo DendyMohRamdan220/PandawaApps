@@ -16,7 +16,7 @@ class ClientController extends Controller
         if ($c->has('search')) {
             $data = User::where('name', 'LIKE', '%' . $c->search . '%')->paginate(5);
         } else {
-            $data = User::latest()->paginate();
+            $data = User::all();
         }
         return view('Clients.dataclient', compact('data'));
     }
