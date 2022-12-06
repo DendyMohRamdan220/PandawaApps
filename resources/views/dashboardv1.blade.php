@@ -1,107 +1,58 @@
 @extends('Layouts.layout')
 
 @section('content')
+
+    @push('css')
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/owlcarousel.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/responsive.css') }}">
+    @endpush
+
     <div class="page-body">
+        <div class="container-fluid">
+            <div class="user-profile">
+                <div class="row">
+                    <!-- user profile header start-->
+                    <div class="col-sm-12">
+                        <div class="card profile-header"><img class="img-fluid bg-img-cover"
+                                src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt="">
+                            <div class="profile-img-wrrap"><img class="img-fluid bg-img-cover"
+                                    src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt=""></div>
+                            <div class="userpro-box">
+                                <div class="img-wrraper">
+                                    <div class="avatar"><img class="img-fluid" alt=""
+                                            src="{{ auth()->user()->file }}"></div><a class="icon-wrapper"
+                                        href="edit-profile.html"><i class="icofont icofont-pencil-alt-5"></i></a>
+                                </div>
+                                <div class="user-designation">
+                                    <div class="title"><a target="_blank" href="">
+                                            <h4>{{ auth()->user()->name }}</h4>
+                                            <h6>{{ auth()->user()->level }}</h6>
+                                        </a></div>
+                                    <div class="follow">
+                                        <ul class="follow-list">
+                                            <li>
+                                                <div class="follow-num counter">{{ $pendingtasks }}</div><span>Tasks</span>
+                                            </li>
+                                            <li>
+                                                <div class="follow-num counter">{{ $totalproject }}</div><span>Projects</span>
+                                            </li>
+                                            <li>
+                                                <div class="follow-num counter">{{ $unresolvedticket }}</div><span>Tickets</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- user profile header end-->
+                </div>
+            </div>
+        </div>
         <!-- Container-fluid starts-->
-        {{-- this --}}
         <div class="container-fluid dashboard-default-sec">
             <div class="row">
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="users"></i></div>
-                                <div class="media-body"><span class="m-0">Total Clients</span>
-                                    <h4 class="mb-0 counter">6659</h4><i class="icon-bg" data-feather="users"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="user"></i></div>
-                                <div class="media-body"><span class="m-0">Total Employees</span>
-                                    <h4 class="mb-0 counter">9856</h4><i class="icon-bg" data-feather="user"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="layers"></i></div>
-                                <div class="media-body"><span class="m-0">Total Projects</span>
-                                    <h4 class="mb-0 counter">893</h4><i class="icon-bg" data-feather="layers"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="file-text"></i></div>
-                                <div class="media-body"><span class="m-0">Due Invoices</span>
-                                    <h4 class="mb-0 counter">4531</h4><i class="icon-bg" data-feather="file-text"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="clock"></i></div>
-                                <div class="media-body"><span class="m-0">Hours Logged</span>
-                                    <h4 class="mb-0 counter">6659</h4><i class="icon-bg" data-feather="clock"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="list"></i></div>
-                                <div class="media-body"><span class="m-0">Pending Tasks</span>
-                                    <h4 class="mb-0 counter">9856</h4><i class="icon-bg" data-feather="list"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
-                                <div class="media-body"><span class="m-0">Today Attendance</span>
-                                    <h4 class="mb-0 counter">893</h4><i class="icon-bg" data-feather="calendar"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                        <div class="bg-primary b-r-4 card-body">
-                            <div class="media static-top-widget">
-                                <div class="align-self-center text-center"><i data-feather="headphones"></i></div>
-                                <div class="media-body"><span class="m-0">Unresolved Tickets</span>
-                                    <h4 class="mb-0 counter">4531</h4><i class="icon-bg" data-feather="headphones"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-xl-6 xl-100 box-col-12">
                     <div class="card">
                         <div class="cal-date-widget card-body">
@@ -158,7 +109,7 @@
                                                 <div class="date f-24 mb-2" id="date"><span
                                                         id="monthDay"></span><span id="year">, </span></div>
                                                 <div>
-                                                    <p class="m-0 f-14 text-light">kolkata, India </p>
+                                                    <p class="m-0 f-14 text-light">Jakarta, Indonesia </p>
                                                 </div>
                                             </div>
                                         </div>
