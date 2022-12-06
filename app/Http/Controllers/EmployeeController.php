@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
     public function index()
     {
+        $data = DB::table('employees')
+        ->join('users', 'employees.id', '=', 'users.employees_id')
+        ->select('employees.*', 'users.*')
+        ->get();
         $data = Employee::all();
         $data = Employee::paginate(10);
         return view('Employees.employee', compact('data'));
