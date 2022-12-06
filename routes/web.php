@@ -97,12 +97,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
 
     /* << HR >> */
     // Employees >>
-    Route::get('employee_admin', [EmployeeController::class, 'datauser_employee']);
-    Route::get('tambahemployee_admin', [EmployeeController::class, 'tambahdatauser_employee']);
-    Route::post('insertemployee_admin', [EmployeeController::class, 'insertdatauser_employee']);
-    Route::get('tampilemployee_admin/{id}', [EmployeeController::class, 'editdatauser_employee']);
-    Route::post('updateemployee_admin/{id}', [EmployeeController::class, 'updatedatauser_employee']);
-    Route::get('hapusemployee_admin/{id}', [EmployeeController::class, 'deletedatauser_employee']);
+    Route::get('dataemployee_admin', [EmployeeController::class, 'datauser_employee']);
+    Route::get('tambahdataemployee_admin', [EmployeeController::class, 'tambahdatauser_employee']);
+    Route::post('insertdataemployee_admin', [EmployeeController::class, 'insertdatauser_employee']);
+    Route::get('editdataemployee_admin/{id}', [EmployeeController::class, 'editdatauser_employee']);
+    Route::post('updatedataemployee_admin/{id}', [EmployeeController::class, 'updatedatauser_employee']);
+    Route::get('deletedataemployee_admin/{id}', [EmployeeController::class, 'deletedatauser_employee']);
 
     Route::get('filterdata_admin', [AbsensiController::class, 'halamanrekap']);
     Route::get('filterdata_admin/{tglawal}/{tglakhir}', [AbsensiController::class, 'tampildatakeseluruhan']);
