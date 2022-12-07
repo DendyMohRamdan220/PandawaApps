@@ -42,7 +42,6 @@
                                 <th scope="col">Employee</th>
                                 <th scope="col">Duedate</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,13 +57,6 @@
                                         <td>{{ $row->user->username }}</td>
                                         <td>{{ $row->duedate }}</td>
                                         <td>{{ $row->status }}</td>
-                                        <td>
-                                            <a class="btn btn-info" href="/editdatatask_admin/{{ $row->id }}">
-                                                <i class="nav-icon icon-pencil-alt"></i></a>
-                                            <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                                data-name="{{ $row->taskname }}">
-                                                <i class="nav-icon icon-trash"></i></a>
-                                        </td>
                                     </tr>
                                 @endif
                             @endforeach
@@ -99,34 +91,4 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
-
-    <script>
-        $('.delete').click(function() {
-            var idtask = $(this).attr('data-id');
-            var nametask = $(this).attr('data-task');
-            swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the Task Name " + nametask +
-                        " ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location = "/deletedatatask_admin/" + idtask + ""
-                        swal("Your data from Task Name " + nametask + " has been deleted!", {
-                            icon: "success",
-                        });
-                    } else {
-                        swal("Deletion of data from Task Name " + nametask + " has been cancelled!");
-                    }
-                });
-        });
-    </script>
-    <script>
-        @if (Session::has('success'))
-            toastr.success("{{ Session::get('success') }}");
-        @endif
-    </script>
 @endpush

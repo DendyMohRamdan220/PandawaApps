@@ -42,8 +42,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Client </label>
-                                <input type="text" name="client" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <select name="user_id" class="form-control">
+                                    <option value="">--</option>
+                                    @foreach ($user as $item)
+                                        @if ($item->level == 'Client')
+                                            <option value="{{ $item->id }}" {{ old('user_id') == $item->id }}>
+                                                {{ $item->username }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label"> Status Project </label>

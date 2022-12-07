@@ -55,7 +55,7 @@
                                     <td>{{ $row->projectname }}</td>
                                     <td>{{ $row->user->username }}</td>
                                     <td>{{ $row->deadline }}</td>
-                                    <td>{{ $row->user->client }}</td>
+                                    <td>{{ $row->user->username }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
                                         <a class="btn btn-info" href="/editdataproject_admin/{{ $row->id }}">
