@@ -12,7 +12,7 @@ class project extends Model
     protected $table = "projects";
     protected $primaryKey = "id";
     protected $fillable = [
-    'id','projectname','employee_id','deadline','client','status'];
+    'id','projectname','user_id','deadline','client','status'];
 
     public function task()
     {
