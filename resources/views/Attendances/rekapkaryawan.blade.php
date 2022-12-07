@@ -46,7 +46,7 @@
                                         <tbody>
                                             @foreach ($presensi as $item)
                                                 <tr>
-                                                    <td>{{ $item->user->name }}</td>
+                                                    <td>{{ $item->user->username }}</td>
                                                     <td>{{ $item->date }}</td>
                                                     <td>{{ $item->clockin }}</td>
                                                     <td>{{ $item->clockout }}</td>

@@ -50,21 +50,23 @@
                                 $no = 1;
                             @endphp
                             @foreach ($data as $index => $row)
-                                <tr>
-                                    <th scope="row">{{ $index + $data->firstItem() }}</th>
-                                    <td>{{ $row->taskname }}</td>
-                                    <td>{{ $row->project->projectname }}</td>
-                                    <td>{{ $row->employee->name }}</td>
-                                    <td>{{ $row->duedate }}</td>
-                                    <td>{{ $row->status }}</td>
-                                    <td>
-                                        <a class="btn btn-info" href="/editdatatask_admin/{{ $row->id }}">
-                                            <i class="nav-icon icon-pencil-alt"></i></a>
-                                        <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                            data-name="{{ $row->taskname }}">
-                                            <i class="nav-icon icon-trash"></i></a>
-                                    </td>
-                                </tr>
+                                @if ($row->level == 'Employee')
+                                    <tr>
+                                        <th scope="row">{{ $index + $data->firstItem() }}</th>
+                                        <td>{{ $row->taskname }}</td>
+                                        <td>{{ $row->project->projectname }}</td>
+                                        <td>{{ $row->user->username }}</td>
+                                        <td>{{ $row->duedate }}</td>
+                                        <td>{{ $row->status }}</td>
+                                        <td>
+                                            <a class="btn btn-info" href="/editdatatask_admin/{{ $row->id }}">
+                                                <i class="nav-icon icon-pencil-alt"></i></a>
+                                            <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
+                                                data-name="{{ $row->taskname }}">
+                                                <i class="nav-icon icon-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
