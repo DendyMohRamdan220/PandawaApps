@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Tasks </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
                             <li class="breadcrumb-item"> Work </li>
                             <li class="breadcrumb-item active"> Tasks </li>
                         </ol>
@@ -20,7 +20,11 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <form action="/datatask_employee" method="GET">
+                        <a href="/tambahdatatask_admin" class="btn btn-success"> <i class="nav-icon fas icon-plus"></i> Add
+                            Task</a>
+                    </div>
+                    <div class="col-auto">
+                        <form action="/datatask_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
@@ -35,7 +39,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Task Name</th>
                                 <th scope="col">Project</th>
-                                <th scope="col">Startdate</th>
+                                <th scope="col">Employee</th>
                                 <th scope="col">Duedate</th>
                                 <th scope="col">Status</th>
                             </tr>
@@ -45,14 +49,16 @@
                                 $no = 1;
                             @endphp
                             @foreach ($data as $index => $row)
-                                <tr>
-                                    <th scope="row">{{ $index + $data->firstItem() }}</th>
-                                    <td>{{ $row->taskname }}</td>
-                                    <td>{{ $row->project }}</td>
-                                    <td>{{ $row->startdate }}</td>
-                                    <td>{{ $row->duedate }}</td>
-                                    <td>{{ $row->status }}</td>
-                                </tr>
+                                @if ($row->level == 'Employee')
+                                    <tr>
+                                        <th scope="row">{{ $index + $data->firstItem() }}</th>
+                                        <td>{{ $row->taskname }}</td>
+                                        <td>{{ $row->project->projectname }}</td>
+                                        <td>{{ $row->user->username }}</td>
+                                        <td>{{ $row->duedate }}</td>
+                                        <td>{{ $row->status }}</td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -85,34 +91,4 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
-
-    <script>
-        $('.delete').click(function() {
-            var idtask = $(this).attr('data-id');
-            var nametask = $(this).attr('data-task');
-            swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the Task Name " + nametask +
-                        " ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location = "/deletedatatask_admin/" + idtask + ""
-                        swal("Your data from Task Name " + nametask + " has been deleted!", {
-                            icon: "success",
-                        });
-                    } else {
-                        swal("Deletion of data from Task Name " + nametask + " has been cancelled!");
-                    }
-                });
-        });
-    </script>
-    <script>
-        @if (Session::has('success'))
-            toastr.success("{{ Session::get('success') }}");
-        @endif
-    </script>
 @endpush

@@ -63,15 +63,15 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_client">Choose
                                     Client</label>
                                 <div class="form-group mb-0">
-                                    <select name="users_id" class="form-control select-picker"
-                                        data-size="8">
+                                    <select name="users_id" class="form-control select-picker" data-size="8">
                                         <option value="">--</option>
-                                            @foreach ( $client as $item )
-                                            <option value="{{ $item->id }}"
-                                                {{ old('products_id', $data->users_id) == $item->id ? 'selected' : null}}>
-                                                {{ $item->name }}
-                                            </option>
-                                            @endforeach
+                                        @foreach ($client as $item)
+                                            @if ($item->level == 'Client')
+                                                <option value="{{ $item->id }}" {{ old('users_id') == $item->id }}>
+                                                    {{ $item->username }}
+                                                </option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -79,15 +79,14 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                     Product</label>
                                 <div class="form-group mb-0">
-                                    <select name="products_id" class="form-control select-picker"
-                                        data-size="8">
+                                    <select name="products_id" class="form-control select-picker" data-size="8">
                                         <option value="">--</option>
-                                            @foreach ( $products as $item )
+                                        @foreach ($products as $item)
                                             <option value="{{ $item->id }}"
-                                                {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null}}>
+                                                {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null }}>
                                                 {{ $item->name }}
                                             </option>
-                                            @endforeach
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -106,8 +105,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Unit Price</label>
-                                    <input type="text" value="{{ $data->unit_price }}" name="unit_price" id="unit_price "
-                                        class="form-control" />
+                                    <input type="text" value="{{ $data->unit_price }}" name="unit_price"
+                                        id="unit_price " class="form-control" />
 
                                 </div>
                             </div>

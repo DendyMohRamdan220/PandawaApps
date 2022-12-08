@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Task;
 use App\Models\project;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -23,8 +24,8 @@ class TaskController extends Controller
     public function tambahdatatask_admin()
     {
         $projects = project::all();
-        $employee = Employee::all();
-        return view('Tasks.tambahdatatask', compact('projects', 'employee'));
+        $user = User::all();
+        return view('Tasks.tambahdatatask', compact('projects', 'user'));
     }
 
     public function insertdatatask_admin(Request $request)
@@ -35,9 +36,9 @@ class TaskController extends Controller
 
     public function editdatatask_admin($id)
     {
-        $projects = project::all();
+        $user = User::all();
         $data = Task::find($id);
-        return view('Tasks.tampildatatask', compact('data', 'projects'));
+        return view('Tasks.tampildatatask', compact('data', 'user'));
     }
 
     public function updatedatatask_admin(Request $request, $id)

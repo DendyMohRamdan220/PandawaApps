@@ -23,7 +23,7 @@
             <form action="{{ route('currency') }}" class="border rounded mt-5 pt-5" method="get">
             <div class="row">
                  <div class="col-md-12 mb-4 text-center">
-                 <h4 class="col-md-12 py-2 m-0">Fetch Currency Exchange Rates In Laravel - Webappfix</h4>
+                 <h4 class="col-md-12 py-2 m-0">Fetch Currency Exchange Rates</h4>
                  </div>
 
                  <div class="col-md-12">

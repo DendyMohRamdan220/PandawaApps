@@ -26,7 +26,8 @@
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdfestimate_client" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
+                        <a href="/exportpdfestimate_client" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
+                            Export
                             PDF</a>
                     </div>
                 </div>
@@ -36,12 +37,14 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Estimate Number</th>
                                 <th scope="col">Client</th>
+                                <th scope="col">Jenis Produk/Jasa</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Valid till</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,7 +55,8 @@
                                 <tr>
                                     <th scope="row">{{ $dataestimate_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->estimate_number }}</td>
-                                    <td>{{ $row->select_client }}</td>
+                                    <td>{{ $row->users->name }}</td>
+                                    <td>{{ $row->products->name }}</td>
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->valid_till }}</td>
                                     <td>{{ $row->status }}</td>

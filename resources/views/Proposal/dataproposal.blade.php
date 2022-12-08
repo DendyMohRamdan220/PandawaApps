@@ -21,7 +21,7 @@
                 <div class="card-header row">
                     <div class="col-auto">
                         <a href="/tambahdataproposal_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i>Add
-                            Payment</a>
+                            Proposal</a>
                     </div>
                     <div class="col-auto">
                         <form action="/dataproposal_admin" method="GET">

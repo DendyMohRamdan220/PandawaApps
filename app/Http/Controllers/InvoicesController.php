@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\project;
-use App\Models\client;
+use App\Models\User;
 use App\Models\Invoices;
 use PDF;
 
@@ -23,8 +23,9 @@ class InvoicesController extends Controller
 
     public function tambahdatainvoices_admin()
     {
+        $client = User::all();
         $project = Project::all();
-        return view('Invoices.tambahdatainvoices', compact('project'));
+        return view('Invoices.tambahdatainvoices', compact('client', 'project'));
     }
 
     public function insertdatainvoices_admin(Request $request)
@@ -35,9 +36,10 @@ class InvoicesController extends Controller
 
     public function editdatainvoices_admin($id)
     {
+        $client = User::all();
         $project = Project::all();
         $data = Invoices::find($id);
-        return view('Invoices.tampildatainvoices', compact('data', 'project'));
+        return view('Invoices.tampildatainvoices', compact('data', 'client', 'project'));
     }
 
     public function updatedatainvoices_admin(Request $request, $id)

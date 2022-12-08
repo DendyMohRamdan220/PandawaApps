@@ -12,6 +12,7 @@ use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ConvertCurencyController;
 use App\Http\Controllers\SettingsprofileController;
@@ -237,10 +238,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Employee']], function () {
     Route::get('tampildatatiket_employee/{id}', [TicketController::class, 'tampildatatiket_employee']);
     Route::post('updatedataticket_employee/{id}', [TicketController::class, 'updatedataticket_employee']);
     Route::get('deleteticket_employee/{id}', [TicketController::class, 'deleteticket_employee']);
-
-    //Customers/Clients>>
-    Route::get('dataclient_employee', [ClientController::class, 'dataclient_employee']);
-
 });
 
 /*

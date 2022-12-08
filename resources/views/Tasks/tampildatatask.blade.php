@@ -37,13 +37,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Employee</label>
-                                <select name="employee_id" class="form-control">
+                                <select name="user_id" class="form-control">
                                     <option value="">--</option>
-                                    @foreach ($employee as $item)
-                                        <option value="{{ $item->id }}"
-                                            {{ old('employee_id', $data->employee_id) == $item->id ? 'selected' : null }}>
-                                            {{ $item->name }}
-                                        </option>
+                                    @foreach ($user as $item)
+                                        @if ($item->level = 'Employee')
+                                            <option value="{{ $item->id }}"
+                                                {{ old('user_id', $data->user_id) == $item->id ? 'selected' : null }}>
+                                                {{ $item->username }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

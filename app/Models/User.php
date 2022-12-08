@@ -5,10 +5,13 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\EstimatesController;
+use App\Http\Controllers\InvoicesController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class User extends Authenticatable
 {
@@ -49,5 +52,25 @@ class User extends Authenticatable
     public function presensi()
     {
     return $this->hasMany(Absensi::class);
+    }
+
+    public function task()
+    {
+    return $this->hasMany(Task::class);
+    }
+
+    public function project()
+    {
+    return $this->hasMany(Project::class);
+    }
+
+    public function estimates()
+    {
+    return $this->hasMany(Estimates::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoices::class);
     }
 }
