@@ -85,9 +85,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     // Clients >>
     Route::get('dataclient_admin', [ClientController::class, 'datauser_client']);
     Route::get('tambahdataclient_admin', [ClientController::class, 'tambahdatauser_client']);
-    Route::get('insertdataclient_admin', [ClientController::class, 'insertdatauser_client']);
+    Route::post('insertdataclient_admin', [ClientController::class, 'insertdatauser_client']);
     Route::get('editdataclient_admin', [ClientController::class, 'editdatauser_client']);
-    Route::get('updatedataclient_admin', [ClientController::class, 'updatedatauser_client']);
+    Route::post('updatedataclient_admin', [ClientController::class, 'updatedatauser_client']);
     Route::get('deletedataclient_admin', [ClientController::class, 'deletedatauser_client']);
 
     /* << HR >> */
