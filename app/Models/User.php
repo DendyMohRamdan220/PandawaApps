@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\EstimatesController;
+use App\Http\Controllers\InvoicesController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -60,5 +62,15 @@ class User extends Authenticatable
     public function project()
     {
     return $this->hasMany(Project::class);
+    }
+
+    public function estimates()
+    {
+    return $this->hasMany(Estimates::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoices::class);
     }
 }

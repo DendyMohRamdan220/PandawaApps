@@ -30,7 +30,8 @@
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdfestimate_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
+                        <a href="/exportpdfestimate_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
+                            Export
                             PDF</a>
                     </div>
                 </div>

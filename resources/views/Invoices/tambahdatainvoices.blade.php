@@ -71,12 +71,15 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_client">Choose
                                     Client</label>
                                 <div class="form-group mb-0">
-                                    <select name="choose_client" id="choose_client" class="form-control select-picker"
-                                        data-size="8">
+                                    <select name="users_id" class="form-control select-picker" data-size="8">
                                         <option value="">--</option>
-                                        <option value="1">Zachry</option>
-                                        <option value="2">Fauziah</option>
-                                        <option value="3">Annisa</option>
+                                        @foreach ($client as $item)
+                                            @if ($item->level == 'Client')
+                                                <option value="{{ $item->id }}" {{ old('users_id') == $item->id }}>
+                                                    {{ $item->username }}
+                                                </option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -84,14 +87,13 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                     Project</label>
                                 <div class="form-group mb-0">
-                                    <select name="project_id" class="form-control select-picker"
-                                        data-size="8">
+                                    <select name="project_id" class="form-control select-picker" data-size="8">
                                         <option value="">--</option>
-                                            @foreach ( $project as $item )
-                                            <option value="{{ $item->id }}" {{ old('project_id') == $item->id}}>
+                                        @foreach ($project as $item)
+                                            <option value="{{ $item->id }}" {{ old('project_id') == $item->id }}>
                                                 {{ $item->projectname }}
                                             </option>
-                                            @endforeach
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

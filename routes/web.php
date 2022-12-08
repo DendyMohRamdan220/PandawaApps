@@ -12,6 +12,7 @@ use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ConvertCurencyController;
 use App\Http\Controllers\SettingsprofileController;

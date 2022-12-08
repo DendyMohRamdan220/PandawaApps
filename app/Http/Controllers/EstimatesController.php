@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estimates;
 use App\Models\Products;
-use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -23,7 +23,7 @@ class EstimatesController extends Controller
 
     public function tambahdataestimate_admin()
     {
-        $client = Client::all();
+        $client = User::all();
         $products = Products::all();
         return view('Estimate.tambahdataestimate', compact('client', 'products'));
     }
@@ -36,7 +36,7 @@ class EstimatesController extends Controller
 
     public function editdataestimate_admin($id)
     {
-        $client = Client::all();
+        $client = User::all();
         $products = Products::all();
         $data = Estimates::find($id);
         return view('Estimate.tampildataestimate', compact('data', 'client', 'products'));
@@ -96,7 +96,9 @@ class EstimatesController extends Controller
 
     public function tambahdataestimate_sales()
     {
-        return view('Estimate.tambahdataestimate_sales');
+        $client = User::all();
+        $products = Products::all();
+        return view('Estimate.tambahdataestimate_sales', compact('client', 'products'));
     }
 
     public function insertdataestimate_sales(Request $request)
@@ -107,8 +109,10 @@ class EstimatesController extends Controller
 
     public function editdataestimate_sales($id)
     {
+        $client = User::all();
+        $products = Products::all();
         $data = Estimates::find($id);
-        return view('Estimate.tampildataestimate_sales', compact('data'));
+        return view('Estimate.tampildataestimate_sales', compact('data', 'client', 'products'));
     }
 
     public function updatedataestimate_sales(Request $request, $id)

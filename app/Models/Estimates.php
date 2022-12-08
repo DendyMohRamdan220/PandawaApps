@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Client;
+use App\Models\User;
 use App\Models\Products;
 
 class Estimates extends Model
@@ -16,7 +16,7 @@ class Estimates extends Model
 
     public function client()
     {
-    return $this->belongsTo(Client::class);
+    return $this->belongsTo(User::class);
     }
 
     public function products()
