@@ -19,16 +19,18 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Project Name </label>
-                                <input type="text" name="projectname" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <input class="form-control" type="text" name="projectname" required=""
+                                    value="{{ old('projectname') }}" placeholder="Enter a new project name">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label"> Employee </label>
-                                <select name="user_id" class="form-control">
+                                <label for="exampleInputEmail1" class="form-label">
+                                    Employee </label>
+                                <select class="form-control" name="user_id" required="">
                                     <option value="">--</option>
                                     @foreach ($user as $item)
                                         @if ($item->level == 'Employee')
-                                            <option value="{{ $item->id }}" {{ old('user_id') == $item->id }}>
+                                            <option value="{{ $item->id }}"
+                                                {{ old('user_id') == $item->id ? 'selected' : null }}>
                                                 {{ $item->username }}
                                             </option>
                                         @endif
@@ -37,16 +39,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Deadline </label>
-                                <input type="date" name="deadline" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <input class="form-control" type="date" name="deadline" required="">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Client </label>
-                                <select name="user_id" class="form-control">
+                                <select class="form-control" name="user_id1" required="">
                                     <option value="">--</option>
                                     @foreach ($user as $item)
                                         @if ($item->level == 'Client')
-                                            <option value="{{ $item->id }}" {{ old('user_id') == $item->id }}>
+                                            <option value="{{ $item->username }}"
+                                                {{ old('user_id1') == $item->id ? 'selected' : null }}>
                                                 {{ $item->username }}
                                             </option>
                                         @endif
@@ -54,15 +56,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1" class="form-label"> Status Project </label>
-                                <br>
-                                <select class="form-select" name="status" aria-label="Default select example">
-                                    <option selected> Status </option>
-                                    <option value="1"> Progres </option>
-                                    <option value="2"> Pending </option>
-                                    <option value="3"> Done </option>
-                                    <option value="4"> Cancel </option>
-                                </select>
+                                <input class="form-control form-control-lg" type="hidden" name="status" value="Order"
+                                    readonly>
                             </div>
                             <button type="submit" class="btn btn-primary"> Submit </button>
                         </form>

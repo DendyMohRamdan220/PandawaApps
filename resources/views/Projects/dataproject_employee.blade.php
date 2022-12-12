@@ -42,22 +42,29 @@
                                 <th scope="col">Deadline</th>
                                 <th scope="col">Client</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @php
-                                $no = 1;
-                            @endphp
-                            @foreach ($data as $dataproject_admin => $row)
-                                <tr>
-                                    <th scope="row">{{ $dataproject_admin + $data->firstItem() }}</th>
-                                    <td>{{ $row->projectname }}</td>
-                                    <td>{{ $row->user->username }}</td>
-                                    <td>{{ $row->deadline }}</td>
-                                    <td>{{ $row->user->username }}</td>
-                                    <td>{{ $row->status }}</td>
-                                </tr>
-                            @endforeach
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($data as $dataproject_admin => $row)
+                            <tr>
+                                <th scope="row">{{ $dataproject_admin + $data->firstItem() }}</th>
+                                <td>{{ $row->projectname }}</td>
+                                <td>{{ $row->user->username }}</td>
+                                <td>{{ $row->deadline }}</td>
+                                <td>{{ $row->user_id1}}</td>
+                                <td>{{ $row->status }}</td>
+                                <td>
+                                    <a class="btn btn-info" href="/editdataproject_admin/{{ $row->id }}">
+                                        <i class="nav-icon icon-pencil-alt"></i></a>
+                                    <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
+                                        data-name="{{ $row->projectname }}">
+                                        <i class="nav-icon icon-trash"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     {{ $data->links() }}
@@ -88,4 +95,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $('.delete').click(function() {
+            var idproject = $(this).attr('data-id');
+            var nameproject = $(this).attr('data-project');
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover data from the Project Name " +
+                        nameproject + " ",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "/deletedataproject_admin/" + idproject + ""
+                        swal("Your data from Project Name " + nameproject + " has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Deletion of data from Project Name " + nameproject + " has been cancelled!");
+                    }
+                });
+        });
+    </script>
+    <script>
+        @if (Session::has('success'))
+            toastr.success("{{ Session::get('success') }}");
+        @endif
+    </script>
 @endpush

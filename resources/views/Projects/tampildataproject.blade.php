@@ -25,12 +25,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Employee</label>
-                                <select name="user_id" class="form-control">
-                                    <option value="">--</option>
+                                <select class="form-control" name="user_id" required="">
+                                    <option value="{{ $data->user_id }}">{{ $data->user->username }}</option>
                                     @foreach ($user as $item)
-                                        @if ($item->level = 'Employee')
+                                        @if ($item->level == 'Employee')
                                             <option value="{{ $item->id }}"
-                                                {{ old('user_id', $data->user_id) == $item->id ? 'selected' : null }}>
+                                                {{ old('user_id') == $item->id ? 'selected' : null }}>
                                                 {{ $item->username }}
                                             </option>
                                         @endif
@@ -38,17 +38,18 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Deadline</label>
-                                <input type="date" name="deadline" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->deadline }}">
+                                <label for="deadline" class="form-label">Deadline</label>
+                                <input class="form-control" type="date" name="deadline" id="deadline" required=""
+                                    value="{{ $data->deadline }}">
                             </div>
                             <div class="mb-3">
-                                <select name="user_id" class="form-control">
-                                    <option value="">--</option>
+                                <label for="exampleInputEmail1" class="form-label"> Client </label>
+                                <select class="form-control" name="user_id1" required="">
+                                    <option value="{{ $data->user_id1 }}">{{ $data->user_id1 }}</option>
                                     @foreach ($user as $item)
-                                        @if ($item->level = 'Client')
-                                            <option value="{{ $item->id }}"
-                                                {{ old('user_id', $data->user_id) == $item->id ? 'selected' : null }}>
+                                        @if ($item->level == 'Client')
+                                            <option value="{{ $item->username }}"
+                                                {{ old('user_id1') == $item->id ? 'selected' : null }}>
                                                 {{ $item->username }}
                                             </option>
                                         @endif
@@ -58,7 +59,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Status Project</label>
                                 <br>
-                                <select class="form-select" name="status" aria-label="Default select example">
+                                <select class="form-select" name="status" required="">
                                     <option selected>{{ $data->status }}</option>
                                     <option value="1">Progres</option>
                                     <option value="2">Pending</option>

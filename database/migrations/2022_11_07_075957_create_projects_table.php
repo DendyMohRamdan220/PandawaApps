@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('projectname');
             $table->string('user_id');
             $table->date('deadline');
-            $table->string('id_user');
-            $table->enum('status', ['Progres','Pending','Done','Cancel']);
+            $table->string('user_id1');
+            $table->enum('status', ['Order','Progres','Pending','Done','Cancel']);
             $table->timestamps();
         });
     }

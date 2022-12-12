@@ -19,12 +19,11 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Task Name </label>
-                                <input type="text" name="taskname" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <input class="form-control" type="text" name="taskname" required="">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Project </label>
-                                <select name="project_id" class="form-control">
+                                <select class="form-control" name="project_id" required="">
                                     <option value="">--</option>
                                     @foreach ($projects as $item)
                                         <option value="{{ $item->id }}" {{ old('project_id') == $item->id }}>
@@ -35,7 +34,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Employee </label>
-                                <select name="user_id" class="form-control">
+                                <select class="form-control" name="user_id" required="" class="form-control">
                                     <option value="">--</option>
                                     @foreach ($user as $item)
                                         @if ($item->level == 'Employee')
@@ -48,24 +47,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label"> Startdate </label>
-                                <input type="date" name="startdate" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <input class="form-control" type="date" name="startdate" required="">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Duedate </label>
-                                <input type="date" name="duedate" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                                <input class="form-control" type="date" name="duedate" required="">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1" class="form-label"> Status Tasks </label>
-                                <br>
-                                <select class="form-select" name="status" aria-label="Default select example">
-                                    <option selected> Status </option>
-                                    <option value="1"> Progres </option>
-                                    <option value="2"> Pending </option>
-                                    <option value="3"> Done </option>
-                                    <option value="4"> Cancel </option>
-                                </select>
+                                <input class="form-control form-control-lg" type="hidden" name="status" value="Order"
+                                    readonly>
                             </div>
                             <button type="submit" class="btn btn-primary"> Submit </button>
                         </form>
