@@ -16,7 +16,7 @@ class ProjectController extends Controller
         if ($request->has('search')) {
             $data = project::where('projectname', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
-            $data = project::paginate(5);
+            $data = project::with('user')->paginate(5);
         }
         return view('Projects.dataproject', compact('data'));
     }
@@ -37,7 +37,7 @@ class ProjectController extends Controller
     {
         $user = User::all();
         $data = project::find($id);
-        return view('Projects.tampildataproject', compact('user'));
+        return view('Projects.tampildataproject', compact('data','user'));
     }
 
     public function updatedataproject(Request $request, $id)

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->bigInteger('user_id');
             $table->date('startdate');
             $table->date('duedate');
-            $table->enum('status', ['Progres','Pending','Done','Cancel']);
+            $table->enum('status', ['Order','Progres','Pending','Done','Cancel']);
             $table->timestamps();
         });
     }

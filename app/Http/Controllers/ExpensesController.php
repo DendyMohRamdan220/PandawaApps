@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expenses;
 use Illuminate\Http\Request;
 use App\Models\project;
+use App\Models\User;
 use PDF;
 
 
@@ -23,8 +24,9 @@ class ExpensesController extends Controller
 
     public function tambahdataexpenses_admin()
     {
+        $employee = User::all();
         $project = Project::all();
-        return view('Expenses.tambahdataexpenses', compact('project'));
+        return view('Expenses.tambahdataexpenses', compact('project', 'employee'));
     }
 
     public function insertdataexpenses_admin(Request $request)
@@ -35,9 +37,10 @@ class ExpensesController extends Controller
 
     public function editdataexpenses_admin($id)
     {
+        $employee = User::all();
         $project = Project::all();
         $data = Expenses::find($id);
-        return view('Expenses.tampildataexpenses', compact('data', 'project'));
+        return view('Expenses.tampildataexpenses', compact('data', 'project', 'employee'));
     }
 
     public function updatedataexpenses_admin(Request $request, $id)

@@ -40,14 +40,13 @@
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="leads_name">Lead
                                         Name</label>
                                     <div class="form-group mb-0">
-                                        <select name="leads_id" class="form-control select-picker"
-                                            data-size="8">
+                                        <select name="leads_id" class="form-control select-picker" data-size="8">
                                             <option value="">--</option>
-                                            @foreach ( $leads as $item )
-                                            <option value="{{ $item->id }}"
-                                                {{ old('leads_id', $data->leads_id) == $item->id ? 'selected' : null}}>
-                                                {{ $item->leads_name }}
-                                            </option>
+                                            @foreach ($leads as $item)
+                                                <option value="{{ $item->id }}"
+                                                    {{ old('leads_id', $data->leads_id) == $item->id ? 'selected' : null }}>
+                                                    {{ $item->leads_name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -90,14 +89,13 @@
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                         Product</label>
                                     <div class="form-group mb-0">
-                                        <select name="products_id" class="form-control select-picker"
-                                            data-size="8">
+                                        <select name="products_id" class="form-control select-picker" data-size="8">
                                             <option value="">--</option>
-                                            @foreach ( $products as $item )
-                                            <option value="{{ $item->id }}"
-                                                {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null}}>
-                                                {{ $item->name }}
-                                            </option>
+                                            @foreach ($products as $item)
+                                                <option value="{{ $item->id }}"
+                                                    {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null }}>
+                                                    {{ $item->name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>

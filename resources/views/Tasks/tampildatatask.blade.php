@@ -20,12 +20,11 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Task Name </label>
-                                <input type="text" name="taskname" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->taskname }}">
+                                <input class="form-control" type="text" name="taskname" required="" value="{{ $data->taskname }}">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Project</label>
-                                <select name="project_id" class="form-control">
+                                <select class="form-control" name="project_id" required="">
                                     <option value="">--</option>
                                     @foreach ($projects as $item)
                                         <option value="{{ $item->id }}"
@@ -37,7 +36,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Employee</label>
-                                <select name="user_id" class="form-control">
+                                <select class="form-control" name="user_id" required="">
                                     <option value="">--</option>
                                     @foreach ($user as $item)
                                         @if ($item->level = 'Employee')
@@ -51,18 +50,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Startdate</label>
-                                <input type="date" name="startdate" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->startdate }}">
+                                <input class="form-control" type="date" name="startdate" required="" value="{{ $data->startdate }}">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Duedate</label>
-                                <input type="date" name="duedate" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->duedate }}">
+                                <input class="form-control" type="date" name="duedate" required="" value="{{ $data->duedate }}">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"> Status Project </label>
                                 <br>
-                                <select class="form-select" name="status" aria-label="Default select example">
+                                <select class="form-select" name="status" required="">
                                     <option selected>{{ $data->status }}</option>
                                     <option value="1"> Progres </option>
                                     <option value="2"> Pending </option>

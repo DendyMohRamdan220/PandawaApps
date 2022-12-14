@@ -66,14 +66,15 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_employee">Select
                                     Employee</label>
                                 <div class="form-group mb-0">
-                                    <select name="select_employee" id="select_employee" class="form-control select-picker"
-                                        data-size="8">
-                                        <option selected>{{ $data->select_employee }}</option>
+                                    <select name="employee_id" class="form-control select-picker" data-size="8">
                                         <option value="">--</option>
-                                        <option value="1">
-                                            A</option>
-                                        <option value="2">
-                                            B</option>
+                                        @foreach ($employee as $item)
+                                            @if ($item->level == 'Employee')
+                                                <option value="{{ $item->id }}" {{ old('employee_id') == $item->id }}>
+                                                    {{ $item->username }}
+                                                </option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
