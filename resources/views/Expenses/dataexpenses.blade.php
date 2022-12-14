@@ -46,6 +46,7 @@
                                 <th scope="col">Employees</th>
                                 <th scope="col">Purchased From</th>
                                 <th scope="col">Purchased Date</th>
+                                <th scope="col">Created at</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -58,8 +59,9 @@
                                     <th scope="row">{{ $dataexpenses_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->item_name }}</td>
                                     <td>{{ $row->unit_price }}</td>
-                                    <td>{{ $row->select_employee }}</td>
+                                    <td>{{ $row->employees->username }}</td>
                                     <td>{{ $row->purchase_from }}</td>
+                                    <td>{{ $row->purchase_date }}</td>
                                     <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>
                                         <a class="btn btn-info" href="/editdataexpenses_admin/{{ $row->id }}">

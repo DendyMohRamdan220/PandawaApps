@@ -22,7 +22,6 @@ return new class extends Migration
             $table->bigInteger('products_id');
             $table->double('quantity');
             $table->double('unit_price');
-            $table->double('amount');
             $table->double('total');
             $table->enum('status', ['Accepted', 'Waiting', 'Decline']);
 

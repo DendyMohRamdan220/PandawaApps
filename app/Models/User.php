@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\EstimatesController;
+use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\InvoicesController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,5 +73,10 @@ class User extends Authenticatable
     public function invoices()
     {
         return $this->hasMany(Invoices::class);
+    }
+
+    public function expenses()
+    {
+    return $this->hasMany(Expenses::class);
     }
 }

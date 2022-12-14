@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('leads_name');
             $table->string ('leads_email');
             $table->string('office_phone');
-            $table->enum('choose_agent', ['Ditya Ryani Sardi', 'Dendy Moh Ramdan', 'Amar Fauzi']);
             $table->enum('status', ['Pending', 'Overview', 'Confirmed']);
             $table->enum('next_follow_up', ['yes', 'no']);
             $table->string('company_name');

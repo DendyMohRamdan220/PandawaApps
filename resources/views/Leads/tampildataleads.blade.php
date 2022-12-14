@@ -29,20 +29,7 @@
                                         proposals.</small>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_agent">Choose
-                                    Agent</label>
-                                <div class="form-group mb-0">
-                                    <select name="choose_agent" id="choose_agent" class="form-control select-picker"
-                                        data-size="8">
-                                        <option selected>{{ $data->choose_agent }}</option>
-                                        <option value="">--</option>
-                                        <option value="1">Ditya Ryani Sardi</option>
-                                        <option value="2">Dendy Moh Ramdan</option>
-                                        <option value="3">Amar Fauzi</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="true" for="company_name">Company
@@ -89,8 +76,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label=""
-                                        for="website">Website</label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label="" for="website">Website</label>
                                     <input type="text" class="form-control height-35 f-14"
                                         placeholder="e.g. https://www.example.com" value="{{ $data->website }}"
                                         name="website" id="website" autocomplete="off">
@@ -117,8 +103,8 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="" for="state">State</label>
-                                    <input type="text" class="form-control height-35 f-14"
-                                        value="{{ $data->state }}" name="state" id="state" autocomplete="off">
+                                    <input type="text" class="form-control height-35 f-14" value="{{ $data->state }}"
+                                        name="state" id="state" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">

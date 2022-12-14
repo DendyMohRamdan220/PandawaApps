@@ -136,4 +136,16 @@
             toastr.success("{{ Session::get('success') }}");
         @endif
     </script>
+    <script>
+    function sum(index) {
+        var quantity = document.getElementById("quantity")[index].value;
+        var unit_price = document.getElementById("unit_price")[index].value;
+
+        document.getElementById("total")[index].value = quantity * unit_price;
+        {
+            if (element.value.length === 0) return sum;
+            return sum + parseInt(element.value);
+        }
+    }
+</script>
 @endpush

@@ -33,19 +33,7 @@
                                         proposals.</small>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_agent">Choose
-                                    Agent</label>
-                                <div class="form-group mb-0">
-                                    <select name="choose_agent" id="choose_agent" class="form-control select-picker"
-                                        data-size="8">
-                                        <option value="">--</option>
-                                        <option value="1">Ditya Ryani Sardi</option>
-                                        <option value="2">Dendy Moh Ramdan</option>
-                                        <option value="3">Amar Fauzi</option>
-                                    </select>
-                                </div>
-                            </div>
+                            
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="true" for="company_name">Company

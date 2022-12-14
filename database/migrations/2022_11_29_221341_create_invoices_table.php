@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('shipping_address');
             $table->double('quantity');
             $table->double('unit_price');
-            $table->double('amount');
             $table->double('total');
             $table->timestamps();
         });
