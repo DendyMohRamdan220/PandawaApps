@@ -49,24 +49,22 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $index => $row)
-                                @if ($row->level == 'Employee')
-                                    <tr>
-                                        <th scope="row">{{ $index + $data->firstItem() }}</th>
-                                        <td>{{ $row->taskname }}</td>
-                                        <td>{{ $row->project->projectname }}</td>
-                                        <td>{{ $row->user->username }}</td>
-                                        <td>{{ $row->duedate }}</td>
-                                        <td>{{ $row->status }}</td>
-                                        <td>
-                                            <a class="btn btn-info" href="/editdatatask_admin/{{ $row->id }}">
-                                                <i class="nav-icon icon-pencil-alt"></i></a>
-                                            <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                                data-name="{{ $row->taskname }}">
-                                                <i class="nav-icon icon-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                @endif
+                            @foreach ($data as $datatask_admin => $row)
+                                <tr>
+                                    <th scope="row">{{ $datatask_admin + $data->firstItem() }}</th>
+                                    <td>{{ $row->taskname }}</td>
+                                    <td>{{ $row->project->projectname }}</td>
+                                    <td>{{ $row->user->username }}</td>
+                                    <td>{{ $row->duedate }}</td>
+                                    <td>{{ $row->status }}</td>
+                                    <td>
+                                        <a class="btn btn-info" href="/editdatatask_admin/{{ $row->id }}">
+                                            <i class="nav-icon icon-pencil-alt"></i></a>
+                                        <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
+                                            data-name="{{ $row->taskname }}">
+                                            <i class="nav-icon icon-trash"></i></a>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -106,8 +104,8 @@
             var nametask = $(this).attr('data-task');
             swal({
                     title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the Task Name " + nametask +
-                        " ",
+                    text: "Once deleted, you will not be able to recover data " + nametask +
+                        " from Task Name",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -115,11 +113,11 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         window.location = "/deletedatatask_admin/" + idtask + ""
-                        swal("Your data from Task Name " + nametask + " has been deleted!", {
+                        swal("Your data " + nametask + " from Task Name has been deleted!", {
                             icon: "success",
                         });
                     } else {
-                        swal("Deletion of data from Task Name " + nametask + " has been cancelled!");
+                        swal("Deletion of data " + nametask + " from Task Name has been cancelled!");
                     }
                 });
         });
