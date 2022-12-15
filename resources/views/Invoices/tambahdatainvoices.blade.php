@@ -131,8 +131,8 @@
                                     <div class="form-group my-3">
 
                                         <label for="label">Qty / Hrs</label>
-                                        <input type="number" id="" class=" quantity form-control"
-                                            onkeyup="Mul('0')">
+                                        <input type="number" name="quantity" id="quantity"
+                                            class=" quantity form-control" onkeyup="Mul('0')">
 
                                     </div>
                                 </div>
@@ -140,15 +140,17 @@
                                     <div class="form-group my-3">
 
                                         <label for="label">Unit Price</label>
-                                        <input type="number" id="" class="price form-control"
+                                        <input type="number" name="price" id="price" class="price form-control"
                                             onkeyup="Mul('0')">
                                     </div>
                                 </div>
+
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
 
                                         <label for="label">Total</label>
-                                        <input type="text" id="amount-0" class="amount form-control" disabled>
+                                        <input type="text" name="total" id="total" class="amount form-control"
+                                            readonly>
 
                                     </div>
                                 </div>

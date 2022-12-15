@@ -21,7 +21,7 @@ class Proposals extends Model
         'currency',
         'select_product',
         'quantity',
-        'unit_price',
+        'price',
         'total',
     ];
 

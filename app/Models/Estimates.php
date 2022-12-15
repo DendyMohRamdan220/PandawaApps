@@ -20,7 +20,7 @@ class Estimates extends Model
         'user_id',
         'products_id',
         'quantity',
-        'unit_price',
+        'price',
         'total',
         'status',
     ];

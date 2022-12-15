@@ -95,7 +95,7 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Qty / Hrs</label>
-                                    <input type="number" id="" value="{{ $data->quantity }}"
+                                    <input type="number" name="quantity" id="quantity" value="{{ $data->quantity }}"
                                         class=" quantity form-control" onkeyup="Mul('0')">
 
                                 </div>
@@ -105,7 +105,7 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Unit Price</label>
-                                    <input type="number" id="" value="{{ $data->unit_price }}"
+                                    <input type="number" name="price" id="price" value="{{ $data->unit_price }}"
                                         class="price form-control" onkeyup="Mul('0')">
                                 </div>
                             </div>
@@ -114,8 +114,8 @@
                                 <div class="form-group my-3">
 
                                     <label for="label">Total</label>
-                                    <input type="text" id="amount-0" value="{{ $data->total }}"
-                                        class="amount form-control" disabled>
+                                    <input type="text" name="total" id="total" value="{{ $data->total }}"
+                                        class="amount form-control" readonly>
 
                                 </div>
                             </div>
@@ -124,7 +124,8 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label for="label">Status</label>
-                                    <select name="status" id="status" class="form-control select-picker" data-size="8">
+                                    <select name="status" id="status" class="form-control select-picker"
+                                        data-size="8">
                                         <option selected>{{ $data->status }}</option>
                                         <option value="">--</option>
                                         <option value="1">

@@ -2,6 +2,21 @@
 
 @section('content')
     <div class="page-body">
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3> Add Estimate </h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item"> Finance </li>
+                            <li class="breadcrumb-item"><a href="/dataestimate_admin"> Estimate </a></li>
+                            <li class="breadcrumb-item active"> Add Estimate </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="content-wrapper">
                 <div class="bg-dark-grey rounded b-shadow-4 create-inv">
@@ -96,22 +111,22 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label for="label">Qty / Hrs</label>
-                                    <input type="number" name="quantity" id="" class="quantity form-control"
+                                    <input type="number" name="quantity" id="quantity" class="quantity form-control"
                                         required="" onkeyup="Mul('0')">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label for="label">Unit Price</label>
-                                    <input type="number" name="unit_price" id="" class="price form-control"
+                                    <input type="number" name="price" id="price" class="price form-control"
                                         required="" onkeyup="Mul('0')">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label for="label">Total</label>
-                                    <input type="text" name="total" id="" class="amount form-control"
-                                        readonly>
+                                    <input type="text" name="total" id="total" class="amount form-control" readonly>
+
                                 </div>
                             </div>
                             <div class="card-footer text-end">

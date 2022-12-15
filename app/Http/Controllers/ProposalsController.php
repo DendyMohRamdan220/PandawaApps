@@ -39,7 +39,7 @@ class ProposalsController extends Controller
         $products = Products::all();
         $leads = Leads::all();
         $data = Proposals::find($id);
-        return view('Proposal.tampildataproposal', compact('data'. 'leads', 'products'));
+        return view('Proposal.tampildataproposal', compact('data', 'leads', 'products'));
     }
 
     public function updatedataproposal_admin(Request $request, $id)

@@ -135,7 +135,7 @@
 
                                     <label for="label">Total</label>
                                     <input type="text" id="amount-0" value="{{ $data->total }}"
-                                        class="amount form-control" disabled>
+                                        class="amount form-control" readonly>
 
                                 </div>
                             </div>

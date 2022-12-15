@@ -93,22 +93,21 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
-
                                         <label for="label">Qty / Hrs</label>
-                                        <input type="number" name="quantity" id="quantity " class="form-control" />
+                                        <input type="number" name="quantity" id="quantity" class=" quantity form-control"
+                                            onkeyup="Mul('0')">
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Unit Price</label>
-                                        <input type="text" name="unit_price" id="unit_price " class="form-control" />
+                                        <input type="number" name="price" id="price" class="price form-control" onkeyup="Mul('0')">
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Total</label>
-                                        <input type="text" value="" name="total" id="total "
-                                            class="form-control" />
+                                        <input type="text" name="total" id="total" class="amount form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="card-footer text-end">
@@ -123,3 +122,17 @@
         </div>
     </div>
 @endsection
+<script>
+    function Mul(index) {
+        var quantity = document.getElementsByClassName("quantity")[index].value;
+        var price = document.getElementsByClassName("price")[index].value;
+
+        document.getElementsByClassName("amount")[index].value = quantity * price;
+        const subTotalField = document.getElementById("subTotal");
+        subTotalField.innerHTML = Array.from(document.getElementsByClassName("amount")).reduce((sum, element) => {
+            if (element.value.length === 0) return sum;
+            return sum + parseInt(element.value);
+        }, 0)
+
+    }
+</script>

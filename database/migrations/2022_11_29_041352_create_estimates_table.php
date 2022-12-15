@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('products_id');
             $table->double('quantity');
-            $table->double('unit_price');
+            $table->double('price');
             $table->double('total')->nullable();
             $table->enum('status', ['Accepted', 'Waiting', 'Decline']);
 
