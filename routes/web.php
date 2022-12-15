@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ConvertCurencyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EstimatesController;
@@ -12,9 +13,8 @@ use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ConvertCurencyController;
+use App\Http\Controllers\ProposalsController;
 use App\Http\Controllers\SettingsprofileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TicketController;
@@ -46,11 +46,22 @@ use Illuminate\Support\Facades\Route;
 | and logging out!
 |
  */
+Route::get('/', [LoginController::class, 'view_login'])->name('login')->middleware('guest');
 Route::get('login', [LoginController::class, 'view_login'])->name('login')->middleware('guest');
 Route::post('login_redirect', [LoginController::class, 'login']);
 // Route::get('register', [LoginController::class, 'view_register']);
 // Route::post('register_redirect', [LoginController::class, 'register']);
 Route::get('logout', [LoginController::class, 'logout']);
+Route::get('online-user', [UserController::class, 'datauser']);
+
+Route::group(['middleware' => ['auth', 'ceklevel:Admin,Employee,Client,Sales']], function () {
+
+    //Edit User
+    Route::get('editUser', [SettingsprofileController::class, 'view_editUser'])->name('edituser');
+    Route::post('updateUser_myprofile/{id}', [SettingsprofileController::class, 'editUser_myprofile'])->name('updateuser_myprofile');
+    Route::post('updateUser_editprofile/{id}', [SettingsprofileController::class, 'editUser_editprofile'])->name('updateuser_editprofile');
+
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -87,9 +98,17 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('dataclient_admin', [ClientController::class, 'datauser_client']);
     Route::get('tambahdataclient_admin', [ClientController::class, 'tambahdatauser_client']);
     Route::post('insertdataclient_admin', [ClientController::class, 'insertdatauser_client']);
-    Route::get('editdataclient_admin', [ClientController::class, 'editdatauser_client']);
-    Route::post('updatedataclient_admin', [ClientController::class, 'updatedatauser_client']);
-    Route::get('deletedataclient_admin', [ClientController::class, 'deletedatauser_client']);
+    Route::get('editdataclient_admin/{id}', [ClientController::class, 'editdatauser_client']);
+    Route::post('updatedataclient_admin/{id}', [ClientController::class, 'updatedatauser_client']);
+    Route::get('deletedataclient_admin/{id}', [ClientController::class, 'deletedatauser_client']);
+
+    // Sales >>
+    Route::get('datasales_admin', [UserController::class, 'datauser_sales']);
+    Route::get('tambahdatasales_admin', [UserController::class, 'tambahdatauser_sales']);
+    Route::post('insertdatasales_admin', [UserController::class, 'insertdatauser_sales']);
+    Route::get('editdatasales_admin/{id}', [UserController::class, 'editdatauser_sales']);
+    Route::post('updatedatasales_admin/{id}', [UserController::class, 'updatedatauser_sales']);
+    Route::get('deletedatasales_admin/{id}', [UserController::class, 'deletedatauser_sales']);
 
     /* << HR >> */
     // Employees >>
@@ -186,13 +205,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('deleteticket_admin/{id}', [TicketController::class, 'deleteticket']);
     Route::get('exportpdf_admin', [TicketController::class, 'exportpdf']);
 
-    //Settings>>
-    Route::get('editdatauserprofile', [SettingsprofileController::class, 'editdatauserprofile']);
-    Route::patch('updatedatauserprofile', [SettingsprofileController::class, 'updatedatauserprofile']);
-    Route::get('dataprofilSettings_admin', [SettingsprofileController::class, 'dataprofilSettings_admin']);
-
-     //Convert Currency>>
-     Route::get('currency',[ConvertCurencyController::class,'index'])->name('currency');
+    //Convert Currency>>
+    Route::get('currency', [ConvertCurencyController::class, 'index'])->name('currency');
 
 });
 
@@ -232,12 +246,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:Employee']], function () {
     Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
 
     //Tickets>>
-    Route::get('ticket_employee', [TicketController::class, 'viewtiket_employee']);
-    Route::get('tambahtiket_employee', [TicketController::class, 'tambahtiket_employee']);
-    Route::post('insertdatatiket_employee', [TicketController::class, 'insertdatatiket_employee']);
-    Route::get('tampildatatiket_employee/{id}', [TicketController::class, 'tampildatatiket_employee']);
+    Route::get('dataticket_employee', [TicketController::class, 'dataticket_employee']);
+    Route::get('tambahdataticket_employee', [TicketController::class, 'tambahdataticket_employee']);
+    Route::post('insertdataticket_employee', [TicketController::class, 'insertdataticket_employee']);
+    Route::get('editdataticket_employee/{id}', [TicketController::class, 'editdataticket_employee']);
     Route::post('updatedataticket_employee/{id}', [TicketController::class, 'updatedataticket_employee']);
-    Route::get('deleteticket_employee/{id}', [TicketController::class, 'deleteticket_employee']);
+    Route::get('deletedataticket_employee/{id}', [TicketController::class, 'deletedataticket_employee']);
 });
 
 /*
