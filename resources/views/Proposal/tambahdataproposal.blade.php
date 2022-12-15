@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Proposal </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
                             <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item"><a href="/dataproposal_admin"> Proposal </a></li>
                             <li class="breadcrumb-item active"> Add Proposal </li>
@@ -17,7 +17,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header row">
@@ -28,11 +27,9 @@
                             <div class="row p-20">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
-
                                         <label for="label">Proposal Name</label>
                                         <input type="text" name="proposal_name" id="proposal_name "
                                             class="form-control" />
-
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
@@ -49,22 +46,22 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
-
                                         <label for="label">Valid till</label>
                                         <input type="date" name="valid_till" id="valid_till" class="form-control" />
 
                                     </div>
                                 </div>
-
                                 <div class="col-lg-4 col-md-6">
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
                                         for="currency">Currency</label>
                                     <div class="form-group mb-0">
                                         <select name="currency" id="currency" class="form-control select-picker"
                                             data-size="8">
+                                            <option value="">
+                                                --
+                                            </option>
                                             <option value="1">
                                                 USD ($)
                                             </option>
@@ -80,7 +77,6 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-4 col-md-6">
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                         Product</label>
@@ -95,41 +91,24 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
 
                                         <label for="label">Qty / Hrs</label>
                                         <input type="number" name="quantity" id="quantity " class="form-control" />
-
                                     </div>
                                 </div>
-
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
-
                                         <label for="label">Unit Price</label>
                                         <input type="text" name="unit_price" id="unit_price " class="form-control" />
-
                                     </div>
                                 </div>
-
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
-
-                                        <label for="label">Amount</label>
-                                        <input type="text" name="amount" id="amount " class="form-control" />
-
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="form-group my-3">
-
                                         <label for="label">Total</label>
                                         <input type="text" value="" name="total" id="total "
                                             class="form-control" />
-
                                     </div>
                                 </div>
                                 <div class="card-footer text-end">

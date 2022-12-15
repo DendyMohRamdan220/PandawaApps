@@ -19,18 +19,18 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatalead_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add
-                            Leads</a>
+                        <a href="/tambahdatalead_admin" class="btn btn-success">
+                            <i class="nav-icon icon-plus"></i> Add Leads </a>
                     </div>
                     <div class="col-auto">
                         <form action="/datalead_admin" method="GET">
                             <input type="search" id="inputPassword6" name="search" class="form-control"
-                                aria-describedby="passwordHelpInline">
+                                aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
-                            PDF</a>
+                        <a href="/exportpdf_admin" class="btn btn-info">
+                            <i class="nav-icon fas fa-file-pdf"></i> Export PDF </a>
                     </div>
                 </div>
             </div>
@@ -39,13 +39,12 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Company Name</th>
                                 <th scope="col">Mobile Phone</th>
                                 <th scope="col">Created at</th>
                                 <th scope="col">Next Follow Up</th>
-                                <th scope="col">Lead Agent</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -62,7 +61,6 @@
                                     <td>{{ $row->mobile_phone }}</td>
                                     <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>{{ $row->next_follow_up }}</td>
-                                    <td>{{ $row->choose_agent }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
                                         <a class="btn btn-info" href="/editdatalead_admin/{{ $row->id }}">

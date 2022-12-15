@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('estimate_number');
             $table->date ('valid_till');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
-            $table->bigInteger('users_id');
-            $table->bigInteger('products_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('products_id');
             $table->double('quantity');
             $table->double('unit_price');
-            $table->double('total');
+            $table->double('total')->nullable();
             $table->enum('status', ['Accepted', 'Waiting', 'Decline']);
 
             $table->timestamps();
