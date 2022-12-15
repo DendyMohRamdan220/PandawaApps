@@ -21,9 +21,8 @@ return new class extends Migration
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
             $table->bigInteger('products_id');
             $table->double('quantity');
-            $table->double('unit_price');
-            $table->double('amount');
-            $table->double('total');
+            $table->double('price');
+            $table->double('total')->nullable();
 
             $table->timestamps();
         });

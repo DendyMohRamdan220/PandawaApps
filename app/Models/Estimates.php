@@ -10,8 +10,9 @@ use App\Models\Products;
 class Estimates extends Model
 {
     use HasFactory;
+    protected $table = "estimates";
     protected $primaryKey = "id";
-    protected $fillable = ['id', 'estimate_number',	'valid_till', 'currency', 'users_id', 'products_id', 'quantity', 'unit_price', 'amount', 'total', 'status'];
+    protected $fillable = ['id', 'estimate_number',	'valid_till', 'currency', 'users_id', 'products_id', 'quantity', 'price', 'total', 'status'];
     protected $dates = ['created_at'];
 
     public function client()

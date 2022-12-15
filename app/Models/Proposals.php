@@ -12,7 +12,7 @@ class Proposals extends Model
     use HasFactory;
     protected $table = "proposals";
     protected $primaryKey = "id";
-    protected $fillable = ['id', 'proposal_name', 'leads_id', 'products_id', 'valid_till', 'currency', 'select_product', 'quantity', 'unit_price', 'amount', 'total'];
+    protected $fillable = ['id', 'proposal_name', 'leads_id', 'products_id', 'valid_till', 'currency', 'quantity', 'price', 'total'];
     protected $dates = ['created_at'];
 
     public function leads()

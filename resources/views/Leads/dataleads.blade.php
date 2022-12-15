@@ -45,7 +45,6 @@
                                 <th scope="col">Mobile Phone</th>
                                 <th scope="col">Created at</th>
                                 <th scope="col">Next Follow Up</th>
-                                <th scope="col">Lead Agent</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -62,7 +61,6 @@
                                     <td>{{ $row->mobile_phone }}</td>
                                     <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>{{ $row->next_follow_up }}</td>
-                                    <td>{{ $row->choose_agent }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
                                         <a class="btn btn-info" href="/editdatalead_admin/{{ $row->id }}">
