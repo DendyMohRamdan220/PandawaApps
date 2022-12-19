@@ -2,6 +2,21 @@
 
 @section('content')
     <div class="page-body">
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3> Update Estimate </h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"> Finance </li>
+                            <li class="breadcrumb-item"><a href="/dataestimate_admin"> Estimate </a></li>
+                            <li class="breadcrumb-item active"> Update Estimate </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="content-wrapper">
                 <div class="bg-dark-grey rounded b-shadow-4 create-inv">
@@ -13,36 +28,49 @@
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
                             <div class="col-lg-4 col-md-6">
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
+                                    Product</label>
                                 <div class="form-group mb-0">
-                                    <label class="f-14 text-dark-grey mb-12 mt-3 text-capitalize" for="usr">Estimate
-                                        Number</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend  height-35 ">
-                                            <span
-                                                class="input-group-text border-grey f-15 bg-additional-grey px-3 text-dark"
-                                                id="basic-addon1">EST#00</span>
-                                        </div>
-                                        <input type="text" name="estimate_number" id="estimate_number"
-                                            class="form-control height-35 f-15" value="{{ $data->estimate_number }}"
-                                            placeholder="ex.001" aria-label="ex.001" aria-describedby="basic-addon1"
-                                            autocomplete="off">
-                                    </div>
+                                    <select name="products_id" class="form-control select-picker" data-size="8" required="">
+                                        <option value="">--</option>
+                                        @foreach ($products as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null }}>
+                                                {{ $item->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_client">Choose
+                                    Client</label>
+                                <div class="form-group mb-0">
+                                    <select name="user_id" class="form-control select-picker" data-size="8" required="">
+                                        <option value="">--</option>
+                                        @foreach ($user as $items)
+                                            @if ($items->level == 'Client')
+                                                <option value="{{ $items->id }}"
+                                                    {{ old('user_id', $data->user_id) == $items->id ? 'selected' : null }}>
+                                                    {{ $items->name }}
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-
                                     <label for="label">Valid till</label>
                                     <input type="date" value="{{ $data->valid_till }}" name="valid_till" id="valid_till"
-                                        class="form-control" />
-
+                                        required="" class="form-control" />
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="currency">Currency</label>
                                 <div class="form-group mb-0">
                                     <select name="currency" id="currency" class="form-control select-picker"
-                                        data-size="8">
+                                        data-size="8" required="">
                                         <option selected>{{ $data->currency }}</option>
                                         <option value="1">
                                             USD ($)
@@ -60,72 +88,31 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_client">Choose
-                                    Client</label>
-                                <div class="form-group mb-0">
-                                    <select name="users_id" class="form-control select-picker" data-size="8">
-                                        <option value="">--</option>
-                                        @foreach ($client as $item)
-                                            @if ($item->level == 'Client')
-                                                <option value="{{ $item->id }}" {{ old('users_id') == $item->id }}>
-                                                    {{ $item->username }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
-                                    Product</label>
-                                <div class="form-group mb-0">
-                                    <select name="products_id" class="form-control select-picker" data-size="8">
-                                        <option value="">--</option>
-                                        @foreach ($products as $item)
-                                            <option value="{{ $item->id }}"
-                                                {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null }}>
-                                                {{ $item->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-
                                     <label for="label">Qty / Hrs</label>
                                     <input type="number" name="quantity" id="quantity" value="{{ $data->quantity }}"
-                                        class=" quantity form-control" onkeyup="Mul('0')">
-
+                                        required="" class="quantity form-control" onkeyup="Mul('0')">
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-
                                     <label for="label">Unit Price</label>
-                                    <input type="number" name="price" id="price" value="{{ $data->unit_price }}"
-                                        class="price form-control" onkeyup="Mul('0')">
+                                    <input type="number" name="price" id="price" value="{{ $data->price }}"
+                                        required="" class="price form-control" onkeyup="Mul('0')">
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-
                                     <label for="label">Total</label>
                                     <input type="text" name="total" id="total" value="{{ $data->total }}"
                                         class="amount form-control" readonly>
-
                                 </div>
                             </div>
-
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label for="label">Status</label>
                                     <select name="status" id="status" class="form-control select-picker"
-                                        data-size="8">
+                                        data-size="8" required="">
                                         <option selected>{{ $data->status }}</option>
                                         <option value="">--</option>
                                         <option value="1">
@@ -139,7 +126,7 @@
                             </div>
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit">Submit</button>
-                                <input class="btn btn-light" type="reset" value="Cancel">
+                                <a href="/dataestimate_sales"class="btn btn-light">Cancel</a>
                             </div>
                         </div>
                     </form>

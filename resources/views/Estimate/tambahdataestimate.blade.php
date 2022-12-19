@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Add Estimate </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
                             <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item"><a href="/dataestimate_admin"> Estimate </a></li>
                             <li class="breadcrumb-item active"> Add Estimate </li>
@@ -28,49 +28,18 @@
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
                             <div class="col-lg-4 col-md-6">
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product"> Select
+                                    Product </label>
                                 <div class="form-group mb-0">
-                                    <label class="f-14 text-dark-grey mb-12 mt-3 text-capitalize" for="usr"> Estimate
-                                        Number </label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend  height-35 ">
-                                            <span
-                                                class="input-group-text border-grey f-15 bg-additional-grey px-3 text-dark"
-                                                id="basic-addon1">EST#00</span>
-                                        </div>
-                                        <input type="text" name="estimate_number" id="estimate_number"
-                                            class="form-control height-35 f-15" value="" required=""
-                                            placeholder="ex.01" aria-label="ex.01" aria-describedby="basic-addon1"
-                                            autocomplete="off">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-group my-3">
-                                    <label for="label">Valid till</label>
-                                    <input type="date" value="" name="valid_till" id="valid_till" required=""
-                                        class="form-control" />
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="currency">Currency</label>
-                                <div class="form-group mb-0">
-                                    <select name="currency" id="currency" class="form-control select-picker" required=""
-                                        data-size="8">
-                                        <option value="">
-                                            --
-                                        </option>
-                                        <option value="1">
-                                            USD ($)
-                                        </option>
-                                        <option value="2">
-                                            IDR (Rp)
-                                        </option>
-                                        <option value="3">
-                                            GBP (£)
-                                        </option>
-                                        <option value="4">
-                                            EUR (€)
-                                        </option>
+                                    <select name="products_id" class="form-control select-picker"
+                                        required="" data-size="8">
+                                        <option value="">--</option>
+                                        @foreach ($products as $p)
+                                            <option value="{{ $p->id }}"
+                                                {{ old('products_id') == $p->id ? 'selected' : null }}>
+                                                {{ $p->name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -93,18 +62,29 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product"> Select
-                                    Product </label>
+                                <div class="form-group my-3">
+                                    <label for="label">Valid till</label>
+                                    <input type="date" value="" name="valid_till" id="valid_till" required=""
+                                        class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="currency">Currency</label>
                                 <div class="form-group mb-0">
-                                    <select name="products_id" class="form-control select-picker"
-                                        required="" data-size="8">
-                                        <option value="">--</option>
-                                        @foreach ($products as $p)
-                                            <option value="{{ $p->id }}"
-                                                {{ old('products_id') == $p->id ? 'selected' : null }}>
-                                                {{ $p->name }}
-                                            </option>
-                                        @endforeach
+                                    <select name="currency" id="currency" class="form-control select-picker" required=""
+                                        data-size="8">
+                                        <option value="1">
+                                            USD ($)
+                                        </option>
+                                        <option value="2">
+                                            IDR (Rp)
+                                        </option>
+                                        <option value="3">
+                                            GBP (£)
+                                        </option>
+                                        <option value="4">
+                                            EUR (€)
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -126,12 +106,15 @@
                                 <div class="form-group my-3">
                                     <label for="label">Total</label>
                                     <input type="text" name="total" id="total" class="amount form-control" readonly>
-
                                 </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <input class="form-control form-control-lg" type="hidden" name="status" value="Waiting"
+                                    readonly>
                             </div>
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit"> Submit </button>
-                                <input class="btn btn-light" type="reset" value="Cancel">
+                                <a href="/dataestimate_admin"class="btn btn-light">Cancel</a>
                             </div>
                         </div>
                     </form>

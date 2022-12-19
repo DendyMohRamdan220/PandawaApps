@@ -40,8 +40,8 @@
     <table id="customers">
         <tr>
             <th scope="col">No</th>
-            <th scope="col">Estimate Number</th>
             <th scope="col">Client</th>
+            <th scope="col">Product Type/Service</th>
             <th scope="col">Total</th>
             <th scope="col">Valid till</th>
             <th scope="col">Status</th>
@@ -52,8 +52,8 @@
         @foreach ($data as $row)
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $row->estimate_number }}</td>
-                <td>{{ $row->select_client }}</td>
+                <td>{{ $row->user->name }}</td>
+                <td>{{ $row->products->name }}</td>
                 <td>{{ $row->total }}</td>
                 <td>{{ $row->valid_till }}</td>
                 <td>{{ $row->status }}</td>

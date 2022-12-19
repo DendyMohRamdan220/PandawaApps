@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Estimate </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
                             <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item active"> Estimate </li>
                         </ol>
@@ -21,18 +21,17 @@
                 <div class="card-header row">
                     <div class="col-auto">
                         <a href="/tambahdataestimate_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i>
-                            Create Estimate </a>
+                            Add Estimate </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/dataestimate_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                     <div class="col-auto">
                         <a href="/exportpdfestimate_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
-                            Export
-                            PDF</a>
+                            Export PDF</a>
                     </div>
                 </div>
             </div>
@@ -41,10 +40,9 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Estimate Number</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Client</th>
-                                <th scope="col">Jenis Produk/Jasa</th>
+                                <th scope="col">Product Type/Service</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Valid till</th>
                                 <th scope="col">Status</th>
@@ -58,8 +56,7 @@
                             @foreach ($data as $dataestimate_admin => $row)
                                 <tr>
                                     <th scope="row">{{ $dataestimate_admin + $data->firstItem() }}</th>
-                                    <td>{{ $row->estimate_number }}</td>
-                                    <td>{{ $row->users->name }}</td>
+                                    <td>{{ $row->user->name }}</td>
                                     <td>{{ $row->products->name }}</td>
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->valid_till }}</td>
@@ -78,7 +75,7 @@
                     {{ $data->links() }}
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                             </ul>
                         </nav>
                     </div>
