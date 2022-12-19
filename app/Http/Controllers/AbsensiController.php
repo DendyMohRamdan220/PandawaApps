@@ -52,7 +52,8 @@ class AbsensiController extends Controller
         ['date','=',$tanggal],
         ])->first();
         if ($presensi){
-        dd("sudah ada");
+        return redirect()->intended('presensi_sudah_masuk');
+
         }else{
         Attendance::create([
         'user_id' => auth()->user()->id,
@@ -61,7 +62,12 @@ class AbsensiController extends Controller
         ]);
         }
 
-        return redirect('presensi_masuk');
+        return redirect('presensi_masuk')->with('success', 'You have successfully filled in attendance');
+    }
+
+    public function sudah_masuk()
+    {
+    return view('Attendances.sudahmasuk');
     }
 
     public function halamanrekap()
@@ -75,7 +81,8 @@ class AbsensiController extends Controller
     return view('Attendances.rekapkaryawan',compact('presensi'));
     }
 
-    public function presensipulang(){
+    public function presensipulang()
+    {
         $timezone = 'Asia/Jakarta';
         $date = new DateTime('now', new DateTimeZone($timezone));
         $tanggal = $date->format('Y-m-d');
@@ -93,10 +100,17 @@ class AbsensiController extends Controller
 
         if ($presensi->clockout == ""){
         $presensi->update($dt);
-        return redirect('presensi_keluar');
+        return redirect('presensi_keluar')->with('success', 'You have successfully exited the presence');
         }else{
-        dd("sudah ada");
+        return redirect()->intended('presensi_sudah_keluar');
+
         }
+
+    }
+
+    public function sudah_keluar()
+    {
+    return view('Attendances.sudahkeluar');
     }
     /**
      * Display the specified resource.

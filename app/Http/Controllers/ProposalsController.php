@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Proposals;
-use App\Models\Products;
 use App\Models\Leads;
+use App\Models\Products;
+use App\Models\Proposals;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -13,11 +13,18 @@ class ProposalsController extends Controller
     // Portal Management >>
     public function dataproposal_admin(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Proposals::where('proposal_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Proposals::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Proposals::with('leads', 'products')
+            ->where('proposal_name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('total', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('created_at', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('leads', function ($query) use ($keyword) {
+                $query->where('leads_name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->orWhereHas('products', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
         return view('Proposal.dataproposal', compact('data'));
     }
 

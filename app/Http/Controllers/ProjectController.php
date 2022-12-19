@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
-
-
 
 class ProjectController extends Controller
 {
     public function dataproject_admin(Request $request)
     {
-        if ($request->has('search')) {
-            $data = project::where('projectname', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = project::with('user')->paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Project::with('user')
+            ->where('projectname', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('user_id1', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('user', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
         return view('Projects.dataproject', compact('data'));
     }
 
@@ -37,7 +38,7 @@ class ProjectController extends Controller
     {
         $user = User::all();
         $data = project::find($id);
-        return view('Projects.tampildataproject', compact('data','user'));
+        return view('Projects.tampildataproject', compact('data', 'user'));
     }
 
     public function updatedataproject(Request $request, $id)
@@ -54,25 +55,41 @@ class ProjectController extends Controller
         return redirect('dataproject_admin')->with('success', 'project data deleted successfully .');
     }
 
+    public function exportpdf_admin()
+    {
+        $data = Project::all();
+        view()->share('data', $data);
+        $pdf = PDF::loadview('Projects.dataproject-pdf');
+        return $pdf->download('data.pdf');
+    }
+
     //Employee
     public function dataproject_employee(Request $request)
     {
-    if ($request->has('search')) {
-    $data = project::where('projectname', 'LIKE', '%' . $request->search . '%')->paginate(5);
-    } else {
-    $data = project::paginate(5);
-    }
-    return view('Projects.dataproject_employee', compact('data'));
+        $keyword = $request->keyword;
+        $data = Project::with('user')
+            ->where('projectname', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('user_id1', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('user', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
+        return view('Projects.dataproject_employee', compact('data'));
     }
 
     // Portal Client >>
     public function dataproject_client(Request $request)
     {
-    if ($request->has('search')) {
-    $data = project::where('projectname', 'LIKE', '%' . $request->search . '%')->paginate(5);
-    } else {
-    $data = project::paginate(5);
-    }
-    return view('Projects.dataproject_client', compact('data'));
+        $keyword = $request->keyword;
+        $data = Project::with('user')
+            ->where('projectname', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('user_id1', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('user', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
+        return view('Projects.dataproject_client', compact('data'));
     }
 }

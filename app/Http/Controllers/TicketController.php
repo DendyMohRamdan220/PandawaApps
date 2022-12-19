@@ -17,11 +17,11 @@ class TicketController extends Controller
         $totaldonetiket = Ticket::where('status', 'done')->count();
         $totalcanceltiket = Ticket::where('status', 'cancel')->count();
 
-        if ($request->has('search')) {
-            $data = Ticket::where('ticket_subject', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Ticket::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Ticket::where('ticket_subject', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('description', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->paginate(10);
         return view('Tickets.datatiket', compact('data'), [
             'totaltiket' => $totaltiket,
             'totalordertiket' => $totalordertiket,
@@ -71,6 +71,62 @@ class TicketController extends Controller
         return $pdf->download('data.pdf');
     }
 
+    // Portal Employee>>
+    public function dataticket_employee(Request $request)
+    {
+        $totaltiket = Ticket::count();
+        $totalordertiket = Ticket::where('status', 'order')->count();
+        $totalprogrestiket = Ticket::where('status', 'progres')->count();
+        $totalpendingtiket = Ticket::where('status', 'pending')->count();
+        $totaldonetiket = Ticket::where('status', 'done')->count();
+        $totalcanceltiket = Ticket::where('status', 'cancel')->count();
+
+        $keyword = $request->keyword;
+        $data = Ticket::where('ticket_subject', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('description', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->paginate(10);
+        return view('Tickets.dataticket_employee', compact('data'), [
+            'totaltiket' => $totaltiket,
+            'totalordertiket' => $totalordertiket,
+            'totalprogrestiket' => $totalprogrestiket,
+            'totalpendingtiket' => $totalpendingtiket,
+            'totaldonetiket' => $totaldonetiket,
+            'totalcanceltiket' => $totalcanceltiket,
+        ]);
+    }
+
+    public function tambahdataticket_employee()
+    {
+        return view('Tickets.tambahdataticket_employee');
+    }
+
+    public function insertdataticket_employee(Request $request)
+    {
+        Ticket::create($request->all());
+        return redirect('/dataticket_employee')->with('success', 'tickets added successfully .');
+    }
+
+    public function editdataticket_employee($id)
+    {
+        $data = Ticket::find($id);
+        return view('Tickets.editdataticket_employee', compact('data'));
+    }
+
+    public function updatedataticket_employee(Request $request, $id)
+    {
+        $data = Ticket::find($id);
+        $data->update($request->all());
+        return redirect('/dataticket_employee')->with('success', 'tickets edited successfully .');
+    }
+
+    public function deletedataticket_employee($id)
+    {
+        $data = Ticket::find($id);
+        $data->delete();
+        return redirect('/dataticket_employee')->with('success', 'tickets deleted successfully .');
+    }
+
     // Portal Clients>>
     public function dataticket_client(Request $request)
     {
@@ -81,11 +137,11 @@ class TicketController extends Controller
         $totaldonetiket = Ticket::where('status', 'done')->count();
         $totalcanceltiket = Ticket::where('status', 'cancel')->count();
 
-        if ($request->has('search')) {
-            $data = Ticket::where('ticket_subject', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Ticket::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Ticket::where('ticket_subject', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('description', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->paginate(10);
         return view('Tickets.dataticket_client', compact('data'), [
             'totaltiket' => $totaltiket,
             'totalordertiket' => $totalordertiket,

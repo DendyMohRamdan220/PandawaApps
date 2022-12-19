@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Leads;
-
 use Illuminate\Http\Request;
 use PDF;
 
 class LeadsController extends Controller
 {
-    //
+    // Portal Management >>
     public function datalead_admin(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Leads::where('leads_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Leads::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Leads::where('leads_name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('company_name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('mobile_phone', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('next_follow_up', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->paginate(10);
         return view('Leads.dataleads', compact('data'));
     }
 

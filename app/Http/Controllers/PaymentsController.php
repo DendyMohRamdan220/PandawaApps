@@ -12,11 +12,13 @@ class PaymentsController extends Controller
     // Portal Management >>
     public function datapayments_admin(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Payments::where('payment_number', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Payments::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Payments::with('project')
+            ->where('total', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('project', function ($query) use ($keyword) {
+                $query->where('projectname', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
         return view('Payment.datapayments', compact('data'));
     }
 
@@ -64,11 +66,13 @@ class PaymentsController extends Controller
     // Portal Client >>
     public function datapayments_client(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Payments::where('payment_number', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Payments::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Payments::with('project')
+            ->where('total', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('project', function ($query) use ($keyword) {
+                $query->where('projectname', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
         return view('Payment.datapayments_client', compact('data'));
     }
 
@@ -77,6 +81,60 @@ class PaymentsController extends Controller
         $data = Payments::all();
         view()->share('data', $data);
         $pdf = PDF::loadview('Payments.datapayments-pdf_client');
+        return $pdf->download('data.pdf');
+    }
+
+    // Portal Sales >>
+    public function datapayments_sales(Request $request)
+    {
+        $keyword = $request->keyword;
+        $data = Payments::with('project')
+            ->where('total', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('project', function ($query) use ($keyword) {
+                $query->where('projectname', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
+        return view('Payment.datapayments_sales', compact('data'));
+    }
+
+    public function tambahdatapayments_sales()
+    {
+        $project = Project::all();
+        return view('Payment.tambahdatapayments_sales', compact('project'));
+    }
+
+    public function insertdatapayments_sales(Request $request)
+    {
+        Payments::create($request->all());
+        return redirect('/datapayments_sales')->with('success', 'Payments added successfully .');
+    }
+
+    public function editdatapayments_sales($id)
+    {
+        $project = Project::all();
+        $data = Payments::find($id);
+        return view('Payment.editdatapayments_sales', compact('data', 'project'));
+    }
+
+    public function updatedatapayments_sales(Request $request, $id)
+    {
+        $data = Payments::find($id);
+        $data->update($request->all());
+        return redirect('/datapayments_sales')->with('success', 'Payments edited successfully .');
+    }
+
+    public function deletedatapayments_sales($id)
+    {
+        $data = Payments::find($id);
+        $data->delete();
+        return redirect('/datapayments_sales')->with('success', 'Payments deleted successfully .');
+    }
+
+    public function exportpdf_sales()
+    {
+        $data = Payments::all();
+        view()->share('data', $data);
+        $pdf = PDF::loadview('Payments.datapayments-pdf_sales');
         return $pdf->download('data.pdf');
     }
 }

@@ -10,13 +10,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class EmployeeController extends Controller
 {
-    public function datauser_employee(Request $c)
+    public function datauser_employee(Request $request)
     {
-        if ($c->has('search')) {
-            $data = User::where('name', 'LIKE', '%' . $c->search . '%')->paginate(5);
-        } else {
-            $data = User::all();
-        }
+        $keyword = $request->keyword;
+        $data = User::where('name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('email', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('mobile', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('created_at', 'LIKE', '%' . $keyword . '%')
+            ->paginate();
         return view('Employees.dataemployee', compact('data'));
     }
 
@@ -33,6 +34,9 @@ class EmployeeController extends Controller
             'email.required' => 'Email tidak boleh kosong!',
             'level.required' => 'level user tidak boleh kosong!',
             'password.required' => 'Password tidak boleh kosong!',
+            'address.required' => 'Alamat tidak boleh kosong!',
+            'mobile.numeric' => 'Nomor Hp tidak boleh kosong!',
+            'gender.required' => 'Jenis Kelamin tidak boleh kosong!',
             'image' => 'File harus berupa tipe: jpeg,png,jpg|max:5000',
         ];
 
@@ -41,6 +45,9 @@ class EmployeeController extends Controller
             'email' => 'required',
             'level' => 'required',
             'password' => 'required|min:4|max:100',
+            'address' => 'required',
+            'mobile' => 'numeric',
+            'gender' => 'required',
             'file' => 'file|image|mimes:jpeg,png,jpg|max:5000',
         ], $messages);
 
@@ -53,6 +60,9 @@ class EmployeeController extends Controller
                 'email' => $x->email,
                 'password' => bcrypt($x['password']),
                 'level' => $x->level,
+                'address' => $x->address,
+                'mobile' => $x->mobile,
+                'gender' => $x->gender,
             ]);
         } else {
             $nama_file = time() . "-" . $file->getClientOriginalName();
@@ -68,8 +78,11 @@ class EmployeeController extends Controller
                 'email' => $x->email,
                 'password' => bcrypt($x['password']),
                 'level' => $x->level,
+                'address' => $x->address,
+                'mobile' => $x->mobile,
+                'gender' => $x->gender,
                 'file' => $pathPublic,
-            ]);
+            ], $cekValidasi);
         }
         Alert::success('Berasil Menambah User');
         return redirect('/dataemployee_admin')->with('toast_success', 'Data berhasil tambah!');
@@ -91,6 +104,9 @@ class EmployeeController extends Controller
             'email.required' => 'Email tidak boleh kosong!',
             'password.required' => 'Password tidak boleh kosong!',
             'level.required' => 'level user tidak boleh kosong!',
+            'address.required' => 'Alamat tidak boleh kosong!',
+            'mobile.numeric' => 'Nomor Hp tidak boleh kosong!',
+            'gender.required' => 'Jenis Kelamin tidak boleh kosong!',
             'image' => 'File harus berupa tipe: jpeg,png,jpg|max:2048',
         ];
         $cekValidasi = $x->validate([
@@ -98,6 +114,9 @@ class EmployeeController extends Controller
             'email' => 'required',
             'password' => 'required',
             'level' => 'required',
+            'address' => 'required',
+            'mobile' => 'numeric',
+            'gender' => 'required',
             'file' => 'file|image|mimes:jpeg,png,jpg|max:2048',
         ], $messages);
 
@@ -119,8 +138,11 @@ class EmployeeController extends Controller
             'email' => $x->email,
             'password' => Hash::make($x->password),
             'level' => $x->level,
+            'address' => $x->address,
+            'mobile' => $x->mobile,
+            'gender' => $x->gender,
             'file' => $path,
-        ]);
+        ], $cekValidasi);
         Alert::success('Berasil Mengubah User');
         return redirect('/dataemployee_admin')->with('toast_success', 'Data berhasil di update!');
     }

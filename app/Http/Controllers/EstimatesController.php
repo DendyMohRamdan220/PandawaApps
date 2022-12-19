@@ -13,19 +13,25 @@ class EstimatesController extends Controller
     // Portal Management >>
     public function dataestimate_admin(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Estimates::where('leads_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Estimates::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Estimates::with('user', 'products')
+            ->where('total', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('user', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->orWhereHas('products', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
         return view('Estimate.dataestimate', compact('data'));
     }
 
     public function tambahdataestimate_admin()
     {
-        $client = User::all();
+        $user = User::all();
         $products = Products::all();
-        return view('Estimate.tambahdataestimate', compact('client', 'products'));
+        return view('Estimate.tambahdataestimate', compact('user', 'products'));
     }
 
     public function insertdataestimate_admin(Request $request)
@@ -36,10 +42,10 @@ class EstimatesController extends Controller
 
     public function editdataestimate_admin($id)
     {
-        $client = User::all();
+        $user = User::all();
         $products = Products::all();
         $data = Estimates::find($id);
-        return view('Estimate.tampildataestimate', compact('data', 'client', 'products'));
+        return view('Estimate.tampildataestimate', compact('data', 'user', 'products'));
     }
 
     public function updatedataestimate_admin(Request $request, $id)
@@ -67,11 +73,17 @@ class EstimatesController extends Controller
     // Portal Client >>
     public function dataestimate_client(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Estimates::where('leads_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Estimates::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Estimates::with('user', 'products')
+            ->where('total', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('user', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->orWhereHas('products', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
         return view('Estimate.dataestimate_client', compact('data'));
     }
 
@@ -86,19 +98,25 @@ class EstimatesController extends Controller
     // Portal Sales >>
     public function dataestimate_sales(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Estimates::where('leads_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Estimates::paginate(5);
-        }
+        $keyword = $request->keyword;
+        $data = Estimates::with('user', 'products')
+            ->where('total', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('user', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->orWhereHas('products', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(10);
         return view('Estimate.dataestimate_sales', compact('data'));
     }
 
     public function tambahdataestimate_sales()
     {
-        $client = User::all();
+        $user = User::all();
         $products = Products::all();
-        return view('Estimate.tambahdataestimate_sales', compact('client', 'products'));
+        return view('Estimate.tambahdataestimate_sales', compact('user', 'products'));
     }
 
     public function insertdataestimate_sales(Request $request)
@@ -109,10 +127,10 @@ class EstimatesController extends Controller
 
     public function editdataestimate_sales($id)
     {
-        $client = User::all();
+        $user = User::all();
         $products = Products::all();
         $data = Estimates::find($id);
-        return view('Estimate.tampildataestimate_sales', compact('data', 'client', 'products'));
+        return view('Estimate.tampildataestimate_sales', compact('data', 'user', 'products'));
     }
 
     public function updatedataestimate_sales(Request $request, $id)

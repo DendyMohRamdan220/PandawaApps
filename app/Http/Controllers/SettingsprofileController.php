@@ -11,69 +11,73 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class SettingsprofileController extends Controller
 {
-    public function editdatauserprofile(Request $request)
+
+    // Edit Profile User >>
+    // Data User >>
+    public function view_editUser()
     {
-        return view('ProfilSetting.dataprofilSettings', [
-            'user' => $request->user()
-        ]);
+        $data = User::all();
+        return view('ProfileSettings.dataprofile', compact('data'));
     }
 
-    public function updatedatauserprofile1(Request $request)
-{
-    $request->user()->update(
-        $request->all()
-    );
-
-    return redirect('profile.edit');
-}
-
-    //edit data user
-    // public function editdatauserprofile($idUser)
-    // {
-    //     $dataUser = User::find($idUser);
-    //     return view("ProfilSetting.dataprofilSettings", ['data' => $dataUser]);
-    // }
-
-    //Update data user
-    public function updatedatauserprofile(Request $x)
+    // My Profile User >>
+    public function editUser_myprofile(Request $request, $id_user)
     {
-        //Validasi
         $messages = [
-            'name.required' => 'Nama tidak boleh kosong!',
-            'email.required' => 'Email tidak boleh kosong!',
-            'password.required' => 'Password tidak boleh kosong!',
-            'level.required' => 'level user tidak boleh kosong!',
-            'image' => 'File harus berupa tipe: jpeg,png,jpg|max:2048',
+            'email.required' => 'Email cannot be empty!',
+            'password.required' => 'Password cannot be empty!',
+            'image' => 'File must be: jpeg,png,jpg|max:2048',
         ];
-        $cekValidasi = $x->validate([
-            'name' => 'required',
+
+        $rules = $request->validate([
             'email' => 'required',
             'password' => 'required',
-            'level' => 'required',
             'file' => 'file|image|mimes:jpeg,png,jpg|max:2048',
         ], $messages);
 
-        $file = $x->file('file');
+        $file = $request->file('file');
         if (file_exists($file)) {
             $nama_file = time() . "-" . $file->getClientOriginalName();
-            $folder = 'file';
+            $folder = 'foto_profil';
             $file->move($folder, $nama_file);
             $path = $folder . "/" . $nama_file;
             //delete
-            $data = User::all()->first();
+            $data = User::where('id', $id_user)->first();
             File::delete($data->file);
         } else {
-            $path = $x->pathFile;
+            $path = $request->pathFile;
         }
-
-        User::all()->update([
-            'name' => $x->name,
-            'email' => $x->email,
-            'password' => Hash::make($x->password),
-            'level' => $x->level,
+        User::where("id", "$id_user")->update([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
             'file' => $path,
-        ]);
-        Alert::success('Berasil Mengubah User');
-        return redirect('/dataprofilSettings_admin')->with('toast_success', 'Data berhasil di update!');
+        ], $rules);
+        return redirect('/editUser')->with('success', 'Data berhasil di update!');
+    }
+
+    // Edit Profile User >>
+    public function editUser_editprofile(Request $request, $id_user)
+    {
+        $messages = [
+            'name.required' => 'Name cannot be empty!',
+            'address.required' => 'Address cannot be empty!',
+            'mobile.numeric' => 'Mobile cannot be empty!',
+            'gender.required' => 'Gender cannot be empty!',
+        ];
+
+        $rules = $request->validate([
+            'name' => 'required',
+            'mobile' => 'numeric',
+            'gender' => 'required',
+            'address' => 'required',
+        ], $messages);
+
+        User::where("id", "$id_user")->update([
+            'name' => $request->name,
+            'mobile' => $request->mobile,
+            'gender' => $request->gender,
+            'address' => $request->address,
+        ], $rules);
+        return redirect('/editUser')->with('success', 'Data berhasil di update!');
     }
 }

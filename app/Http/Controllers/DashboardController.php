@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Ticket;
 use App\Models\project;
 use App\Models\Invoices;
+use App\Models\Payments;
+use App\Models\Estimates;
 use App\Models\Attendance;
 
 class DashboardController extends Controller
@@ -21,7 +23,7 @@ class DashboardController extends Controller
         $hourslogged = Attendance::where('officehours')->count();
         $pendingtasks = Task::where('status', 'pending')->count();
         $todayattendance = Attendance::count();
-        $unresolvedticket = Ticket::where('status', 'progres')->count();
+        $unresolvedticket = Ticket::count();
         return view('dashboard', compact('data'), [
             'totalclient' => $totalclient,
             'totalemployee' => $totalemployee,
@@ -39,8 +41,8 @@ class DashboardController extends Controller
 
         $data = User::all();
         $totalproject = project::count();
-        $pendingtasks = Task::where('status', 'pending')->count();
-        $unresolvedticket = Ticket::where('status', 'progres')->count();
+        $pendingtasks = Task::count();
+        $unresolvedticket = Ticket::count();
         return view('dashboardv1', compact('data'), [
             'totalproject' => $totalproject,
             'pendingtasks' => $pendingtasks,
@@ -68,13 +70,13 @@ class DashboardController extends Controller
     {
 
         $data = User::all();
-        $totalproject = project::count();
-        $pendingtasks = Task::where('status', 'pending')->count();
-        $unresolvedticket = Ticket::where('status', 'progres')->count();
+        $totalestimates = Estimates::count();
+        $totalinvoices = Invoices::count();
+        $totalpayments = Payments::count();
         return view('dashboardv3', compact('data'), [
-            'totalproject' => $totalproject,
-            'pendingtasks' => $pendingtasks,
-            'unresolvedticket' => $unresolvedticket,
+            'totalestimates' => $totalestimates,
+            'totalinvoices' => $totalinvoices,
+            'totalpayments' => $totalpayments,
         ]);
 
     }
