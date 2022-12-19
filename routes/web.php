@@ -1,25 +1,26 @@
 <?php
 
-use App\Http\Controllers\AbsensiController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ConvertCurencyController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\EstimatesController;
-use App\Http\Controllers\ExpensesController;
-use App\Http\Controllers\InvoicesController;
-use App\Http\Controllers\KnowledgebaseController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ExpensesController;
+use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ProposalsController;
+use App\Http\Controllers\KnowledgebaseController;
+use App\Http\Controllers\ConvertCurencyController;
 use App\Http\Controllers\SettingsprofileController;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\TicketController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::post('login_redirect', [LoginController::class, 'login']);
 // Route::post('register_redirect', [LoginController::class, 'register']);
 Route::get('logout', [LoginController::class, 'logout']);
 Route::get('online-user', [UserController::class, 'datauser']);
+Route::get('error', [SettingsController::class, 'view_error']);
 
 Route::group(['middleware' => ['auth', 'ceklevel:Admin,Employee,Client,Sales']], function () {
 
@@ -131,6 +133,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdataproject_admin/{id}', [ProjectController::class, 'editdataproject']);
     Route::post('updatedataproject_admin/{id}', [ProjectController::class, 'updatedataproject']);
     Route::get('deletedataproject_admin/{id}', [ProjectController::class, 'deletedataproject']);
+    Route::get('exportpdfproject_admin', [ProductsController::class, 'exportpdf_admin']);
 
     // Tasks >>
     Route::get('datatask_admin', [TaskController::class, 'datatask_admin']);
@@ -139,6 +142,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdatatask_admin/{id}', [TaskController::class, 'editdatatask_admin']);
     Route::post('updatedatatask_admin/{id}', [TaskController::class, 'updatedatatask_admin']);
     Route::get('deletedatatask_admin/{id}', [TaskController::class, 'deletedatatask_admin']);
+    Route::get('exportpdftask_admin', [ProductsController::class, 'exportpdf_admin']);
     /* << End Work >> */
 
     /* << Finance >> */
@@ -185,6 +189,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdataexpenses_admin/{id}', [ExpensesController::class, 'editdataexpenses_admin']);
     Route::post('updatedataexpenses_admin/{id}', [ExpensesController::class, 'updatedataexpenses_admin']);
     Route::get('deletedataexpenses_admin/{id}', [ExpensesController::class, 'deletedataexpenses_admin']);
+    Route::get('exportpdfexpenses_admin', [ProductsController::class, 'exportpdf_admin']);
     /* << End Finance >> */
 
     // Product >>
@@ -235,7 +240,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:Employee']], function () {
 
     //Attendances>>
     Route::get('presensi_masuk', [AbsensiController::class, 'index']);
+    Route::get('presensi_sudah_masuk', [AbsensiController::class, 'sudah_masuk']);
     Route::post('simpan_masuk', [AbsensiController::class, 'store'])->name('simpan_masuk');
+    Route::get('presensi_sudah_keluar', [AbsensiController::class, 'sudah_keluar']);
     Route::get('presensi_keluar', [AbsensiController::class, 'keluar'])->name('presensi_keluar');
     Route::post('ubah_presensi', [AbsensiController::class, 'presensipulang'])->name('ubah_presensi');
 
@@ -244,6 +251,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:Employee']], function () {
 
     //Tasks>>
     Route::get('datatask_employee', [TaskController::class, 'datatask_employee']);
+    Route::get('tambahdatatask_employee', [TaskController::class, 'tambahdatatask_employee']);
+    Route::post('insertdatatask_employee', [TaskController::class, 'insertdatatask_employee']);
+    Route::get('editdatatask_employee/{id}', [TaskController::class, 'editdatatask_employee']);
+    Route::post('updatedatatask_employee/{id}', [TaskController::class, 'updatedatatask_employee']);
+    Route::get('deletedatatask_employee/{id}', [TaskController::class, 'deletedatatask_employee']);
 
     //Tickets>>
     Route::get('dataticket_employee', [TicketController::class, 'dataticket_employee']);
@@ -376,5 +388,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:Sales']], function () {
     Route::get('deletedataexpenses_sales/{id}', [ExpensesController::class, 'deletedataexpenses_sales']);
     Route::get('exportpdfexpenses_sales', [ExpensesController::class, 'exportpdf_sales']);
     /* << End Finance >> */
+
+    // Product >>
+    Route::get('dataproduk_sales', [ProductsController::class, 'dataproduk_sales']);
+    Route::get('tambahdataproduk_sales', [ProductsController::class, 'tambahdataproduk_sales']);
+    Route::post('insertdataproduk_sales', [ProductsController::class, 'insertdataproduk_sales']);
+    Route::get('editdataproduk_sales/{id}', [ProductsController::class, 'editdataproduk_sales']);
+    Route::post('updatedataproduk_sales/{id}', [ProductsController::class, 'updatedataproduk_sales']);
+    Route::get('deletedataproduk_sales/{id}', [ProductsController::class, 'deletedataproduk_sales']);
+    Route::get('exportpdfproduk_sales', [ProductsController::class, 'exportpdf_sales']);
 
 });
