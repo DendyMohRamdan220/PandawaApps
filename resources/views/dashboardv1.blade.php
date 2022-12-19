@@ -10,6 +10,17 @@
 
     <div class="page-body">
         <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3> Dashboard </h3>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                    <li class="breadcrumb-item active"> Dashboard </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
             <div class="user-profile">
                 <div class="row">
                     <!-- user profile header start-->
@@ -22,7 +33,7 @@
                                 <div class="img-wrraper">
                                     <div class="avatar"><img class="img-fluid" alt=""
                                             src="{{ auth()->user()->file }}"></div><a class="icon-wrapper"
-                                        href="edit-profile.html"><i class="icofont icofont-pencil-alt-5"></i></a>
+                                        href="/editUser"><i class="icofont icofont-pencil-alt-5"></i></a>
                                 </div>
                                 <div class="user-designation">
                                     <div class="title"><a target="_blank" href="">

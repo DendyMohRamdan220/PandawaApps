@@ -10,6 +10,17 @@
 
     <div class="page-body">
         <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3> Dashboard </h3>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
+                    <li class="breadcrumb-item active"> Dashboard </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
             <div class="user-profile">
                 <div class="row">
                     <!-- user profile header start-->
@@ -32,13 +43,13 @@
                                     <div class="follow">
                                         <ul class="follow-list">
                                             <li>
-                                                <div class="follow-num counter">{{ $pendingtasks }}</div><span>Tasks</span>
+                                                <div class="follow-num counter">{{ $totalestimates }}</div><span>Estimates</span>
                                             </li>
                                             <li>
-                                                <div class="follow-num counter">{{ $totalproject }}</div><span>Projects</span>
+                                                <div class="follow-num counter">{{ $totalinvoices }}</div><span>Invoices</span>
                                             </li>
                                             <li>
-                                                <div class="follow-num counter">{{ $unresolvedticket }}</div><span>Tickets</span>
+                                                <div class="follow-num counter">{{ $totalpayments }}</div><span>Payments</span>
                                             </li>
                                         </ul>
                                     </div>
