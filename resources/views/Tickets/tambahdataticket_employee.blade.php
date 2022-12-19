@@ -1,7 +1,6 @@
 @extends('Layouts.layout')
 
 @section('content')
-
     @push('css')
         <!-- Plugins css start-->
         <!-- Bootstrap CSS -->
@@ -13,37 +12,28 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
                 <li class="breadcrumb-item"><a href="/ticket_employee"> Support Ticket </a></li>
-                <li class="breadcrumb-item active"> Update Ticket </li>
+                <li class="breadcrumb-item active"> Add Ticket </li>
             </ol>
         </div>
         <div class="row justify-content-center">
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/updatedataticket_employee/{{ $data->id }}" method="post"
-                            enctype="multipart/form-data">
+                        <form action="/insertdataticket_employee" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Ticket Subject</label>
                                 <input type="text" name="ticket_subject" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->ticket_subject }}" placeholder="">
+                                    aria-describedby="emailHelp" required="" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Description</label>
                                 <input type="text" name="description" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->description }}" placeholder="">
+                                    aria-describedby="emailHelp" required="" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Status Ticket</label>
-                                <br>
-                                <select class="form-select" name="status" aria-label="Default select example">
-                                    <option selected>{{ $data->status }}</option>
-                                    <option value="1">Order</option>
-                                    <option value="2">Progres</option>
-                                    <option value="3">Pending</option>
-                                    <option value="4">Done</option>
-                                    <option value="5">Cancel</option>
-                                </select>
+                                <input class="form-control form-control-lg" type="hidden" name="status" value="Order"
+                                    readonly>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

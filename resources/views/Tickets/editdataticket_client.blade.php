@@ -26,17 +26,17 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Ticket Subject</label>
                                 <input type="text" name="ticket_subject" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->ticket_subject }}" placeholder="">
+                                    aria-describedby="emailHelp" required="" value="{{ $data->ticket_subject }}" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Description</label>
                                 <input type="text" name="description" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->description }}" placeholder="">
+                                    aria-describedby="emailHelp" required="" value="{{ $data->description }}" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Status Ticket</label>
                                 <br>
-                                <select class="form-select" name="status" aria-label="Default select example">
+                                <select class="form-select" name="status" required="">
                                     <option selected>{{ $data->status }}</option>
                                     <option value="1">Order</option>
                                     <option value="2">Progres</option>

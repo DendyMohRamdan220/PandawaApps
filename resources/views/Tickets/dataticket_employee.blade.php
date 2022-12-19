@@ -150,20 +150,19 @@
                             <div class="col-sm-12">
                                 <div class="row g-3 align-items-center mt-2">
                                     <div class="col-auto">
-                                        <a href="/tambahtiket_employee" class="btn btn-success"> <i
+                                        <a href="/tambahdataticket_employee" class="btn btn-success"> <i
                                                 class="nav-icon icon-plus"></i> Add Ticket</a>
                                     </div>
                                     <div class="col-auto">
-                                        <form action="/ticket_employee" method="GET">
-                                            <input type="search" id="inputPassword6" name="search"
-                                                class="form-control" aria-describedby="passwordHelpInline"
-                                                placeholder="Search...">
+                                        <form action="" method="GET">
+                                            <input type="search" name="keyword" class="form-control"
+                                                aria-describedby="passwordHelpInline" placeholder="Search...">
                                         </form>
                                     </div>
                                 </div>
-                                <div class="card">
+                                <div class="row mt-2">
                                     <div class="table-responsive">
-                                        <table class="table table-striped table-success">
+                                        <table class="table table-striped bg-primary">
                                             <thead class="tbl-strip-thad-bdr">
                                                 <tr>
                                                     <th scope="col">ID</th>
@@ -177,16 +176,16 @@
                                                 @php
                                                     $no = 1;
                                                 @endphp
-                                                @foreach ($data as $viewtiket_employee => $row)
+                                                @foreach ($data as $dataticket_employee => $row)
                                                     <tr>
-                                                        <th scope="row">{{ $viewtiket_employee + $data->firstItem() }}
+                                                        <th scope="row">{{ $dataticket_employee + $data->firstItem() }}
                                                         </th>
                                                         <td>{{ $row->ticket_subject }}</td>
                                                         <td>{{ $row->description }}</td>
                                                         <td>{{ $row->status }}</td>
                                                         <td>
                                                             <a class="btn btn-info"
-                                                                href="/tampildatatiket_employee/{{ $row->id }}">
+                                                                href="/editdataticket_employee/{{ $row->id }}">
                                                                 <i class="nav-icon icon-pencil-alt"></i></a>
                                                             <a class="btn btn-danger delete" href="#"
                                                                 data-id="{{ $row->id }}"
@@ -199,7 +198,7 @@
                                         </table>
                                         <div class="card-body">
                                             <nav aria-label="Page navigation example">
-                                                <ul class="pagination pagination-primary">{{ $data->links() }}
+                                                <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                                                 </ul>
                                             </nav>
                                         </div>
@@ -251,7 +250,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deleteticket_employee/" + tiketid + ""
+                        window.location = "/deletedataticket_employee/" + tiketid + ""
                         swal("Your data from Ticket Subject " + namatiket + " has been deleted!", {
                             icon: "success",
                         });

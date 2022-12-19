@@ -21,28 +21,20 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Ticket Subject</label>
                                     <input type="text" name="ticket_subject" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="">
+                                        aria-describedby="emailHelp" required="" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Description</label>
                                     <input type="text" name="description" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="">
+                                        aria-describedby="emailHelp" required="" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Status Ticket</label>
-                                    <br>
-                                    <select class="form-select" name="status" aria-label="Default select example">
-                                        <option selected>Status</option>
-                                        <option value="1">Order</option>
-                                        <option value="2">Progres</option>
-                                        <option value="3">Pending</option>
-                                        <option value="4">Done</option>
-                                        <option value="5">Cancel</option>
-                                    </select>
+                                    <input class="form-control form-control-lg" type="hidden" name="status" value="Order"
+                                        readonly>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>

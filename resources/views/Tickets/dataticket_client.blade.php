@@ -1,10 +1,9 @@
 @extends('Layouts.layout')
 
 @section('content')
-
     @push('css')
-    <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/datatables.css') }}">
+        <!-- Plugins css start-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/assets/css/datatables.css') }}">
         <!-- Bootstrap CSS -->
     @endpush
 
@@ -63,8 +62,8 @@
                                             <div class="progress-showcase">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-secondary" role="progressbar"
-                                                        style="width: {{ $totalordertiket }}%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalordertiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -82,8 +81,8 @@
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: {{ $totalprogrestiket }}%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalprogrestiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,8 +99,9 @@
                                             </div>
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: {{ $totalpendingtiket }}%"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-info" role="progressbar"
+                                                        style="width: {{ $totalpendingtiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,8 +119,8 @@
                                             <div class="progress-showcase mt-4">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: {{ $totaldonetiket }}%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totaldonetiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,8 +138,8 @@
                                             <div class="progress-showcase">
                                                 <div class="progress">
                                                     <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: {{ $totalcanceltiket }}%" aria-valuenow="25" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        style="width: {{ $totalcanceltiket }}%" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,10 +153,9 @@
                                                 class="nav-icon icon-plus"></i> Add Ticket</a>
                                     </div>
                                     <div class="col-auto">
-                                        <form action="/dataticket_client" method="GET">
-                                            <input type="search" id="inputPassword6" name="search"
-                                                class="form-control" aria-describedby="passwordHelpInline"
-                                                placeholder="Search...">
+                                        <form action="" method="GET">
+                                            <input type="search" name="keyword" class="form-control"
+                                                aria-describedby="passwordHelpInline" placeholder="Search...">
                                         </form>
                                     </div>
                                     <div class="col-auto">
@@ -202,7 +201,7 @@
                                         </table>
                                         <div class="card-body">
                                             <nav aria-label="Page navigation example">
-                                                <ul class="pagination pagination-primary">{{ $data->links() }}
+                                                <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                                                 </ul>
                                             </nav>
                                         </div>
@@ -240,7 +239,7 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <!-- Plugins JS start-->
+    <!-- Plugins JS start-->
     <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
     <script src="../assets/js/counter/jquery.counterup.min.js"></script>
     <script src="../assets/js/counter/counter-custom.js"></script>

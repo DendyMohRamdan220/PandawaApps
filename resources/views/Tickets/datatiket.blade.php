@@ -154,10 +154,9 @@
                                                 class="nav-icon icon-plus"></i> Add Ticket</a>
                                     </div>
                                     <div class="col-auto">
-                                        <form action="/ticket_admin" method="GET">
-                                            <input type="search" id="inputPassword6" name="search"
-                                                class="form-control" aria-describedby="passwordHelpInline"
-                                                placeholder="Search...">
+                                        <form action="" method="GET">
+                                            <input type="search" name="keyword" class="form-control"
+                                                aria-describedby="passwordHelpInline" placeholder="Search...">
                                         </form>
                                     </div>
                                     <div class="col-auto">
@@ -202,7 +201,7 @@
                                         </table>
                                         <div class="card-body">
                                             <nav aria-label="Page navigation example">
-                                                <ul class="pagination pagination-primary">{{ $data->links() }}
+                                                <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                                                 </ul>
                                             </nav>
                                         </div>
