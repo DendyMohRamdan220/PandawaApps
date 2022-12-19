@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <h3> Employee </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
                             <li class="breadcrumb-item"> HR </li>
                             <li class="breadcrumb-item active"> Employee </li>
                         </ol>
@@ -29,9 +29,9 @@
                             </i> Add Employee </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/dataemployee_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Search...">
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
+                                aria-describedby="passwordHelpInline" placeholder="Search Name...">
                         </form>
                     </div>
                 </div>
@@ -41,11 +41,13 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nama</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Level</th>
+                                <th scope="col">Mobile Phone</th>
                                 <th scope="col">Image</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Created</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -57,16 +59,24 @@
                                 @if ($row->level == 'Employee')
                                     <tr>
                                         <th scope="row">{{ $no++ }}</th>
-                                        <td>{{ $row->username }}</td>
-                                        <td>{{ $row->email }}</td>
-                                        <td>{{ $row->level }}</td>
-                                        <td>
+                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->email }}</td>
+                                    <td>{{ $row->mobile }}</td>
+                                    <td>
                                         @empty($row->file)
                                             <span class="badge badge-danger">Tidak ada</span>
                                         @else
                                             <img src="{{ $row->file }}" width="50px" height="50px" alt="file">
                                         @endempty
                                     </td>
+                                    <td>
+                                        @if (Cache::has('user-is-online-' . $row->id))
+                                            <span class="text-white">Online</span>
+                                        @else
+                                            <span class="text-secondary">Offline</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>
                                         <a class="btn btn-info" href="/editdataemployee_admin/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
