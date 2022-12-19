@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <h3> Client </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
                             <li class="breadcrumb-item active"> Client </li>
                         </ol>
                     </div>
@@ -25,13 +25,13 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdataclient_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Add
-                            Client</a>
+                        <a href="/tambahdataclient_admin" class="btn btn-success"> <i class="nav-icon icon-plus"></i>
+                            Add Client </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/dataclient_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Search...">
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
+                                aria-describedby="passwordHelpInline" placeholder="Search Name...">
                         </form>
                     </div>
                 </div>
@@ -41,11 +41,13 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nama</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Level</th>
+                                <th scope="col">Mobile Phone</th>
                                 <th scope="col">Image</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Created</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -54,13 +56,13 @@
                                 $no = 1;
                             @endphp
                             @foreach ($data as $datauser_client => $row)
-                                @if ($row->level == 'Client')
-                                    <tr>
-                                        <th scope="row">{{ $no++ }}</th>
-                                        <td>{{ $row->username }}</td>
-                                        <td>{{ $row->email }}</td>
-                                        <td>{{ $row->level }}</td>
-                                        <td>
+                            @if ( $row->level == 'Client' )
+                                <tr>
+                                    <th scope="row">{{ $no++ }}</th>
+                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->email }}</td>
+                                    <td>{{ $row->mobile }}</td>
+                                    <td>
                                         @empty($row->file)
                                             <span class="badge badge-danger">Tidak ada</span>
                                         @else
@@ -68,14 +70,22 @@
                                         @endempty
                                     </td>
                                     <td>
+                                        @if (Cache::has('user-is-online-' . $row->id))
+                                            <span class="text-white">Online</span>
+                                        @else
+                                            <span class="text-secondary">Offline</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
+                                    <td>
                                         <a class="btn btn-info" href="/editdataclient_admin/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                            data-client="{{ $row->Username }}">
+                                            data-client="{{ $row->name }}">
                                             <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
-                            @endif
+                                @endif
                         @endforeach
                     </tbody>
                 </table>
@@ -110,7 +120,7 @@
 <script>
     $('.delete').click(function() {
         var clientid = $(this).attr('data-id');
-        var username = $(this).attr('data-name');
+        var username = $(this).attr('data-client');
         swal({
                 title: "Are you sure?",
                 text: "Once deleted, you will not be able to recover data from the client Name " +
