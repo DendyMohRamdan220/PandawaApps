@@ -41,7 +41,8 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Product Name</th>
-            {{-- <th scope="col">Product Image</th> --}}
+            <th scope="col">Kategory</th>
+            <th scope="col">Sub-Kategory</th>
             <th scope="col">Price</th>
         </tr>
         @php
@@ -51,9 +52,9 @@
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $row->name }}</td>
-                {{-- <td>{{ $row->file_upload }}</td> --}}
+                <td>{{ $row->produk_kategori }}</td>
+                <td>{{ $row->produk_sub_kategori }}</td>
                 <td>{{ $row->price }}</td>
-                {{-- <td>{{ $row->created_at->format('D M Y') }}</td> --}}
         @endforeach
     </table>
 

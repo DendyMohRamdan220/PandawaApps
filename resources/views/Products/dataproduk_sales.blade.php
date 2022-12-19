@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Product </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
                             <li class="breadcrumb-item active"> Product </li>
                         </ol>
                     </div>
@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdataproduk_admin" class="btn btn-success">
+                        <a href="/tambahdataproduk_sales" class="btn btn-success">
                             <i class="nav-icon icon-plus"></i> Add Product </a>
                     </div>
                     <div class="col-auto">
@@ -29,7 +29,7 @@
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdfproduk_admin" class="btn btn-info">
+                        <a href="/exportpdfproduk_sales" class="btn btn-info">
                             <i class="nav-icon fas fa-file-pdf"></i> Export PDF </a>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                                         <td>{{ $row->name }}</td>
                                         <td>{{ $row->price }}</td>
                                         <td>
-                                            <a class="btn btn-info" href="/editdataproduk_admin/{{ $row->id }}">
+                                            <a class="btn btn-info" href="/editdataproduk_sales/{{ $row->id }}">
                                                 <i class="nav-icon icon-pencil-alt"></i></a>
                                             <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
                                                 data-name="{{ $row->name }}">
@@ -112,7 +112,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deletedataproduk_admin/" + produkid + ""
+                        window.location = "/deletedataproduk_sales/" + produkid + ""
                         swal("Your data from Ticket Subject " + produkname + " has been deleted!", {
                             icon: "success",
                         });

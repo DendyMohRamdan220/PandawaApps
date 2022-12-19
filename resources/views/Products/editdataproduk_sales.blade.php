@@ -8,8 +8,8 @@
                     <div class="col-sm-6">
                         <h3> Update Product </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
-                            <li class="breadcrumb-item"><a href="/dataproduk_admin"> Product </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dataproduk_sales"> Product </a></li>
                             <li class="breadcrumb-item active"> Update Product </li>
                         </ol>
                     </div>
@@ -20,7 +20,7 @@
             <div class="card-header pb-0">
                 <h5> Product Detail </h5>
                 <div class="add-produk bg-dark-grey rounded">
-                    <form action="/updatedataproduk_admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/updatedataproduk_sales/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row p-20">
                             <div class="col-lg-4 col-md-6">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit"> Submit </button>
-                                <a href="/dataproduk_admin"class="btn btn-light">Cancel</a>
+                                <a href="/dataproduk_sales"class="btn btn-light">Cancel</a>
                             </div>
                         </div>
                     </form>
