@@ -25,13 +25,12 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatauser_admin" class="btn btn-success"><i class="nav-icon fas icon-plus"></i> Add
-                            User
-                        </a>
+                        <a href="/tambahdatauser_admin" class="btn btn-success"><i class="nav-icon fas icon-plus">
+                            </i> Add User </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/datauser_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
@@ -40,11 +39,15 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nama</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Level</th>
+                                <th scope="col">User Role</th>
+                                <th scope="col">Mobile Phone</th>
                                 <th scope="col">Image</th>
+                                <th scope="col">Last Seen</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Created</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -55,9 +58,10 @@
                             @foreach ($data as $index => $row)
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>
-                                    <td>{{ $row->username }}</td>
+                                    <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->level }}</td>
+                                    <td>+62{{ $row->mobile }}</td>
                                     <td>
                                         @empty($row->file)
                                             <span class="badge badge-danger">Tidak ada</span>
@@ -66,10 +70,21 @@
                                         @endempty
                                     </td>
                                     <td>
-                                        <a class="btn btn-info" href="/editdatauser_admin/{{ $row->id }}">
+                                        {{ Carbon\Carbon::parse($row->last_seen)->diffForHumans() }}
+                                    </td>
+                                    <td>
+                                        @if (Cache::has('user-is-online-' . $row->id))
+                                            <span class="text-white">Online</span>
+                                        @else
+                                            <span class="text-secondary">Offline</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
+                                    <td>
+                                        <a class="btn-info" href="/editdatauser_admin/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
-                                        <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                            data-username="{{ $row->username }}">
+                                        <a class="btn-danger delete" href="#" data-id="{{ $row->id }}"
+                                            data-name="{{ $row->name }}">
                                             <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
@@ -78,7 +93,7 @@
                     </table>
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                             </ul>
                         </nav>
                     </div>
@@ -113,7 +128,7 @@
     <script>
         $('.delete').click(function() {
             var userid = $(this).attr('data-id');
-            var namauser = $(this).attr('data-username');
+            var namauser = $(this).attr('data-name');
             swal({
                     title: "Are you sure?",
                     text: "Once deleted, you will not be able to recover data from the Ticket Subject " +
