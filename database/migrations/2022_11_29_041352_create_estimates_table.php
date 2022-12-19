@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('estimates', function (Blueprint $table) {
             $table->id();
-            $table->string('estimate_number');
             $table->date ('valid_till');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
             $table->unsignedBigInteger('user_id');

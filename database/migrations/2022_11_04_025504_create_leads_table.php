@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string ('leads_email');
             $table->string('office_phone');
             $table->enum('status', ['Pending', 'Overview', 'Confirmed']);
-            $table->enum('next_follow_up', ['yes', 'no']);
+            $table->enum('next_follow_up', ['Yes', 'No']);
             $table->string('company_name');
             $table->string('website');
             $table->string('mobile_phone');

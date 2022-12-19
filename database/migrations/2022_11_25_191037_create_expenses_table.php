@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('item_name');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
-            $table->double('unit_price');
+            $table->double('price');
             $table->date ('purchase_date');
-            $table->bigInteger('employee_id');
+            $table->bigInteger('user_id');
             $table->bigInteger('project_id');
             $table->string('purchase_from');
             $table->timestamps();
