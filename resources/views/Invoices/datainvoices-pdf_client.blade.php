@@ -40,7 +40,6 @@
     <table id="customers">
         <tr>
             <th scope="col">No</th>
-            <th scope="col">Invoice Number</th>
             <th scope="col">Project</th>
             <th scope="col">Client</th>
             <th scope="col">Total</th>
@@ -52,9 +51,8 @@
         @foreach ($data as $row)
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $row->invoice_number }}</td>
-                <td>{{ $row->select_project }}</td>
-                <td>{{ $row->choose_client }}</td>
+                <td>{{ $row->project->projectname }}</td>
+                <td>{{ $row->user->name }}</td>
                 <td>{{ $row->total }}</td>
                 <td>{{ $row->invoice_date }}</td>
         @endforeach

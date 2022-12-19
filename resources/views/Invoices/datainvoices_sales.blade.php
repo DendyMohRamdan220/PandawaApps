@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Invoice </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
                             <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item active"> Invoice </li>
                         </ol>
@@ -20,17 +20,18 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatainvoices_sales" class="btn btn-success"> <i class="nav-icon icon-plus"></i> Create Invoice </a>
+                        <a href="/tambahdatainvoices_sales" class="btn btn-success"> <i class="nav-icon icon-plus"></i>
+                            Add Invoice </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/datainvoices_sales" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdfinvoices_sales" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
-                            PDF</a>
+                        <a href="/exportpdfinvoices_sales" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
+                            Export PDF </a>
                     </div>
                 </div>
             </div>
@@ -39,8 +40,7 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Invoice Number</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Project</th>
                                 <th scope="col">Client</th>
                                 <th scope="col">Total</th>
@@ -52,12 +52,11 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $datainvoices_admin => $row)
+                            @foreach ($data as $datainvoices_sales => $row)
                                 <tr>
-                                    <th scope="row">{{ $datainvoices_admin + $data->firstItem() }}</th>
-                                    <td>{{ $row->invoice_number }}</td>
-                                    <td>{{ $row->select_project }}</td>
-                                    <td>{{ $row->choose_client }}</td>
+                                    <th scope="row">{{ $datainvoices_sales + $data->firstItem() }}</th>
+                                    <td>{{ $row->project->projectname }}</td>
+                                    <td>{{ $row->user->name }}</td>
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->invoice_date }}</td>
                                     <td>
@@ -73,7 +72,7 @@
                     </table>
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                             </ul>
                         </nav>
                     </div>
