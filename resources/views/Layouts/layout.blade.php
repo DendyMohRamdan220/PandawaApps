@@ -67,13 +67,13 @@
                 <div class="main-header-left">
                     <div class="logo-wrapper">
                         <a href="/dashboarad_admin">
-                            <img class="img-fluid" src="{{ asset('template/assets/images/logopmn.jpg') }}"
+                            <img class="img-fluid" src="{{ asset('template/assets/images/logopmnn.png') }}"
                                 alt="">
                         </a>
                     </div>
                     <div class="dark-logo-wrapper">
                         <a href="index.html">
-                            <img class="img-fluid" src="{{ asset('template/assets/images/logopmn.jpg') }}"
+                            <img class="img-fluid" src="{{ asset('template/assets/images/logopmnn.png') }}"
                                 alt="">
                         </a>
                     </div>
@@ -83,14 +83,6 @@
                 </div>
                 <div class="nav-right col pull-right right-menu p-0">
                     <ul class="nav-menus">
-                        <li>
-                            <a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()">
-                                <i data-feather="maximize"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="mode"><i class="fa fa-moon-o"></i></div>
-                        </li>
                         <li class="onhover-dropdown p-0">
                             <button class="btn btn-primary-light" type="button">
                                 <a href="/logout"><i data-feather="log-out"></i> Log out </a>
@@ -107,10 +99,13 @@
             <!-- Page Sidebar Start-->
             <header class="main-nav">
                 <div class="sidebar-user text-center">
-                    <a href="#">
-                        <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->username }}</h6>
+                    <a class="setting-primary" href="javascript:void(0)">
+                        <i data-feather="settings"></i>
                     </a>
-                        <p class="mb-0 font-roboto">{{ auth()->user()->level }}</p>
+                    <a href="/editUser">
+                        <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6>
+                    </a>
+                    <p class="mb-0 font-roboto">{{ auth()->user()->level }}</p>
                 </div>
                 <nav>
                     <div class="main-navbar">
@@ -219,7 +214,7 @@
                                         <ul class="nav-submenu menu-content">
                                             <li><a href="/datauser_admin">User Control</a></li>
                                             <li>
-                                                <a href="/editdatauserprofile">Edit Profile</a>
+                                                <a href="/editUser">Edit Profile</a>
                                             </li>
                                             <li>
                                                 <a href="/currency">Convert Currency </a>
@@ -241,10 +236,10 @@
                                         </a>
                                         <ul class="nav-submenu menu-content">
                                             <li>
-                                                <a href="/presensi_masuk">Attendance Masuk </a>
+                                                <a href="/presensi_masuk">Attendance-In </a>
                                             </li>
                                             <li>
-                                                <a href="/presensi_keluar">Attendance Keluar</a>
+                                                <a href="/presensi_keluar">Attendance-Out</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -263,9 +258,15 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a class="nav-link menu-title link-nav" href="ticket_employee">
+                                        <a class="nav-link menu-title link-nav" href="dataticket_employee">
                                             <i data-feather="headphones"></i>
                                             <span>Support Ticket</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link menu-title link-nav" href="/editUser">
+                                            <i data-feather="settings"></i>
+                                            <span>Settings</span>
                                         </a>
                                     </li>
                                 @endif
@@ -322,9 +323,15 @@
                                             <span>Knowledgebase</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a class="nav-link menu-title link-nav" href="/editUser">
+                                            <i data-feather="settings"></i>
+                                            <span>Settings</span>
+                                        </a>
+                                    </li>
                                 @endif
                                 @if (auth()->user()->level == 'Sales')
-                                <li class="dropdown">
+                                    <li class="dropdown">
                                         <a class="nav-link menu-title link-nav" href="/dashboardv3">
                                             <i data-feather="home"></i>
                                             <span>Dashboard</span>
@@ -348,7 +355,22 @@
                                             <li>
                                                 <a href="/datapayments_sales">Payments</a>
                                             </li>
+                                            <li>
+                                                <a href="/dataexpenses_sales">Expenses</a>
+                                            </li>
                                         </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="nav-link menu-title link-nav" href="/dataproduk_sales">
+                                            <i data-feather="shopping-bag"></i>
+                                            <span>Products</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link menu-title link-nav" href="/editUser">
+                                            <i data-feather="settings"></i>
+                                            <span>Settings</span>
+                                        </a>
                                     </li>
                                 @endif
                             </ul>
