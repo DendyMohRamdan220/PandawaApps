@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Tasks </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
                             <li class="breadcrumb-item"> Work </li>
                             <li class="breadcrumb-item active"> Tasks </li>
                         </ol>
@@ -20,12 +20,12 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatatask_admin" class="btn btn-success"> <i class="nav-icon fas icon-plus"></i> Add
-                            Task</a>
+                        <a href="/tambahdatatask_employee" class="btn btn-success">
+                            <i class="nav-icon fas icon-plus"></i> Add Task </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/datatask_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
@@ -36,13 +36,13 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Task Name</th>
-                                <th scope="col">Project</th>
-                                <th scope="col">Employee</th>
-                                <th scope="col">Duedate</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col"> ID </th>
+                                <th scope="col"> Task Name </th>
+                                <th scope="col"> Project </th>
+                                <th scope="col"> Employee </th>
+                                <th scope="col"> Duedate </th>
+                                <th scope="col"> Status </th>
+                                <th scope="col"> Action </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,11 +54,11 @@
                                     <th scope="row">{{ $datatask_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->taskname }}</td>
                                     <td>{{ $row->project->projectname }}</td>
-                                    <td>{{ $row->user->username }}</td>
+                                    <td>{{ $row->user->name }}</td>
                                     <td>{{ $row->duedate }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
-                                        <a class="btn btn-info" href="/editdatatask_admin/{{ $row->id }}">
+                                        <a class="btn btn-info" href="/editdatatask_employee/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
                                             data-name="{{ $row->taskname }}">
@@ -68,7 +68,12 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $data->links() }}
+                    <div class="card-body">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,7 +117,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deletedatatask_admin/" + idtask + ""
+                        window.location = "/deletedatatask_employee/" + idtask + ""
                         swal("Your data " + nametask + "  from Task Name has been deleted!", {
                             icon: "success",
                         });

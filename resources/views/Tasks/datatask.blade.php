@@ -20,14 +20,18 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatatask_admin" class="btn btn-success"> <i class="nav-icon fas icon-plus"></i> Add
-                            Task</a>
+                        <a href="/tambahdatatask_admin" class="btn btn-success"> <i class="nav-icon fas icon-plus"></i>
+                            Add Task </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/datatask_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
+                    </div>
+                    <div class="col-auto">
+                        <a href="/exportpdftask_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
+                            Export PDF </a>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Task Name</th>
                                 <th scope="col">Project</th>
                                 <th scope="col">Employee</th>
@@ -54,7 +58,7 @@
                                     <th scope="row">{{ $datatask_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->taskname }}</td>
                                     <td>{{ $row->project->projectname }}</td>
-                                    <td>{{ $row->user->username }}</td>
+                                    <td>{{ $row->user->name }}</td>
                                     <td>{{ $row->duedate }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
@@ -68,7 +72,12 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $data->links() }}
+                    <div class="card-body">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>

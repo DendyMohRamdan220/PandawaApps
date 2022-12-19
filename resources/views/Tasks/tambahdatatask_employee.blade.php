@@ -5,9 +5,9 @@
         <div class="col-sm-6">
             <h3> Add Tasks </h3>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
                 <li class="breadcrumb-item"> Work </li>
-                <li class="breadcrumb-item"><a href="/datatask_admin"> Tasks </a></li>
+                <li class="breadcrumb-item"><a href="/datatask_employee"> Tasks </a></li>
                 <li class="breadcrumb-item active"> Add Tasks </li>
             </ol>
         </div>
@@ -15,7 +15,7 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/insertdatatask_admin" method="POST" enctype="multipart/form-data">
+                        <form action="/insertdatatask_employee" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Task Name </label>
@@ -26,7 +26,7 @@
                                 <select class="form-control" name="project_id" required="">
                                     <option value="">--</option>
                                     @foreach ($projects as $item)
-                                        <option value="{{ $item->id }}" {{ old('project_id') == $item->id ? 'selected' : null }}>
+                                        <option value="{{ $item->id }}" {{ old('project_id') == $item->id }}>
                                             {{ $item->projectname }}
                                         </option>
                                     @endforeach
@@ -59,7 +59,7 @@
                             </div>
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit"> Submit </button>
-                                <a href="/datatask_admin"class="btn btn-light">Cancel</a>
+                                <a href="/datatask_employee"class="btn btn-light">Cancel</a>
                             </div>
                         </form>
                     </div>

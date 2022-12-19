@@ -5,9 +5,9 @@
         <div class="col-sm-6">
             <h3> Update Tasks </h3>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
                 <li class="breadcrumb-item"> Work </li>
-                <li class="breadcrumb-item"><a href="/datatask_admin"> Tasks </a></li>
+                <li class="breadcrumb-item"><a href="/datatask_employee"> Tasks </a></li>
                 <li class="breadcrumb-item active"> Update Tasks </li>
             </ol>
         </div>
@@ -15,7 +15,7 @@
             <div class="col-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/updatedatatask_admin/{{ $data->id }}" method="POST"
+                        <form action="/updatedatatask_employee/{{ $data->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
@@ -23,7 +23,7 @@
                                 <input class="form-control" type="text" name="taskname" required="" value="{{ $data->taskname }}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label"> Project </label>
+                                <label for="exampleInputEmail1" class="form-label">Project</label>
                                 <select class="form-control" name="project_id" required="">
                                     <option value="">--</option>
                                     @foreach ($projects as $item)
@@ -49,17 +49,17 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label"> Startdate </label>
+                                <label for="exampleInputPassword1" class="form-label">Startdate</label>
                                 <input class="form-control" type="date" name="startdate" required="" value="{{ $data->startdate }}">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label"> Duedate </label>
+                                <label for="exampleInputEmail1" class="form-label">Duedate</label>
                                 <input class="form-control" type="date" name="duedate" required="" value="{{ $data->duedate }}">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1" class="form-label"> Status Project </label>
+                                <label for="exampleInputEmail1"> Status Project </label>
                                 <br>
-                                <select class="form-select" name="status" aria-label="Default select example" required="">
+                                <select class="form-select" name="status" required="">
                                     <option selected>{{ $data->status }}</option>
                                     <option value="1"> Order </option>
                                     <option value="2"> Progres </option>
@@ -70,7 +70,7 @@
                             </div>
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit"> Submit </button>
-                                <a href="/datatask_admin"class="btn btn-light">Cancel</a>
+                                <a href="/datatask_employee"class="btn btn-light">Cancel</a>
                             </div>
                         </form>
                     </div>
