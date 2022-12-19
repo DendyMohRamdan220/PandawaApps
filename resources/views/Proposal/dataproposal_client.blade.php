@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Proposal </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboardv1"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv2"> Home </a></li>
                             <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item active"> Proposal </li>
                         </ol>
@@ -24,13 +24,13 @@
                             <i class="nav-icon icon-plus"></i>Add Proposal</a>
                     </div>
                     <div class="col-auto">
-                        <form action="/dataproposal_client" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf">
+                        <a href="/exportpdfproposal_client" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf">
                             </i> Export PDF</a>
                     </div>
                 </div>
@@ -40,8 +40,10 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Lead Name</th>
+                                <th scope="col">Service type</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Created at</th>
                                 <th scope="col">Valid till</th>
@@ -57,6 +59,8 @@
                                     <th scope="row">
                                         {{ $dataproposal_admin + $data->firstItem() }}</th>
                                     <td>{{ $row->proposal_name }}</td>
+                                    <td>{{ $row->leads->leads_name }}</td>
+                                    <td>{{ $row->products->name }}</td>
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>{{ $row->valid_till }}</td>
@@ -73,7 +77,7 @@
                     </table>
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                             </ul>
                         </nav>
                     </div>
@@ -104,7 +108,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </body>
     <script>
         $('.delete').click(function() {
             var proposalid = $(this).attr('data-id');

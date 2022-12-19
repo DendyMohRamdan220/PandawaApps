@@ -20,7 +20,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header row">
-                    <h5>Add Proposal Detail</h5>
+                    <h5> Proposal Detail </h5>
                     <div class="add-proposal bg-dark-grey rounded">
                         <form action="/insertdataproposal_admin" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -29,18 +29,18 @@
                                     <div class="form-group my-3">
                                         <label for="label">Proposal Name</label>
                                         <input type="text" name="proposal_name" id="proposal_name "
-                                            class="form-control" />
+                                            required="" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="leads_name">Lead
                                         Name</label>
                                     <div class="form-group mb-0">
-                                        <select name="leads_id" class="form-control select-picker" data-size="8">
+                                        <select name="leads_id" class="form-control select-picker" data-size="8" required="">
                                             <option value="">--</option>
-                                            @foreach ($leads as $item)
-                                                <option value="{{ $item->id }}" {{ old('leads_id') == $item->id }}>
-                                                    {{ $item->leads_name }}
+                                            @foreach ($leads as $items)
+                                                <option value="{{ $items->id }}" {{ old('leads_id') == $items->id }}>
+                                                    {{ $items->leads_name }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -49,8 +49,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Valid till</label>
-                                        <input type="date" name="valid_till" id="valid_till" class="form-control" />
-
+                                        <input type="date" name="valid_till" id="valid_till" required="" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
@@ -58,10 +57,7 @@
                                         for="currency">Currency</label>
                                     <div class="form-group mb-0">
                                         <select name="currency" id="currency" class="form-control select-picker"
-                                            data-size="8">
-                                            <option value="">
-                                                --
-                                            </option>
+                                            data-size="8" required="">
                                             <option value="1">
                                                 USD ($)
                                             </option>
@@ -81,7 +77,7 @@
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                         Product</label>
                                     <div class="form-group mb-0">
-                                        <select name="products_id" class="form-control select-picker" data-size="8">
+                                        <select name="products_id" class="form-control select-picker" data-size="8" required="">
                                             <option value="">--</option>
                                             @foreach ($products as $item)
                                                 <option value="{{ $item->id }}" {{ old('products_id') == $item->id }}>
@@ -95,24 +91,26 @@
                                     <div class="form-group my-3">
                                         <label for="label">Qty / Hrs</label>
                                         <input type="number" name="quantity" id="quantity" class=" quantity form-control"
-                                            onkeyup="Mul('0')">
+                                            required="" onkeyup="Mul('0')">
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Unit Price</label>
-                                        <input type="number" name="price" id="price" class="price form-control" onkeyup="Mul('0')">
+                                        <input type="number" name="price" id="price" class="price form-control"
+                                            required="" onkeyup="Mul('0')">
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Total</label>
-                                        <input type="text" name="total" id="total" class="amount form-control" readonly>
+                                        <input type="text" name="total" id="total" class="amount form-control"
+                                            readonly>
                                     </div>
                                 </div>
                                 <div class="card-footer text-end">
-                                    <button class="btn btn-primary" type="submit">Submit</button>
-                                    <input class="btn btn-light" type="reset" value="Cancel">
+                                    <button class="btn btn-primary" type="submit"> Submit </button>
+                                    <a href="/dataproposal_admin"class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
                         </form>

@@ -41,9 +41,12 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Name</th>
+            <th scope="col">Lead Name</th>
+            <th scope="col">Service type</th>
             <th scope="col">Total</th>
             <th scope="col">Created at</th>
             <th scope="col">Valid till</th>
+            <th scope="col">Action</th>
         </tr>
         @php
             $no = 1;
@@ -52,6 +55,8 @@
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $row->proposal_name }}</td>
+                <td>{{ $row->leads->leads_name }}</td>
+                <td>{{ $row->products->name }}</td>
                 <td>{{ $row->total }}</td>
                 <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                 <td>{{ $row->valid_till }}</td>
