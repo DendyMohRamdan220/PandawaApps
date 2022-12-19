@@ -8,9 +8,9 @@
                     <div class="col-sm-6">
                         <h3> Add Expense </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
                             <li class="breadcrumb-item"> Finance </li>
-                            <li class="breadcrumb-item"><a href="/dataexpenses_admin"> Expenses </a></li>
+                            <li class="breadcrumb-item"><a href="/dataexpenses_sales"> Expenses </a></li>
                             <li class="breadcrumb-item active"> Add Expenses </li>
                         </ol>
                     </div>
@@ -24,7 +24,7 @@
                         <h4 class="mb-0 f-21 font-weight-normal text-capitalize"> Expense Details </h4>
                     </div>
                     <hr class="m-0 border-top-grey">
-                    <form action="/insertdataexpenses_admin" method="POST" enctype="multipart/form-data">
+                    <form action="/insertdataexpenses_sales" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
                             <div class="col-lg-4 col-md-6">
@@ -111,7 +111,7 @@
                             </div>
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit"> Submit </button>
-                                <a href="/dataexpenses_admin"class="btn btn-light">Cancel</a>
+                                <a href="/dataexpenses_sales"class="btn btn-light">Cancel</a>
                             </div>
                         </div>
                     </form>

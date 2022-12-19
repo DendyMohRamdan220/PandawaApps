@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Expense </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
                             <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item active"> Expenses </li>
                         </ol>
@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdataexpenses_admin" class="btn btn-success"> <i class="nav-icon icon-plus">
+                        <a href="/tambahdataexpenses_sales" class="btn btn-success"> <i class="nav-icon icon-plus">
                             </i> Add Expense </a>
                     </div>
                     <div class="col-auto">
@@ -30,7 +30,7 @@
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdfexpenses_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
+                        <a href="/exportpdfexpenses_sales" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
                             Export PDF </a>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                                     <td>{{ $row->purchase_date }}</td>
                                     <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>
-                                        <a class="btn btn-info" href="/editdataexpenses_admin/{{ $row->id }}">
+                                        <a class="btn btn-info" href="/editdataexpenses_sales/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
                                             data-name="{{ $row->item_name }}">
@@ -123,7 +123,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deletedataexpenses_admin/" + expenseid + ""
+                        window.location = "/deletedataexpenses_sales/" + expenseid + ""
                         swal("Your data from Expense Subject " + expense_name + " has been deleted!", {
                             icon: "success",
                         });
