@@ -9,6 +9,14 @@ class Ticket extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = "tickets";
+    protected $primaryKey = "id";
+    protected $fillable = [
+        'id',
+        'ticket_subject',
+        'description',
+        'status',
+    ];
+
     protected $dates = ['created_at'];
 }

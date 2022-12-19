@@ -13,21 +13,20 @@ class Invoices extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         'id',
-        'invoice_number',
         'invoice_date',
         'due_date',
         'currency',
-        'choose_client',
+        'user_id',
         'project_id',
         'shipping_address',
         'quantity',
-        'unit_price',
+        'price',
         'total'
     ];
 
     protected $dates = ['created_at'];
 
-    public function client()
+    public function user()
     {
     return $this->belongsTo(User::class);
     }

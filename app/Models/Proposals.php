@@ -19,7 +19,6 @@ class Proposals extends Model
         'products_id',
         'valid_till',
         'currency',
-        'select_product',
         'quantity',
         'price',
         'total',

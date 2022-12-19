@@ -14,7 +14,6 @@ class Estimates extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         'id',
-        'estimate_number',
         'valid_till',
         'currency',
         'user_id',

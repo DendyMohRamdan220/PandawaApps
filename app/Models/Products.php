@@ -2,12 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Estimates;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Products extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $table = "products";
+    protected $primaryKey = "id";
+    protected $fillable = [
+        'id',
+        'name',
+        'price',
+        'produk_kategori',
+        'produk_sub_kategori',
+    ];
+
     protected $dates = ['created_at'];
+
+    public function estimates()
+    {
+    return $this->hasMany(Estimates::class);
+    }
 }

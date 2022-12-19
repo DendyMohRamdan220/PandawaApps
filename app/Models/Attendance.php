@@ -11,10 +11,18 @@ class Attendance extends Model
     protected $table = "attendances";
     protected $primaryKey = "id";
     protected $fillable = [
-    'id','user_id','date','clockin','clockout','officehours'];
+        'id',
+        'user_id',
+        'date',
+        'clockin',
+        'clockout',
+        'officehours',
+    ];
+    
+    protected $dates = ['created_at'];
 
     public function user()
     {
-    return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

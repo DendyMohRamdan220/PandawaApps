@@ -32,7 +32,7 @@ class User extends Authenticatable
         'mobile',
         'gender',
         'file',
-        'last_seen'
+        'last_seen',
     ];
 
     /**
