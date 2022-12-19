@@ -23,8 +23,8 @@
                             <i class="nav-icon icon-plus"></i> Add Leads </a>
                     </div>
                     <div class="col-auto">
-                        <form action="/datalead_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
@@ -75,7 +75,7 @@
                     </table>
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                             </ul>
                         </nav>
                     </div>

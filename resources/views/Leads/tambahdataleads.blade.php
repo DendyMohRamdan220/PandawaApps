@@ -16,38 +16,36 @@
                         <div class="row p-20">
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="leads_name">Lead
-                                        Name<sup class="f-14 mr-1">*</sup></label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true"
+                                    for="leads_name"> Lead Name <sup class="f-14 mr-1">*</sup></label>
                                     <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe"
-                                        value="" name="leads_name" id="leads_name" autocomplete="off">
+                                        value="" name="leads_name" id="leads_name" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="leads_email">Lead
-                                        Email</label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true"
+                                    for="leads_email"> Lead Email </label>
                                     <input type="email" autocomplete="off" class="form-control height-35 f-14"
                                         placeholder="e.g. johndoe@example.com" value="" name="leads_email"
-                                        id="leads_email">
+                                        id="leads_email" required="">
                                     <small id="leads_emailhelp" class="form-text text-muted">Email will be used to send
                                         proposals.</small>
                                 </div>
                             </div>
-                            
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="company_name">Company
-                                        Name<sup class="f-14 mr-1">*</sup></label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true"
+                                    for="company_name"> Company Name <sup class="f-14 mr-1">*</sup></label>
                                     <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe"
-                                        value="" name="company_name" id="company_name" autocomplete="off">
+                                        value="" name="company_name" id="company_name" required="" autocomplete="off">
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="status">Status
                                     Proposal</label>
                                 <div class="form-group mb-0">
-                                    <select name="status" id="status" class="form-control select-picker" data-size="8">
+                                    <select name="status" id="status" class="form-control select-picker" data-size="8" required="">
                                         <option value="">--</option>
                                         <option value="1">Pending</option>
                                         <option value="2">Overview</option>
@@ -55,13 +53,12 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="next_follow_up">Allow
-                                    Follow Up</label>
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
+                                for="next_follow_up"> Allow Follow Up </label>
                                 <div class="form-group mb-0">
                                     <select name="next_follow_up" id="next_follow_up" data-live-search="true"
-                                        class="form-control select-picker" data-size="8">
+                                        class="form-control select-picker" data-size="8" required="">
                                         <option value="">--</option>
                                         <option value="1">Yes</option>
                                         <option value="2">No</option>
@@ -77,80 +74,72 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label=""
-                                        for="website">Website</label>
+                                        for="website"> Website </label>
                                     <input type="text" class="form-control height-35 f-14"
                                         placeholder="e.g. https://www.example.com" value="" name="website"
-                                        id="website" autocomplete="off">
+                                        id="website" required="" autocomplete="off">
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label=""
-                                        for="mobile_phone">Mobile</label>
+                                        for="mobile_phone"> Mobile </label>
                                     <input type="tel" class="form-control height-35 f-14"
                                         placeholder="e.g. 987654321" value="" name="mobile_phone"
-                                        id="mobile_phone" autocomplete="off">
+                                        id="mobile_phone" required="" autocomplete="off">
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="" for="office_phone">Office
-                                        Phone Number</label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label=""
+                                    for="office_phone"> Office Phone Number </label>
                                     <input type="text" class="form-control height-35 f-14" placeholder=""
-                                        value="" name="office_phone" id="office_phone" autocomplete="off">
+                                        value="" name="office_phone" id="office_phone" required="" autocomplete="off">
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="" for="state">State</label>
                                     <input type="text" class="form-control height-35 f-14" value=""
-                                        name="state" id="state" autocomplete="off">
+                                        name="state" id="state" required="" autocomplete="off">
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="" for="city">City</label>
                                     <input type="text" class="form-control height-35 f-14" value=""
-                                        name="city" id="city" autocomplete="off">
+                                        name="city" id="city" required="" autocomplete="off">
                                 </div>
                             </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="" for="postal_code">Postal
-                                        Code</label>
-                                    <input type="text" class="form-control height-35 f-14" value=""
-                                        name="postal_code" id="postal_code" autocomplete="off">
-                                </div>
-                            </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label=""
-                                        for="address">Address</label>
+                                    for="postal_code"> Postal Code </label>
                                     <input type="text" class="form-control height-35 f-14" value=""
-                                        name="Address" autocomplete="off">
+                                        name="postal_code" id="postal_code" required="" autocomplete="off">
                                 </div>
                             </div>
-
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group my-3">
+                                    <label class="f-14 text-dark-grey mb-12" data-label=""
+                                        for="address"> Address </label>
+                                    <input type="text" class="form-control height-35 f-14" value=""
+                                        name="address" id="address" required="" autocomplete="off">
+                                </div>
+                            </div>
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
-                                    for="country">Country</label>
+                                    for="country"> Country </label>
                                 <div class="form-group mb-0">
                                     <select name="country" id="country" data-live-search="true"
-                                        class="form-control select-picker" data-size="8">
+                                        class="form-control select-picker" data-size="8" required="">
                                         <option value="">--</option>
                                         <option data-tokens="AFG"
-                                            data-content="<span class='flag-icon flag-icon-af flag-icon-squared'></span> Afghanistan"
-                                            value="Afghanistan">Afghanistan</option>
+                                            data-content="<span class='flag-icon flag-icon-af flag-icon-squared'>
+                                                </span> Afghanistan" value="Afghanistan">Afghanistan</option>
                                         <option data-tokens="ALB"
                                             data-content="<span class='flag-icon flag-icon-al flag-icon-squared'></span> Albania"
                                             value="Albania">Albania</option>
@@ -916,8 +905,8 @@
                                             data-content="<span class='flag-icon flag-icon-sx flag-icon-squared'></span> Sint Maarten"
                                             value="Sint Maarten">Sint Maarten</option>
                                         <option data-tokens="SSD"
-                                            data-content="<span class='flag-icon flag-icon-ss flag-icon-squared'></span> South Sudan"
-                                            value="South Sudan">South Sudan</option>
+                                            data-content="<span class='flag-icon flag-icon-ss flag-icon-squared'>
+                                                </span> South Sudan" value="South Sudan">South Sudan</option>
                                     </select>
                                     <div class="dropdown-menu ">
                                         <div class="bs-searchbox">
@@ -932,11 +921,11 @@
                                 </div>
                             </div>
                             <div class="card-footer text-end">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                                <input class="btn btn-light" type="reset" value="Cancel">
+                                <button class="btn btn-primary" type="submit"> Submit </button>
+                                <a href="/datalead_admin"class="btn btn-light">Cancel</a>
                             </div>
                         </div>
-                </div>
+                    </div>
                 </form>
             </div>
         </div>

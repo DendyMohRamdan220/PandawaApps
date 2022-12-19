@@ -11,39 +11,39 @@
                         <div class="row p-20">
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="leads_name">Lead
-                                        Name<sup class="f-14 mr-1">*</sup></label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true"
+                                    for="leads_name"> Lead Name <sup class="f-14 mr-1">*</sup>
+                                </label>
                                     <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe"
-                                        value="{{ $data->leads_name }}" name="leads_name" id="leads_name"
+                                        value="{{ $data->leads_name }}" name="leads_name" id="leads_name" required=""
                                         autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="leads_email">Lead
-                                        Email</label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true"
+                                    for="leads_email"> Lead Email </label>
                                     <input type="email" autocomplete="off" class="form-control height-35 f-14"
                                         placeholder="e.g. johndoe@example.com" value="{{ $data->leads_email }}"
-                                        name="leads_email" id="leads_email">
+                                        name="leads_email" id="leads_email" required="">
                                     <small id="leads_emailhelp" class="form-text text-muted">Email will be used to send
                                         proposals.</small>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="true" for="company_name">Company
-                                        Name<sup class="f-14 mr-1">*</sup></label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label="true"
+                                    for="company_name"> Company Name <sup class="f-14 mr-1">*</sup></label>
                                     <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe"
-                                        value="{{ $data->company_name }}" name="company_name" id="company_name"
+                                        value="{{ $data->company_name }}" name="company_name" id="company_name" required=""
                                         autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="status">Status
-                                    Proposal</label>
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
+                                for="status"> Status Proposal </label>
                                 <div class="form-group mb-0">
-                                    <select name="status" id="status" class="form-control select-picker" data-size="8">
+                                    <select name="status" id="status" class="form-control select-picker" data-size="8" required="">
                                         <option selected>{{ $data->status }}</option>
                                         <option value="">--</option>
                                         <option value="1">Pending</option>
@@ -57,7 +57,7 @@
                                     Follow Up</label>
                                 <div class="form-group mb-0">
                                     <select name="next_follow_up" id="next_follow_up" data-live-search="true"
-                                        class="form-control select-picker" data-size="8">
+                                        class="form-control select-picker" data-size="8" required="">
                                         <option selected>{{ $data->next_follow_up }}</option>
                                         <option value="">--</option>
                                         <option value="1">Yes</option>
@@ -79,7 +79,7 @@
                                     <label class="f-14 text-dark-grey mb-12" data-label="" for="website">Website</label>
                                     <input type="text" class="form-control height-35 f-14"
                                         placeholder="e.g. https://www.example.com" value="{{ $data->website }}"
-                                        name="website" id="website" autocomplete="off">
+                                        name="website" id="website" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
@@ -88,7 +88,7 @@
                                         for="mobile_phone">Mobile</label>
                                     <input type="tel" class="form-control height-35 f-14"
                                         placeholder="e.g. 987654321" value="{{ $data->mobile_phone }}"
-                                        name="mobile_phone" id="mobile_phone" autocomplete="off">
+                                        name="mobile_phone" id="mobile_phone" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
@@ -97,21 +97,21 @@
                                         Phone Number</label>
                                     <input type="text" class="form-control height-35 f-14" placeholder=""
                                         value="{{ $data->office_phone }}" name="office_phone" id="office_phone"
-                                        autocomplete="off">
+                                        required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="" for="state">State</label>
                                     <input type="text" class="form-control height-35 f-14" value="{{ $data->state }}"
-                                        name="state" id="state" autocomplete="off">
+                                        name="state" id="state" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="" for="city">City</label>
                                     <input type="text" class="form-control height-35 f-14"
-                                        value="{{ $data->city }}" name="city" id="city" autocomplete="off">
+                                        value="{{ $data->city }}" name="city" id="city" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
@@ -120,7 +120,7 @@
                                         Code</label>
                                     <input type="text" class="form-control height-35 f-14"
                                         value="{{ $data->postal_code }}" name="postal_code" id="postal_code"
-                                        autocomplete="off">
+                                        required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
@@ -128,7 +128,7 @@
                                     <label class="f-14 text-dark-grey mb-12" data-label=""
                                         for="address">Address</label>
                                     <input type="text" class="form-control height-35 f-14"
-                                        value="{{ $data->address }}" name="address" autocomplete="off">
+                                        value="{{ $data->address }}" name="address" id="address" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
@@ -136,7 +136,7 @@
                                     for="country">Country</label>
                                 <div class="form-group mb-0">
                                     <select name="country" id="country" data-live-search="true"
-                                        class="form-control select-picker" data-size="8">
+                                        class="form-control select-picker" data-size="8" required="">
                                         <option selected>{{ $data->country }}</option>
                                         <option value="">--</option>
                                         <option data-tokens="AFG"
@@ -923,8 +923,8 @@
                                 </div>
                             </div>
                             <div class="card-footer text-end">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                                <input class="btn btn-light" type="reset" value="Cancel">
+                                <button class="btn btn-primary" type="submit"> Submit </button>
+                                <a href="/datalead_admin"class="btn btn-light">Cancel</a>
                             </div>
                         </div>
                     </form>
