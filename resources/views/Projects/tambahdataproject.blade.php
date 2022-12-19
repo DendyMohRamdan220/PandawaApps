@@ -27,11 +27,11 @@
                                     Employee </label>
                                 <select class="form-control" name="user_id" required="">
                                     <option value="">--</option>
-                                    @foreach ($user as $item)
-                                        @if ($item->level == 'Employee')
-                                            <option value="{{ $item->id }}"
-                                                {{ old('user_id') == $item->id ? 'selected' : null }}>
-                                                {{ $item->username }}
+                                    @foreach ($user as $items)
+                                        @if ($items->level == 'Employee')
+                                            <option value="{{ $items->id }}"
+                                                {{ old('user_id') == $items->id ? 'selected' : null }}>
+                                                {{ $items->name }}
                                             </option>
                                         @endif
                                     @endforeach
@@ -47,19 +47,22 @@
                                     <option value="">--</option>
                                     @foreach ($user as $item)
                                         @if ($item->level == 'Client')
-                                            <option value="{{ $item->username }}"
-                                                {{ old('user_id1') == $item->id ? 'selected' : null }}>
-                                                {{ $item->username }}
+                                            <option value="{{ $item->name }}"
+                                                {{ old('user_id1') == $item->name ? 'selected' : null }}>
+                                                {{ $item->name }}
                                             </option>
                                         @endif
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <input class="form-control form-control-lg" type="hidden" name="status" value="Order"
                                     readonly>
                             </div>
-                            <button type="submit" class="btn btn-primary"> Submit </button>
+                            <div class="card-footer text-end">
+                                <button class="btn btn-primary" type="submit"> Submit </button>
+                                <a href="/dataproject_admin"class="btn btn-light">Cancel</a>
+                            </div>
                         </form>
                     </div>
                 </div>

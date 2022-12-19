@@ -19,19 +19,19 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">projectname</label>
-                                <input type="text" name="projectname" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" value="{{ $data->projectname }}">
+                                <label for="exampleInputEmail1" class="form-label"> projectname </label>
+                                <input class="form-control" type="text" name="projectname" id="projectname"
+                                    required="" aria-describedby="emailHelp" value="{{ $data->projectname }}">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Employee</label>
                                 <select class="form-control" name="user_id" required="">
-                                    <option value="{{ $data->user_id }}">{{ $data->user->username }}</option>
-                                    @foreach ($user as $item)
-                                        @if ($item->level == 'Employee')
-                                            <option value="{{ $item->id }}"
-                                                {{ old('user_id') == $item->id ? 'selected' : null }}>
-                                                {{ $item->username }}
+                                    <option value="">--</option>
+                                    @foreach ($user as $items)
+                                        @if ($items->level == 'Employee')
+                                            <option value="{{ $items->id }}"
+                                                {{ old('user_id', $data->user_id) == $items->id ? 'selected' : null }}>
+                                                {{ $items->name }}
                                             </option>
                                         @endif
                                     @endforeach
@@ -40,17 +40,17 @@
                             <div class="mb-3">
                                 <label for="deadline" class="form-label">Deadline</label>
                                 <input class="form-control" type="date" name="deadline" id="deadline" required=""
-                                    value="{{ $data->deadline }}">
+                                    value="{{ $data->deadline }}" placeholder="Enter a new project name">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Client </label>
                                 <select class="form-control" name="user_id1" required="">
-                                    <option value="{{ $data->user_id1 }}">{{ $data->user_id1 }}</option>
+                                    <option value="">--</option>
                                     @foreach ($user as $item)
                                         @if ($item->level == 'Client')
-                                            <option value="{{ $item->username }}"
-                                                {{ old('user_id1') == $item->id ? 'selected' : null }}>
-                                                {{ $item->username }}
+                                            <option value="{{ $item->name }}"
+                                                {{ old('user_id1', $data->user_id1) == $item->name ? 'selected' : null }}>
+                                                {{ $item->name }}
                                             </option>
                                         @endif
                                     @endforeach
@@ -61,13 +61,17 @@
                                 <br>
                                 <select class="form-select" name="status" required="">
                                     <option selected>{{ $data->status }}</option>
-                                    <option value="1">Progres</option>
-                                    <option value="2">Pending</option>
-                                    <option value="3">Done</option>
-                                    <option value="4">Cancel</option>
+                                    <option value="1">Order</option>
+                                    <option value="2">Progres</option>
+                                    <option value="3">Pending</option>
+                                    <option value="4">Done</option>
+                                    <option value="5">Cancel</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="card-footer text-end">
+                                <button class="btn btn-primary" type="submit"> Submit </button>
+                                <a href="/dataproject_admin"class="btn btn-light">Cancel</a>
+                            </div>
                         </form>
                     </div>
                 </div>

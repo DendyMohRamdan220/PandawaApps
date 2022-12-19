@@ -24,10 +24,14 @@
                             <i class="nav-icon fas icon-plus"></i> Add Project</a>
                     </div>
                     <div class="col-auto">
-                        <form action="/dataproject_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
+                    </div>
+                    <div class="col-auto">
+                        <a href="/exportpdfproject_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
+                            Export PDF </a>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Project Name</th>
                                 <th scope="col">Employee</th>
                                 <th scope="col">Deadline</th>
@@ -52,7 +56,7 @@
                             <tr>
                                 <th scope="row">{{ $dataproject_admin + $data->firstItem() }}</th>
                                 <td>{{ $row->projectname }}</td>
-                                <td>{{ $row->user->username }}</td>
+                                <td>{{ $row->user->name }}</td>
                                 <td>{{ $row->deadline }}</td>
                                 <td>{{ $row->user_id1 }}</td>
                                 <td>{{ $row->status }}</td>
@@ -67,7 +71,12 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $data->links() }}
+                    <div class="card-body">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>

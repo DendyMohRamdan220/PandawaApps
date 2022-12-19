@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Projects </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv2"> Home </a></li>
                             <li class="breadcrumb-item"> Work </li>
                             <li class="breadcrumb-item active"> Projects </li>
                         </ol>
@@ -20,12 +20,8 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdataproject_admin" class="btn btn-success">
-                            <i class="nav-icon fas icon-plus"></i> Add Project</a>
-                    </div>
-                    <div class="col-auto">
-                        <form action="/dataproject_admin" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
@@ -42,7 +38,6 @@
                                 <th scope="col">Deadline</th>
                                 <th scope="col">Client</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         @php
@@ -52,22 +47,20 @@
                             <tr>
                                 <th scope="row">{{ $dataproject_admin + $data->firstItem() }}</th>
                                 <td>{{ $row->projectname }}</td>
-                                <td>{{ $row->user->username }}</td>
+                                <td>{{ $row->user->name }}</td>
                                 <td>{{ $row->deadline }}</td>
                                 <td>{{ $row->user_id1 }}</td>
                                 <td>{{ $row->status }}</td>
-                                <td>
-                                    <a class="btn btn-info" href="/editdataproject_admin/{{ $row->id }}">
-                                        <i class="nav-icon icon-pencil-alt"></i></a>
-                                    <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                        data-name="{{ $row->projectname }}">
-                                        <i class="nav-icon icon-trash"></i></a>
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $data->links() }}
+                    <div class="card-body">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,31 +88,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script>
-        $('.delete').click(function() {
-            var idproject = $(this).attr('data-id');
-            var nameproject = $(this).attr('data-project');
-            swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the Project Name " +
-                        nameproject + " ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location = "/deletedataproject_admin/" + idproject + ""
-                        swal("Your data from Project Name " + nameproject + " has been deleted!", {
-                            icon: "success",
-                        });
-                    } else {
-                        swal("Deletion of data from Project Name " + nameproject + " has been cancelled!");
-                    }
-                });
-        });
-    </script>
     <script>
         @if (Session::has('success'))
             toastr.success("{{ Session::get('success') }}");
