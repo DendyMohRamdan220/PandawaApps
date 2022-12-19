@@ -20,14 +20,14 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <form action="/datapayments_client" method="GET">
-                            <input type="search" id="inputPassword6" name="search" class="form-control"
+                        <form action="" method="GET">
+                            <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdf_client" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i> Export
-                            PDF</a>
+                        <a href="/exportpdf_client" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf">
+                            </i> Export PDF</a>
                     </div>
                 </div>
             </div>
@@ -36,31 +36,32 @@
                     <table class="table table-striped bg-primary">
                         <thead class="tbl-strip-thad-bdr">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Invoice Number</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Project</th>
-                                <th scope="col">Amount</th>
                                 <th scope="col">Paid On</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Gateway</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $datapayments_admin => $row)
+                            @foreach ($data as $datapayments_client => $row)
                                 <tr>
-                                    <th scope="row">{{ $datapayments_admin + $data->firstItem() }}</th>
-                                    <td>{{ $row->payments_number }}</td>
-                                    <td>{{ $row->select_project }}</td>
-                                    <td>{{ $row->amount }}</td>
+                                    <th scope="row">{{ $datapayments_client + $data->firstItem() }}</th>
+                                    <td>{{ $row->project->projectname }}</td>
                                     <td>{{ $row->paid_on }}</td>
+                                    <td>{{ $row->total }}</td>
+                                    <td>{{ $row->payment_gateway }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="card-body">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-primary">{{ $data->links() }}
+                            <ul class="pagination pagination-primary">{{ $data->withQueryString()->links() }}
                             </ul>
                         </nav>
                     </div>

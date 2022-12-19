@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Payments </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
                             <li class="breadcrumb-item"> Finance </li>
                             <li class="breadcrumb-item active"> Payments </li>
                         </ol>
@@ -20,8 +20,8 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatapayments_admin" class="btn btn-success"> <i class="nav-icon icon-plus">
-                            </i> Add Payment </a>
+                        <a href="/tambahdatapayments_sales" class="btn btn-success">
+                            <i class="nav-icon icon-plus"></i> Add Payment </a>
                     </div>
                     <div class="col-auto">
                         <form action="" method="GET">
@@ -30,8 +30,8 @@
                         </form>
                     </div>
                     <div class="col-auto">
-                        <a href="/exportpdf_admin" class="btn btn-info"> <i class="nav-icon fas fa-file-pdf"></i>
-                            Export PDF </a>
+                        <a href="/exportpdf_sales" class="btn btn-info">
+                            <i class="nav-icon fas fa-file-pdf"></i> Export PDF </a>
                     </div>
                 </div>
             </div>
@@ -52,15 +52,15 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $datapayments_admin => $row)
+                            @foreach ($data as $datapayments_sales => $row)
                                 <tr>
-                                    <th scope="row">{{ $datapayments_admin + $data->firstItem() }}</th>
+                                    <th scope="row">{{ $datapayments_sales + $data->firstItem() }}</th>
                                     <td>{{ $row->project->projectname }}</td>
                                     <td>{{ $row->paid_on }}</td>
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->payment_gateway }}</td>
                                     <td>
-                                        <a class="btn btn-info" href="/editdatapayments_admin/{{ $row->id }}">
+                                        <a class="btn btn-info" href="/editdatapayments_sales/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
                                             data-name="{{ $row->payments_number }}">
@@ -119,7 +119,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deletedatapayments_admin/" + paymentid + ""
+                        window.location = "/deletedatapayments_sales/" + paymentid + ""
                         swal("Your data from Payments Subject " + payment_name + " has been deleted!", {
                             icon: "success",
                         });

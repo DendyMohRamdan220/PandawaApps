@@ -40,10 +40,9 @@
     <table id="customers">
         <tr>
             <th scope="col">No</th>
-            <th scope="col">Invoice Number</th>
             <th scope="col">Project</th>
-            <th scope="col">Amount</th>
             <th scope="col">Paid On</th>
+            <th scope="col">Total</th>
         </tr>
         @php
             $no = 1;
@@ -51,10 +50,9 @@
         @foreach ($data as $row)
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $row->payments_number }}</td>
-                <td>{{ $row->select_project }}</td>
-                <td>{{ $row->amount }}</td>
+                <td>{{ $row->project->projectname }}</td>
                 <td>{{ $row->paid_on }}</td>
+                <td>{{ $row->total }}</td>
         @endforeach
     </table>
 
