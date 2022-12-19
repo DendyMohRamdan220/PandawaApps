@@ -39,26 +39,23 @@
                     <div class="card card-info card-outline">
                         <div class="card-header"> Clock-In </div>
                         <div class="card-body">
-                            <form action="{{ route('simpan_masuk') }}" method="post">
-                                {{ csrf_field() }}
-                                <div class="form-group">
-                                    <center>
-                                        <label id="clock"
-                                            style="font-size: 100px; color: #0A77DE; -webkit-text-stroke: 3px #00ACFE;">
-                                        </label>
-                                    </center>
-                                </div>
+                            <div class="form-group">
                                 <center>
-                                    @if ($message = Session::get('success'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ $message }}
-                                        </div>
-                                    @endif
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary"> Clock-In </button>
-                                    </div>
+                                    <label id="clock"
+                                        style="font-size: 50px; color: #0A77DE; -webkit-text-stroke: 3px #00ACFE;">
+                                    </label>
                                 </center>
-                            </form>
+                            </div>
+                            <center>
+                            <div class="form-group">
+                                <label> You have filled in the previous attendance </label>
+                            </div>
+                            </center>
+                            <center>
+                                <div class="form-group">
+                                    <a href="/presensi_masuk" type="submit" class="btn btn-primary"> Return </a>
+                                </div>
+                            </center>
                         </div>
                     </div>
                 </div>

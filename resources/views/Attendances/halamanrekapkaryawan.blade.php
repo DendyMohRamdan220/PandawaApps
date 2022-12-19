@@ -7,7 +7,7 @@
         <div class="page-body">
             <!-- Container-fluid starts-->
             <div class="container-fluid dashboard-default-sec">
-                <h1>Rekap Absensi Karyawan</h1>
+                <h1> Employee Attandance Recap </h1>
             </div>
             <!-- Container-fluid Ends-->
 
@@ -16,17 +16,17 @@
                     <div class="card card-info card-outline">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="label">Tanggal Awal</label>
+                                <label for="label"> Start Date </label>
                                 <input type="date" name="tglawal" id="tglawal" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label for="label">Tanggal Akhir</label>
+                                <label for="label"> End Date </label>
                                 <input type="date" name="tglakhir" id="tglakhir" class="form-control" />
                             </div>
                             <div class="form-group">
                                 <a href="" onclick="this.href='/filterdata_admin/'+ document.getElementById('tglawal').value +
                             '/' + document.getElementById('tglakhir').value " class="btn btn-primary col-md-12">
-                                    Lihat <i class="icon-printer"></i>
+                                    View <i class="icon-printer"></i>
                                 </a>
                             </div>
                         </div><!-- /.container-fluid -->

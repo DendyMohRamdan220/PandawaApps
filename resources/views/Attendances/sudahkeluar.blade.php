@@ -49,13 +49,13 @@
                                     </center>
                                 </div>
                                 <center>
-                                    @if ($message = Session::get('success'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ $message }}
-                                        </div>
-                                    @endif
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary"> Clock-Out </button>
+                                        <label> You have exited the previous presence </label>
+                                    </div>
+                                </center>
+                                <center>
+                                    <div class="form-group">
+                                        <a href="/presensi_keluar" type="submit" class="btn btn-primary"> Return </a>
                                     </div>
                                 </center>
                             </form>
@@ -65,4 +65,3 @@
             </div>
         </div>
     @endsection
-
