@@ -1,26 +1,26 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\LeadsController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AbsensiController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ConvertCurencyController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EstimatesController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\KnowledgebaseController;
+use App\Http\Controllers\LeadsController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EstimatesController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProposalsController;
-use App\Http\Controllers\KnowledgebaseController;
-use App\Http\Controllers\ConvertCurencyController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SettingsprofileController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -341,6 +341,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:Sales']], function () {
 
     // Dashboard >>
     Route::get('dashboardv3', [DashboardController::class, 'dashboardv3']);
+
+    // Leads >>
+    Route::get('datalead_sales', [LeadsController::class, 'datalead_sales']);
+    Route::get('tambahdatalead_sales', [LeadsController::class, 'tambahdatalead_sales']);
+    Route::post('insertdatalead_sales', [LeadsController::class, 'insertdatalead_sales']);
+    Route::get('editdatalead_sales/{id}', [LeadsController::class, 'editdatalead_sales']);
+    Route::post('updatedatalead_sales/{id}', [LeadsController::class, 'updatedatalead_sales']);
+    Route::get('deletedatalead_sales/{id}', [LeadsController::class, 'deletedatalead_sales']);
 
     /* << Finance >> */
     // ProposalL >>
