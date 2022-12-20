@@ -10,8 +10,8 @@
     <meta name="keywords"
         content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('template/assets/images/logopmn.jpg') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('template/assets/images/logopmn.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('template/assets/images/logopm.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/logopm.png') }}" type="image/x-icon">
     <title> Pandawa Mandiri </title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -66,13 +66,13 @@
             <div class="main-header-right row m-0">
                 <div class="main-header-left">
                     <div class="logo-wrapper">
-                        <a href="/dashboarad_admin">
+                        <a href="#">
                             <img class="img-fluid" src="{{ asset('template/assets/images/logopmnn.png') }}"
                                 alt="">
                         </a>
                     </div>
                     <div class="dark-logo-wrapper">
-                        <a href="index.html">
+                        <a href="#">
                             <img class="img-fluid" src="{{ asset('template/assets/images/logopmnn.png') }}"
                                 alt="">
                         </a>
@@ -99,9 +99,6 @@
             <!-- Page Sidebar Start-->
             <header class="main-nav">
                 <div class="sidebar-user text-center">
-                    <a class="setting-primary" href="javascript:void(0)">
-                        <i data-feather="settings"></i>
-                    </a>
                     <a href="/editUser">
                         <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6>
                     </a>
@@ -335,6 +332,12 @@
                                         <a class="nav-link menu-title link-nav" href="/dashboardv3">
                                             <i data-feather="home"></i>
                                             <span>Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="nav-link menu-title link-nav" href="/datalead_sales">
+                                            <i data-feather="user"></i>
+                                            <span>Leads</span>
                                         </a>
                                     </li>
                                     <li class="dropdown">

@@ -10,9 +10,9 @@
     <meta name="keywords"
         content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('template/assets/images/logopmn.jpg') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('template/assets/images/logopmn.jpg') }}" type="image/x-icon">
-    <title>viho - Premium Admin Template</title>
+    <link rel="icon" href="{{ asset('template/assets/images/logopm.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/logopm.png') }}" type="image/x-icon">
+    <title>Error 404 Not Found!!! 1</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
