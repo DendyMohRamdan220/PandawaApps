@@ -52,11 +52,47 @@ class LeadsController extends Controller
         return redirect('/datalead_admin')->with('success', 'leads deleted successfully .');
     }
 
-    public function exportpdf_admin()
+    // Portal Sales >>
+    public function datalead_sales(Request $request)
     {
-        $data = Leads::all();
-        view()->share('data', $data);
-        $pdf = PDF::loadview('Leads.dataleads-pdf_admin');
-        return $pdf->download('data.pdf');
+        $keyword = $request->keyword;
+        $data = Leads::where('leads_name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('company_name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('mobile_phone', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('next_follow_up', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('status', 'LIKE', '%' . $keyword . '%')
+            ->paginate(10);
+        return view('Leads.dataleads_sales', compact('data'));
+    }
+
+    public function tambahdatalead_sales()
+    {
+        return view('Leads.tambahdataleads_sales');
+    }
+
+    public function insertdatalead_sales(Request $request)
+    {
+        Leads::create($request->all());
+        return redirect('/datalead_sales')->with('success', 'leads added successfully .');
+    }
+
+    public function editdatalead_sales($id)
+    {
+        $data = Leads::find($id);
+        return view('Leads.editdataleads_sales', compact('data'));
+    }
+
+    public function updatedatalead_sales(Request $request, $id)
+    {
+        $data = Leads::find($id);
+        $data->update($request->all());
+        return redirect('/datalead_sales')->with('success', 'Leads edited successfully .');
+    }
+
+    public function deletedatalead_sales($id)
+    {
+        $data = Leads::find($id);
+        $data->delete();
+        return redirect('/datalead_sales')->with('success', 'leads deleted successfully .');
     }
 }
