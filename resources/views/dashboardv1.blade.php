@@ -31,9 +31,20 @@
                                     src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt=""></div>
                             <div class="userpro-box">
                                 <div class="img-wrraper">
-                                    <div class="avatar"><img class="img-fluid" alt=""
-                                            src="{{ auth()->user()->file }}"></div><a class="icon-wrapper"
-                                        href="/editUser"><i class="icofont icofont-pencil-alt-5"></i></a>
+                                    <div class="avatar">
+                                        @if (auth()->user()->file)
+                                            <img src="{{ auth()->user()->file }}" class="img-fluid" alt="">
+                                        @elseif (auth()->user()->gender == 'Laki-laki')
+                                            <img src="{{ asset('template/assets/images/dashboard/1.png') }}"
+                                                class="img-fluid" alt="">
+                                        @elseif (auth()->user()->gender == 'Perempuan')
+                                            <img src="{{ asset('template/assets/images/dashboard/2.png') }}"
+                                                class="img-fluid" alt="">
+                                        @endif
+                                    </div>
+                                    <a class="icon-wrapper" href="/editUser">
+                                        <i class="icofont icofont-pencil-alt-5"></i>
+                                    </a>
                                 </div>
                                 <div class="user-designation">
                                     <div class="title"><a target="_blank" href="">

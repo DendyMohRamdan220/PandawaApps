@@ -1,7 +1,6 @@
 @extends('Layouts.layout')
 
 @section('content')
-
     @push('css')
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" type="text/css" href="{{ asset('/assets/css/owlcarousel.css') }}">
@@ -11,15 +10,15 @@
     <div class="page-body">
         <div class="container-fluid">
             <div class="page-header">
-              <div class="row">
-                <div class="col-sm-6">
-                  <h3> Dashboard </h3>
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
-                    <li class="breadcrumb-item active"> Dashboard </li>
-                  </ol>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3> Dashboard </h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
+                            <li class="breadcrumb-item active"> Dashboard </li>
+                        </ol>
+                    </div>
                 </div>
-              </div>
             </div>
             <div class="user-profile">
                 <div class="row">
@@ -28,12 +27,24 @@
                         <div class="card profile-header"><img class="img-fluid bg-img-cover"
                                 src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt="">
                             <div class="profile-img-wrrap"><img class="img-fluid bg-img-cover"
-                                    src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt=""></div>
+                                    src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt="">
+                            </div>
                             <div class="userpro-box">
                                 <div class="img-wrraper">
-                                    <div class="avatar"><img class="img-fluid" alt=""
-                                            src="{{ auth()->user()->file }}"></div><a class="icon-wrapper"
-                                        href="edit-profile.html"><i class="icofont icofont-pencil-alt-5"></i></a>
+                                    <div class="avatar">
+                                        @if (auth()->user()->file)
+                                            <img src="{{ auth()->user()->file }}" class="img-fluid" alt="">
+                                        @elseif (auth()->user()->gender == 'Laki-laki')
+                                            <img src="{{ asset('template/assets/images/dashboard/1.png') }}"
+                                                class="img-fluid" alt="">
+                                        @elseif (auth()->user()->gender == 'Perempuan')
+                                            <img src="{{ asset('template/assets/images/dashboard/2.png') }}"
+                                                class="img-fluid" alt="">
+                                        @endif
+                                    </div>
+                                    <a class="icon-wrapper" href="/editUser">
+                                        <i class="icofont icofont-pencil-alt-5"></i>
+                                    </a>
                                 </div>
                                 <div class="user-designation">
                                     <div class="title"><a target="_blank" href="">
@@ -43,13 +54,16 @@
                                     <div class="follow">
                                         <ul class="follow-list">
                                             <li>
-                                                <div class="follow-num counter">{{ $totalestimates }}</div><span>Estimates</span>
+                                                <div class="follow-num counter">{{ $totalestimates }}</div>
+                                                <span>Estimates</span>
                                             </li>
                                             <li>
-                                                <div class="follow-num counter">{{ $totalinvoices }}</div><span>Invoices</span>
+                                                <div class="follow-num counter">{{ $totalinvoices }}</div>
+                                                <span>Invoices</span>
                                             </li>
                                             <li>
-                                                <div class="follow-num counter">{{ $totalpayments }}</div><span>Payments</span>
+                                                <div class="follow-num counter">{{ $totalpayments }}</div>
+                                                <span>Payments</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -117,8 +131,8 @@
                                                     <li class="min" id="min"></li>
                                                     <li class="sec" id="sec"></li>
                                                 </ul>
-                                                <div class="date f-24 mb-2" id="date"><span
-                                                        id="monthDay"></span><span id="year">, </span></div>
+                                                <div class="date f-24 mb-2" id="date"><span id="monthDay"></span><span
+                                                        id="year">, </span></div>
                                                 <div>
                                                     <p class="m-0 f-14 text-light">Jakarta, Indonesia </p>
                                                 </div>
