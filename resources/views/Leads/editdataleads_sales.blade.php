@@ -8,8 +8,8 @@
                     <div class="col-sm-6">
                         <h3> Update Leads </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
-                            <li class="breadcrumb-item"><a href="/datalead_admin"> Leads </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/datalead_sales"> Leads </a></li>
                             <li class="breadcrumb-item active"> Update Leads </li>
                         </ol>
                     </div>
@@ -20,7 +20,7 @@
             <div class="card-header pb-0">
                 <h5> Leads Details </h5>
                 <div class="add-client bg-dark-grey rounded">
-                    <form action="/updatedatalead_admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/updatedatalead_sales/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row p-20">
                             <div class="col-lg-4 col-md-6">
@@ -938,7 +938,7 @@
                             </div>
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit"> Submit </button>
-                                <a href="/datalead_admin"class="btn btn-light">Cancel</a>
+                                <a href="/datalead_sales"class="btn btn-light">Cancel</a>
                             </div>
                         </div>
                     </form>

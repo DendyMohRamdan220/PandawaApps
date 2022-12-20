@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h3> Leads </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
                             <li class="breadcrumb-item active"> Leads </li>
                         </ol>
                     </div>
@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdatalead_admin" class="btn btn-success">
+                        <a href="/tambahdatalead_sales" class="btn btn-success">
                             <i class="nav-icon icon-plus"></i> Add Leads </a>
                     </div>
                     <div class="col-auto">
@@ -59,7 +59,7 @@
                                     <td>{{ $row->next_follow_up }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
-                                        <a class="btn btn-info" href="/editdatalead_admin/{{ $row->id }}">
+                                        <a class="btn btn-info" href="/editdatalead_sales/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
                                             data-name="{{ $row->leads_name }}">
@@ -117,7 +117,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        window.location = "/deletedatalead_admin/" + leadid + ""
+                        window.location = "/deletedatalead_sales/" + leadid + ""
                         swal("Your data from Ticket Subject " + leads_name + " has been deleted!", {
                             icon: "success",
                         });

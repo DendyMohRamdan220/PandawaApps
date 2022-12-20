@@ -2,14 +2,23 @@
 
 @section('content')
     <div class="page-body">
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3> Add Leads </h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/datalead_admin"> Leads </a></li>
+                            <li class="breadcrumb-item active"> Add Leads </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="card-header pb-0">
-                <h5> Add Leads </h5>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
-                    <li class="breadcrumb-item"><a href="/datalead_admin"> Leads </a></li>
-                    <li class="breadcrumb-item active"> Add Leads </li>
-                </ol>
+                <h5> Leads Details </h5>
                 <div class="add-leads bg-dark-grey rounded">
                     <form action="/insertdatalead_admin" method="POST" enctype="multipart/form-data">
                         @csrf

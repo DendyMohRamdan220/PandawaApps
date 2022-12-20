@@ -10,8 +10,8 @@
     <meta name="keywords"
         content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('template/assets/images/logopmn.jpg') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('template/assets/images/logopmn.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('template/assets/images/logopm.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('template/assets/images/logopm.png') }}" type="image/x-icon">
     <title>Login - Pandawa Mandiri</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -66,7 +66,8 @@
                             @if (session()->has('loginError'))
                                 {{ session('loginError') }}
                             @endif
-                            <h4>Login</h4>
+                            <center><h4>Pandawa Apps</h4></center><br>
+                            <h3>Login</h3>
                             <h6>Welcome back! Log in to your account.</h6>
                             <div class="form-group">
                                 <label>Email Address</label>
@@ -112,7 +113,7 @@
                                 <div class="checkbox">
                                     <input id="checkbox1" type="checkbox">
                                     <label class="text-muted" for="checkbox1">Remember password</label>
-                                </div><a class="link" href="forget-password.html">Forgot password?</a>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-block" type="submit">Sign in</button>

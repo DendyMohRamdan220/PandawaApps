@@ -6,11 +6,11 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3> Update Leads </h3>
+                        <h3> Add Leads </h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
-                            <li class="breadcrumb-item"><a href="/datalead_admin"> Leads </a></li>
-                            <li class="breadcrumb-item active"> Update Leads </li>
+                            <li class="breadcrumb-item"><a href="/dashboardv3"> Home </a></li>
+                            <li class="breadcrumb-item"><a href="/datalead_sales"> Leads </a></li>
+                            <li class="breadcrumb-item active"> Add Leads </li>
                         </ol>
                     </div>
                 </div>
@@ -19,18 +19,16 @@
         <div class="card">
             <div class="card-header pb-0">
                 <h5> Leads Details </h5>
-                <div class="add-client bg-dark-grey rounded">
-                    <form action="/updatedatalead_admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                <div class="add-leads bg-dark-grey rounded">
+                    <form action="/insertdatalead_sales" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row p-20">
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="true"
-                                    for="leads_name"> Lead Name <sup class="f-14 mr-1">*</sup>
-                                </label>
+                                    for="leads_name"> Lead Name <sup class="f-14 mr-1">*</sup></label>
                                     <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe"
-                                        value="{{ $data->leads_name }}" name="leads_name" id="leads_name" required=""
-                                        autocomplete="off">
+                                        value="" name="leads_name" id="leads_name" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
@@ -38,8 +36,8 @@
                                     <label class="f-14 text-dark-grey mb-12" data-label="true"
                                     for="leads_email"> Lead Email </label>
                                     <input type="email" autocomplete="off" class="form-control height-35 f-14"
-                                        placeholder="e.g. johndoe@example.com" value="{{ $data->leads_email }}"
-                                        name="leads_email" id="leads_email" required="">
+                                        placeholder="e.g. johndoe@example.com" value="" name="leads_email"
+                                        id="leads_email" required="">
                                     <small id="leads_emailhelp" class="form-text text-muted">Email will be used to send
                                         proposals.</small>
                                 </div>
@@ -49,16 +47,14 @@
                                     <label class="f-14 text-dark-grey mb-12" data-label="true"
                                     for="company_name"> Company Name <sup class="f-14 mr-1">*</sup></label>
                                     <input type="text" class="form-control height-35 f-14" placeholder="e.g. John Doe"
-                                        value="{{ $data->company_name }}" name="company_name" id="company_name" required=""
-                                        autocomplete="off">
+                                        value="" name="company_name" id="company_name" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
-                                for="status"> Status Proposal </label>
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="status">Status
+                                    Proposal</label>
                                 <div class="form-group mb-0">
                                     <select name="status" id="status" class="form-control select-picker" data-size="8" required="">
-                                        <option selected>{{ $data->status }}</option>
                                         <option value="">--</option>
                                         <option value="1">Pending</option>
                                         <option value="2">Overview</option>
@@ -67,12 +63,11 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
-                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="next_follow_up">Allow
-                                    Follow Up</label>
+                                <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
+                                for="next_follow_up"> Allow Follow Up </label>
                                 <div class="form-group mb-0">
                                     <select name="next_follow_up" id="next_follow_up" data-live-search="true"
                                         class="form-control select-picker" data-size="8" required="">
-                                        <option selected>{{ $data->next_follow_up }}</option>
                                         <option value="">--</option>
                                         <option value="1">Yes</option>
                                         <option value="2">No</option>
@@ -90,72 +85,70 @@
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="" for="website">Website</label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label=""
+                                        for="website"> Website </label>
                                     <input type="text" class="form-control height-35 f-14"
-                                        placeholder="e.g. https://www.example.com" value="{{ $data->website }}"
-                                        name="website" id="website" required="" autocomplete="off">
+                                        placeholder="e.g. https://www.example.com" value="" name="website"
+                                        id="website" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label=""
-                                        for="mobile_phone">Mobile</label>
+                                        for="mobile_phone"> Mobile </label>
                                     <input type="tel" class="form-control height-35 f-14"
-                                        placeholder="e.g. 987654321" value="{{ $data->mobile_phone }}"
-                                        name="mobile_phone" id="mobile_phone" required="" autocomplete="off">
+                                        placeholder="e.g. 987654321" value="" name="mobile_phone"
+                                        id="mobile_phone" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="" for="office_phone">Office
-                                        Phone Number</label>
+                                    <label class="f-14 text-dark-grey mb-12" data-label=""
+                                    for="office_phone"> Office Phone Number </label>
                                     <input type="text" class="form-control height-35 f-14" placeholder=""
-                                        value="{{ $data->office_phone }}" name="office_phone" id="office_phone"
-                                        required="" autocomplete="off">
+                                        value="" name="office_phone" id="office_phone" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="" for="state">State</label>
-                                    <input type="text" class="form-control height-35 f-14" value="{{ $data->state }}"
+                                    <input type="text" class="form-control height-35 f-14" value=""
                                         name="state" id="state" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label="" for="city">City</label>
-                                    <input type="text" class="form-control height-35 f-14"
-                                        value="{{ $data->city }}" name="city" id="city" required="" autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-group my-3">
-                                    <label class="f-14 text-dark-grey mb-12" data-label="" for="postal_code">Postal
-                                        Code</label>
-                                    <input type="text" class="form-control height-35 f-14"
-                                        value="{{ $data->postal_code }}" name="postal_code" id="postal_code"
-                                        required="" autocomplete="off">
+                                    <input type="text" class="form-control height-35 f-14" value=""
+                                        name="city" id="city" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="form-group my-3">
                                     <label class="f-14 text-dark-grey mb-12" data-label=""
-                                        for="address">Address</label>
-                                    <input type="text" class="form-control height-35 f-14"
-                                        value="{{ $data->address }}" name="address" id="address" required="" autocomplete="off">
+                                    for="postal_code"> Postal Code </label>
+                                    <input type="text" class="form-control height-35 f-14" value=""
+                                        name="postal_code" id="postal_code" required="" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group my-3">
+                                    <label class="f-14 text-dark-grey mb-12" data-label=""
+                                        for="address"> Address </label>
+                                    <input type="text" class="form-control height-35 f-14" value=""
+                                        name="address" id="address" required="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
-                                    for="country">Country</label>
+                                    for="country"> Country </label>
                                 <div class="form-group mb-0">
                                     <select name="country" id="country" data-live-search="true"
                                         class="form-control select-picker" data-size="8" required="">
-                                        <option selected>{{ $data->country }}</option>
                                         <option value="">--</option>
                                         <option data-tokens="AFG"
-                                            data-content="<span class='flag-icon flag-icon-af flag-icon-squared'></span> Afghanistan"
-                                            value="Afghanistan">Afghanistan</option>
+                                            data-content="<span class='flag-icon flag-icon-af flag-icon-squared'>
+                                                </span> Afghanistan" value="Afghanistan">Afghanistan</option>
                                         <option data-tokens="ALB"
                                             data-content="<span class='flag-icon flag-icon-al flag-icon-squared'></span> Albania"
                                             value="Albania">Albania</option>
@@ -921,8 +914,8 @@
                                             data-content="<span class='flag-icon flag-icon-sx flag-icon-squared'></span> Sint Maarten"
                                             value="Sint Maarten">Sint Maarten</option>
                                         <option data-tokens="SSD"
-                                            data-content="<span class='flag-icon flag-icon-ss flag-icon-squared'></span> South Sudan"
-                                            value="South Sudan">South Sudan</option>
+                                            data-content="<span class='flag-icon flag-icon-ss flag-icon-squared'>
+                                                </span> South Sudan" value="South Sudan">South Sudan</option>
                                     </select>
                                     <div class="dropdown-menu ">
                                         <div class="bs-searchbox">
@@ -938,12 +931,15 @@
                             </div>
                             <div class="card-footer text-end">
                                 <button class="btn btn-primary" type="submit"> Submit </button>
-                                <a href="/datalead_admin"class="btn btn-light">Cancel</a>
+                                <a href="/datalead_sales"class="btn btn-light">Cancel</a>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 @endsection
+
+
+{{-- <div class="w-100 border-top-grey d-block d-lg-flex d-md-flex justify-content-start px-4 py-3"> --}}
