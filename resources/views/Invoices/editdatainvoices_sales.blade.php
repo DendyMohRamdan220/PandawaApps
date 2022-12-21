@@ -24,14 +24,16 @@
                         <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Invoices Details</h4>
                     </div>
                     <hr class="m-0 border-top-grey">
-                    <form action="/updatedatainvoices_sales/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/updatedatainvoices_sales/{{ $data->id }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_project">Select
                                     Project</label>
                                 <div class="form-group mb-0">
-                                    <select name="project_id" class="form-control select-picker" data-size="8" required="">
+                                    <select name="project_id" class="form-control select-picker" data-size="8"
+                                        required="">
                                         <option value="">--</option>
                                         @foreach ($project as $item)
                                             <option value="{{ $item->id }}"
@@ -46,7 +48,8 @@
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="choose_client">Choose
                                     Client</label>
                                 <div class="form-group mb-0">
-                                    <select name="users_id" class="form-control select-picker" data-size="8" required="">
+                                    <select name="users_id" class="form-control select-picker" data-size="8"
+                                        required="">
                                         <option value="">--</option>
                                         @foreach ($user as $items)
                                             @if ($items->level == 'Client')
@@ -84,8 +87,8 @@
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="currency">Currency</label>
                                 <div class="form-group mb-0">
-                                    <select name="currency" id="currency" class="form-control select-picker"
-                                        data-size="8" required="">
+                                    <select name="currency" id="currency" class="form-control select-picker" data-size="8"
+                                        required="">
                                         <option selected>{{ $data->currency }}</option>
                                         <option value="1">
                                             USD ($)
