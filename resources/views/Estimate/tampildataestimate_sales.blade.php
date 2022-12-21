@@ -24,7 +24,7 @@
                         <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Estimate Details</h4>
                     </div>
                     <hr class="m-0 border-top-grey">
-                    <form action="/updatedataestimate_admin/{{ $data->id }}" method="POST"
+                    <form action="/updatedataestimate_sales/{{ $data->id }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
