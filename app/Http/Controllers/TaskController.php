@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\project;
 use App\Models\Task;
 use App\Models\User;
@@ -63,10 +64,10 @@ class TaskController extends Controller
 
     public function exportpdf_admin()
     {
-        $data = Project::all();
+        $data = Task::with('user', 'project')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Tasks.datatask-pdf');
-        return $pdf->download('data.pdf');
+        return $pdf->download('data-task.pdf');
     }
 
     // Portal Employee >>

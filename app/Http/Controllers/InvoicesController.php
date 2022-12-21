@@ -63,7 +63,7 @@ class InvoicesController extends Controller
 
     public function exportpdf_admin()
     {
-        $data = Invoices::all();
+        $data = Invoices::with('user', 'project')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Invoices.datainvoices-pdf_admin');
         return $pdf->download('data_Invoices.pdf');
@@ -87,7 +87,7 @@ class InvoicesController extends Controller
 
     public function exportpdf_client()
     {
-        $data = Invoices::all();
+        $data = Invoices::with('user', 'project')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Invoices.datainvoices-pdf_client');
         return $pdf->download('data_Invoices.pdf');
@@ -146,7 +146,7 @@ class InvoicesController extends Controller
 
     public function exportpdf_sales()
     {
-        $data = Invoices::all();
+        $data = Invoices::with('user', 'project')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Invoices.datainvoices-pdf_sales');
         return $pdf->download('data_Invoices.pdf');

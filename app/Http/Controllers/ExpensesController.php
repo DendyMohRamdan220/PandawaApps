@@ -66,7 +66,7 @@ class ExpensesController extends Controller
 
     public function exportpdf_admin()
     {
-        $data = Expenses::all();
+        $data = Expenses::with('user', 'project')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Expenses.dataexpenses-pdf');
         return $pdf->download('data.pdf');
@@ -128,7 +128,7 @@ class ExpensesController extends Controller
 
     public function exportpdf_sales()
     {
-        $data = Expenses::all();
+        $data = Expenses::with('user', 'project')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Expenses.dataexpenses-pdf_sales');
         return $pdf->download('data.pdf');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -57,10 +58,10 @@ class ProjectController extends Controller
 
     public function exportpdf_admin()
     {
-        $data = Project::all();
+        $data = Project::with('user')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Projects.dataproject-pdf');
-        return $pdf->download('data.pdf');
+        return $pdf->download('data-project.pdf');
     }
 
     //Employee

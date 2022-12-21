@@ -53,7 +53,7 @@ class ProductsController extends Controller
     {
         $data = Products::all();
         view()->share('data', $data);
-        $pdf = PDF::loadview('Products.dataproduk-pdf_admin');
+        $pdf = PDF::loadview('Products.dataproduk-pdf');
         return $pdf->download('data_products.pdf');
     }
 
