@@ -20,7 +20,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label"> Task Name </label>
-                                <input class="form-control" type="text" name="taskname" required="" value="{{ $data->taskname }}">
+                                <input class="form-control" type="text" name="taskname" required=""
+                                    value="{{ $data->taskname }}">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Project</label>
@@ -39,7 +40,7 @@
                                 <select class="form-control" name="user_id" required="">
                                     <option value="">--</option>
                                     @foreach ($user as $items)
-                                        @if ($items->level = 'Employee')
+                                        @if ($items->level == 'Employee')
                                             <option value="{{ $items->id }}"
                                                 {{ old('user_id', $data->user_id) == $items->id ? 'selected' : null }}>
                                                 {{ $items->name }}
@@ -50,11 +51,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Startdate</label>
-                                <input class="form-control" type="date" name="startdate" required="" value="{{ $data->startdate }}">
+                                <input class="form-control" type="date" name="startdate" required=""
+                                    value="{{ $data->startdate }}">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Duedate</label>
-                                <input class="form-control" type="date" name="duedate" required="" value="{{ $data->duedate }}">
+                                <input class="form-control" type="date" name="duedate" required=""
+                                    value="{{ $data->duedate }}">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"> Status Project </label>

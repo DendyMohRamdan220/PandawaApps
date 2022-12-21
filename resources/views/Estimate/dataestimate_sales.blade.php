@@ -62,7 +62,7 @@
                                     <td>{{ $row->valid_till }}</td>
                                     <td>{{ $row->status }}</td>
                                     <td>
-                                        <a class="btn btn-info" href="/editdataestimate_admin/{{ $row->id }}">
+                                        <a class="btn btn-info" href="/editdataestimate_sales/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
                                         <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
                                             data-name="{{ $row->estimate_number }}">
