@@ -65,7 +65,7 @@ class ProposalsController extends Controller
 
     public function exportpdf_admin()
     {
-        $data = Proposals::all();
+        $data = Proposals::with('leads', 'products')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Proposal.dataproposal-pdf');
         return $pdf->download('data.pdf');

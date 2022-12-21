@@ -64,7 +64,7 @@ class EstimatesController extends Controller
 
     public function exportpdf_admin()
     {
-        $data = Estimates::all();
+        $data = Estimates::with('user', 'products')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Estimate.dataestimate-pdf');
         return $pdf->download('data.pdf');
@@ -89,7 +89,7 @@ class EstimatesController extends Controller
 
     public function exportpdf_client()
     {
-        $data = Estimates::all();
+        $data = Estimates::with('user', 'products')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Estimate.dataestimate-pdf_client');
         return $pdf->download('data.pdf');
@@ -149,7 +149,7 @@ class EstimatesController extends Controller
 
     public function exportpdf_sales()
     {
-        $data = Estimates::all();
+        $data = Estimates::with('user', 'products')->get();
         view()->share('data', $data);
         $pdf = PDF::loadview('Estimate.dataestimate-pdf_sales');
         return $pdf->download('data.pdf');
