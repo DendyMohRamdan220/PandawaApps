@@ -63,8 +63,8 @@
                     <div class="login-card">
                         <form class="theme-form login-form" method="POST" action="login_redirect">
                             @csrf
-                            @if (session()->has('loginError'))
-                                {{ session('loginError') }}
+                            @if (session()->has('error'))
+                                {{ session('error') }}
                             @endif
                             <center><h4>Pandawa Apps</h4></center><br>
                             <h3>Login</h3>

@@ -133,7 +133,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdataproject_admin/{id}', [ProjectController::class, 'editdataproject']);
     Route::post('updatedataproject_admin/{id}', [ProjectController::class, 'updatedataproject']);
     Route::get('deletedataproject_admin/{id}', [ProjectController::class, 'deletedataproject']);
-    Route::get('exportpdfproject_admin', [ProductsController::class, 'exportpdf_admin']);
+    Route::get('exportpdfproject_admin', [ProjectController::class, 'exportpdf_admin']);
 
     // Tasks >>
     Route::get('datatask_admin', [TaskController::class, 'datatask_admin']);
@@ -142,7 +142,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function () {
     Route::get('editdatatask_admin/{id}', [TaskController::class, 'editdatatask_admin']);
     Route::post('updatedatatask_admin/{id}', [TaskController::class, 'updatedatatask_admin']);
     Route::get('deletedatatask_admin/{id}', [TaskController::class, 'deletedatatask_admin']);
-    Route::get('exportpdftask_admin', [ProductsController::class, 'exportpdf_admin']);
+    Route::get('exportpdftask_admin', [TaskController::class, 'exportpdf_admin']);
     /* << End Work >> */
 
     /* << Finance >> */
