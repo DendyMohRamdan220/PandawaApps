@@ -28,15 +28,16 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Proposal Name</label>
-                                        <input type="text" name="proposal_name" id="proposal_name "
-                                            required="" class="form-control" />
+                                        <input type="text" name="proposal_name" id="proposal_name " required=""
+                                            class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="leads_name">Lead
                                         Name</label>
                                     <div class="form-group mb-0">
-                                        <select name="leads_id" class="form-control select-picker" data-size="8" required="">
+                                        <select name="leads_id" class="form-control select-picker" data-size="8"
+                                            required="">
                                             <option value="">--</option>
                                             @foreach ($leads as $items)
                                                 <option value="{{ $items->id }}" {{ old('leads_id') == $items->id }}>
@@ -49,7 +50,8 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Valid till</label>
-                                        <input type="date" name="valid_till" id="valid_till" required="" class="form-control" />
+                                        <input type="date" name="valid_till" id="valid_till" required=""
+                                            class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
@@ -77,7 +79,8 @@
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                         Product</label>
                                     <div class="form-group mb-0">
-                                        <select name="products_id" class="form-control select-picker" data-size="8" required="">
+                                        <select name="products_id" class="form-control select-picker" data-size="8"
+                                            required="">
                                             <option value="">--</option>
                                             @foreach ($products as $item)
                                                 <option value="{{ $item->id }}" {{ old('products_id') == $item->id }}>
