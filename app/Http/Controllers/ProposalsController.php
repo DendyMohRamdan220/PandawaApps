@@ -140,7 +140,7 @@ class ProposalsController extends Controller
     {
         $leads = Leads::all();
         $products = Products::all();
-        return view('Proposal.tambahdataproposal', compact('leads', 'products'));
+        return view('Proposal.tambahdataproposal_sales', compact('leads', 'products'));
     }
 
     public function insertdataproposal_sales(Request $request)
