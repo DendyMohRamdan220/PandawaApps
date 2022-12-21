@@ -24,14 +24,16 @@
                         <h4 class="mb-0 f-21 font-weight-normal text-capitalize">Estimate Details</h4>
                     </div>
                     <hr class="m-0 border-top-grey">
-                    <form action="/updatedataestimate_sales/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/updatedataestimate_sales/{{ $data->id }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="row px-lg-4 px-md-4 px-3 py-3">
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                     Product</label>
                                 <div class="form-group mb-0">
-                                    <select name="products_id" class="form-control select-picker" data-size="8" required="">
+                                    <select name="products_id" class="form-control select-picker" data-size="8"
+                                        required="">
                                         <option value="">--</option>
                                         @foreach ($products as $item)
                                             <option value="{{ $item->id }}"
@@ -69,8 +71,8 @@
                             <div class="col-lg-4 col-md-6">
                                 <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="currency">Currency</label>
                                 <div class="form-group mb-0">
-                                    <select name="currency" id="currency" class="form-control select-picker"
-                                        required="" data-size="8">
+                                    <select name="currency" id="currency" class="form-control select-picker" required=""
+                                        data-size="8">
                                         <option selected>{{ $data->currency }}</option>
                                         <option value="1">
                                             USD ($)
