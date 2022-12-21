@@ -84,7 +84,9 @@ class ProposalsController extends Controller
 
     public function tambahdataproposal_client()
     {
-        return view('Proposal.tambahdataproposal_client');
+        $leads = Leads::all();
+        $products = Products::all();
+        return view('Proposal.tambahdataproposal_client', compact('leads', 'products'));
     }
 
     public function insertdataproposal_client(Request $request)
@@ -95,8 +97,10 @@ class ProposalsController extends Controller
 
     public function editdataproposal_client($id)
     {
+        $products = Products::all();
+        $leads = Leads::all();
         $data = Proposals::find($id);
-        return view('Proposal.editdataproposal_client', compact('data'));
+        return view('Proposal.editdataproposal_client', compact('data', 'leads', 'products'));
     }
 
     public function updatedataproposal_client(Request $request, $id)
@@ -134,7 +138,9 @@ class ProposalsController extends Controller
 
     public function tambahdataproposal_sales()
     {
-        return view('Proposal.tambahdataproposal_sales');
+        $leads = Leads::all();
+        $products = Products::all();
+        return view('Proposal.tambahdataproposal_sales', compact('leads', 'products'));
     }
 
     public function insertdataproposal_sales(Request $request)
@@ -145,12 +151,15 @@ class ProposalsController extends Controller
 
     public function editdataproposal_sales($id)
     {
+        $products = Products::all();
+        $leads = Leads::all();
         $data = Proposals::find($id);
-        return view('Proposal.editdataproposal_sales', compact('data'));
+        return view('Proposal.editdataproposal_sales', compact('data', 'leads', 'products'));
     }
 
     public function updatedataproposal_sales(Request $request, $id)
     {
+
         $data = Proposals::find($id);
         $data->update($request->all());
         return redirect('/dataproposal_sales')->with('success', 'Proposal edited successfully .');
