@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('proposal_name');
             $table->bigInteger('leads_id');
-            $table->date ('valid_till');
+            $table->date('valid_till');
             $table->enum('currency', ['USD ($)', 'IDR (Rp)', 'GBP (£)', 'EUR (€)']);
             $table->bigInteger('products_id');
             $table->double('quantity');
             $table->double('price');
             $table->double('total')->nullable();
+            $table->enum('status', ['Accepted', 'Waiting', 'Declined']);
             $table->timestamps();
         });
     }

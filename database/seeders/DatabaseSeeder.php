@@ -190,23 +190,23 @@ class DatabaseSeeder extends Seeder
 
         // Data Project >>
         project::create([
-            'projectname' => 'Angine F1',
+            'projectname' => 'Engine F1',
             'user_id' => '2',
             'deadline' => Carbon::parse('2022-12-20'),
             'user_id1' => 'Dendy Moh Ramdan',
             'status' => 'Order',
         ]);
         project::create([
-            'projectname' => 'Angine F2',
+            'projectname' => 'Engine F2',
             'user_id' => '4',
             'deadline' => Carbon::parse('2022-12-25'),
             'user_id1' => 'Muhamad Algi Fachruli',
-            'status' => 'Order',
+            'status' => 'Progres',
         ]);
 
         // Data task >>
         Task::create([
-            'taskname' => 'Angine F1',
+            'taskname' => 'Engine F1',
             'project_id' => '1',
             'user_id' => '2',
             'startdate' => Carbon::parse('2022-12-17'),
@@ -214,12 +214,12 @@ class DatabaseSeeder extends Seeder
             'status' => 'Order',
         ]);
         Task::create([
-            'taskname' => 'Angine F1',
+            'taskname' => 'Engine F1',
             'project_id' => '2',
             'user_id' => '4',
             'startdate' => Carbon::parse('2022-12-17'),
             'duedate' => Carbon::parse('2022-12-25'),
-            'status' => 'Order',
+            'status' => 'Progres',
         ]);
 
         // Data Project >>
@@ -227,44 +227,44 @@ class DatabaseSeeder extends Seeder
             'name' => 'Maintance',
             'price' => '50000',
             'produk_kategori' => 'Jasa',
-            'produk_sub_kategori' => 'Angine',
+            'produk_sub_kategori' => 'Engine',
         ]);
         Products::create([
             'name' => 'Cleaning Service',
             'price' => '55000',
             'produk_kategori' => 'Jasa',
-            'produk_sub_kategori' => 'Angine',
+            'produk_sub_kategori' => 'Engine',
         ]);
 
         //Data Ticket >>
         Ticket::create([
-            'ticket_subject' => 'Angine F1',
-            'description' => 'Damage To Angine F1',
+            'ticket_subject' => 'Engine F1',
+            'description' => 'Damage To Engine F1',
             'status' => 'Order',
         ]);
         Ticket::create([
-            'ticket_subject' => 'Angine F2',
-            'description' => 'Damage To Angine F2',
-            'status' => 'Order',
+            'ticket_subject' => 'Engine F2',
+            'description' => 'Damage To Engine F2',
+            'status' => 'Progres',
         ]);
         Ticket::create([
-            'ticket_subject' => 'Angine F3',
-            'description' => 'Damage To Angine F3',
-            'status' => 'Order',
+            'ticket_subject' => 'Engine F3',
+            'description' => 'Damage To Engine F3',
+            'status' => 'Pending',
         ]);
         Ticket::create([
-            'ticket_subject' => 'Angine F4',
-            'description' => 'Damage To Angine F4',
-            'status' => 'Order',
+            'ticket_subject' => 'Engine F4',
+            'description' => 'Damage To Engine F4',
+            'status' => 'Done',
         ]);
         Ticket::create([
-            'ticket_subject' => 'Angine F5',
-            'description' => 'Damage To Angine F5',
-            'status' => 'Order',
+            'ticket_subject' => 'Engine F5',
+            'description' => 'Damage To Engine F5',
+            'status' => 'Cancel',
         ]);
         Ticket::create([
-            'ticket_subject' => 'Angine F6',
-            'description' => 'Damage To Angine F6',
+            'ticket_subject' => 'Engine F6',
+            'description' => 'Damage To Engine F6',
             'status' => 'Order',
         ]);
 
