@@ -22,6 +22,7 @@ class Proposals extends Model
         'quantity',
         'price',
         'total',
+        'status',
     ];
 
     protected $dates = ['created_at'];

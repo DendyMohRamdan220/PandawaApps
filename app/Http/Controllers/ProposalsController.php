@@ -122,7 +122,7 @@ class ProposalsController extends Controller
         $data = Proposals::all();
         view()->share('data', $data);
         $pdf = PDF::loadview('Proposal.dataproposal-pdf_client');
-        return $pdf->download('data.pdf');
+        return $pdf->download('Data-Proposal.pdf');
     }
 
     // Portal Sales >>

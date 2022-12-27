@@ -53,7 +53,7 @@ class LoginController extends Controller
                 return redirect()->intended('dashboardv3');
             }
         }
-        return back()->with('error', 'Maaf! email atau password anda salah');
+        return back()->with('error', 'Sorry! Your email or password is wrong');
     }
 
     //Register
@@ -84,7 +84,7 @@ class LoginController extends Controller
 
         User::create([
             'name' => $a->name,
-            'email' => $a->username,
+            'email' => $a->email,
             'password' => Hash::make($a->password),
             'level' => $a->level,
         ], $cekvalidasi);

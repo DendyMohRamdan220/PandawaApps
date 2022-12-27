@@ -57,7 +57,7 @@ class DashboardController extends Controller
         $data = User::all();
         $totalproject = project::count();
         $dueinvoices = Invoices::count();
-        $unresolvedticket = Ticket::where('status', 'progres')->count();
+        $unresolvedticket = Ticket::count();
         return view('dashboardv2', compact('data'), [
             'totalproject' => $totalproject,
             'dueinvoices' => $dueinvoices,
