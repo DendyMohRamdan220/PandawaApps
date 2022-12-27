@@ -33,18 +33,6 @@
                                 <input type="text" name="description" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" required="" value="{{ $data->description }}" placeholder="">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Status Ticket</label>
-                                <br>
-                                <select class="form-select" name="status" required="">
-                                    <option selected>{{ $data->status }}</option>
-                                    <option value="1">Order</option>
-                                    <option value="2">Progres</option>
-                                    <option value="3">Pending</option>
-                                    <option value="4">Done</option>
-                                    <option value="5">Cancel</option>
-                                </select>
-                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

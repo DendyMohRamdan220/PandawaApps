@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3 col-lg-6">
                     <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
+                        <div class="bg-warning b-r-4 card-body">
                             <div class="media static-top-widget">
                                 <div class="align-self-center text-center"><i data-feather="user"></i></div>
                                 <div class="media-body"><span class="m-0"> Total Employees </span>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3 col-lg-6">
                     <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
+                        <div class="bg-warning b-r-4 card-body">
                             <div class="media static-top-widget">
                                 <div class="align-self-center text-center"><i data-feather="file-text"></i></div>
                                 <div class="media-body"><span class="m-0"> Due Invoices </span>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3 col-lg-6">
                     <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
+                        <div class="bg-warning b-r-4 card-body">
                             <div class="media static-top-widget">
                                 <div class="align-self-center text-center"><i data-feather="clock"></i></div>
                                 <div class="media-body"><span class="m-0"> Hours Logged </span>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3 col-lg-6">
                     <div class="card o-hidden border-0">
-                        <div class="bg-secondary b-r-4 card-body">
+                        <div class="bg-warning b-r-4 card-body">
                             <div class="media static-top-widget">
                                 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
                                 <div class="media-body"><span class="m-0"> Today Attendance </span>

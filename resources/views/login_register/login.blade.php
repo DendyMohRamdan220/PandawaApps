@@ -58,15 +58,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-7"><img class="bg-img-cover bg-center"
-                        src="{{ asset('template/assets/images/login/sans.jpg') }}" alt="looginpage"></div>
+                        src="{{ asset('template/assets/images/login/sans.png') }}" alt="looginpage"></div>
                 <div class="col-xl-5 p-0">
                     <div class="login-card">
                         <form class="theme-form login-form" method="POST" action="login_redirect">
                             @csrf
-                            @if (session()->has('error'))
-                                {{ session('error') }}
-                            @endif
-                            <center><h4>Pandawa Apps</h4></center><br>
+                            <center>
+                                <h4>Pandawa Apps</h4>
+                            </center><br>
                             <h3>Login</h3>
                             <h6>Welcome back! Log in to your account.</h6>
                             <div class="form-group">
@@ -115,6 +114,13 @@
                                     <label class="text-muted" for="checkbox1">Remember password</label>
                                 </div>
                             </div>
+                            <center>
+                            @if ($message = Session::get('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @endif
+                            </center>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-block" type="submit">Sign in</button>
                             </div>

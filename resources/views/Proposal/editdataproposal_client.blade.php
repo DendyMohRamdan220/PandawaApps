@@ -30,7 +30,7 @@
                                     <div class="form-group my-3">
                                         <label for="label">Proposal Name</label>
                                         <input type="text" value="{{ $data->proposal_name }}" name="proposal_name"
-                                            id="proposal_name" required="" class="form-control" />
+                                            id="proposal_name" required="" class="form-control" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
@@ -41,7 +41,8 @@
                                             <option value="">--</option>
                                             @foreach ($leads as $items)
                                                 <option value="{{ $items->id }}"
-                                                    {{ old('leads_id', $data->leads_id) == $items->id ? 'selected' : null }}>
+                                                    {{ old('leads_id', $data->leads_id) == $items->id ? 'selected' : null }}
+                                                    disabled>
                                                     {{ $items->leads_name }}
                                                 </option>
                                             @endforeach
@@ -50,11 +51,9 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
-
                                         <label for="label">Valid till</label>
                                         <input type="date" value="{{ $data->valid_till }}" name="valid_till"
-                                            id="valid_till" required="" class="form-control" />
-
+                                            id="valid_till" required="" class="form-control" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
@@ -63,17 +62,17 @@
                                     <div class="form-group mb-0">
                                         <select name="currency" id="currency" class="form-control select-picker"
                                             data-size="8" required="">
-                                            <option selected>{{ $data->currency }}</option>
-                                            <option value="1">
+                                            <option selected disabled>{{ $data->currency }}</option>
+                                            <option value="1" disabled>
                                                 USD ($)
                                             </option>
-                                            <option value="2">
+                                            <option value="2" disabled>
                                                 IDR (Rp)
                                             </option>
-                                            <option value="3">
+                                            <option value="3" disabled>
                                                 GBP (£)
                                             </option>
-                                            <option value="4">
+                                            <option value="4" disabled>
                                                 EUR (€)
                                             </option>
                                         </select>
@@ -87,7 +86,8 @@
                                             <option value="">--</option>
                                             @foreach ($products as $item)
                                                 <option value="{{ $item->id }}"
-                                                    {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null }}>
+                                                    {{ old('products_id', $data->products_id) == $item->id ? 'selected' : null }}
+                                                    disabled>
                                                     {{ $item->name }}
                                                 </option>
                                             @endforeach
@@ -98,22 +98,40 @@
                                     <div class="form-group my-3">
                                         <label for="label">Qty / Hrs</label>
                                         <input type="number" name="quantity" id="quantity" value="{{ $data->quantity }}"
-                                            class="quantity form-control" required="" onkeyup="Mul('0')">
-
+                                            class="quantity form-control" required="" onkeyup="Mul('0')" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Unit Price</label>
                                         <input type="number" name="price" id="price" value="{{ $data->price }}"
-                                            class="price form-control" required="" onkeyup="Mul('0')">
+                                            class="price form-control" required="" onkeyup="Mul('0')" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
                                         <label for="label">Total</label>
                                         <input type="text" name="total" id="total" value="{{ $data->total }}"
-                                            class="amount form-control" readonly>
+                                            class="amount form-control" onkeyup="Mul('0')" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
+                                        for="status">Status</label>
+                                    <div class="form-group mb-0">
+                                        <select name="status" id="status" class="form-control select-picker"
+                                            data-size="8" required="">
+                                            <option selected>{{ $data->status }}</option>
+                                            <option value="1">
+                                                Accepted
+                                            </option>
+                                            <option value="2">
+                                                Waiting
+                                            </option>
+                                            <option value="3">
+                                                Declined
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="card-footer text-end">
@@ -128,3 +146,18 @@
         </div>
     </div>
 @endsection
+
+<script>
+    function Mul(index) {
+        var quantity = document.getElementsByClassName("quantity")[index].value;
+        var price = document.getElementsByClassName("price")[index].value;
+
+        document.getElementsByClassName("amount")[index].value = quantity * price;
+        const subTotalField = document.getElementById("subTotal");
+        subTotalField.innerHTML = Array.from(document.getElementsByClassName("amount")).reduce((sum, element) => {
+            if (element.value.length === 0) return sum;
+            return sum + parseInt(element.value);
+        }, 0)
+
+    }
+</script>

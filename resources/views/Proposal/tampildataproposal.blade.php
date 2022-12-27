@@ -37,7 +37,8 @@
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="leads_name">Lead
                                         Name</label>
                                     <div class="form-group mb-0">
-                                        <select name="leads_id" class="form-control select-picker" data-size="8" required="">
+                                        <select name="leads_id" class="form-control select-picker" data-size="8"
+                                            required="">
                                             <option value="">--</option>
                                             @foreach ($leads as $items)
                                                 <option value="{{ $items->id }}"
@@ -81,7 +82,8 @@
                                     <label class="f-14 text-dark-grey mb-12 mt-3" data-label="" for="select_product">Select
                                         Product</label>
                                     <div class="form-group mb-0">
-                                        <select name="products_id" class="form-control select-picker" data-size="8" required="">
+                                        <select name="products_id" class="form-control select-picker" data-size="8"
+                                            required="">
                                             <option value="">--</option>
                                             @foreach ($products as $item)
                                                 <option value="{{ $item->id }}"
@@ -111,6 +113,25 @@
                                         <label for="label">Total</label>
                                         <input type="text" name="total" id="total" value="{{ $data->total }}"
                                             class="amount form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
+                                        for="status">Status</label>
+                                    <div class="form-group mb-0">
+                                        <select name="status" id="status" class="form-control select-picker"
+                                            data-size="8" required="">
+                                            <option selected>{{ $data->status }}</option>
+                                            <option value="1">
+                                                Accepted
+                                            </option>
+                                            <option value="2">
+                                                Waiting
+                                            </option>
+                                            <option value="3">
+                                                Declined
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="card-footer text-end">

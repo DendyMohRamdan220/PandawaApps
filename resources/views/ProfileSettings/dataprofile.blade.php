@@ -9,6 +9,7 @@
                         <h3> Edit Profile </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"> Home </a></li>
+                            <li class="breadcrumb-item"> Settings </li>
                             <li class="breadcrumb-item active"> Edit Profile </li>
                         </ol>
                     </div>
@@ -163,7 +164,7 @@
                                         <div class="mb-3">
                                             <label class="form-label" for="gender"> Gender </label>
                                             <select class="form-control btn-square @error('gender') is-invalid @enderror"
-                                            name="gender" id="gender">
+                                                name="gender" id="gender">
                                                 <option value="{{ auth::user()->gender }}">
                                                     {{ auth::user()->gender }}
                                                 </option>

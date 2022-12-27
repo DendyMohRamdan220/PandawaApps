@@ -20,10 +20,6 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-auto">
-                        <a href="/tambahdataproposal_client" class="btn btn-success">
-                            <i class="nav-icon icon-plus"></i>Add Proposal</a>
-                    </div>
-                    <div class="col-auto">
                         <form action="" method="GET">
                             <input type="search" name="keyword" class="form-control"
                                 aria-describedby="passwordHelpInline" placeholder="Search...">
@@ -37,8 +33,8 @@
             </div>
             <div class="row mt-2">
                 <div class="table-responsive">
-                    <table class="table table-striped bg-primary">
-                        <thead class="tbl-strip-thad-bdr">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
@@ -47,6 +43,7 @@
                                 <th scope="col">Total</th>
                                 <th scope="col">Created at</th>
                                 <th scope="col">Valid till</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -64,12 +61,10 @@
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>{{ $row->valid_till }}</td>
+                                    <td>{{ $row->status }}</td>
                                     <td>
                                         <a class="btn btn-info" href="/editdataproposal_client/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>
-                                        <a class="btn btn-danger delete" href="#" data-id="{{ $row->id }}"
-                                            data-name="{{ $row->proposal_name }}">
-                                            <i class="nav-icon icon-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -108,30 +103,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        $('.delete').click(function() {
-            var proposalid = $(this).attr('data-id');
-            var namaproposal = $(this).attr('data-name');
-            swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover data from the Proposal Subject " +
-                        namaproposal + " ",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location = "/deletedataproposal_client/" + proposalid + ""
-                        swal("Your data from Proposal Subject " + namaproposal + " has been deleted!", {
-                            icon: "success",
-                        });
-                    } else {
-                        swal("Deletion of data from Proposal Subject " + namaproposal + " has been cancelled!");
-                    }
-                });
-        });
-    </script>
     <script>
         @if (Session::has('success'))
             toastr.success("{{ Session::get('success') }}");

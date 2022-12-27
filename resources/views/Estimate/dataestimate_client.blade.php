@@ -33,8 +33,8 @@
             </div>
             <div class="row mt-2">
                 <div class="table-responsive">
-                    <table class="table table-striped bg-primary">
-                        <thead class="tbl-strip-thad-bdr">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Client</th>
@@ -42,7 +42,6 @@
                                 <th scope="col">Total</th>
                                 <th scope="col">Valid till</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -11,6 +11,7 @@
             <h3> Add Users </h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                <li class="breadcrumb-item"> Settings </li>
                 <li class="breadcrumb-item"><a href="/datauser_admin"> Users </a></li>
                 <li class="breadcrumb-item active"> Add Users </li>
             </ol>
@@ -47,7 +48,8 @@
                                 <label for="exampleInputPassword4">Password</label>
                                 <div class="input-group">
                                     <input class="form-control @error('password') is-invalid @enderror" type="password"
-                                        name="password" palaceholder="********" id="pass" value="{{ old('password') }}">
+                                        name="password" palaceholder="********" id="pass"
+                                        value="{{ old('password') }}">
                                     <div class="input-group-append">
 
                                         <!-- kita pasang onclick untuk merubah icon buka/tutup mata setiap diklik  -->
@@ -75,10 +77,10 @@
                                 <select class="form-select @error('level') is-invalid @enderror" name="level"
                                     aria-label="Default select example">
                                     <option value="{{ old('level') }}">Choose:</option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">Employee</option>
-                                    <option value="3">Client</option>
-                                    <option value="4">Sales</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Employee">Employee</option>
+                                    <option value="Client">Client</option>
+                                    <option value="Sales">Sales</option>
                                 </select>
                                 @error('level')
                                     <div class="invalid-feedback">

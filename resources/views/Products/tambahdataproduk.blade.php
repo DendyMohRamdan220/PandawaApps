@@ -58,7 +58,7 @@
                                         class="form-control select-picker" required="" data-size="8">
                                         <option value="">--</option>
                                         <option value="1">Laptop</option>
-                                        <option value="2">Angine</option>
+                                        <option value="2">Engine</option>
                                         <option value="3">Notebook</option>
                                     </select>
                                 </div>

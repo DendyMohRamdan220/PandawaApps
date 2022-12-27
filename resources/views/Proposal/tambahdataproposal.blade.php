@@ -111,6 +111,12 @@
                                             readonly>
                                     </div>
                                 </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group my-3">
+                                        <input class="form-control form-control-lg" type="hidden" name="status"
+                                            value="Waiting" readonly>
+                                    </div>
+                                </div>
                                 <div class="card-footer text-end">
                                     <button class="btn btn-primary" type="submit"> Submit </button>
                                     <a href="/dataproposal_admin"class="btn btn-light">Cancel</a>

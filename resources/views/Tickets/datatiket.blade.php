@@ -166,8 +166,8 @@
                                 </div>
                                 <div class="card">
                                     <div class="table-responsive">
-                                        <table class="table table-striped bg-success">
-                                            <thead class="tbl-strip-thad-bdr">
+                                        <table class="table table-hover">
+                                            <thead>
                                                 <tr>
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Ticket Subject</th>

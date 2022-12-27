@@ -46,7 +46,7 @@
             <th scope="col">Total</th>
             <th scope="col">Created at</th>
             <th scope="col">Valid till</th>
-            <th scope="col">Action</th>
+            <th scope="col">Status</th>
         </tr>
         @php
             $no = 1;
@@ -60,6 +60,7 @@
                 <td>{{ $row->total }}</td>
                 <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                 <td>{{ $row->valid_till }}</td>
+                <td>{{ $row->status }}</td>
             </tr>
         @endforeach
     </table>

@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="hidden" class="form-control form-control-lg" name="level"
-                                            value="Client" readonly>
+                                            value="Employee" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label> Image upload </label>

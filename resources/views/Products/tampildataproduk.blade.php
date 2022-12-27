@@ -59,7 +59,7 @@
                                         class="form-control select-picker" data-size="8" required="">
                                         <option selected>{{ $data->produk_sub_kategori }}</option>
                                         <option value="1">Laptop</option>
-                                        <option value="2">Angine</option>
+                                        <option value="2">Engine</option>
                                         <option value="3">Notebook</option>
                                     </select>
                                 </div>

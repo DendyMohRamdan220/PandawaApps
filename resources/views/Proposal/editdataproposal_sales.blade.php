@@ -50,11 +50,9 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group my-3">
-
                                         <label for="label">Valid till</label>
                                         <input type="date" value="{{ $data->valid_till }}" name="valid_till"
                                             id="valid_till" required="" class="form-control" />
-
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
@@ -99,7 +97,6 @@
                                         <label for="label">Qty / Hrs</label>
                                         <input type="number" name="quantity" id="quantity" value="{{ $data->quantity }}"
                                             class="quantity form-control" required="" onkeyup="Mul('0')">
-
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
@@ -114,6 +111,25 @@
                                         <label for="label">Total</label>
                                         <input type="text" name="total" id="total" value="{{ $data->total }}"
                                             class="amount form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <label class="f-14 text-dark-grey mb-12 mt-3" data-label=""
+                                        for="status">Status</label>
+                                    <div class="form-group mb-0">
+                                        <select name="status" id="status" class="form-control select-picker"
+                                            data-size="8" required="">
+                                            <option selected>{{ $data->status }}</option>
+                                            <option value="1">
+                                                Accepted
+                                            </option>
+                                            <option value="2">
+                                                Waiting
+                                            </option>
+                                            <option value="3">
+                                                Declined
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="card-footer text-end">

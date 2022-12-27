@@ -26,9 +26,9 @@
                     <!-- user profile header start-->
                     <div class="col-sm-12">
                         <div class="card profile-header"><img class="img-fluid bg-img-cover"
-                                src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt="">
+                                src="{{ asset('template/assets/images/user-profile/jakarta.jpg') }}" alt="">
                             <div class="profile-img-wrrap"><img class="img-fluid bg-img-cover"
-                                    src="{{ asset('template/assets/images/user-profile/ngoding.jpg') }}" alt=""></div>
+                                    src="{{ asset('template/assets/images/user-profile/jakarta.jpg') }}" alt=""></div>
                             <div class="userpro-box">
                                 <div class="img-wrraper">
                                     <div class="avatar">

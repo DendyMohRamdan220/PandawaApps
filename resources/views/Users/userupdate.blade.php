@@ -11,6 +11,7 @@
             <h3> Update Users </h3>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                <li class="breadcrumb-item"> Settings </li>
                 <li class="breadcrumb-item"><a href="/datauser_admin"> Users </a></li>
                 <li class="breadcrumb-item active"> Update Users </li>
             </ol>
@@ -75,11 +76,11 @@
                                 <label for="exampleInputEmail1">Level</label>
                                 <br>
                                 <select class="form-select @error('level') is-invalid @enderror" name="level">
-                                    <option value="">{{ $data->level }}</option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">Employee</option>
-                                    <option value="3">Client</option>
-                                    <option value="4">Sales</option>
+                                    <option value="{{ $data->level }}">{{ $data->level }}</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Employee">Employee</option>
+                                    <option value="Clinet">Client</option>
+                                    <option value="Sales">Sales</option>
                                 </select>
                                 @error('level')
                                     <div class="invalid-feedback">
@@ -113,7 +114,7 @@
                                 <label for="exampleInputEmail1"> Gender </label>
                                 <br>
                                 <select class="form-select @error('gender') is-invalid @enderror" name="gender">
-                                    <option value=""> {{ $data->gender }} </option>
+                                    <option value="{{ $data->gender }}"> {{ $data->gender }} </option>
                                     <option value="1">Laki-laki</option>
                                     <option value="2">Perempuan</option>
                                 </select>

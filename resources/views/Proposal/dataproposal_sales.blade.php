@@ -37,8 +37,8 @@
             </div>
             <div class="row mt-2">
                 <div class="table-responsive">
-                    <table class="table table-striped bg-primary">
-                        <thead class="tbl-strip-thad-bdr">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
@@ -47,6 +47,7 @@
                                 <th scope="col">Total</th>
                                 <th scope="col">Created at</th>
                                 <th scope="col">Valid till</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -64,6 +65,7 @@
                                     <td>{{ $row->total }}</td>
                                     <td>{{ $row->created_at->isoFormat('D MMM Y') }}</td>
                                     <td>{{ $row->valid_till }}</td>
+                                    <td>{{ $row->status }}</td>
                                     <td>
                                         <a class="btn btn-info" href="/editdataproposal_sales/{{ $row->id }}">
                                             <i class="nav-icon icon-pencil-alt"></i></a>

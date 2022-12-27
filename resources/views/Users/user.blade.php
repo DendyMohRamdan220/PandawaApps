@@ -1,7 +1,6 @@
 @extends('Layouts.layout')
 
 @section('content')
-
     @push('css')
         <!-- Plugins css start-->
         <!-- Bootstrap CSS -->
@@ -15,6 +14,7 @@
                         <h3> Users </h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboard_admin"> Home </a></li>
+                            <li class="breadcrumb-item"> Settings </li>
                             <li class="breadcrumb-item active"> Users </li>
                         </ol>
                     </div>
@@ -30,14 +30,14 @@
                     </div>
                     <div class="col-auto">
                         <form action="" method="GET">
-                            <input type="search" name="keyword" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Search...">
+                            <input type="search" name="keyword" class="form-control" aria-describedby="passwordHelpInline"
+                                placeholder="Search...">
                         </form>
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-striped bg-primary">
-                        <thead class="tbl-strip-thad-bdr">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
@@ -55,13 +55,13 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($data as $index => $row)
+                            @foreach ($data as $datauser => $row)
                                 <tr>
-                                    <th scope="row">{{ $no++ }}</th>
+                                    <th scope="row">{{ $datauser + $data->firstItem() }}</th>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->level }}</td>
-                                    <td>+62{{ $row->mobile }}</td>
+                                    <td>{{ $row->mobile }}</td>
                                     <td>
                                         @empty($row->file)
                                             <span class="badge badge-danger">Tidak ada</span>
@@ -74,7 +74,7 @@
                                     </td>
                                     <td>
                                         @if (Cache::has('user-is-online-' . $row->id))
-                                            <span class="text-white">Online</span>
+                                            <span class="text-success">Online</span>
                                         @else
                                             <span class="text-secondary">Offline</span>
                                         @endif

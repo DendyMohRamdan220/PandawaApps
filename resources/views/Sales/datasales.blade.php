@@ -37,8 +37,8 @@
             </div>
             <div class="row mt-2">
                 <div class="table-responsive">
-                    <table class="table table-striped bg-primary">
-                        <thead class="tbl-strip-thad-bdr">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
@@ -70,7 +70,7 @@
                                     </td>
                                     <td>
                                         @if (Cache::has('user-is-online-' . $row->id))
-                                            <span class="text-white">Online</span>
+                                            <span class="text-success">Online</span>
                                         @else
                                             <span class="text-secondary">Offline</span>
                                         @endif
