@@ -158,10 +158,6 @@
                                                 aria-describedby="passwordHelpInline" placeholder="Search...">
                                         </form>
                                     </div>
-                                    <div class="col-auto">
-                                        <a href="/exportpdf_client" class="btn btn-info"> <i
-                                                class="nav-icon fas fa-file-pdf"></i> Export PDF</a>
-                                    </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="table-responsive">
